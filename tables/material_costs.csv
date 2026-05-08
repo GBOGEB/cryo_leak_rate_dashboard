@@ -1,0 +1,10 @@
+Cost Category,Unit,Meca Inox,Swagelok,Notes
+Valve hardware,€/valve,€500-1000,€800-1500,Size-dependent
+HDPE seal,€/seal,€50-100,N/A,Radiation-hardened
+UHMWPE seal,€/seal,N/A,€80-150,Higher performance
+316 SS base,€/kg,€15-25,€15-25,Same material
+Electropolish,€/valve,€150-300,€150-300,Ra <0.4 μm
+Orbital welding,€/joint,€200-400,€200-400,DN-dependent
+Solenoid valve,€/valve,€300-500,N/A,For W1d only
+Position sensor,€/valve,€200-400,Optional,For W1d
+Mechanical limit switch,€/valve,€100-200,€100-200,Optional

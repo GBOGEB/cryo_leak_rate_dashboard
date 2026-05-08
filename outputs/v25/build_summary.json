@@ -1,0 +1,10 @@
+{
+  "version": "2.5.0",
+  "charts_generated": 18,
+  "tables_generated": [
+    "tables/supplier_comparison.md",
+    "tables/material_costs.md",
+    "tables/operating_conditions.md",
+    "tables/helium_loss_by_valve_count.md"
+  ]
+}

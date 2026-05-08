@@ -1,0 +1,4 @@
+condition,acceptable_rate,supplier_fit_score_meca,supplier_fit_score_swag
+Internal boundary,0.0001,9,8
+Protected manifold,1e-05,8,8
+To vacuum,1e-08,4,10

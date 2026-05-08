@@ -1,0 +1,9 @@
+supplier,size,base_eur,electropolish_eur,seal_eur,welding_install_eur
+Meca Inox (HDPE),DN06,500,180,50,200
+Meca Inox (HDPE),DN12,700,180,70,240
+Meca Inox (HDPE),DN25,850,180,85,300
+Meca Inox (HDPE),DN50,1000,180,100,400
+Swagelok SS-42GSE (UHMWPE),DN06,800,220,80,200
+Swagelok SS-42GSE (UHMWPE),DN12,1000,220,100,240
+Swagelok SS-42GSE (UHMWPE),DN25,1200,220,120,300
+Swagelok SS-42GSE (UHMWPE),DN50,1500,220,150,400

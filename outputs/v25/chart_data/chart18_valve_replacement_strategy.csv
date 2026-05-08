@@ -1,0 +1,5 @@
+strategy,lifecycle_cost_eur,availability_pct
+Run-to-failure,2200000,96.9
+Scheduled 12y,1820000,98.1
+Scheduled 18y,1740000,98.4
+Hybrid condition-based,1690000,99.0

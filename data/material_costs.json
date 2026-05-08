@@ -1,0 +1,65 @@
+[
+  {
+    "Cost Category": "Valve hardware",
+    "Unit": "\u20ac/valve",
+    "Meca Inox": "\u20ac500-1000",
+    "Swagelok": "\u20ac800-1500",
+    "Notes": "Size-dependent"
+  },
+  {
+    "Cost Category": "HDPE seal",
+    "Unit": "\u20ac/seal",
+    "Meca Inox": "\u20ac50-100",
+    "Swagelok": "N/A",
+    "Notes": "Radiation-hardened"
+  },
+  {
+    "Cost Category": "UHMWPE seal",
+    "Unit": "\u20ac/seal",
+    "Meca Inox": "N/A",
+    "Swagelok": "\u20ac80-150",
+    "Notes": "Higher performance"
+  },
+  {
+    "Cost Category": "316 SS base",
+    "Unit": "\u20ac/kg",
+    "Meca Inox": "\u20ac15-25",
+    "Swagelok": "\u20ac15-25",
+    "Notes": "Same material"
+  },
+  {
+    "Cost Category": "Electropolish",
+    "Unit": "\u20ac/valve",
+    "Meca Inox": "\u20ac150-300",
+    "Swagelok": "\u20ac150-300",
+    "Notes": "Ra <0.4 \u03bcm"
+  },
+  {
+    "Cost Category": "Orbital welding",
+    "Unit": "\u20ac/joint",
+    "Meca Inox": "\u20ac200-400",
+    "Swagelok": "\u20ac200-400",
+    "Notes": "DN-dependent"
+  },
+  {
+    "Cost Category": "Solenoid valve",
+    "Unit": "\u20ac/valve",
+    "Meca Inox": "\u20ac300-500",
+    "Swagelok": "N/A",
+    "Notes": "For W1d only"
+  },
+  {
+    "Cost Category": "Position sensor",
+    "Unit": "\u20ac/valve",
+    "Meca Inox": "\u20ac200-400",
+    "Swagelok": "Optional",
+    "Notes": "For W1d"
+  },
+  {
+    "Cost Category": "Mechanical limit switch",
+    "Unit": "\u20ac/valve",
+    "Meca Inox": "\u20ac100-200",
+    "Swagelok": "\u20ac100-200",
+    "Notes": "Optional"
+  }
+]

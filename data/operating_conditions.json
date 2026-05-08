@@ -1,0 +1,42 @@
+[
+  {
+    "service_type": "Warm service",
+    "temperature_k": "300K",
+    "pressure_bar": "1-12",
+    "leak_rate_requirement": "1\u00d710\u207b\u2078 acceptable",
+    "acceptable_valve": "Meca Inox HDPE",
+    "rationale": "Economic; leak-to-ambient requirement relaxed for W1d derogation"
+  },
+  {
+    "service_type": "Cold service",
+    "temperature_k": "4K-80K",
+    "pressure_bar": "1-12",
+    "leak_rate_requirement": "1\u00d710\u207b\u2079 required",
+    "acceptable_valve": "Swagelok UHMWPE",
+    "rationale": "Critical cryogenic containment with tighter leak class"
+  },
+  {
+    "service_type": "Helium guard",
+    "temperature_k": "300K",
+    "pressure_bar": "Sub-atm",
+    "leak_rate_requirement": "1\u00d710\u207b\u2075 acceptable",
+    "acceptable_valve": "Meca Inox HDPE",
+    "rationale": "Protected boundary; less stringent leakage criteria"
+  },
+  {
+    "service_type": "Internal protect",
+    "temperature_k": "Variable",
+    "pressure_bar": "Variable",
+    "leak_rate_requirement": "1\u00d710\u207b\u2074 seat leakage acceptable",
+    "acceptable_valve": "Either",
+    "rationale": "Internal boundaries allow higher seat leakage"
+  },
+  {
+    "service_type": "To vacuum",
+    "temperature_k": "Any",
+    "pressure_bar": "Any",
+    "leak_rate_requirement": "1\u00d710\u207b\u2078 required",
+    "acceptable_valve": "Swagelok UHMWPE",
+    "rationale": "Critical containment toward vacuum boundary"
+  }
+]

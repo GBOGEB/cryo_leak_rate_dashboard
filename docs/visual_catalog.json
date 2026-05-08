@@ -1,0 +1,146 @@
+[
+  {
+    "id": "chart01_leak_vs_loss_material_overlay",
+    "title": "Enhanced Leak Rate vs He Loss",
+    "category": "Leak Rate Fundamentals",
+    "html": "visualizations/chart01_leak_vs_loss_material_overlay.html",
+    "csv": "visualizations/data/chart01_leak_vs_loss_material_overlay.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart02_temperature_sensitivity_pressure_isolines",
+    "title": "Temperature Sensitivity (pressure isolines)",
+    "category": "Leak Rate Fundamentals",
+    "html": "visualizations/chart02_temperature_sensitivity_pressure_isolines.html",
+    "csv": "visualizations/data/chart02_temperature_sensitivity_pressure_isolines.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart03_pressure_sensitivity_temperature_isolines",
+    "title": "Pressure Sensitivity (temperature isolines)",
+    "category": "Leak Rate Fundamentals",
+    "html": "visualizations/chart03_pressure_sensitivity_temperature_isolines.html",
+    "csv": "visualizations/data/chart03_pressure_sensitivity_temperature_isolines.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart04_valve_size_impact",
+    "title": "Valve Size Impact",
+    "category": "Leak Rate Fundamentals",
+    "html": "visualizations/chart04_valve_size_impact.html",
+    "csv": "visualizations/data/chart04_valve_size_impact.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart05_seal_material_comparison",
+    "title": "Seal Material Comparison",
+    "category": "Leak Rate Fundamentals",
+    "html": "visualizations/chart05_seal_material_comparison.html",
+    "csv": "visualizations/data/chart05_seal_material_comparison.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart06_supplier_performance_matrix",
+    "title": "Supplier Performance Matrix",
+    "category": "Supplier & Material Analysis",
+    "html": "visualizations/chart06_supplier_performance_matrix.html",
+    "csv": "visualizations/data/chart06_supplier_performance_matrix.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart07_material_cost_breakdown",
+    "title": "Material Cost Breakdown",
+    "category": "Supplier & Material Analysis",
+    "html": "visualizations/chart07_material_cost_breakdown.html",
+    "csv": "visualizations/data/chart07_material_cost_breakdown.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart08_radiation_tolerance_curves",
+    "title": "Radiation Tolerance",
+    "category": "Supplier & Material Analysis",
+    "html": "visualizations/chart08_radiation_tolerance_curves.html",
+    "csv": "visualizations/data/chart08_radiation_tolerance_curves.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart09_welding_cost_by_size",
+    "title": "Welding Cost by Size",
+    "category": "Supplier & Material Analysis",
+    "html": "visualizations/chart09_welding_cost_by_size.html",
+    "csv": "visualizations/data/chart09_welding_cost_by_size.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart10_warm_service_analysis",
+    "title": "Warm Service Analysis",
+    "category": "Operating Conditions",
+    "html": "visualizations/chart10_warm_service_analysis.html",
+    "csv": "visualizations/data/chart10_warm_service_analysis.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart11_cold_service_analysis",
+    "title": "Cold Service Analysis",
+    "category": "Operating Conditions",
+    "html": "visualizations/chart11_cold_service_analysis.html",
+    "csv": "visualizations/data/chart11_cold_service_analysis.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart12_helium_guard_systems",
+    "title": "Helium Guard Systems",
+    "category": "Operating Conditions",
+    "html": "visualizations/chart12_helium_guard_systems.html",
+    "csv": "visualizations/data/chart12_helium_guard_systems.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart13_internal_protect_systems",
+    "title": "Internal Protect Systems",
+    "category": "Operating Conditions",
+    "html": "visualizations/chart13_internal_protect_systems.html",
+    "csv": "visualizations/data/chart13_internal_protect_systems.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart14_cost_waterfall",
+    "title": "Cost Waterfall",
+    "category": "Cost Analysis",
+    "html": "visualizations/chart14_cost_waterfall.html",
+    "csv": "visualizations/data/chart14_cost_waterfall.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart15_monte_carlo_results",
+    "title": "Monte Carlo Results",
+    "category": "Cost Analysis",
+    "html": "visualizations/chart15_monte_carlo_results.html",
+    "csv": "visualizations/data/chart15_monte_carlo_results.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart16_sensitivity_analysis",
+    "title": "Sensitivity Analysis",
+    "category": "Cost Analysis",
+    "html": "visualizations/chart16_sensitivity_analysis.html",
+    "csv": "visualizations/data/chart16_sensitivity_analysis.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart17_lifecycle_tco_secondary_axis",
+    "title": "Lifecycle TCO Comparison",
+    "category": "Cost Analysis",
+    "html": "visualizations/chart17_lifecycle_tco_secondary_axis.html",
+    "csv": "visualizations/data/chart17_lifecycle_tco_secondary_axis.csv",
+    "python": "src/generate_visuals_v3.py"
+  },
+  {
+    "id": "chart18_valve_replacement_strategy",
+    "title": "Valve Replacement Strategy Cost",
+    "category": "Cost Analysis",
+    "html": "visualizations/chart18_valve_replacement_strategy.html",
+    "csv": "visualizations/data/chart18_valve_replacement_strategy.csv",
+    "python": "src/generate_visuals_v3.py"
+  }
+]

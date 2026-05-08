@@ -1,0 +1,6 @@
+parameter,delta_cost_low,delta_cost_high
+He price,-22000,34000
+Welding,-7000,10000
+Electropolish,-5000,8000
+Leak class choice,-18000,26000
+Replacement frequency,-12000,18000

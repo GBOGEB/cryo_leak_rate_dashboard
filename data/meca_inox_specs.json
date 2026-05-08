@@ -1,0 +1,27 @@
+{
+  "seal": "HDPE",
+  "body_material": "316 SS",
+  "ambient_leak_class": 1e-08,
+  "restriction_leak_class": 0.0001,
+  "base_valve_cost": {
+    "DN06": 500,
+    "DN12": 700,
+    "DN25": 850,
+    "DN50": 1000
+  },
+  "seal_cost": {
+    "DN06": 50,
+    "DN12": 70,
+    "DN25": 85,
+    "DN50": 100
+  },
+  "electropolish_cost": 180,
+  "welding_cost": {
+    "DN06": 200,
+    "DN12": 240,
+    "DN25": 300,
+    "DN50": 400
+  },
+  "source_ref": "Cryoworld offer / Warm valves slide 2.3.4",
+  "compliance": "Economic derogation for W1d warm valves"
+}

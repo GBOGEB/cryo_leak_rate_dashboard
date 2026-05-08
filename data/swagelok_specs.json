@@ -1,0 +1,27 @@
+{
+  "seal": "UHMWPE",
+  "body_material": "316 SS",
+  "ambient_leak_class": 1e-09,
+  "restriction_leak_class": 0.0001,
+  "base_valve_cost": {
+    "DN06": 800,
+    "DN12": 1000,
+    "DN25": 1200,
+    "DN50": 1500
+  },
+  "seal_cost": {
+    "DN06": 80,
+    "DN12": 100,
+    "DN25": 120,
+    "DN50": 150
+  },
+  "electropolish_cost": 220,
+  "welding_cost": {
+    "DN06": 200,
+    "DN12": 240,
+    "DN25": 300,
+    "DN50": 400
+  },
+  "source_ref": "Swagelok SS-42GSE / Warm valves slide 2.3.4",
+  "compliance": "Compliant with 1\u00d710\u207b\u2079 ambient spec"
+}

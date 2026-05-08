@@ -1,0 +1,4 @@
+boundary,acceptable_leak_rate,recommendation
+Primary,1e-08,Swagelok
+Helium Guard,1e-05,Meca Inox
+Secondary Containment,0.0001,Either

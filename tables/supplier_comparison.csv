@@ -1,0 +1,11 @@
+Parameter,Meca Inox (HDPE),Swagelok SS-42GSE (UHMWPE)
+Seal material,HDPE,UHMWPE
+Base material,316 SS,316 SS
+Electropolish,Yes (Ra <0.4 μm),Yes (Ra <0.4 μm)
+Leak rate (ambient),>1×10⁻⁹ (derogation),≤1×10⁻⁹ (compliant)
+Leak rate (restriction),1×10⁻⁴,1×10⁻⁴
+Size range,DN12-DN50,DN06-DN25
+Actuation,Pneumatic (W1d) / Manual,Manual + limit switch
+Radiation hardness,Required,Required
+Typical application,Warm On/Off (W1d),"Instrumentation, precise control"
+Compliance status,Economic derogation,Industry standard
