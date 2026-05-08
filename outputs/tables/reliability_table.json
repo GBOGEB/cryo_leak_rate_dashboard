@@ -1,0 +1,30 @@
+[
+  {
+    "availability": 0.9997778271495223,
+    "leak_class": "1e-9",
+    "mdt_h": 16.0,
+    "mtbf_years": 9.0,
+    "mttr_h": 6.0
+  },
+  {
+    "availability": 0.9996667777407531,
+    "leak_class": "1e-8",
+    "mdt_h": 16.0,
+    "mtbf_years": 6.0,
+    "mttr_h": 6.0
+  },
+  {
+    "availability": 0.9993575558569492,
+    "leak_class": "1e-5",
+    "mdt_h": 18.0,
+    "mtbf_years": 3.5,
+    "mttr_h": 8.0
+  },
+  {
+    "availability": 0.9989783176296969,
+    "leak_class": "1e-4",
+    "mdt_h": 18.0,
+    "mtbf_years": 2.2,
+    "mttr_h": 8.0
+  }
+]

@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Handover</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<header><strong>Handover Dossier</strong></header>
+<main>
+  <section class="card"><h1>OUTPUT_1_BASELINE — Fixed Handover</h1>
+<h2>1) What changed</h2>
+<ul>
+<li>Removed erroneous alignment factor from leak-rate conversion.</li>
+<li>Rebuilt conversion with explicit dimensional chain from mbar·L/s to g/year.</li>
+<li>Added multi-audience triage outputs (executive, dashboard, calculations, RTM, developer notes).</li>
+</ul>
+<h2>2) Core numbers</h2>
+<ul>
+<li>Single valve @1e-8 mbar·L/s, 300K, 1 bar: <strong>0.000051 g/year</strong></li>
+<li>Baseline 410-valve annual loss: <strong>34.278 kg/year</strong></li>
+<li>Uniform 410-valve case at 1e-5, 4K, 12 bar: <strong>18.686 kg/year</strong></li>
+<li>RTM-048 cap (1 Nm³/day): <strong>65.20 kg/year</strong></li>
+</ul>
+<h2>3) Decision logic</h2>
+<ul>
+<li>Use 1e-8 (or tighter) in cold critical boundary paths.</li>
+<li>Use 1e-5 in warm non-critical paths only with explicit derogation and monitoring.</li>
+<li>Reserve 1e-4 seat leakage class to bounded interfaces with no inventory-critical consequence.</li>
+</ul>
+<h2>4) Scenario inventory evidence</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">count</th>
+<th style="text-align: right;">g_year_each</th>
+<th style="text-align: right;">kg_year_total</th>
+<th style="text-align: right;">leak_rate_mbar_l_s</th>
+<th style="text-align: right;">pressure_bar_abs</th>
+<th style="text-align: left;">scenario_id</th>
+<th style="text-align: left;">scenario_title</th>
+<th style="text-align: left;">segment</th>
+<th style="text-align: right;">temperature_k</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">45.5757</td>
+<td style="text-align: right;">6.83636</td>
+<td style="text-align: right;">1e-05</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">SCN-BASELINE-MIX</td>
+<td style="text-align: left;">Baseline mixed fleet (210 cold + 200 warm)</td>
+<td style="text-align: left;">Cold high-integrity</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">455.757</td>
+<td style="text-align: right;">27.3454</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">SCN-BASELINE-MIX</td>
+<td style="text-align: left;">Baseline mixed fleet (210 cold + 200 warm)</td>
+<td style="text-align: left;">Cold seat-leak tail</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">0.253198</td>
+<td style="text-align: right;">0.0455757</td>
+<td style="text-align: right;">1e-05</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">SCN-BASELINE-MIX</td>
+<td style="text-align: left;">Baseline mixed fleet (210 cold + 200 warm)</td>
+<td style="text-align: left;">Warm process</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">2.53198</td>
+<td style="text-align: right;">0.0506397</td>
+<td style="text-align: right;">0.0001</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">SCN-BASELINE-MIX</td>
+<td style="text-align: left;">Baseline mixed fleet (210 cold + 200 warm)</td>
+<td style="text-align: left;">Warm seat class</td>
+<td style="text-align: right;">300</td>
+</tr>
+<tr>
+<td style="text-align: right;">410</td>
+<td style="text-align: right;">0.000949494</td>
+<td style="text-align: right;">0.000389293</td>
+<td style="text-align: right;">1e-08</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">SCN-ALL-1E8</td>
+<td style="text-align: left;">Uniform high-integrity class</td>
+<td style="text-align: left;">All valves</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">45.5757</td>
+<td style="text-align: right;">0.0455757</td>
+<td style="text-align: right;">1e-05</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">SCN-RTM048-CAP</td>
+<td style="text-align: left;">RTM-048 cap reference</td>
+<td style="text-align: left;">Reference only</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+<h2>5) RTM traceability snapshot</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">implemented_in</th>
+<th style="text-align: left;">requirement_id</th>
+<th style="text-align: left;">status</th>
+<th style="text-align: left;">summary</th>
+<th style="text-align: left;">verification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">src/calc_leak_rate.py</td>
+<td style="text-align: left;">RTM-047</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Math conversion</td>
+<td style="text-align: left;">tests/test_calc_leak_rate.py::test_dimensional_chain</td>
+</tr>
+<tr>
+<td style="text-align: left;">docs/calculations.html</td>
+<td style="text-align: left;">RTM-048</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Temperature pressure sensitivity</td>
+<td style="text-align: left;">tests/test_calc_leak_rate.py::test_temperature_pressure_scaling</td>
+</tr>
+<tr>
+<td style="text-align: left;">data/scenarios.json</td>
+<td style="text-align: left;">RTM-049</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Fleet scenarios</td>
+<td style="text-align: left;">tests/test_calc_leak_rate.py::test_baseline_scenario_total_range</td>
+</tr>
+<tr>
+<td style="text-align: left;">docs/dashboard.html</td>
+<td style="text-align: left;">RTM-050</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Dashboard visuals</td>
+<td style="text-align: left;">tests/test_build_outputs.py::test_required_outputs_exist</td>
+</tr>
+<tr>
+<td style="text-align: left;">docs/dashboard.html</td>
+<td style="text-align: left;">RTM-051</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Reliability strategy</td>
+<td style="text-align: left;">manual review</td>
+</tr>
+<tr>
+<td style="text-align: left;">docs/executive_summary.html</td>
+<td style="text-align: left;">RTM-052</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Cost/benefit</td>
+<td style="text-align: left;">manual review</td>
+</tr>
+<tr>
+<td style="text-align: left;">docs/handover.html</td>
+<td style="text-align: left;">RTM-053</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Handover package</td>
+<td style="text-align: left;">tests/test_build_outputs.py::test_manifest_has_hashes</td>
+</tr>
+<tr>
+<td style="text-align: left;">src/calc_leak_rate.py</td>
+<td style="text-align: left;">RTM-054</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Math conversion</td>
+<td style="text-align: left;">tests/test_calc_leak_rate.py::test_dimensional_chain</td>
+</tr>
+<tr>
+<td style="text-align: left;">docs/calculations.html</td>
+<td style="text-align: left;">RTM-055</td>
+<td style="text-align: left;">REVIEW</td>
+<td style="text-align: left;">Temperature pressure sensitivity</td>
+<td style="text-align: left;">tests/test_calc_leak_rate.py::test_temperature_pressure_scaling</td>
+</tr>
+<tr>
+<td style="text-align: left;">data/scenarios.json</td>
+<td style="text-align: left;">RTM-056</td>
+<td style="text-align: left;">ACCEPT</td>
+<td style="text-align: left;">Fleet scenarios</td>
+<td style="text-align: left;">tests/test_calc_leak_rate.py::test_baseline_scenario_total_range</td>
+</tr>
+</tbody>
+</table>
+<h2>DMAIC View Note</h2>
+<ul>
+<li><strong>DEFINE:</strong> Handover packs the corrected engineering truth in stakeholder-friendly format.</li>
+<li><strong>MEASURE:</strong> Includes KPI values, inventory scenarios, and trace snippets.</li>
+<li><strong>ANALYZE:</strong> Connects assumptions to recommendations and risk status.</li>
+<li><strong>IMPROVE:</strong> Enables fast review cycles without opening code.</li>
+<li><strong>CONTROL:</strong> Re-generated by <code>python src/build_all.py</code>; checksums captured in OUTPUT_MANIFEST.json.</li>
+</ul></section>
+  <section class="card"><h3>Linked source notes</h3>
+    <ul>
+      <li><a href="source/assumptions.md">assumptions.md</a></li>
+      <li><a href="source/developer_notes.md">developer_notes.md</a></li>
+      <li><a href="source/rtm_traceability.md">rtm_traceability.md</a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

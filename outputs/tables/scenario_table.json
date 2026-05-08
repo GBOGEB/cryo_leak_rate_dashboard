@@ -1,0 +1,68 @@
+[
+  {
+    "count": 150,
+    "g_year_each": 45.57571018543487,
+    "kg_year_total": 6.836356527815231,
+    "leak_rate_mbar_l_s": 1e-05,
+    "pressure_bar_abs": 12,
+    "scenario_id": "SCN-BASELINE-MIX",
+    "scenario_title": "Baseline mixed fleet (210 cold + 200 warm)",
+    "segment": "Cold high-integrity",
+    "temperature_k": 4
+  },
+  {
+    "count": 60,
+    "g_year_each": 455.75710185434866,
+    "kg_year_total": 27.34542611126092,
+    "leak_rate_mbar_l_s": 0.0001,
+    "pressure_bar_abs": 12,
+    "scenario_id": "SCN-BASELINE-MIX",
+    "scenario_title": "Baseline mixed fleet (210 cold + 200 warm)",
+    "segment": "Cold seat-leak tail",
+    "temperature_k": 4
+  },
+  {
+    "count": 180,
+    "g_year_each": 0.25319838991908267,
+    "kg_year_total": 0.04557571018543488,
+    "leak_rate_mbar_l_s": 1e-05,
+    "pressure_bar_abs": 5,
+    "scenario_id": "SCN-BASELINE-MIX",
+    "scenario_title": "Baseline mixed fleet (210 cold + 200 warm)",
+    "segment": "Warm process",
+    "temperature_k": 300
+  },
+  {
+    "count": 20,
+    "g_year_each": 2.5319838991908257,
+    "kg_year_total": 0.05063967798381651,
+    "leak_rate_mbar_l_s": 0.0001,
+    "pressure_bar_abs": 5,
+    "scenario_id": "SCN-BASELINE-MIX",
+    "scenario_title": "Baseline mixed fleet (210 cold + 200 warm)",
+    "segment": "Warm seat class",
+    "temperature_k": 300
+  },
+  {
+    "count": 410,
+    "g_year_each": 0.0009494939621965596,
+    "kg_year_total": 0.00038929252450058946,
+    "leak_rate_mbar_l_s": 1e-08,
+    "pressure_bar_abs": 5,
+    "scenario_id": "SCN-ALL-1E8",
+    "scenario_title": "Uniform high-integrity class",
+    "segment": "All valves",
+    "temperature_k": 80
+  },
+  {
+    "count": 1,
+    "g_year_each": 45.57571018543487,
+    "kg_year_total": 0.045575710185434874,
+    "leak_rate_mbar_l_s": 1e-05,
+    "pressure_bar_abs": 12,
+    "scenario_id": "SCN-RTM048-CAP",
+    "scenario_title": "RTM-048 cap reference",
+    "segment": "Reference only",
+    "temperature_k": 4
+  }
+]

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/triage.js"></script>
+</head>
+<body class="mode-preview">
+<header>
+  <div><strong>Cryo Leak-Rate Triage — OUTPUT_1_BASELINE (fixed)</strong></div>
+  <nav><a class="" href="index.html">Portal</a><a class="active" href="dashboard.html">Dashboard</a><a class="" href="calculations.html">Calculations</a><a class="" href="executive_summary.html">Executive</a><a class="" href="rtm_traceability.html">RTM Traceability</a><a class="" href="handover.html">Handover</a></nav>
+</header>
+<main>
+  <section class="controls no-print">
+    <button onclick="setMode('preview')">Preview</button>
+    <button onclick="setMode('code')">Code-like</button>
+    <button onclick="setMode('print')">Print mode</button>
+    <button onclick="expandAll()">Expand all</button>
+    <button onclick="collapseAll()">Collapse all</button>
+    <button onclick="exportPdf()">Export PDF</button>
+  </section>
+  
+<section class="card"><h3>Interactive visual evidence</h3>
+  <iframe src="plots/plot1_leak_vs_loss.html" width="100%" height="520"></iframe>
+  <iframe src="plots/plot2_temp_pressure_effects.html" width="100%" height="520"></iframe>
+  <iframe src="plots/plot3_cost_vs_leaktightness.html" width="100%" height="520"></iframe>
+  <iframe src="plots/plot4_fleet_sensitivity.html" width="100%" height="520"></iframe>
+  <iframe src="plots/plot5_reliability.html" width="100%" height="520"></iframe>
+</section>
+<section class="card"><h3>Key tables</h3><div class="table-wrap"><table class="dataframe table table-wrap">
+  <thead>
+    <tr style="text-align: right;">
+      <th>scenario_id</th>
+      <th>scenario_title</th>
+      <th>segment</th>
+      <th>count</th>
+      <th>leak_rate_mbar_l_s</th>
+      <th>temperature_k</th>
+      <th>pressure_bar_abs</th>
+      <th>g_year_each</th>
+      <th>kg_year_total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SCN-BASELINE-MIX</td>
+      <td>Baseline mixed fleet (210 cold + 200 warm)</td>
+      <td>Cold high-integrity</td>
+      <td>150</td>
+      <td>1e-05</td>
+      <td>4</td>
+      <td>12</td>
+      <td>45.5757</td>
+      <td>6.83636</td>
+    </tr>
+    <tr>
+      <td>SCN-BASELINE-MIX</td>
+      <td>Baseline mixed fleet (210 cold + 200 warm)</td>
+      <td>Cold seat-leak tail</td>
+      <td>60</td>
+      <td>0.0001</td>
+      <td>4</td>
+      <td>12</td>
+      <td>455.757</td>
+      <td>27.3454</td>
+    </tr>
+    <tr>
+      <td>SCN-BASELINE-MIX</td>
+      <td>Baseline mixed fleet (210 cold + 200 warm)</td>
+      <td>Warm process</td>
+      <td>180</td>
+      <td>1e-05</td>
+      <td>300</td>
+      <td>5</td>
+      <td>0.253198</td>
+      <td>0.0455757</td>
+    </tr>
+    <tr>
+      <td>SCN-BASELINE-MIX</td>
+      <td>Baseline mixed fleet (210 cold + 200 warm)</td>
+      <td>Warm seat class</td>
+      <td>20</td>
+      <td>0.0001</td>
+      <td>300</td>
+      <td>5</td>
+      <td>2.53198</td>
+      <td>0.0506397</td>
+    </tr>
+    <tr>
+      <td>SCN-ALL-1E8</td>
+      <td>Uniform high-integrity class</td>
+      <td>All valves</td>
+      <td>410</td>
+      <td>1e-08</td>
+      <td>80</td>
+      <td>5</td>
+      <td>0.000949494</td>
+      <td>0.000389293</td>
+    </tr>
+    <tr>
+      <td>SCN-RTM048-CAP</td>
+      <td>RTM-048 cap reference</td>
+      <td>Reference only</td>
+      <td>1</td>
+      <td>1e-05</td>
+      <td>4</td>
+      <td>12</td>
+      <td>45.5757</td>
+      <td>0.0455757</td>
+    </tr>
+  </tbody>
+</table></div></section>
+
+<section class="card"> 
+  <h3>DMAIC view note</h3>
+  <p><strong>DEFINE:</strong> Provide medium-density engineering operations dashboard.</p>
+  <p><strong>MEASURE:</strong> Plotly visualizations + scenario table.</p>
+  <p><strong>ANALYZE:</strong> Answers impact of leak class, temperature, pressure, and fleet size.</p>
+  <p><strong>IMPROVE:</strong> Supports rapid triage in design reviews.</p>
+  <p><strong>CONTROL:</strong> Derived from versioned JSON inputs; reproducible via build_all.py.</p>
+</section>
+
+</main>
+</body>
+</html>

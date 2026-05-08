@@ -1,0 +1,29 @@
+[
+  {
+    "capex_eur": 4200,
+    "helium_cost_eur_40y": 0.1519190339514496,
+    "helium_loss_kg_40y": 0.010127935596763307,
+    "id": "VALVE-MECA-001",
+    "leak_rate_mbar_l_s": 1e-05,
+    "tco_eur_40y": 4200.151919033951,
+    "title": "Meca Inox ball valve with HDPE seal"
+  },
+  {
+    "capex_eur": 4700,
+    "helium_cost_eur_40y": 0.1519190339514496,
+    "helium_loss_kg_40y": 0.010127935596763307,
+    "id": "VALVE-SWAGELOK-002",
+    "leak_rate_mbar_l_s": 1e-05,
+    "tco_eur_40y": 4700.151919033951,
+    "title": "Swagelok SS-42GSE with UHMWPE"
+  },
+  {
+    "capex_eur": 8900,
+    "helium_cost_eur_40y": 0.00015191903395144954,
+    "helium_loss_kg_40y": 1.0127935596763303e-05,
+    "id": "VALVE-METAL-003",
+    "leak_rate_mbar_l_s": 1e-08,
+    "tco_eur_40y": 8900.000151919034,
+    "title": "Leak-tight cryogenic metal-sealed valve"
+  }
+]

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RTM Traceability</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/triage.js"></script>
+</head>
+<body class="mode-preview">
+<header>
+  <div><strong>Cryo Leak-Rate Triage — OUTPUT_1_BASELINE (fixed)</strong></div>
+  <nav><a class="" href="index.html">Portal</a><a class="" href="dashboard.html">Dashboard</a><a class="" href="calculations.html">Calculations</a><a class="" href="executive_summary.html">Executive</a><a class="active" href="rtm_traceability.html">RTM Traceability</a><a class="" href="handover.html">Handover</a></nav>
+</header>
+<main>
+  <section class="controls no-print">
+    <button onclick="setMode('preview')">Preview</button>
+    <button onclick="setMode('code')">Code-like</button>
+    <button onclick="setMode('print')">Print mode</button>
+    <button onclick="expandAll()">Expand all</button>
+    <button onclick="collapseAll()">Collapse all</button>
+    <button onclick="exportPdf()">Export PDF</button>
+  </section>
+  
+<section class="card"><h3>RTM-047 … RTM-067 mapping</h3><div class="table-wrap"><table class="dataframe table table-wrap">
+  <thead>
+    <tr style="text-align: right;">
+      <th>requirement_id</th>
+      <th>summary</th>
+      <th>implemented_in</th>
+      <th>verification</th>
+      <th>status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RTM-047</td>
+      <td>Math conversion</td>
+      <td>src/calc_leak_rate.py</td>
+      <td>tests/test_calc_leak_rate.py::test_dimensional_chain</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-048</td>
+      <td>Temperature pressure sensitivity</td>
+      <td>docs/calculations.html</td>
+      <td>tests/test_calc_leak_rate.py::test_temperature_pressure_scaling</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-049</td>
+      <td>Fleet scenarios</td>
+      <td>data/scenarios.json</td>
+      <td>tests/test_calc_leak_rate.py::test_baseline_scenario_total_range</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-050</td>
+      <td>Dashboard visuals</td>
+      <td>docs/dashboard.html</td>
+      <td>tests/test_build_outputs.py::test_required_outputs_exist</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-051</td>
+      <td>Reliability strategy</td>
+      <td>docs/dashboard.html</td>
+      <td>manual review</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-052</td>
+      <td>Cost/benefit</td>
+      <td>docs/executive_summary.html</td>
+      <td>manual review</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-053</td>
+      <td>Handover package</td>
+      <td>docs/handover.html</td>
+      <td>tests/test_build_outputs.py::test_manifest_has_hashes</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-054</td>
+      <td>Math conversion</td>
+      <td>src/calc_leak_rate.py</td>
+      <td>tests/test_calc_leak_rate.py::test_dimensional_chain</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-055</td>
+      <td>Temperature pressure sensitivity</td>
+      <td>docs/calculations.html</td>
+      <td>tests/test_calc_leak_rate.py::test_temperature_pressure_scaling</td>
+      <td>REVIEW</td>
+    </tr>
+    <tr>
+      <td>RTM-056</td>
+      <td>Fleet scenarios</td>
+      <td>data/scenarios.json</td>
+      <td>tests/test_calc_leak_rate.py::test_baseline_scenario_total_range</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-057</td>
+      <td>Dashboard visuals</td>
+      <td>docs/dashboard.html</td>
+      <td>tests/test_build_outputs.py::test_required_outputs_exist</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-058</td>
+      <td>Reliability strategy</td>
+      <td>docs/dashboard.html</td>
+      <td>manual review</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-059</td>
+      <td>Cost/benefit</td>
+      <td>docs/executive_summary.html</td>
+      <td>manual review</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-060</td>
+      <td>Handover package</td>
+      <td>docs/handover.html</td>
+      <td>tests/test_build_outputs.py::test_manifest_has_hashes</td>
+      <td>REVIEW</td>
+    </tr>
+    <tr>
+      <td>RTM-061</td>
+      <td>Math conversion</td>
+      <td>src/calc_leak_rate.py</td>
+      <td>tests/test_calc_leak_rate.py::test_dimensional_chain</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-062</td>
+      <td>Temperature pressure sensitivity</td>
+      <td>docs/calculations.html</td>
+      <td>tests/test_calc_leak_rate.py::test_temperature_pressure_scaling</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-063</td>
+      <td>Fleet scenarios</td>
+      <td>data/scenarios.json</td>
+      <td>tests/test_calc_leak_rate.py::test_baseline_scenario_total_range</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-064</td>
+      <td>Dashboard visuals</td>
+      <td>docs/dashboard.html</td>
+      <td>tests/test_build_outputs.py::test_required_outputs_exist</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-065</td>
+      <td>Reliability strategy</td>
+      <td>docs/dashboard.html</td>
+      <td>manual review</td>
+      <td>ACCEPT</td>
+    </tr>
+    <tr>
+      <td>RTM-066</td>
+      <td>Cost/benefit</td>
+      <td>docs/executive_summary.html</td>
+      <td>manual review</td>
+      <td>REVIEW</td>
+    </tr>
+    <tr>
+      <td>RTM-067</td>
+      <td>Handover package</td>
+      <td>docs/handover.html</td>
+      <td>tests/test_build_outputs.py::test_manifest_has_hashes</td>
+      <td>ACCEPT</td>
+    </tr>
+  </tbody>
+</table></div></section>
+<section class="card"><h3>Source anchors</h3><div class="table-wrap"><table class="dataframe table table-wrap">
+  <thead>
+    <tr style="text-align: right;">
+      <th>id</th>
+      <th>title</th>
+      <th>type</th>
+      <th>source_file</th>
+      <th>excerpt</th>
+      <th>status</th>
+      <th>audience</th>
+      <th>density_level</th>
+      <th>trace_reference</th>
+      <th>version_added</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SRC-WARM-VALVES-SLIDE15</td>
+      <td>Warm valves concern and derogation actions</td>
+      <td>Evidence</td>
+      <td>/home/ubuntu/Uploads/image (2).png</td>
+      <td>Warm valves proposed by vendor do not comply with He leak rate 1×10^-9 mbar.l/s and are considered acceptable only with derogation.</td>
+      <td>TRACE</td>
+      <td>engineer</td>
+      <td>medium</td>
+      <td>RTM-055</td>
+      <td>2.0.0</td>
+    </tr>
+    <tr>
+      <td>SRC-RTM048</td>
+      <td>System helium loss cap</td>
+      <td>Requirement</td>
+      <td>QPS_Contract_pdf.pdf</td>
+      <td>RTM-048 sets maximum helium loss equivalent to 1 Nm³/day.</td>
+      <td>ACCEPT</td>
+      <td>manager</td>
+      <td>low</td>
+      <td>RTM-048</td>
+      <td>2.0.0</td>
+    </tr>
+    <tr>
+      <td>SRC-EN13185</td>
+      <td>Leak detection reference</td>
+      <td>Requirement</td>
+      <td>EN 13185</td>
+      <td>Leak detection and verification method reference used for acceptance planning.</td>
+      <td>TRACE</td>
+      <td>specialist</td>
+      <td>high</td>
+      <td>RTM-067</td>
+      <td>2.0.0</td>
+    </tr>
+  </tbody>
+</table></div></section>
+
+<section class="card"> 
+  <h3>DMAIC view note</h3>
+  <p><strong>DEFINE:</strong> Guarantee requirement-to-implementation traceability.</p>
+  <p><strong>MEASURE:</strong> RTM rows, source anchors, verification links.</p>
+  <p><strong>ANALYZE:</strong> Highlights uncovered or review-state requirements.</p>
+  <p><strong>IMPROVE:</strong> Prevents orphan calculations and unsupported decisions.</p>
+  <p><strong>CONTROL:</strong> Each row has stable IDs and version_added metadata.</p>
+</section>
+
+</main>
+</body>
+</html>

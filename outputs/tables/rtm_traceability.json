@@ -1,0 +1,149 @@
+[
+  {
+    "implemented_in": "src/calc_leak_rate.py",
+    "requirement_id": "RTM-047",
+    "status": "ACCEPT",
+    "summary": "Math conversion",
+    "verification": "tests/test_calc_leak_rate.py::test_dimensional_chain"
+  },
+  {
+    "implemented_in": "docs/calculations.html",
+    "requirement_id": "RTM-048",
+    "status": "ACCEPT",
+    "summary": "Temperature pressure sensitivity",
+    "verification": "tests/test_calc_leak_rate.py::test_temperature_pressure_scaling"
+  },
+  {
+    "implemented_in": "data/scenarios.json",
+    "requirement_id": "RTM-049",
+    "status": "ACCEPT",
+    "summary": "Fleet scenarios",
+    "verification": "tests/test_calc_leak_rate.py::test_baseline_scenario_total_range"
+  },
+  {
+    "implemented_in": "docs/dashboard.html",
+    "requirement_id": "RTM-050",
+    "status": "ACCEPT",
+    "summary": "Dashboard visuals",
+    "verification": "tests/test_build_outputs.py::test_required_outputs_exist"
+  },
+  {
+    "implemented_in": "docs/dashboard.html",
+    "requirement_id": "RTM-051",
+    "status": "ACCEPT",
+    "summary": "Reliability strategy",
+    "verification": "manual review"
+  },
+  {
+    "implemented_in": "docs/executive_summary.html",
+    "requirement_id": "RTM-052",
+    "status": "ACCEPT",
+    "summary": "Cost/benefit",
+    "verification": "manual review"
+  },
+  {
+    "implemented_in": "docs/handover.html",
+    "requirement_id": "RTM-053",
+    "status": "ACCEPT",
+    "summary": "Handover package",
+    "verification": "tests/test_build_outputs.py::test_manifest_has_hashes"
+  },
+  {
+    "implemented_in": "src/calc_leak_rate.py",
+    "requirement_id": "RTM-054",
+    "status": "ACCEPT",
+    "summary": "Math conversion",
+    "verification": "tests/test_calc_leak_rate.py::test_dimensional_chain"
+  },
+  {
+    "implemented_in": "docs/calculations.html",
+    "requirement_id": "RTM-055",
+    "status": "REVIEW",
+    "summary": "Temperature pressure sensitivity",
+    "verification": "tests/test_calc_leak_rate.py::test_temperature_pressure_scaling"
+  },
+  {
+    "implemented_in": "data/scenarios.json",
+    "requirement_id": "RTM-056",
+    "status": "ACCEPT",
+    "summary": "Fleet scenarios",
+    "verification": "tests/test_calc_leak_rate.py::test_baseline_scenario_total_range"
+  },
+  {
+    "implemented_in": "docs/dashboard.html",
+    "requirement_id": "RTM-057",
+    "status": "ACCEPT",
+    "summary": "Dashboard visuals",
+    "verification": "tests/test_build_outputs.py::test_required_outputs_exist"
+  },
+  {
+    "implemented_in": "docs/dashboard.html",
+    "requirement_id": "RTM-058",
+    "status": "ACCEPT",
+    "summary": "Reliability strategy",
+    "verification": "manual review"
+  },
+  {
+    "implemented_in": "docs/executive_summary.html",
+    "requirement_id": "RTM-059",
+    "status": "ACCEPT",
+    "summary": "Cost/benefit",
+    "verification": "manual review"
+  },
+  {
+    "implemented_in": "docs/handover.html",
+    "requirement_id": "RTM-060",
+    "status": "REVIEW",
+    "summary": "Handover package",
+    "verification": "tests/test_build_outputs.py::test_manifest_has_hashes"
+  },
+  {
+    "implemented_in": "src/calc_leak_rate.py",
+    "requirement_id": "RTM-061",
+    "status": "ACCEPT",
+    "summary": "Math conversion",
+    "verification": "tests/test_calc_leak_rate.py::test_dimensional_chain"
+  },
+  {
+    "implemented_in": "docs/calculations.html",
+    "requirement_id": "RTM-062",
+    "status": "ACCEPT",
+    "summary": "Temperature pressure sensitivity",
+    "verification": "tests/test_calc_leak_rate.py::test_temperature_pressure_scaling"
+  },
+  {
+    "implemented_in": "data/scenarios.json",
+    "requirement_id": "RTM-063",
+    "status": "ACCEPT",
+    "summary": "Fleet scenarios",
+    "verification": "tests/test_calc_leak_rate.py::test_baseline_scenario_total_range"
+  },
+  {
+    "implemented_in": "docs/dashboard.html",
+    "requirement_id": "RTM-064",
+    "status": "ACCEPT",
+    "summary": "Dashboard visuals",
+    "verification": "tests/test_build_outputs.py::test_required_outputs_exist"
+  },
+  {
+    "implemented_in": "docs/dashboard.html",
+    "requirement_id": "RTM-065",
+    "status": "ACCEPT",
+    "summary": "Reliability strategy",
+    "verification": "manual review"
+  },
+  {
+    "implemented_in": "docs/executive_summary.html",
+    "requirement_id": "RTM-066",
+    "status": "REVIEW",
+    "summary": "Cost/benefit",
+    "verification": "manual review"
+  },
+  {
+    "implemented_in": "docs/handover.html",
+    "requirement_id": "RTM-067",
+    "status": "ACCEPT",
+    "summary": "Handover package",
+    "verification": "tests/test_build_outputs.py::test_manifest_has_hashes"
+  }
+]

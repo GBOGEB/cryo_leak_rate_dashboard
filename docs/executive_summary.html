@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Executive Summary</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/triage.js"></script>
+</head>
+<body class="mode-preview">
+<header>
+  <div><strong>Cryo Leak-Rate Triage — OUTPUT_1_BASELINE (fixed)</strong></div>
+  <nav><a class="" href="index.html">Portal</a><a class="" href="dashboard.html">Dashboard</a><a class="" href="calculations.html">Calculations</a><a class="active" href="executive_summary.html">Executive</a><a class="" href="rtm_traceability.html">RTM Traceability</a><a class="" href="handover.html">Handover</a></nav>
+</header>
+<main>
+  <section class="controls no-print">
+    <button onclick="setMode('preview')">Preview</button>
+    <button onclick="setMode('code')">Code-like</button>
+    <button onclick="setMode('print')">Print mode</button>
+    <button onclick="expandAll()">Expand all</button>
+    <button onclick="collapseAll()">Collapse all</button>
+    <button onclick="exportPdf()">Export PDF</button>
+  </section>
+  
+<section class="card">
+  <h3>Decision summary</h3>
+  <div class="grid">
+    <div class="kpi"><strong>Single valve 1e-8 @300K,1bar</strong><br>0.000051 g/year</div>
+    <div class="kpi"><strong>Baseline 410 valves</strong><br>34.278 kg/year</div>
+    <div class="kpi"><strong>RTM-048 cap</strong><br>65.20 kg/year (1 Nm³/day)</div>
+  </div>
+  <p>Recommendation: keep 1e-8 on critical cold boundary, permit 1e-5 on warm non-critical service with formal derogation and monitoring.</p>
+</section>
+<section class="card">
+  <h3>Status at-a-glance</h3>
+  <p><span class="badge ACCEPT">ACCEPT</span> Math correction implemented and tested.</p>
+  <p><span class="badge REVIEW">REVIEW</span> Warm 1e-5 valves require formal derogation (slide 2.3.4 concern).</p>
+  <p><span class="badge RISK">RISK</span> 1e-4 seat leakage acceptable only where isolated from inventory-critical paths.</p>
+</section>
+
+<section class="card"> 
+  <h3>DMAIC view note</h3>
+  <p><strong>DEFINE:</strong> Give management the go/no-go decision quickly.</p>
+  <p><strong>MEASURE:</strong> Only headline KPIs and recommendation.</p>
+  <p><strong>ANALYZE:</strong> Shows where leak-tightness is worth the capex.</p>
+  <p><strong>IMPROVE:</strong> Converts specialist math into investment and risk language.</p>
+  <p><strong>CONTROL:</strong> Trace links to calculation and RTM pages maintained.</p>
+</section>
+
+</main>
+</body>
+</html>

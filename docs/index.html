@@ -1,44 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>index.html</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fb; color: #14213d; }
-    header { background: #14213d; color: white; padding: 14px 18px; position: sticky; top: 0; z-index: 99; }
-    nav a { color: #cfe3ff; text-decoration: none; font-size: 12px; margin-right: 8px; }
-    nav a.active { color: #ffd166; font-weight: 700; }
-    main { max-width: 1200px; margin: 20px auto; background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-    h1, h2, h3 { color: #0b3d91; }
-    table { border-collapse: collapse; width: 100%; margin-bottom: 24px; font-size: 13px; }
-    th, td { border: 1px solid #d7dbe4; padding: 8px; text-align: left; vertical-align: top; }
-    th { background: #edf2ff; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; }
-    .kpi { background: #eef7ff; border-left: 5px solid #0b3d91; padding: 10px 12px; border-radius: 6px; }
-    .small { font-size: 12px; color: #555; }
-    iframe { width: 100%; height: 520px; border: 1px solid #ccd3e0; border-radius: 6px; margin-bottom: 16px; }
-    .math { background: #0b132b; color: #d8e2ff; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; white-space: pre-wrap; }
-  </style>
+  <title>Portal</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/triage.js"></script>
 </head>
-<body>
+<body class="mode-preview">
 <header>
-  <div><strong>Cryogenic Leak Rate Analysis Dashboard — OUTPUT_1_BASELINE</strong></div>
-  <nav><a class="active" href="index.html">index</a> | <a class="" href="01_EXECUTIVE_SUMMARY.html">01_EXECUTIVE_SUMMARY</a> | <a class="" href="02_LEAK_RATE_TRANSLATION.html">02_LEAK_RATE_TRANSLATION</a> | <a class="" href="03_MATHS_PROOF.html">03_MATHS_PROOF</a> | <a class="" href="04_PLOTS_AND_VISUAL_EVIDENCE.html">04_PLOTS_AND_VISUAL_EVIDENCE</a> | <a class="" href="05_VALVE_CLASS_COMPARISON.html">05_VALVE_CLASS_COMPARISON</a> | <a class="" href="06_ENGINEERING_RATIONALE.html">06_ENGINEERING_RATIONALE</a> | <a class="" href="07_TRACEABILITY_MATRIX.html">07_TRACEABILITY_MATRIX</a> | <a class="" href="08_VERSION_HISTORY.html">08_VERSION_HISTORY</a> | <a class="" href="09_BUILD_AND_RUNTIME_REPORT.html">09_BUILD_AND_RUNTIME_REPORT</a></nav>
+  <div><strong>Cryo Leak-Rate Triage — OUTPUT_1_BASELINE (fixed)</strong></div>
+  <nav><a class="active" href="index.html">Portal</a><a class="" href="dashboard.html">Dashboard</a><a class="" href="calculations.html">Calculations</a><a class="" href="executive_summary.html">Executive</a><a class="" href="rtm_traceability.html">RTM Traceability</a><a class="" href="handover.html">Handover</a></nav>
 </header>
 <main>
+  <section class="controls no-print">
+    <button onclick="setMode('preview')">Preview</button>
+    <button onclick="setMode('code')">Code-like</button>
+    <button onclick="setMode('print')">Print mode</button>
+    <button onclick="expandAll()">Expand all</button>
+    <button onclick="collapseAll()">Collapse all</button>
+    <button onclick="exportPdf()">Export PDF</button>
+  </section>
+  
+<section class="card">
+  <h3>Navigation portal</h3>
+  <p>This package provides multiple formats for the same engineering truth.</p>
+  <ul>
+    <li><a href="executive_summary.html">Executive summary (low-medium density)</a></li>
+    <li><a href="dashboard.html">Interactive dashboard (medium density)</a></li>
+    <li><a href="calculations.html">Calculation proofs (high density)</a></li>
+    <li><a href="rtm_traceability.html">RTM traceability (high density)</a></li>
+    <li><a href="handover.html">Handover dossier (formatted)</a> / <a href="handover.pdf">PDF</a></li>
+  </ul>
+</section>
 
-<h1>Landing Page</h1>
-<p>Interactive engineering dashboard for translating cryogenic helium leak-rate requirements into mass loss, reliability, and cost impact.</p>
-<div class="kpi-grid">
-  <div class="kpi"><strong>Baseline</strong><br/>OUTPUT_1_BASELINE</div>
-  <div class="kpi"><strong>Leak classes</strong><br/>1e-09, 1e-08, 1e-05, 1e-04 mbar·L/s</div>
-  <div class="kpi"><strong>Temperatures</strong><br/>[4, 10, 20, 50, 80, 300] K</div>
-  <div class="kpi"><strong>Pressures</strong><br/>[1, 5, 12] bar abs</div>
-  <div class="kpi"><strong>System annual loss</strong><br/>51.083 kg/year</div>
-  <div class="kpi"><strong>System annual He cost</strong><br/>€766.25/year (at €15/kg)</div>
-</div>
-<p class="small">All pages are standalone and linked for GitHub Pages publication.</p>
+<section class="card"> 
+  <h3>DMAIC view note</h3>
+  <p><strong>DEFINE:</strong> Route each audience to the right detail level.</p>
+  <p><strong>MEASURE:</strong> Page links and purpose metadata.</p>
+  <p><strong>ANALYZE:</strong> Reduces review friction and context switching.</p>
+  <p><strong>IMPROVE:</strong> Separates narrative, evidence, and traceability cleanly.</p>
+  <p><strong>CONTROL:</strong> Single build entry point preserves structure each run.</p>
+</section>
 
 </main>
 </body>

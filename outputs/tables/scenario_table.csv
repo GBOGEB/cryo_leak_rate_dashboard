@@ -1,0 +1,7 @@
+scenario_id,scenario_title,segment,count,leak_rate_mbar_l_s,temperature_k,pressure_bar_abs,g_year_each,kg_year_total
+SCN-BASELINE-MIX,Baseline mixed fleet (210 cold + 200 warm),Cold high-integrity,150,1e-05,4,12,45.57571018543487,6.836356527815231
+SCN-BASELINE-MIX,Baseline mixed fleet (210 cold + 200 warm),Cold seat-leak tail,60,0.0001,4,12,455.75710185434866,27.34542611126092
+SCN-BASELINE-MIX,Baseline mixed fleet (210 cold + 200 warm),Warm process,180,1e-05,300,5,0.25319838991908267,0.04557571018543488
+SCN-BASELINE-MIX,Baseline mixed fleet (210 cold + 200 warm),Warm seat class,20,0.0001,300,5,2.5319838991908257,0.05063967798381651
+SCN-ALL-1E8,Uniform high-integrity class,All valves,410,1e-08,80,5,0.0009494939621965596,0.00038929252450058946
+SCN-RTM048-CAP,RTM-048 cap reference,Reference only,1,1e-05,4,12,45.57571018543487,0.045575710185434874

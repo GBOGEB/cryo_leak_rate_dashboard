@@ -1,0 +1,2024 @@
+{
+  "builder_version": "2.0.0",
+  "file_count": 125,
+  "files": [
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233276.17514,
+      "path": ".abacus.donotdelete",
+      "sha256": "600a1abb52895cc66076bb2d02b5a47ee2ddb882e27fc41652087443e199660b",
+      "size_bytes": 45688,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233122.5329387,
+      "path": ".pytest_cache/CACHEDIR.TAG",
+      "sha256": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+      "size_bytes": 191,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233122.5328693,
+      "path": ".pytest_cache/README.md",
+      "sha256": "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad",
+      "size_bytes": 302,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.6906269,
+      "path": ".pytest_cache/v/cache/lastfailed",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "size_bytes": 2,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234630.360369,
+      "path": ".pytest_cache/v/cache/nodeids",
+      "sha256": "8462def0a2d2e169e76f7d8cd3ad66900ad55de0ebb8e7b816b19a3bcb23faf7",
+      "size_bytes": 523,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234603.2399116,
+      "path": "CHANGELOG.md",
+      "sha256": "d4d68871ac4f3acb9706514f14fad0bddc74203d5a53ae9f9ab3c69769c05e42",
+      "size_bytes": 441,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0995305,
+      "path": "DMAIC_0_REPORT.md",
+      "sha256": "be979c7a7c2ba2325c01aaa774a87b83ea2cbc2253c106ade079bc56f9cabe9d",
+      "size_bytes": 1070,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234603.2397223,
+      "path": "ERROR_LOG.md",
+      "sha256": "1f3a93bcdb2865203e2738a68a7e58eea912ae7ad8df1987fd1e91fcf6058dc4",
+      "size_bytes": 1145,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234674.6869237,
+      "path": "OUTPUT_MANIFEST.json",
+      "sha256": "dc725abf8212daaec9667171fd565747f623b8949e3d02d6aab849c6db549b51",
+      "size_bytes": 67968,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234603.2398171,
+      "path": "README.md",
+      "sha256": "9cf77751a60fa3d2ba9f960d396da11d43ed5b6fbb2cc0952712bb96f930533d",
+      "size_bytes": 727,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0968716,
+      "path": "VERSION.json",
+      "sha256": "d327b12e7206ab997ed481a0ee3dfec856ff83a2688e1a97f2785f4284e77ab5",
+      "size_bytes": 362,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234282.6852283,
+      "path": "assets/style.css",
+      "sha256": "ac5a056ef9b5e7dc9f798139430eac383b06339a5ad0baf5c813b6e3fa572340",
+      "size_bytes": 2537,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234288.9639864,
+      "path": "assets/triage.js",
+      "sha256": "847ddb402264c68ea6f726343343f8f55ed931337a524b47c64df4bbd4918866",
+      "size_bytes": 386,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234227.9032242,
+      "path": "data/leak_classes.json",
+      "sha256": "d47835b66db44db038e939f2b078a71743ef6befca8510f729956bed68da243d",
+      "size_bytes": 1249,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234563.0947783,
+      "path": "data/scenarios.json",
+      "sha256": "ae9f059a85d53b5e5010038e48e619327a2ec5ef359dc33b25b46c4fece9f4fd",
+      "size_bytes": 2022,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234265.1211524,
+      "path": "data/source_anchors.json",
+      "sha256": "3a9e1dda9112d7f66ab6dafb8d3094efb56c90677d89d3c19f8369c7afd78b05",
+      "size_bytes": 1221,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234236.9691393,
+      "path": "data/valve_candidates.json",
+      "sha256": "64cd5fec40bda6646aed87caf8e38a2684037fd7bbc7d3b469f6f8afb15b9168",
+      "size_bytes": 1238,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2370613,
+      "path": "docs/assets/style.css",
+      "sha256": "ac5a056ef9b5e7dc9f798139430eac383b06339a5ad0baf5c813b6e3fa572340",
+      "size_bytes": 2537,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.237127,
+      "path": "docs/assets/triage.js",
+      "sha256": "847ddb402264c68ea6f726343343f8f55ed931337a524b47c64df4bbd4918866",
+      "size_bytes": 386,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "audience": "specialist",
+      "builder_version": "2.0.0",
+      "density": "high",
+      "modified_timestamp": 1778234676.2330325,
+      "path": "docs/calculations.html",
+      "purpose": "formula proof",
+      "sha256": "1e433067e01397f05370c344636fcd991df69734387e6081019a3b6094f7e89d",
+      "size_bytes": 26980,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "audience": "engineer",
+      "builder_version": "2.0.0",
+      "density": "medium",
+      "modified_timestamp": 1778234676.2329652,
+      "path": "docs/dashboard.html",
+      "purpose": "interactive evidence",
+      "sha256": "1b23f6441181262893613c0e6c1ee31a96b7ff11223a786094cba55299b5c257",
+      "size_bytes": 4170,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "audience": "manager",
+      "builder_version": "2.0.0",
+      "density": "low",
+      "modified_timestamp": 1778234676.2330766,
+      "path": "docs/executive_summary.html",
+      "purpose": "decision summary",
+      "sha256": "55358679ae4ec396d38574c3b965b1c29e5cc26ed5f4c9905bc44c6d9a8da0d7",
+      "size_bytes": 2527,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "audience": "manager",
+      "builder_version": "2.0.0",
+      "density": "medium",
+      "modified_timestamp": 1778234676.2742097,
+      "path": "docs/handover.html",
+      "purpose": "handover dossier",
+      "sha256": "5f73bd76413333a6218d1c6d82c19da4efc3ea21e263bc425b9af5659e175700",
+      "size_bytes": 8524,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "audience": "manager",
+      "builder_version": "2.0.0",
+      "density": "medium",
+      "modified_timestamp": 1778234676.5911226,
+      "path": "docs/handover.pdf",
+      "purpose": "formal export",
+      "sha256": "ade35931a49071fe45cc230bbe5a54efd19dc4d33cdf2718c3f977b3b494a10b",
+      "size_bytes": 26211,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2329,
+      "path": "docs/index.html",
+      "sha256": "6ab722e9e793e68fdf3eddef1e7dfe066b4c190656a14d1981134a2657c38c83",
+      "size_bytes": 2210,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2181046,
+      "path": "docs/plots/plot1_leak_vs_loss.html",
+      "sha256": "9923e5e5f36ec70204d0cd39cf877ed68e31bdeff107832096df4472f51d38c0",
+      "size_bytes": 10954,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2201848,
+      "path": "docs/plots/plot2_temp_pressure_effects.html",
+      "sha256": "4f75099683e258e67f62f30dba9e4a8f7c91dc2d69e6434e0615ea84f9d9099e",
+      "size_bytes": 9647,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.222004,
+      "path": "docs/plots/plot3_cost_vs_leaktightness.html",
+      "sha256": "d078a583401a0bcbed523da7f9251a091463d1cdacddd05d42aec47108fc9407",
+      "size_bytes": 8760,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.223132,
+      "path": "docs/plots/plot4_fleet_sensitivity.html",
+      "sha256": "925803a995e034cf1a8efa94604f66822d0f3e9c495b0da88d8f221e4e67b0f6",
+      "size_bytes": 8046,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2241192,
+      "path": "docs/plots/plot5_reliability.html",
+      "sha256": "69e9665f082dca51291a51e6dd0351ccb5f55981d51f42d616515f9dbb1a56b7",
+      "size_bytes": 9041,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "audience": "specialist",
+      "builder_version": "2.0.0",
+      "density": "high",
+      "modified_timestamp": 1778234676.2331138,
+      "path": "docs/rtm_traceability.html",
+      "purpose": "requirement mapping",
+      "sha256": "5c0a70512121ea95d2f155cec695633c18493a81ca1261ac8394698743e84fa3",
+      "size_bytes": 7718,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.5928676,
+      "path": "docs/source/assumptions.md",
+      "sha256": "e07fd3c1f5897da4396acfe14b0df933d8ef531831f92ed0b39ba5775ec7c1bc",
+      "size_bytes": 713,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.592918,
+      "path": "docs/source/developer_notes.md",
+      "sha256": "f443eef5fa9634272d5131f392c8e26264a604e2886783258bfc7885cad9b2a6",
+      "size_bytes": 757,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.5927632,
+      "path": "docs/source/handover.md",
+      "sha256": "b5970e6ff8fa13e7fc73ec7c63dfd3133a07e069ad3e90e707e25935b8f47028",
+      "size_bytes": 4826,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.592965,
+      "path": "docs/source/rtm_traceability.md",
+      "sha256": "e5152ba9d4650608b79433904682d3b2f72b7db6809bdcacb3d66cd86e2251b5",
+      "size_bytes": 4055,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0980177,
+      "path": "outputs/html/01_EXECUTIVE_SUMMARY.html",
+      "sha256": "c3e219c571a1d72d4d414de3b21bcc5567d4ee791c82626211dc7c21bc66cd6a",
+      "size_bytes": 3266,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0981004,
+      "path": "outputs/html/02_LEAK_RATE_TRANSLATION.html",
+      "sha256": "167c28e93f3feb03af1aafdf8ee40c5807fa4aa1328b2baf819724c3473617e4",
+      "size_bytes": 23684,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.098165,
+      "path": "outputs/html/03_MATHS_PROOF.html",
+      "sha256": "9fd9f19fffc23250ae98918e5a45e7f7e8b3b19523b980a7838c105996aaba9d",
+      "size_bytes": 3781,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0982068,
+      "path": "outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+      "sha256": "20d5f19a01a976f22654626ceba423cb815dd7c421b738885a75e297c53f30df",
+      "size_bytes": 2808,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0982563,
+      "path": "outputs/html/05_VALVE_CLASS_COMPARISON.html",
+      "sha256": "5d9afb57a91f8b2564fac5fc00b3e1d3dd00c572cd6f0c566d2f4b7710f6401c",
+      "size_bytes": 4344,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0982997,
+      "path": "outputs/html/06_ENGINEERING_RATIONALE.html",
+      "sha256": "7d497907f918c32ffb142ddde471852e61f59852802398becec63f682e13be23",
+      "size_bytes": 5979,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0983818,
+      "path": "outputs/html/07_TRACEABILITY_MATRIX.html",
+      "sha256": "efdd2337763da5d7a63442c329d3c2fb9b9b1de08d616a5635f3a2047d6cecbb",
+      "size_bytes": 6476,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0984294,
+      "path": "outputs/html/08_VERSION_HISTORY.html",
+      "sha256": "fcfea321922e5fbdad180b5625d9ef90be412b125751b6843ac173c8b0197c9c",
+      "size_bytes": 3100,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.098471,
+      "path": "outputs/html/09_BUILD_AND_RUNTIME_REPORT.html",
+      "sha256": "ce1b8198a9ef592639c613c2ba9178d81757b34f5d66f23e20f72d0ee70ba3c6",
+      "size_bytes": 4287,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0979512,
+      "path": "outputs/html/index.html",
+      "sha256": "954e2b2d07b22957a0a946f62823f8e3da4f1409ae070d68ff7d968a8d33afaa",
+      "size_bytes": 3146,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.087224,
+      "path": "outputs/html/plots/plot1_leak_vs_loss.html",
+      "sha256": "dec456938add724fe4fec375acaa829e7e19ab4ba3f7ad93dab14ef9a09d6b97",
+      "size_bytes": 10793,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0879924,
+      "path": "outputs/html/plots/plot2_temp_effect.html",
+      "sha256": "69b40d94e8eee331b23db15d041742ecf7c4ed9a3913d4ffaf496dcfacd6daf4",
+      "size_bytes": 9637,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.088642,
+      "path": "outputs/html/plots/plot3_valve_comparison.html",
+      "sha256": "93087ce906b260dfe53febf90370f7d7aa9921aba30c5574681e22824fd4ba49",
+      "size_bytes": 9199,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.089257,
+      "path": "outputs/html/plots/plot4_system_projection.html",
+      "sha256": "471f123c4adc63bd032f009b061e7ab3f18948482b885214aff5eb5900b75093",
+      "size_bytes": 8546,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0898974,
+      "path": "outputs/html/plots/plot5_reliability_dashboard.html",
+      "sha256": "1365717f50ad218f3e55744adb5fce6503eca7427b40bddff332aaeb4e201bbb",
+      "size_bytes": 8523,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0978148,
+      "path": "outputs/json/build_runtime_report.json",
+      "sha256": "b2645a4184f5c6d06ddd6a14fc7e3a4caf9cbd6fb6c45d135b87bfea7ab2a695",
+      "size_bytes": 1859,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233169.8916187,
+      "path": "outputs/json/cost_comparison_table.json",
+      "sha256": "b0fbeaa4e727e4331c2d13a40a9494ebeb05345331abb5bf697b7c7d8dff21cd",
+      "size_bytes": 934,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233169.8911538,
+      "path": "outputs/json/leak_rate_conversion_table.json",
+      "sha256": "f56a36b1c342c6cf3349c48c7b99780e9896356b94c5808ce14357d7a7164fb8",
+      "size_bytes": 24226,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233169.891707,
+      "path": "outputs/json/reliability_metrics_table.json",
+      "sha256": "ae39a6f42b7ed2c65a76f4e7e46e08c30add0fe3a7359e28683b304c241fc250",
+      "size_bytes": 1320,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233169.8917859,
+      "path": "outputs/json/spare_parts_strategy_table.json",
+      "sha256": "0daec69fc4f96c0c659f57598a3ac438a702a62ec3c8c41ea74276acabc23efe",
+      "size_bytes": 364,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233169.8915231,
+      "path": "outputs/json/system_inventory_table.json",
+      "sha256": "522d68fc9fa80531348ff8a7c508b6f676c24188d18ab475f4187ff15d2f1749",
+      "size_bytes": 909,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233169.8918629,
+      "path": "outputs/json/traceability_matrix.json",
+      "sha256": "82a96fe85735ddbff18200604d5d55902668f199b13968b81f9e24deb0b67212",
+      "size_bytes": 4509,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233169.8913803,
+      "path": "outputs/json/valve_specifications_table.json",
+      "sha256": "98ffb099c7cfb4c2bb1fb9facc9bc77448f5e3e6f83a857d871574808225804b",
+      "size_bytes": 742,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234674.688378,
+      "path": "outputs/manifests/latest_manifest.json",
+      "sha256": "dc725abf8212daaec9667171fd565747f623b8949e3d02d6aab849c6db549b51",
+      "size_bytes": 67968,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0995958,
+      "path": "outputs/md/DMAIC_0_REPORT.md",
+      "sha256": "be979c7a7c2ba2325c01aaa774a87b83ea2cbc2253c106ade079bc56f9cabe9d",
+      "size_bytes": 1070,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.098534,
+      "path": "outputs/md/EXECUTIVE_SUMMARY.md",
+      "sha256": "c80d7e8b88adb73f73b8938da5cb0335cf02ae1f2355d7e69a1855bd565ba5f0",
+      "size_bytes": 895,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2167985,
+      "path": "outputs/plots/plot1_leak_vs_loss.html",
+      "sha256": "207ebd459034effc406929e38e31cc0a540c43cf7f72889d0a675f5fcc2f7312",
+      "size_bytes": 10954,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2191372,
+      "path": "outputs/plots/plot2_temp_pressure_effects.html",
+      "sha256": "64211780a28b5d2aa12e08813930e3dfeb23b5f28320262673fa825a994a45bd",
+      "size_bytes": 9647,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2211494,
+      "path": "outputs/plots/plot3_cost_vs_leaktightness.html",
+      "sha256": "935f4346c8ffc5d263fefb0ff1a2f1ba4e10db78a3455dabd715a489e37ef4b6",
+      "size_bytes": 8760,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.222586,
+      "path": "outputs/plots/plot4_fleet_sensitivity.html",
+      "sha256": "d3755ae42afadf6af0ac68767bcb4ea3a5ab8e76a441cf48b3d39f6cc740c087",
+      "size_bytes": 8046,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234676.2237384,
+      "path": "outputs/plots/plot5_reliability.html",
+      "sha256": "a1fccfbc967916f3ffd914965c272e1e58955f20747671d2b172345479241c49",
+      "size_bytes": 9041,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.6305125,
+      "path": "outputs/tables/conversion_table.csv",
+      "sha256": "7fbffad0773f9584821c12376c480653f8161ee4daa71f008f4c12a5372a4366",
+      "size_bytes": 13865,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.9005141,
+      "path": "outputs/tables/conversion_table.json",
+      "sha256": "0f769b360eb9e7f8d8bc8e87e6ca8a7a1d696ae0e0a986c27032f623365ec962",
+      "size_bytes": 36700,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.6310985,
+      "path": "outputs/tables/cost_table.csv",
+      "sha256": "f16ede7a5eb82a98a2676ac014735e0cd4abda0ae2c64dcfd3f80d9e985be1ff",
+      "size_bytes": 458,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.9016116,
+      "path": "outputs/tables/cost_table.json",
+      "sha256": "3a567e8316994753d1b63837a48f6c540acaf8615b910b147c7d4e0e7966f515",
+      "size_bytes": 843,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.6312978,
+      "path": "outputs/tables/reliability_table.csv",
+      "sha256": "67c5e76f6c6588ff0031fb409b8bb859db5914f3320c3e9575ad2a95a94d6049",
+      "size_bytes": 196,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.9019444,
+      "path": "outputs/tables/reliability_table.json",
+      "sha256": "31ed38120179f8fedac4b96ee6d7ec6b556dd7e70e05b6c1150427cfea1d3c03",
+      "size_bytes": 543,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.6315792,
+      "path": "outputs/tables/rtm_traceability.csv",
+      "sha256": "784c0f1efd7214fd66bcd2edea248d294d090bf0744068abbf697d417988dc08",
+      "size_bytes": 2194,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.9023945,
+      "path": "outputs/tables/rtm_traceability.json",
+      "sha256": "84152e7ee38a054ab9285a2460c9c72b884066a7b14e20462ff3c9d6612aa292",
+      "size_bytes": 4575,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.6308694,
+      "path": "outputs/tables/scenario_table.csv",
+      "sha256": "5da56df723b6aac2c5aa746ae00918ec2493c4417b563dfa6c28b49d49eda56d",
+      "size_bytes": 856,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.9011445,
+      "path": "outputs/tables/scenario_table.json",
+      "sha256": "ca1070992d5e5366724d306f073422f7afa50b52774b321ffb4d80a42eb13a6a",
+      "size_bytes": 1960,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.3950925,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/01_EXECUTIVE_SUMMARY.html",
+      "sha256": "8e519e9973de3753fe5354df00d4a773a8c5a36f9f812ecb9e491c0cd5daa408",
+      "size_bytes": 3259,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.3951366,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/02_LEAK_RATE_TRANSLATION.html",
+      "sha256": "0d30a4871374829a488caab23e48001392ad0ce8682383fc0be1b8d02d1689ce",
+      "size_bytes": 23684,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.3952103,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/03_MATHS_PROOF.html",
+      "sha256": "0ea14fbacd0b6310ba5462677b1ac8af95274ea9f0135e67fb877f2243ad5e53",
+      "size_bytes": 3533,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.395301,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+      "sha256": "20d5f19a01a976f22654626ceba423cb815dd7c421b738885a75e297c53f30df",
+      "size_bytes": 2808,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.3953795,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/05_VALVE_CLASS_COMPARISON.html",
+      "sha256": "567ecf5b6d2fc729ab0b34ed4df7d186bd42f90d1e0006077ef410dceb1fcfdb",
+      "size_bytes": 4357,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.3954434,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/06_ENGINEERING_RATIONALE.html",
+      "sha256": "7ce34a430ef239d873f6733a14d7d4cb6fbebba41e10ecd2a108c530a129978e",
+      "size_bytes": 5982,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.3954835,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/07_TRACEABILITY_MATRIX.html",
+      "sha256": "efdd2337763da5d7a63442c329d3c2fb9b9b1de08d616a5635f3a2047d6cecbb",
+      "size_bytes": 6476,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.395537,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/08_VERSION_HISTORY.html",
+      "sha256": "33f704a065e135d31b7eff320aa869317a1a7430fecb2e132add058b8b0e7e0b",
+      "size_bytes": 3100,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.3955746,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/09_BUILD_AND_RUNTIME_REPORT.html",
+      "sha256": "1c5e199913ae4fba204ba0f17d10254c69848798eaac4a3d7d1d6733b47bea82",
+      "size_bytes": 3772,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.39504,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/index.html",
+      "sha256": "9d8e6bf6652add27734aa0e7b3c3255af0387bb782acaf741637f69cebfda62f",
+      "size_bytes": 3143,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.381558,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/plots/plot1_leak_vs_loss.html",
+      "sha256": "df8a4ac6e97d0fc6affd590756cbb1c5a44c8129ae8b6b6aa74fb866c330b78f",
+      "size_bytes": 10836,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.382266,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/plots/plot2_temp_effect.html",
+      "sha256": "c20b4d7d1254f898678c0ca8c97bdcf03515196b925c7b6c51379fdccfef229a",
+      "size_bytes": 9696,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.3829062,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/plots/plot3_valve_comparison.html",
+      "sha256": "88818564a558d9bd70b0eb39e14f34fa5ce55f3ea0e094b2933baf484182e368",
+      "size_bytes": 9204,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.383474,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/plots/plot4_system_projection.html",
+      "sha256": "c5af305434f822bf7f7496ba61bfb3af02acdabb386ecd531ca117bbc0c15d76",
+      "size_bytes": 8553,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233105.384068,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093824Z/plots/plot5_reliability_dashboard.html",
+      "sha256": "35c5de67b1a4d7a29809c1b9349e2e3e8d039a01236b55f7e3a5567eb37af051",
+      "size_bytes": 8523,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0980177,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/01_EXECUTIVE_SUMMARY.html",
+      "sha256": "c3e219c571a1d72d4d414de3b21bcc5567d4ee791c82626211dc7c21bc66cd6a",
+      "size_bytes": 3266,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0981004,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/02_LEAK_RATE_TRANSLATION.html",
+      "sha256": "167c28e93f3feb03af1aafdf8ee40c5807fa4aa1328b2baf819724c3473617e4",
+      "size_bytes": 23684,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.098165,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/03_MATHS_PROOF.html",
+      "sha256": "9fd9f19fffc23250ae98918e5a45e7f7e8b3b19523b980a7838c105996aaba9d",
+      "size_bytes": 3781,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0982068,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+      "sha256": "20d5f19a01a976f22654626ceba423cb815dd7c421b738885a75e297c53f30df",
+      "size_bytes": 2808,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0982563,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/05_VALVE_CLASS_COMPARISON.html",
+      "sha256": "5d9afb57a91f8b2564fac5fc00b3e1d3dd00c572cd6f0c566d2f4b7710f6401c",
+      "size_bytes": 4344,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0982997,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/06_ENGINEERING_RATIONALE.html",
+      "sha256": "7d497907f918c32ffb142ddde471852e61f59852802398becec63f682e13be23",
+      "size_bytes": 5979,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0983818,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/07_TRACEABILITY_MATRIX.html",
+      "sha256": "efdd2337763da5d7a63442c329d3c2fb9b9b1de08d616a5635f3a2047d6cecbb",
+      "size_bytes": 6476,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0984294,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/08_VERSION_HISTORY.html",
+      "sha256": "fcfea321922e5fbdad180b5625d9ef90be412b125751b6843ac173c8b0197c9c",
+      "size_bytes": 3100,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.098471,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/09_BUILD_AND_RUNTIME_REPORT.html",
+      "sha256": "ce1b8198a9ef592639c613c2ba9178d81757b34f5d66f23e20f72d0ee70ba3c6",
+      "size_bytes": 4287,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0979512,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/index.html",
+      "sha256": "954e2b2d07b22957a0a946f62823f8e3da4f1409ae070d68ff7d968a8d33afaa",
+      "size_bytes": 3146,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.087224,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/plots/plot1_leak_vs_loss.html",
+      "sha256": "dec456938add724fe4fec375acaa829e7e19ab4ba3f7ad93dab14ef9a09d6b97",
+      "size_bytes": 10793,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0879924,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/plots/plot2_temp_effect.html",
+      "sha256": "69b40d94e8eee331b23db15d041742ecf7c4ed9a3913d4ffaf496dcfacd6daf4",
+      "size_bytes": 9637,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.088642,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/plots/plot3_valve_comparison.html",
+      "sha256": "93087ce906b260dfe53febf90370f7d7aa9921aba30c5574681e22824fd4ba49",
+      "size_bytes": 9199,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.089257,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/plots/plot4_system_projection.html",
+      "sha256": "471f123c4adc63bd032f009b061e7ab3f18948482b885214aff5eb5900b75093",
+      "size_bytes": 8546,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.0898974,
+      "path": "outputs/versioned/OUTPUT_1_BASELINE_20260508T093929Z/plots/plot5_reliability_dashboard.html",
+      "sha256": "1365717f50ad218f3e55744adb5fce6503eca7427b40bddff332aaeb4e201bbb",
+      "size_bytes": 8523,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234592.599479,
+      "path": "requirements.txt",
+      "sha256": "1d755b778ebeed3b07114d6f52bab08f6341a9d28d81db788c0d375a82e4aa96",
+      "size_bytes": 88,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.9215353,
+      "path": "source/assumptions.md",
+      "sha256": "e07fd3c1f5897da4396acfe14b0df933d8ef531831f92ed0b39ba5775ec7c1bc",
+      "size_bytes": 713,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.9215682,
+      "path": "source/developer_notes.md",
+      "sha256": "f443eef5fa9634272d5131f392c8e26264a604e2886783258bfc7885cad9b2a6",
+      "size_bytes": 757,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234674.387369,
+      "path": "source/handover.md",
+      "sha256": "b5970e6ff8fa13e7fc73ec7c63dfd3133a07e069ad3e90e707e25935b8f47028",
+      "size_bytes": 4826,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234602.9215984,
+      "path": "source/rtm_traceability.md",
+      "sha256": "e5152ba9d4650608b79433904682d3b2f72b7db6809bdcacb3d66cd86e2251b5",
+      "size_bytes": 4055,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233093.0206552,
+      "path": "src/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234623.1367486,
+      "path": "src/build_all.py",
+      "sha256": "e0502a38203182d5bcd9edabcf16e2ac6865115634ed7690e3881fc2eb6e96d2",
+      "size_bytes": 6224,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233166.513016,
+      "path": "src/build_dashboard.py",
+      "sha256": "c357e9cb8a90c8700fb74ab19bffd1a758d1d080425a27e7c774983b841f72c0",
+      "size_bytes": 17062,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234667.611806,
+      "path": "src/build_handover.py",
+      "sha256": "92999e3c26278b392e95ee11f88b04eb7c973d5736b0782143aacdd9528f304e",
+      "size_bytes": 5888,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234214.795113,
+      "path": "src/calc_leak_rate.py",
+      "sha256": "347c7215e084608e830b82fccd452cefd1a061862d4d6ec0116b0645f291daf6",
+      "size_bytes": 6253,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233093.0206552,
+      "path": "src/calculations/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233138.9408696,
+      "path": "src/calculations/engineering.py",
+      "sha256": "1307105a3219b914ef4d33ea8179bebab37c834ba790bdc7a55188e6db42279b",
+      "size_bytes": 10547,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234662.0397484,
+      "path": "src/generate_dashboard.py",
+      "sha256": "d3351f31c363c5bba0535d97bf839fb6f7dc2b8a15055d8e238bf3ccfb273f08",
+      "size_bytes": 17089,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234304.909565,
+      "path": "src/manifest.py",
+      "sha256": "220f57865a22d3b80f61d50a0c81dbf17620745eb9be792e1fddc843fa29732d",
+      "size_bytes": 1705,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233093.0206552,
+      "path": "src/plotting/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233012.1115623,
+      "path": "src/plotting/plot_factory.py",
+      "sha256": "e85c57cf5dcfae6676d2f83c5e5f14e49b9d69f87ee78c97e2d73d2f218e60c0",
+      "size_bytes": 4368,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234585.6740367,
+      "path": "tests/test_build_outputs.py",
+      "sha256": "190d73851e6c9cb9167905a8ca64b734491d2cecb734568897c014dce2cd22d5",
+      "size_bytes": 1119,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778234578.695184,
+      "path": "tests/test_engineering.py",
+      "sha256": "4c46b3078b8ce5bb2add13eb421643996df442d42ba1495115fb4d96988ff2fb",
+      "size_bytes": 1717,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    },
+    {
+      "builder_version": "2.0.0",
+      "modified_timestamp": 1778233170.09943,
+      "path": "traceability/RTM_047_067.csv",
+      "sha256": "3ea07ec97fdbbe72229a23b1ddbf61a84b3f8411df63b6a394598a42949e2edb",
+      "size_bytes": 2133,
+      "source_inputs": [
+        "data/leak_classes.json",
+        "data/valve_candidates.json",
+        "data/scenarios.json",
+        "data/source_anchors.json",
+        "src/calc_leak_rate.py",
+        "src/generate_dashboard.py",
+        "src/build_handover.py"
+      ]
+    }
+  ]
+}

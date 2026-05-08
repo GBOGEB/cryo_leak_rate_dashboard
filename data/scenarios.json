@@ -1,0 +1,50 @@
+[
+  {
+    "id": "SCN-BASELINE-MIX",
+    "title": "Baseline mixed fleet (210 cold + 200 warm)",
+    "type": "Decision",
+    "description": "Cold valves use a 1e-5/1e-4 mixed envelope for conservative loss sensitivity; warm valves mostly 1e-5 with a seat-leakage tail.",
+    "inventory": [
+      {"segment": "Cold high-integrity", "count": 150, "leak_rate_mbar_l_s": 1e-5, "temperature_k": 4, "pressure_bar_abs": 12},
+      {"segment": "Cold seat-leak tail", "count": 60, "leak_rate_mbar_l_s": 1e-4, "temperature_k": 4, "pressure_bar_abs": 12},
+      {"segment": "Warm process", "count": 180, "leak_rate_mbar_l_s": 1e-5, "temperature_k": 300, "pressure_bar_abs": 5},
+      {"segment": "Warm seat class", "count": 20, "leak_rate_mbar_l_s": 1e-4, "temperature_k": 300, "pressure_bar_abs": 5}
+    ],
+    "source": "Engineering synthesis of addenda + warm valve concern slide",
+    "status": "ACCEPT",
+    "audience": "engineer",
+    "density_level": "medium",
+    "trace_reference": "RTM-062",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "SCN-ALL-1E8",
+    "title": "Uniform high-integrity class",
+    "type": "Validation",
+    "description": "All 410 valves at 1e-8 for sensitivity envelope.",
+    "inventory": [
+      {"segment": "All valves", "count": 410, "leak_rate_mbar_l_s": 1e-8, "temperature_k": 80, "pressure_bar_abs": 5}
+    ],
+    "source": "Sensitivity envelope",
+    "status": "TRACE",
+    "audience": "specialist",
+    "density_level": "high",
+    "trace_reference": "RTM-063",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "SCN-RTM048-CAP",
+    "title": "RTM-048 cap reference",
+    "type": "Requirement",
+    "description": "System cap reference converted from 1 Nm³/day to kg/year.",
+    "inventory": [
+      {"segment": "Reference only", "count": 1, "leak_rate_mbar_l_s": 1e-5, "temperature_k": 4, "pressure_bar_abs": 12}
+    ],
+    "source": "RTM-048",
+    "status": "TRACE",
+    "audience": "manager",
+    "density_level": "low",
+    "trace_reference": "RTM-048",
+    "version_added": "2.0.0"
+  }
+]

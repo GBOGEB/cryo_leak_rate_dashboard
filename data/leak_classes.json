@@ -1,0 +1,50 @@
+[
+  {
+    "id": "LC-1E9",
+    "title": "Ultra leak-tight boundary",
+    "type": "Requirement",
+    "leak_rate_mbar_l_s": 1e-9,
+    "source": "RTM-047/RTM-050",
+    "status": "ACCEPT",
+    "audience": "specialist",
+    "density_level": "high",
+    "trace_reference": "RTM-047",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "LC-1E8",
+    "title": "High-integrity process-to-vacuum",
+    "type": "Requirement",
+    "leak_rate_mbar_l_s": 1e-8,
+    "source": "Addendum II Table 4",
+    "status": "ACCEPT",
+    "audience": "engineer",
+    "density_level": "medium",
+    "trace_reference": "RTM-048",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "LC-1E5",
+    "title": "Industrial warm valve leakage",
+    "type": "Decision",
+    "leak_rate_mbar_l_s": 1e-5,
+    "source": "Warm valves slide 2.3.4",
+    "status": "REVIEW",
+    "audience": "engineer",
+    "density_level": "medium",
+    "trace_reference": "RTM-055",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "LC-1E4",
+    "title": "Seat leakage envelope",
+    "type": "Risk",
+    "leak_rate_mbar_l_s": 1e-4,
+    "source": "Table 4 seat class",
+    "status": "RISK",
+    "audience": "specialist",
+    "density_level": "high",
+    "trace_reference": "RTM-060",
+    "version_added": "2.0.0"
+  }
+]

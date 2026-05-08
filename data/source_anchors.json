@@ -1,0 +1,38 @@
+[
+  {
+    "id": "SRC-WARM-VALVES-SLIDE15",
+    "title": "Warm valves concern and derogation actions",
+    "type": "Evidence",
+    "source_file": "/home/ubuntu/Uploads/image (2).png",
+    "excerpt": "Warm valves proposed by vendor do not comply with He leak rate 1×10^-9 mbar.l/s and are considered acceptable only with derogation.",
+    "status": "TRACE",
+    "audience": "engineer",
+    "density_level": "medium",
+    "trace_reference": "RTM-055",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "SRC-RTM048",
+    "title": "System helium loss cap",
+    "type": "Requirement",
+    "source_file": "QPS_Contract_pdf.pdf",
+    "excerpt": "RTM-048 sets maximum helium loss equivalent to 1 Nm³/day.",
+    "status": "ACCEPT",
+    "audience": "manager",
+    "density_level": "low",
+    "trace_reference": "RTM-048",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "SRC-EN13185",
+    "title": "Leak detection reference",
+    "type": "Requirement",
+    "source_file": "EN 13185",
+    "excerpt": "Leak detection and verification method reference used for acceptance planning.",
+    "status": "TRACE",
+    "audience": "specialist",
+    "density_level": "high",
+    "trace_reference": "RTM-067",
+    "version_added": "2.0.0"
+  }
+]

@@ -1,0 +1,42 @@
+:root {
+  --bg: #f5f7fb;
+  --fg: #1f2937;
+  --card: #ffffff;
+  --border: #d5d8e2;
+  --accent: #1d4ed8;
+}
+body { font-family: Inter, Segoe UI, Arial, sans-serif; margin: 0; background: var(--bg); color: var(--fg); }
+header { position: sticky; top: 0; z-index: 1000; background: #0f172a; color: #fff; padding: 12px 18px; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+header nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+header nav a { color: #bfdbfe; text-decoration: none; font-size: 13px; padding: 3px 8px; border-radius: 6px; }
+header nav a.active { background: #1d4ed8; color: #fff; }
+main { max-width: 1250px; margin: 18px auto; padding: 0 14px 40px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(230px,1fr)); gap: 12px; }
+.kpi { background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 8px; padding: 10px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .2px; }
+.badge.ACCEPT { background: #dcfce7; color: #166534; }
+.badge.REVIEW { background: #fef9c3; color: #854d0e; }
+.badge.RISK { background: #fee2e2; color: #991b1b; }
+.badge.TRACE { background: #dbeafe; color: #1e3a8a; }
+.badge.TODO { background: #e2e8f0; color: #334155; }
+.badge.NEXT { background: #ede9fe; color: #5b21b6; }
+.badge.DONE { background: #cffafe; color: #155e75; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+button { border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; padding: 6px 10px; cursor: pointer; }
+button:hover { background: #f8fafc; }
+details { border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; margin-bottom: 8px; background: #fff; }
+summary { cursor: pointer; font-weight: 600; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { border: 1px solid #e5e7eb; padding: 7px; text-align: left; vertical-align: top; }
+th { background: #eef2ff; }
+.small { font-size: 12px; color: #475569; }
+.mode-code .card, .mode-code details { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.mode-print header, .mode-print .controls { display: none; }
+@media print {
+  header, .controls, button, .no-print { display: none !important; }
+  body { background: #fff; }
+  .card, details { border: 1px solid #888; break-inside: avoid; }
+  a[href]:after { content: ""; }
+}

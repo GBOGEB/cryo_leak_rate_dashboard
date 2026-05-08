@@ -1,0 +1,44 @@
+[
+  {
+    "id": "VALVE-MECA-001",
+    "title": "Meca Inox ball valve with HDPE seal",
+    "type": "Interface",
+    "application": "Warm On/Off valves",
+    "leak_class_offer_mbar_l_s": 1e-5,
+    "capex_eur": 4200,
+    "source": "Slide 2.3.4 warm valves",
+    "status": "REVIEW",
+    "audience": "engineer",
+    "density_level": "medium",
+    "trace_reference": "RTM-055",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "VALVE-SWAGELOK-002",
+    "title": "Swagelok SS-42GSE with UHMWPE",
+    "type": "Interface",
+    "application": "Warm instrumentation valves",
+    "leak_class_offer_mbar_l_s": 1e-5,
+    "capex_eur": 4700,
+    "source": "Slide 2.3.4 warm valves",
+    "status": "REVIEW",
+    "audience": "engineer",
+    "density_level": "medium",
+    "trace_reference": "RTM-056",
+    "version_added": "2.0.0"
+  },
+  {
+    "id": "VALVE-METAL-003",
+    "title": "Leak-tight cryogenic metal-sealed valve",
+    "type": "Decision",
+    "application": "Critical cold boundary",
+    "leak_class_offer_mbar_l_s": 1e-8,
+    "capex_eur": 8900,
+    "source": "Contractual cryogenic specification",
+    "status": "ACCEPT",
+    "audience": "manager",
+    "density_level": "low",
+    "trace_reference": "RTM-048",
+    "version_added": "2.0.0"
+  }
+]

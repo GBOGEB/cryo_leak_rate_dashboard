@@ -1,0 +1,22 @@
+requirement_id,summary,implemented_in,verification,status
+RTM-047,Math conversion,src/calc_leak_rate.py,tests/test_calc_leak_rate.py::test_dimensional_chain,ACCEPT
+RTM-048,Temperature pressure sensitivity,docs/calculations.html,tests/test_calc_leak_rate.py::test_temperature_pressure_scaling,ACCEPT
+RTM-049,Fleet scenarios,data/scenarios.json,tests/test_calc_leak_rate.py::test_baseline_scenario_total_range,ACCEPT
+RTM-050,Dashboard visuals,docs/dashboard.html,tests/test_build_outputs.py::test_required_outputs_exist,ACCEPT
+RTM-051,Reliability strategy,docs/dashboard.html,manual review,ACCEPT
+RTM-052,Cost/benefit,docs/executive_summary.html,manual review,ACCEPT
+RTM-053,Handover package,docs/handover.html,tests/test_build_outputs.py::test_manifest_has_hashes,ACCEPT
+RTM-054,Math conversion,src/calc_leak_rate.py,tests/test_calc_leak_rate.py::test_dimensional_chain,ACCEPT
+RTM-055,Temperature pressure sensitivity,docs/calculations.html,tests/test_calc_leak_rate.py::test_temperature_pressure_scaling,REVIEW
+RTM-056,Fleet scenarios,data/scenarios.json,tests/test_calc_leak_rate.py::test_baseline_scenario_total_range,ACCEPT
+RTM-057,Dashboard visuals,docs/dashboard.html,tests/test_build_outputs.py::test_required_outputs_exist,ACCEPT
+RTM-058,Reliability strategy,docs/dashboard.html,manual review,ACCEPT
+RTM-059,Cost/benefit,docs/executive_summary.html,manual review,ACCEPT
+RTM-060,Handover package,docs/handover.html,tests/test_build_outputs.py::test_manifest_has_hashes,REVIEW
+RTM-061,Math conversion,src/calc_leak_rate.py,tests/test_calc_leak_rate.py::test_dimensional_chain,ACCEPT
+RTM-062,Temperature pressure sensitivity,docs/calculations.html,tests/test_calc_leak_rate.py::test_temperature_pressure_scaling,ACCEPT
+RTM-063,Fleet scenarios,data/scenarios.json,tests/test_calc_leak_rate.py::test_baseline_scenario_total_range,ACCEPT
+RTM-064,Dashboard visuals,docs/dashboard.html,tests/test_build_outputs.py::test_required_outputs_exist,ACCEPT
+RTM-065,Reliability strategy,docs/dashboard.html,manual review,ACCEPT
+RTM-066,Cost/benefit,docs/executive_summary.html,manual review,REVIEW
+RTM-067,Handover package,docs/handover.html,tests/test_build_outputs.py::test_manifest_has_hashes,ACCEPT
