@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DESIGN — QPLANT Dashboard v2.1.0</title>
+<link rel="stylesheet" href="../assets/style_v2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="top-bar">
+  <div><h1>QPLANT Cryogenic Dashboard</h1><span class="version">v2.1.0 • OUTPUT_2_DMAIC_REFINED</span></div>
+  <div style="font-size:0.8rem"><a href="../index.html" style="color:#93c5fd;text-decoration:none;">🏠 Hub</a></div>
+</div>
+<nav class="hero-nav"><a href="interface.html"><span class="icon">🔗</span>INTERFACE</a><a href="control.html"><span class="icon">⚙️</span>CONTROL</a><a href="design.html" class="active"><span class="icon">📐</span>DESIGN</a><a href="cost.html"><span class="icon">💰</span>COST</a><a href="materials.html"><span class="icon">🧪</span>MATERIALS</a><a href="risk.html"><span class="icon">⚠️</span>RISK</a><a href="operations.html"><span class="icon">🔧</span>OPERATIONS</a></nav>
+<main>
+<div class="breadcrumb"><a href="index.html">Dashboard</a><span>›</span><a href="design.html">DESIGN</a><span>›</span>Overview</div>
+<div class="tier-nav"><a href="#" onclick="setTier('1');return false;" data-tier="1" class="active">Tier 1 — Overview</a><a href="#" onclick="setTier('2');return false;" data-tier="2">Tier 2 — Leak Classes</a><a href="#" onclick="setTier('3');return false;" data-tier="3">Tier 3 — Calculations</a></div>
+<div id="tier-1" class="tier-content">
+<div class="slide">
+  <h2>📐 DESIGN — Engineering Specifications</h2>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="value">1×10⁻⁹</div><div class="label">Ambient Leak Spec (mbar·L/s)</div></div>
+    <div class="kpi kpi-amber"><div class="value">1×10⁻⁴</div><div class="label">Restriction Leak Spec</div></div>
+    <div class="kpi kpi-green"><div class="value">4</div><div class="label">Valve Sub-Classes</div></div>
+    <div class="kpi kpi-red"><div class="value">DEROGATION</div><div class="label">Warm Valve Status</div></div>
+  </div>
+  <h3>Key Design Decisions</h3>
+  <ul style="margin:0.5rem 0 0 1.5rem">
+    <li>All valve classes specify <strong>1×10⁻⁹ mbar·L/s</strong> max leak to ambient</li>
+    <li>Warm valves (W1d): Meca Inox <strong>does NOT comply</strong> with 1×10⁻⁹ — derogation requested</li>
+    <li>Max leak across restriction: <strong>1×10⁻⁴ mbar·L/s</strong> (all classes)</li>
+    <li>Action items: Create new sub-class, GBO calculation, evaluate Cryoworld variants</li>
+  </ul>
+  <div class="plot-container"><iframe src="../visualizations/enhanced_leak_rate_comparison.html"></iframe></div>
+</div></div>
+<div id="tier-2" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Leak Class Definitions</h2>
+  <table><thead><tr><th>Class</th><th>Sub-Class</th><th>Max Leak Ambient</th><th>Max Leak Restriction</th><th>Temp Range</th><th>Status</th></tr></thead><tbody>
+    <tr><td>CV</td><td>Q1</td><td>1.0E-09</td><td>1.0E-04</td><td>1.5 — 373 K</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
+    <tr><td>CV</td><td>Q2d</td><td>1.0E-09</td><td>1.0E-04</td><td>1.5 — 373 K</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
+    <tr><td>CV</td><td>W1d</td><td>1.0E-09</td><td>1.0E-04</td><td>273 — 323 K</td><td><span class="badge badge-risk">RISK</span> Derogation</td></tr>
+    <tr><td>CV</td><td>W3</td><td>1.0E-09</td><td>1.0E-04</td><td>273 — 323 K</td><td><span class="badge badge-review">REVIEW</span></td></tr>
+  </tbody></table>
+  <h3>Warm Valve Derogation (Section 2.3.4)</h3>
+  <div class="compare-grid">
+    <div class="compare-card" style="border-color:#EF4444; background:#FEF2F2">
+      <h4>⚠️ Issue</h4>
+      <p>Meca Inox ball valves with HDPE seals <strong>do NOT comply</strong> with He leak rate to ambient of 1×10⁻⁹ mbar·l/s. This is considered <strong>unnecessary stringent</strong> for the purpose and non-industry standard.</p>
+    </div>
+    <div class="compare-card" style="border-color:#F59E0B; background:#FFFBEB">
+      <h4>📋 Actions Required</h4>
+      <ul style="margin:0.5rem 0 0 1rem">
+        <li>Create a new sub-class with higher leak rate of He to air</li>
+        <li>Ask GBO to perform short calculation</li>
+        <li>Look into spec of proposed variants from Cryoworld</li>
+      </ul>
+    </div>
+  </div>
+</div></div>
+<div id="tier-3" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Conversion Grid — Leak Rate to Mass Loss</h2>
+  <details open><summary>Full Conversion Table (48 combinations)</summary>
+  <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Leak Rate (mbar·L/s)</th>
+      <th>Temperature (K)</th>
+      <th>Pressure (bar)</th>
+      <th>Mass Loss (g/yr)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1e-09</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0.0003798</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0.001899</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>4</td>
+      <td>12</td>
+      <td>0.004558</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>20</td>
+      <td>1</td>
+      <td>7.596e-05</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>20</td>
+      <td>5</td>
+      <td>0.0003798</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>20</td>
+      <td>12</td>
+      <td>0.0009115</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>80</td>
+      <td>1</td>
+      <td>1.899e-05</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>80</td>
+      <td>5</td>
+      <td>9.495e-05</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>80</td>
+      <td>12</td>
+      <td>0.0002279</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>300</td>
+      <td>1</td>
+      <td>5.064e-06</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>300</td>
+      <td>5</td>
+      <td>2.532e-05</td>
+    </tr>
+    <tr>
+      <td>1e-09</td>
+      <td>300</td>
+      <td>12</td>
+      <td>6.077e-05</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0.003798</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>4</td>
+      <td>5</td>
+      <td>0.01899</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>4</td>
+      <td>12</td>
+      <td>0.04558</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>20</td>
+      <td>1</td>
+      <td>0.0007596</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>20</td>
+      <td>5</td>
+      <td>0.003798</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>20</td>
+      <td>12</td>
+      <td>0.009115</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>80</td>
+      <td>1</td>
+      <td>0.0001899</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>80</td>
+      <td>5</td>
+      <td>0.0009495</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>80</td>
+      <td>12</td>
+      <td>0.002279</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>300</td>
+      <td>1</td>
+      <td>5.064e-05</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>300</td>
+      <td>5</td>
+      <td>0.0002532</td>
+    </tr>
+    <tr>
+      <td>1e-08</td>
+      <td>300</td>
+      <td>12</td>
+      <td>0.0006077</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>4</td>
+      <td>1</td>
+      <td>3.798</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>4</td>
+      <td>5</td>
+      <td>18.99</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>4</td>
+      <td>12</td>
+      <td>45.58</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>20</td>
+      <td>1</td>
+      <td>0.7596</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>20</td>
+      <td>5</td>
+      <td>3.798</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>20</td>
+      <td>12</td>
+      <td>9.115</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>80</td>
+      <td>1</td>
+      <td>0.1899</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>80</td>
+      <td>5</td>
+      <td>0.9495</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>80</td>
+      <td>12</td>
+      <td>2.279</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>300</td>
+      <td>1</td>
+      <td>0.05064</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>300</td>
+      <td>5</td>
+      <td>0.2532</td>
+    </tr>
+    <tr>
+      <td>1e-05</td>
+      <td>300</td>
+      <td>12</td>
+      <td>0.6077</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>4</td>
+      <td>1</td>
+      <td>37.98</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>4</td>
+      <td>5</td>
+      <td>189.9</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>4</td>
+      <td>12</td>
+      <td>455.8</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>20</td>
+      <td>1</td>
+      <td>7.596</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>20</td>
+      <td>5</td>
+      <td>37.98</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>20</td>
+      <td>12</td>
+      <td>91.15</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>80</td>
+      <td>1</td>
+      <td>1.899</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>80</td>
+      <td>5</td>
+      <td>9.495</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>80</td>
+      <td>12</td>
+      <td>22.79</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>300</td>
+      <td>1</td>
+      <td>0.5064</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>300</td>
+      <td>5</td>
+      <td>2.532</td>
+    </tr>
+    <tr>
+      <td>0.0001</td>
+      <td>300</td>
+      <td>12</td>
+      <td>6.077</td>
+    </tr>
+  </tbody>
+</table>
+  </details>
+  <h3>Dimensional Proof (Reference Point)</h3><table><thead><tr><th>Step</th><th>Value</th><th>Unit</th></tr></thead><tbody><tr><td>q_input_mbar_l_s</td><td>1.000000e-05</td><td>mbar·L/s</td></tr><tr><td>q_si_pa_m3_s</td><td>1.000000e-06</td><td>Pa·m³/s</td></tr><tr><td>pressure_ratio</td><td>1.200000e+01</td><td>—</td></tr><tr><td>temperature_k</td><td>4.000000e+00</td><td>K</td></tr><tr><td>n_dot_mol_s</td><td>3.608171e-07</td><td>mol/s</td></tr><tr><td>m_dot_g_s</td><td>1.444207e-06</td><td>g/s</td></tr><tr><td>m_dot_g_day</td><td>1.247795e-01</td><td>g/day</td></tr><tr><td>m_dot_g_year</td><td>4.557571e+01</td><td>g/year</td></tr></tbody></table></div></div></main>
+<footer>QPLANT Cryogenic Leak Rate Dashboard v2.1.0 • OUTPUT_2_DMAIC_REFINED • Generated 2026-05-08T125301Z<br>
+SCK CEN / MYRRHA — Confidential</footer>
+<script src="../assets/heroes.js"></script>
+</body></html>

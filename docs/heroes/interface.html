@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>INTERFACE — QPLANT Dashboard v2.1.0</title>
+<link rel="stylesheet" href="../assets/style_v2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="top-bar">
+  <div><h1>QPLANT Cryogenic Dashboard</h1><span class="version">v2.1.0 • OUTPUT_2_DMAIC_REFINED</span></div>
+  <div style="font-size:0.8rem"><a href="../index.html" style="color:#93c5fd;text-decoration:none;">🏠 Hub</a></div>
+</div>
+<nav class="hero-nav"><a href="interface.html" class="active"><span class="icon">🔗</span>INTERFACE</a><a href="control.html"><span class="icon">⚙️</span>CONTROL</a><a href="design.html"><span class="icon">📐</span>DESIGN</a><a href="cost.html"><span class="icon">💰</span>COST</a><a href="materials.html"><span class="icon">🧪</span>MATERIALS</a><a href="risk.html"><span class="icon">⚠️</span>RISK</a><a href="operations.html"><span class="icon">🔧</span>OPERATIONS</a></nav>
+<main>
+<div class="breadcrumb"><a href="index.html">Dashboard</a><span>›</span><a href="interface.html">INTERFACE</a><span>›</span>Overview</div>
+<div class="tier-nav"><a href="#" onclick="setTier('1');return false;" data-tier="1" class="active">Tier 1 — Overview</a><a href="#" onclick="setTier('2');return false;" data-tier="2">Tier 2 — Boundaries</a><a href="#" onclick="setTier('3');return false;" data-tier="3">Tier 3 — Technical Detail</a></div>
+<div id="tier-1" class="tier-content">
+<div class="slide">
+  <h2>🔗 INTERFACE — System Boundaries & Valve Locations</h2>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="value">410</div><div class="label">Total Valves</div></div>
+    <div class="kpi kpi-blue"><div class="value">210</div><div class="label">Cold Valves (≤80K)</div></div>
+    <div class="kpi kpi-amber"><div class="value">200</div><div class="label">Warm Valves (≥273K)</div></div>
+    <div class="kpi kpi-green"><div class="value">4</div><div class="label">Valve Sub-Classes</div></div>
+  </div>
+  <h3>System Architecture</h3>
+  <p>The QPLANT cryogenic helium system interfaces with the MYRRHA proton beam facility. Helium serves as the primary coolant for superconducting magnets and beam targets. The system boundary encompasses:</p>
+  <ul style="margin:0.5rem 0 0 1.5rem">
+    <li><strong>Cold box</strong> — Cryogenic distribution at 4K-80K</li>
+    <li><strong>Warm distribution</strong> — Gas handling at 273K-373K</li>
+    <li><strong>Recovery system</strong> — Helium recapture and purification</li>
+    <li><strong>Interface points</strong> — Terminal connections per QPLANT_Interface doc</li>
+  </ul>
+</div></div>
+<div id="tier-2" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Interface Boundaries — Detailed</h2>
+  <h3>Valve Location Classification</h3>
+  <table><thead><tr><th>Zone</th><th>Temp Range</th><th>Valve Count</th><th>Sub-Classes</th><th>Interface Type</th></tr></thead><tbody>
+    <tr><td>Cold Box Interior</td><td>1.5 — 80 K</td><td>150</td><td>Q1, Q2d</td><td>Welded / VCR</td></tr>
+    <tr><td>Cold-Warm Transition</td><td>80 — 273 K</td><td>60</td><td>Q2d</td><td>Flanged</td></tr>
+    <tr><td>Warm Process</td><td>273 — 323 K</td><td>180</td><td>W1d, W3</td><td>Swagelok / Flanged</td></tr>
+    <tr><td>Instrumentation</td><td>273 — 373 K</td><td>20</td><td>W3</td><td>Swagelok 1/4"-1/2"</td></tr>
+  </tbody></table>
+</div></div>
+<div id="tier-3" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Interface — Technical Detail</h2>
+  <h3>Terminal Point Specifications (from QPLANT_Interface and Terminal Points)</h3>
+  <table><thead><tr><th>Parameter</th><th>Value</th><th>Reference</th></tr></thead><tbody>
+    <tr><td>Piping standard</td><td>ASME B31.3</td><td>ACC NF specification</td></tr>
+    <tr><td>Tubing connections</td><td>Swagelok compression fittings</td><td>SS-42GSE series</td></tr>
+    <tr><td>Welded joints</td><td>Orbital TIG per ASME BPE</td><td>DN06-DN50</td></tr>
+    <tr><td>He leak test method</td><td>EN 13185:2001</td><td>All connections</td></tr>
+    <tr><td>Purge gas</td><td>Ar 99.999% (5N)</td><td>Welding procedure</td></tr>
+  </tbody></table>
+  <h3>Exhaust System Interface (QPLANT_HV02)</h3>
+  <p>The HV02 exhaust interface for KAEZER compressor system provides the boundary condition for warm helium gas handling, including pressure relief and vent connections.</p>
+</div></div></main>
+<footer>QPLANT Cryogenic Leak Rate Dashboard v2.1.0 • OUTPUT_2_DMAIC_REFINED • Generated 2026-05-08T125301Z<br>
+SCK CEN / MYRRHA — Confidential</footer>
+<script src="../assets/heroes.js"></script>
+</body></html>

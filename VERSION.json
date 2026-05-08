@@ -1,13 +1,18 @@
 {
-  "version": "0.1.0",
-  "baseline": "OUTPUT_1_BASELINE",
-  "timestamp": "2026-05-08T09:39:29.887594+00:00",
-  "dmaic_iteration": 0,
+  "version": "2.1.0",
+  "baseline": "OUTPUT_2_DMAIC_REFINED",
+  "timestamp": "2026-05-08T125301Z",
+  "dmaic_iteration": 2,
   "git_ready": true,
-  "changes": [
-    "Initial leak-rate dashboard baseline",
-    "Added 5 interactive plotly visualizations",
-    "Added traceability matrix RTM-047..067",
-    "Generated GitHub Pages-ready docs outputs"
+  "features": [
+    "MAPPING_HEROES navigation (7 heroes, 3 tiers each)",
+    "Monte Carlo cost analysis (10,000 runs \u00d7 4 scenarios)",
+    "Supplier comparison (Meca Inox vs Swagelok)",
+    "Enhanced Plotly visualizations (9 interactive charts)",
+    "Material specifications database (316L, HDPE, UHMWPE)",
+    "Risk register (10 risks, heatmap)",
+    "Operations modeling (MTBF, MTTR, MDT, spare parts)",
+    "Speaker notes (8 slide-level markdown files)",
+    "Professional presentation styling"
   ]
 }

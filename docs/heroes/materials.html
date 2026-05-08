@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MATERIALS — QPLANT Dashboard v2.1.0</title>
+<link rel="stylesheet" href="../assets/style_v2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="top-bar">
+  <div><h1>QPLANT Cryogenic Dashboard</h1><span class="version">v2.1.0 • OUTPUT_2_DMAIC_REFINED</span></div>
+  <div style="font-size:0.8rem"><a href="../index.html" style="color:#93c5fd;text-decoration:none;">🏠 Hub</a></div>
+</div>
+<nav class="hero-nav"><a href="interface.html"><span class="icon">🔗</span>INTERFACE</a><a href="control.html"><span class="icon">⚙️</span>CONTROL</a><a href="design.html"><span class="icon">📐</span>DESIGN</a><a href="cost.html"><span class="icon">💰</span>COST</a><a href="materials.html" class="active"><span class="icon">🧪</span>MATERIALS</a><a href="risk.html"><span class="icon">⚠️</span>RISK</a><a href="operations.html"><span class="icon">🔧</span>OPERATIONS</a></nav>
+<main>
+<div class="breadcrumb"><a href="index.html">Dashboard</a><span>›</span><a href="materials.html">MATERIALS</a><span>›</span>Overview</div>
+<div class="tier-nav"><a href="#" onclick="setTier('1');return false;" data-tier="1" class="active">Tier 1 — Overview</a><a href="#" onclick="setTier('2');return false;" data-tier="2">Tier 2 — Specifications</a><a href="#" onclick="setTier('3');return false;" data-tier="3">Tier 3 — Codes & Welding</a></div>
+<div id="tier-1" class="tier-content">
+<div class="slide">
+  <h2>🧪 MATERIALS — Specifications Database</h2>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="value">316L</div><div class="label">Primary Steel Grade</div></div>
+    <div class="kpi kpi-green"><div class="value">Ra < 0.4 μm</div><div class="label">Surface Finish</div></div>
+    <div class="kpi kpi-amber"><div class="value">Orbital TIG</div><div class="label">Welding Method</div></div>
+    <div class="kpi kpi-blue"><div class="value">DN06-DN50</div><div class="label">Weld Size Range</div></div>
+  </div>
+  <h3>Material Summary</h3>
+  <div class="compare-grid">
+    <div class="compare-card"><h4>HDPE (Meca Inox seals)</h4>
+      <p>Service temp: 73-393K. Density: 0.95 g/cm³. Good for warm service. Radiation resistant. Lower cost.</p></div>
+    <div class="compare-card"><h4>UHMWPE (Swagelok seals)</h4>
+      <p>Service temp: 73-353K. Density: 0.93 g/cm³. Superior abrasion resistance. Higher cost. Precision applications.</p></div>
+  </div>
+</div></div>
+<div id="tier-2" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>316L Stainless Steel — Full Specification</h2>
+  <div class="compare-grid">
+    <div class="compare-card"><h4>Composition</h4><table><thead><tr><th>Element</th><th>Range</th></tr></thead><tbody><tr><td>Cr</td><td>16-18%</td></tr><tr><td>Ni</td><td>10-14%</td></tr><tr><td>Mo</td><td>2-3%</td></tr><tr><td>C</td><td>≤0.03%</td></tr><tr><td>Mn</td><td>≤2%</td></tr><tr><td>Si</td><td>≤0.75%</td></tr><tr><td>P</td><td>≤0.045%</td></tr><tr><td>S</td><td>≤0.030%</td></tr><tr><td>Fe</td><td>Balance</td></tr></tbody></table></div>
+    <div class="compare-card"><h4>Mechanical Properties</h4><table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Yield Strength Mpa</td><td>170</td></tr><tr><td>Tensile Strength Mpa</td><td>485</td></tr><tr><td>Elongation Pct</td><td>40</td></tr><tr><td>Hardness Hb</td><td>217</td></tr><tr><td>Thermal Conductivity W Mk 300K</td><td>16.3</td></tr><tr><td>Thermal Conductivity W Mk 4K</td><td>0.1</td></tr><tr><td>Cte Um Mk</td><td>15.9</td></tr></tbody></table></div>
+  </div>
+  <h3>Surface Treatment</h3>
+  <table><thead><tr><th>Step</th><th>Specification</th><th>Standard</th></tr></thead><tbody>
+    <tr><td>Electropolish</td><td>Ra < 0.4 μm</td><td>ASME BPE</td></tr>
+    <tr><td>Post-EP wash</td><td>DI water rinse</td><td>Internal procedure</td></tr>
+    <tr><td>Passivation</td><td>Per ASTM A967</td><td>ASTM A967</td></tr>
+  </tbody></table>
+</div></div>
+<div id="tier-3" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Welding & Codes</h2>
+  <h3>Orbital TIG Welding Specification</h3>
+  <table><thead><tr><th>Parameter</th><th>Value</th></tr></thead><tbody>
+    <tr><td>Method</td><td>Orbital TIG (GTAW) Welding</td></tr>
+    <tr><td>Size range</td><td>DN06 (1/4") to DN50 (2")</td></tr>
+    <tr><td>Filler</td><td>ER316L (matching base metal)</td></tr>
+    <tr><td>Purge gas</td><td>Argon 99.999% (5N purity)</td></tr>
+    <tr><td>Interpass max</td><td>150°C</td></tr>
+    <tr><td>Qualification</td><td>Welder qualified per ASME IX</td></tr>
+    <tr><td>NDE</td><td>Visual (100%), Radiographic (10% min), He leak test</td></tr>
+  </tbody></table>
+  <h3>Applicable Codes & Standards</h3>
+  <table><thead><tr><th>Code</th><th>Title</th><th>Scope</th></tr></thead><tbody><tr><td><strong>ASME B31.3</strong></td><td>Process Piping</td><td>Design, materials, fabrication, inspection of process piping</td></tr><tr><td><strong>ASME BPE</strong></td><td>Bioprocessing Equipment</td><td>High-purity systems - applicable for ultra-clean He systems</td></tr><tr><td><strong>ASME IX</strong></td><td>Welding Qualification</td><td>Welder and procedure qualification</td></tr><tr><td><strong>EN 13185:2001</strong></td><td>Leak Detection</td><td>Cryogenic vessels - leak detection methods and criteria</td></tr><tr><td><strong>ASTM A967</strong></td><td>Chemical Passivation</td><td>Passivation treatments for stainless steel parts</td></tr><tr><td><strong>ASTM A240</strong></td><td>Flat SS Products</td><td>Chromium-nickel SS plate, sheet, strip for pressure vessels</td></tr><tr><td><strong>EN 10088-3</strong></td><td>Stainless Steels</td><td>Technical delivery conditions for semi-finished products</td></tr><tr><td><strong>PED 2014/68/EU</strong></td><td>Pressure Equipment Directive</td><td>EU directive for pressure equipment design and manufacture</td></tr><tr><td><strong>AD 2000</strong></td><td>Pressure Vessel Rules</td><td>German pressure vessel design and fabrication rules</td></tr></tbody></table>
+</div></div></main>
+<footer>QPLANT Cryogenic Leak Rate Dashboard v2.1.0 • OUTPUT_2_DMAIC_REFINED • Generated 2026-05-08T125301Z<br>
+SCK CEN / MYRRHA — Confidential</footer>
+<script src="../assets/heroes.js"></script>
+</body></html>

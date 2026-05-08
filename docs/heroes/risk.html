@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RISK — QPLANT Dashboard v2.1.0</title>
+<link rel="stylesheet" href="../assets/style_v2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="top-bar">
+  <div><h1>QPLANT Cryogenic Dashboard</h1><span class="version">v2.1.0 • OUTPUT_2_DMAIC_REFINED</span></div>
+  <div style="font-size:0.8rem"><a href="../index.html" style="color:#93c5fd;text-decoration:none;">🏠 Hub</a></div>
+</div>
+<nav class="hero-nav"><a href="interface.html"><span class="icon">🔗</span>INTERFACE</a><a href="control.html"><span class="icon">⚙️</span>CONTROL</a><a href="design.html"><span class="icon">📐</span>DESIGN</a><a href="cost.html"><span class="icon">💰</span>COST</a><a href="materials.html"><span class="icon">🧪</span>MATERIALS</a><a href="risk.html" class="active"><span class="icon">⚠️</span>RISK</a><a href="operations.html"><span class="icon">🔧</span>OPERATIONS</a></nav>
+<main>
+<div class="breadcrumb"><a href="index.html">Dashboard</a><span>›</span><a href="risk.html">RISK</a><span>›</span>Overview</div>
+<div class="tier-nav"><a href="#" onclick="setTier('1');return false;" data-tier="1" class="active">Tier 1 — Overview</a><a href="#" onclick="setTier('2');return false;" data-tier="2">Tier 2 — Register</a><a href="#" onclick="setTier('3');return false;" data-tier="3">Tier 3 — Scenarios</a></div>
+<div id="tier-1" class="tier-content">
+<div class="slide">
+  <h2>⚠️ RISK — Geopolitical, Operational & Reliability</h2>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="value">10</div><div class="label">Total Risks</div></div>
+    <div class="kpi kpi-red"><div class="value">2</div><div class="label">Critical (≥15)</div></div>
+    <div class="kpi kpi-amber"><div class="value">1</div><div class="label">Open Risks</div></div>
+    <div class="kpi kpi-green"><div class="value">3</div><div class="label">Mitigated</div></div>
+  </div>
+  <div class="plot-container"><iframe src="../visualizations/risk_heatmap.html"></iframe></div>
+</div></div>
+<div id="tier-2" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Risk Register</h2>
+  <table style="font-size:0.78rem"><thead><tr><th>ID</th><th>Status</th><th>Category</th><th>Title</th><th>L</th><th>I</th><th>Score</th><th>Owner</th></tr></thead>
+  <tbody><tr><td>RISK-001</td><td><span class="badge badge-monitor">MONITOR</span></td><td>Geopolitical</td>
+          <td><strong>Iran Conflict → Helium Supply</strong></td><td>4</td><td>5</td>
+          <td style="font-weight:700;color:#EF4444">20</td>
+          <td>Procurement</td></tr><tr><td>RISK-002</td><td><span class="badge badge-monitor">MONITOR</span></td><td>Geopolitical</td>
+          <td><strong>LNG/LPG Market Coupling</strong></td><td>3</td><td>4</td>
+          <td style="font-weight:700;color:#F59E0B">12</td>
+          <td>Procurement</td></tr><tr><td>RISK-003</td><td><span class="badge badge-mitigated">MITIGATED</span></td><td>Operational</td>
+          <td><strong>LOOP Event (Loss of Instrument Air)</strong></td><td>2</td><td>5</td>
+          <td style="font-weight:700;color:#F59E0B">10</td>
+          <td>Operations</td></tr><tr><td>RISK-004</td><td><span class="badge badge-mitigated">MITIGATED</span></td><td>Operational</td>
+          <td><strong>Cascade Valve Failure</strong></td><td>2</td><td>4</td>
+          <td style="font-weight:700;color:#10B981">8</td>
+          <td>Engineering</td></tr><tr><td>RISK-005</td><td><span class="badge badge-accepted">ACCEPTED</span></td><td>Supply Chain</td>
+          <td><strong>Extended MTTR (Spare Parts)</strong></td><td>3</td><td>3</td>
+          <td style="font-weight:700;color:#F59E0B">9</td>
+          <td>Maintenance</td></tr><tr><td>RISK-006</td><td><span class="badge badge-open">OPEN</span></td><td>Technical</td>
+          <td><strong>Warm Valve Leak Rate Derogation</strong></td><td>3</td><td>3</td>
+          <td style="font-weight:700;color:#F59E0B">9</td>
+          <td>Engineering</td></tr><tr><td>RISK-007</td><td><span class="badge badge-monitor">MONITOR</span></td><td>Technical</td>
+          <td><strong>Seal Degradation under Radiation</strong></td><td>2</td><td>3</td>
+          <td style="font-weight:700;color:#10B981">6</td>
+          <td>Engineering</td></tr><tr><td>RISK-008</td><td><span class="badge badge-accepted">ACCEPTED</span></td><td>Financial</td>
+          <td><strong>Helium Price Volatility</strong></td><td>4</td><td>3</td>
+          <td style="font-weight:700;color:#F59E0B">12</td>
+          <td>Finance</td></tr><tr><td>RISK-009</td><td><span class="badge badge-monitor">MONITOR</span></td><td>Regulatory</td>
+          <td><strong>ASME/PED Compliance Gap</strong></td><td>2</td><td>4</td>
+          <td style="font-weight:700;color:#10B981">8</td>
+          <td>Quality</td></tr><tr><td>RISK-010</td><td><span class="badge badge-mitigated">MITIGATED</span></td><td>Operational</td>
+          <td><strong>Beam Downtime from Valve Failure</strong></td><td>3</td><td>5</td>
+          <td style="font-weight:700;color:#EF4444">15</td>
+          <td>Operations</td></tr></tbody></table>
+  <details><summary>🔍 Mitigation Details</summary><div><p><strong>RISK-001 — Iran Conflict → Helium Supply:</strong> Strategic helium reserve (3-month buffer), dual-source contracts, helium recovery system optimization</p><p><strong>RISK-002 — LNG/LPG Market Coupling:</strong> Monitor LNG futures, establish He-specific supply agreements decoupled from LNG spot</p><p><strong>RISK-003 — LOOP Event (Loss of Instrument Air):</strong> Backup air supply (accumulator tank), fail-safe valve positions verified, LOOP recovery procedure tested annually</p><p><strong>RISK-004 — Cascade Valve Failure:</strong> Pressure relief valves, leak monitoring system, predictive maintenance schedule</p><p><strong>RISK-005 — Extended MTTR (Spare Parts):</strong> On-site spare inventory (10% cold, 5% warm), multiple qualified suppliers</p><p><strong>RISK-006 — Warm Valve Leak Rate Derogation:</strong> GBO calculation to verify acceptable loss rate, new sub-class with higher allowable rate, evaluate Cryoworld variants</p><p><strong>RISK-007 — Seal Degradation under Radiation:</strong> Radiation testing program, preventive seal replacement at PM intervals</p><p><strong>RISK-008 — Helium Price Volatility:</strong> Monte Carlo cost modeling, budget contingency at P90, hedging contracts</p><p><strong>RISK-009 — ASME/PED Compliance Gap:</strong> Legal review of PED 2014/68/EU applicability, document derogation rationale</p><p><strong>RISK-010 — Beam Downtime from Valve Failure:</strong> Redundant valve paths, hot standby valves, rapid isolation procedures</p></div></details></div></div>
+<div id="tier-3" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Geopolitical & Supply Risk Scenarios</h2>
+  <div class="compare-grid">
+    <div class="compare-card" style="border-color:#EF4444;background:#FEF2F2">
+      <h4>🌍 Iran Conflict Scenario</h4>
+      <p>Military escalation disrupts Qatar helium production (30% global supply). Algeria and US sources insufficient. He price spike 2-3× baseline.</p>
+      <p><strong>Impact:</strong> €/kg rises from €120 to €300+. Annual cost increase: 150-200%.</p>
+    </div>
+    <div class="compare-card" style="border-color:#F59E0B;background:#FFFBEB">
+      <h4>⛽ LNG Market Coupling</h4>
+      <p>Helium is byproduct of LNG processing. LNG market disruption cascades to He supply. Price correlation with natural gas futures.</p>
+      <p><strong>Mitigation:</strong> He-specific supply contracts decoupled from LNG spot pricing.</p>
+    </div>
+  </div>
+  <h3>Beam Availability Impact</h3><table><thead><tr><th>Scenario</th><th>Beam Trips/yr</th><th>MDT (h)</th><th>Lost Hours</th><th>Financial Impact</th></tr></thead><tbody><tr><td>Baseline Operations</td><td>3</td><td>12</td><td>36</td><td>€540,000</td></tr><tr><td>Extended Repair Scenario</td><td>5</td><td>24</td><td>120</td><td>€1,800,000</td></tr><tr><td>Multiple/Cascade Failure</td><td>8</td><td>48</td><td>384</td><td>€5,760,000</td></tr><tr><td>LOOP Event (Loss of Instrument Air)</td><td>1</td><td>72</td><td>72</td><td>€1,080,000</td></tr></tbody></table></div></div></main>
+<footer>QPLANT Cryogenic Leak Rate Dashboard v2.1.0 • OUTPUT_2_DMAIC_REFINED • Generated 2026-05-08T125301Z<br>
+SCK CEN / MYRRHA — Confidential</footer>
+<script src="../assets/heroes.js"></script>
+</body></html>

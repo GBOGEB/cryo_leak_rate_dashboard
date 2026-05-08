@@ -1,48 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portal</title>
-  <link rel="stylesheet" href="assets/style.css" />
-  <script src="assets/triage.js"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Navigation Hub — QPLANT Dashboard v2.1.0</title>
+<link rel="stylesheet" href="assets/style_v2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
 </head>
-<body class="mode-preview">
-<header>
-  <div><strong>Cryo Leak-Rate Triage — OUTPUT_1_BASELINE (fixed)</strong></div>
-  <nav><a class="active" href="index.html">Portal</a><a class="" href="dashboard.html">Dashboard</a><a class="" href="calculations.html">Calculations</a><a class="" href="executive_summary.html">Executive</a><a class="" href="rtm_traceability.html">RTM Traceability</a><a class="" href="handover.html">Handover</a></nav>
-</header>
+<body>
+<div class="top-bar">
+  <div><h1>QPLANT Cryogenic Dashboard</h1><span class="version">v2.1.0 • OUTPUT_2_DMAIC_REFINED</span></div>
+  <div style="font-size:0.8rem"><a href="index.html" style="color:#93c5fd;text-decoration:none;">🏠 Hub</a></div>
+</div>
+<nav class="hero-nav"><a href="heroes/interface.html"><span class="icon">🔗</span>INTERFACE</a><a href="heroes/control.html"><span class="icon">⚙️</span>CONTROL</a><a href="heroes/design.html"><span class="icon">📐</span>DESIGN</a><a href="heroes/cost.html"><span class="icon">💰</span>COST</a><a href="heroes/materials.html"><span class="icon">🧪</span>MATERIALS</a><a href="heroes/risk.html"><span class="icon">⚠️</span>RISK</a><a href="heroes/operations.html"><span class="icon">🔧</span>OPERATIONS</a></nav>
 <main>
-  <section class="controls no-print">
-    <button onclick="setMode('preview')">Preview</button>
-    <button onclick="setMode('code')">Code-like</button>
-    <button onclick="setMode('print')">Print mode</button>
-    <button onclick="expandAll()">Expand all</button>
-    <button onclick="collapseAll()">Collapse all</button>
-    <button onclick="exportPdf()">Export PDF</button>
-  </section>
-  
-<section class="card">
-  <h3>Navigation portal</h3>
-  <p>This package provides multiple formats for the same engineering truth.</p>
-  <ul>
-    <li><a href="executive_summary.html">Executive summary (low-medium density)</a></li>
-    <li><a href="dashboard.html">Interactive dashboard (medium density)</a></li>
-    <li><a href="calculations.html">Calculation proofs (high density)</a></li>
-    <li><a href="rtm_traceability.html">RTM traceability (high density)</a></li>
-    <li><a href="handover.html">Handover dossier (formatted)</a> / <a href="handover.pdf">PDF</a></li>
-  </ul>
-</section>
-
-<section class="card"> 
-  <h3>DMAIC view note</h3>
-  <p><strong>DEFINE:</strong> Route each audience to the right detail level.</p>
-  <p><strong>MEASURE:</strong> Page links and purpose metadata.</p>
-  <p><strong>ANALYZE:</strong> Reduces review friction and context switching.</p>
-  <p><strong>IMPROVE:</strong> Separates narrative, evidence, and traceability cleanly.</p>
-  <p><strong>CONTROL:</strong> Single build entry point preserves structure each run.</p>
-</section>
-
-</main>
-</body>
-</html>
+<div class="breadcrumb"><a href="index.html">Dashboard</a><span>›</span><a href="dashboard hub.html">Dashboard Hub</a><span>›</span>Home</div>
+<div class="slide">
+  <h2>🏠 QPLANT Cryogenic Dashboard — Navigation Hub</h2>
+  <p style="color:#6B7280;margin-bottom:1.5rem">OUTPUT_2_DMAIC_REFINED v2.1.0 — Enhanced Multi-Tier Professional Dashboard with Monte Carlo Cost Analysis</p>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="value">€389,218</div><div class="label">Median Annual Cost (P50)</div></div>
+    <div class="kpi kpi-amber"><div class="value">34.3 kg</div><div class="label">Median He Loss/Year</div></div>
+    <div class="kpi kpi-green"><div class="value">97.5%</div><div class="label">Beam Availability (P50)</div></div>
+    <div class="kpi kpi-blue"><div class="value">410</div><div class="label">Total Valve Count</div></div>
+  </div>
+</div>
+<div class="slide">
+  <h3>Hero Domains</h3>
+  <div class="kpi-grid">
+<a href="heroes/interface.html" style="text-decoration:none">
+  <div class="kpi kpi-blue" style="cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="value" style="font-size:2rem">🔗</div>
+    <div class="label" style="font-size:0.85rem;font-weight:700;color:#1E3A8A">INTERFACE</div>
+    <div style="font-size:0.72rem;color:#6B7280;margin-top:0.3rem">System boundaries, valve locations, flow diagrams</div>
+  </div></a><a href="heroes/control.html" style="text-decoration:none">
+  <div class="kpi kpi-blue" style="cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="value" style="font-size:2rem">⚙️</div>
+    <div class="label" style="font-size:0.85rem;font-weight:700;color:#1E3A8A">CONTROL</div>
+    <div style="font-size:0.72rem;color:#6B7280;margin-top:0.3rem">Actuation methods, automation, fail-safe logic</div>
+  </div></a><a href="heroes/design.html" style="text-decoration:none">
+  <div class="kpi kpi-blue" style="cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="value" style="font-size:2rem">📐</div>
+    <div class="label" style="font-size:0.85rem;font-weight:700;color:#1E3A8A">DESIGN</div>
+    <div style="font-size:0.72rem;color:#6B7280;margin-top:0.3rem">Engineering specs, leak rates, valve classes</div>
+  </div></a><a href="heroes/cost.html" style="text-decoration:none">
+  <div class="kpi kpi-blue" style="cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="value" style="font-size:2rem">💰</div>
+    <div class="label" style="font-size:0.85rem;font-weight:700;color:#1E3A8A">COST</div>
+    <div style="font-size:0.72rem;color:#6B7280;margin-top:0.3rem">Monte Carlo analysis, TCO, supplier comparison</div>
+  </div></a><a href="heroes/materials.html" style="text-decoration:none">
+  <div class="kpi kpi-blue" style="cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="value" style="font-size:2rem">🧪</div>
+    <div class="label" style="font-size:0.85rem;font-weight:700;color:#1E3A8A">MATERIALS</div>
+    <div style="font-size:0.72rem;color:#6B7280;margin-top:0.3rem">316 SS specs, electropolish, welding, ASME codes</div>
+  </div></a><a href="heroes/risk.html" style="text-decoration:none">
+  <div class="kpi kpi-blue" style="cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="value" style="font-size:2rem">⚠️</div>
+    <div class="label" style="font-size:0.85rem;font-weight:700;color:#1E3A8A">RISK</div>
+    <div style="font-size:0.72rem;color:#6B7280;margin-top:0.3rem">Geopolitical, operational, reliability scenarios</div>
+  </div></a><a href="heroes/operations.html" style="text-decoration:none">
+  <div class="kpi kpi-blue" style="cursor:pointer;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+    <div class="value" style="font-size:2rem">🔧</div>
+    <div class="label" style="font-size:0.85rem;font-weight:700;color:#1E3A8A">OPERATIONS</div>
+    <div style="font-size:0.72rem;color:#6B7280;margin-top:0.3rem">MTBF, MTTR, MDT, maintenance strategy</div>
+  </div></a></div></div>
+<div class="slide">
+  <h3>Quick Access</h3>
+  <div class="kpi-grid">
+    <a href="visualizations/monte_carlo_cost_distribution.html" style="text-decoration:none"><div class="kpi kpi-amber" style="cursor:pointer"><div class="value">📊</div><div class="label">Monte Carlo Analysis</div></div></a>
+    <a href="visualizations/enhanced_leak_rate_comparison.html" style="text-decoration:none"><div class="kpi kpi-green" style="cursor:pointer"><div class="value">📈</div><div class="label">Leak Rate Charts</div></div></a>
+    <a href="visualizations/risk_heatmap.html" style="text-decoration:none"><div class="kpi kpi-red" style="cursor:pointer"><div class="value">⚠️</div><div class="label">Risk Matrix</div></div></a>
+    <a href="visualizations/helium_sankey.html" style="text-decoration:none"><div class="kpi kpi-blue" style="cursor:pointer"><div class="value">🔄</div><div class="label">He Flow Sankey</div></div></a>
+  </div>
+</div></main>
+<footer>QPLANT Cryogenic Leak Rate Dashboard v2.1.0 • OUTPUT_2_DMAIC_REFINED • Generated 2026-05-08T125301Z<br>
+SCK CEN / MYRRHA — Confidential</footer>
+<script src="assets/heroes.js"></script>
+</body></html>

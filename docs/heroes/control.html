@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CONTROL — QPLANT Dashboard v2.1.0</title>
+<link rel="stylesheet" href="../assets/style_v2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="top-bar">
+  <div><h1>QPLANT Cryogenic Dashboard</h1><span class="version">v2.1.0 • OUTPUT_2_DMAIC_REFINED</span></div>
+  <div style="font-size:0.8rem"><a href="../index.html" style="color:#93c5fd;text-decoration:none;">🏠 Hub</a></div>
+</div>
+<nav class="hero-nav"><a href="interface.html"><span class="icon">🔗</span>INTERFACE</a><a href="control.html" class="active"><span class="icon">⚙️</span>CONTROL</a><a href="design.html"><span class="icon">📐</span>DESIGN</a><a href="cost.html"><span class="icon">💰</span>COST</a><a href="materials.html"><span class="icon">🧪</span>MATERIALS</a><a href="risk.html"><span class="icon">⚠️</span>RISK</a><a href="operations.html"><span class="icon">🔧</span>OPERATIONS</a></nav>
+<main>
+<div class="breadcrumb"><a href="index.html">Dashboard</a><span>›</span><a href="control.html">CONTROL</a><span>›</span>Overview</div>
+<div class="tier-nav"><a href="#" onclick="setTier('1');return false;" data-tier="1" class="active">Tier 1 — Overview</a><a href="#" onclick="setTier('2');return false;" data-tier="2">Tier 2 — Actuation</a><a href="#" onclick="setTier('3');return false;" data-tier="3">Tier 3 — Fail-Safe Logic</a></div>
+<div id="tier-1" class="tier-content">
+<div class="slide">
+  <h2>⚙️ CONTROL — Actuation Methods & Automation</h2>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="value">3</div><div class="label">Actuation Types</div></div>
+    <div class="kpi kpi-green"><div class="value">Pneumatic</div><div class="label">Primary Method</div></div>
+    <div class="kpi kpi-amber"><div class="value">24V</div><div class="label">Standard Voltage</div></div>
+    <div class="kpi kpi-blue"><div class="value">6 bar(g)</div><div class="label">Instrument Air</div></div>
+  </div>
+  <h3>Actuation Overview</h3>
+  <table><thead><tr><th>Sub-Class</th><th>Temp Range</th><th>Actuation</th><th>Pilot Valve</th><th>Position Control</th><th>Rad. Hardness</th></tr></thead>
+  <tbody><tr><td><strong>Q1</strong></td><td>1.5 - 373.15 K</td><td>indirect - pneumatic</td><td>piezo</td><td>Electronic positioner, continuous 0-100%</td><td><span class="badge badge-required">required</span></td></tr><tr><td><strong>Q2d</strong></td><td>1.5 - 373.15 K</td><td>indirect - pneumatic</td><td>piezo</td><td>Limit switches 0% and 100%</td><td><span class="badge badge-required">required</span></td></tr><tr><td><strong>W1d</strong></td><td>273.15 - 323.15 K</td><td>indirect - pneumatic</td><td>solenoid</td><td>Limit switches 0%</td><td><span class="badge badge-required">required</span><br><em style='color:#EF4444'>Meca Inox ball valves do NOT comply with 1×10⁻⁹ (derogation accepted)</em></td></tr><tr><td><strong>W3</strong></td><td>273.15 - 323.15 K</td><td>direct - electrical</td><td>solenoid</td><td>Limit switch 0%</td><td><span class="badge badge-review">review</span><br><em style='color:#EF4444'>tbc if asco or Bürkert can be 1LS</em></td></tr></tbody></table>
+</div></div>
+<div id="tier-2" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Actuation Methods — Detailed</h2>
+  <div class="compare-grid">
+    <div class="compare-card">
+      <h4>🔵 Pneumatic Actuation (Q1, Q2d, W1d)</h4>
+      <ul style="margin:0.5rem 0 0 1rem"><li>Requires instrument air supply (6 bar(g))</li>
+      <li>Fail-safe position on air loss</li><li>Indirect actuation via pilot valve</li>
+      <li>Q1: Piezo pilot + electronic positioner (0-100%)</li>
+      <li>Q2d: Piezo pilot + limit switches</li><li>W1d: Solenoid pilot + limit switch 0%</li></ul>
+    </div>
+    <div class="compare-card">
+      <h4>🟡 Direct Electrical (W3)</h4>
+      <ul style="margin:0.5rem 0 0 1rem"><li>No instrument air required</li>
+      <li>24V solenoid direct actuation</li><li>Limit switch at 0% (closed)</li>
+      <li>Linear Kv characteristic</li><li>Radiation hardness: not required</li>
+      <li>Note: tbc if Asco or Bürkert can be 1LS</li></ul>
+    </div>
+  </div>
+</div></div>
+<div id="tier-3" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Fail-Safe Logic — Technical</h2>
+  <h3>LOOP (Loss of Instrument Air) Response</h3>
+  <table><thead><tr><th>Sub-Class</th><th>Fail Position</th><th>Recovery Action</th><th>Impact</th></tr></thead><tbody>
+    <tr><td>Q1</td><td>Fail-closed</td><td>Restore air, verify positioner</td><td>Process isolation</td></tr>
+    <tr><td>Q2d</td><td>Fail-closed</td><td>Restore air, check limits</td><td>Process isolation</td></tr>
+    <tr><td>W1d</td><td>Fail-closed (spring return)</td><td>Restore air, re-energize solenoid</td><td>Warm process shutdown</td></tr>
+    <tr><td>W3</td><td>De-energized position</td><td>Restore power, re-energize</td><td>Minimal (no air dependency)</td></tr>
+  </tbody></table>
+  <h3>Position Feedback Matrix</h3>
+  <table><thead><tr><th>Sub-Class</th><th>Feedback Type</th><th>Signal</th><th>Remote</th></tr></thead><tbody>
+    <tr><td>Q1</td><td>Continuous 0-100%</td><td>4-20 mA via positioner</td><td>Yes (remote electronics)</td></tr>
+    <tr><td>Q2d</td><td>Limit switches 0% & 100%</td><td>Digital</td><td>No</td></tr>
+    <tr><td>W1d</td><td>Limit switch 0%</td><td>Digital</td><td>No</td></tr>
+    <tr><td>W3</td><td>Limit switch 0%</td><td>Analogue 4-20 mA</td><td>No</td></tr>
+  </tbody></table>
+</div></div></main>
+<footer>QPLANT Cryogenic Leak Rate Dashboard v2.1.0 • OUTPUT_2_DMAIC_REFINED • Generated 2026-05-08T125301Z<br>
+SCK CEN / MYRRHA — Confidential</footer>
+<script src="../assets/heroes.js"></script>
+</body></html>

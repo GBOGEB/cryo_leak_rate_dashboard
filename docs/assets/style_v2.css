@@ -1,0 +1,110 @@
+
+:root {
+  --primary: #1E3A8A; --secondary: #10B981; --accent: #F59E0B;
+  --danger: #EF4444; --neutral: #6B7280; --bg: #F9FAFB;
+  --bg-card: #FFFFFF; --text: #111827; --text-light: #6B7280;
+  --border: #E5E7EB; --shadow: 0 1px 3px rgba(0,0,0,0.1);
+  --radius: 8px; --font-sans: 'Inter','Segoe UI',system-ui,sans-serif;
+  --font-mono: 'Fira Code','Fira Mono','Consolas',monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body { font-family: var(--font-sans); background: var(--bg); color: var(--text); line-height: 1.6; }
+
+/* ── Navigation ── */
+.top-bar { background: var(--primary); color: #fff; padding: 0.5rem 1rem; display: flex;
+  align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 1000; }
+.top-bar h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.5px; }
+.top-bar .version { font-size: 0.75rem; opacity: 0.7; margin-left: 0.5rem; }
+.hero-nav { display: flex; background: #1e2d5a; overflow-x: auto; }
+.hero-nav a { color: #cbd5e1; text-decoration: none; padding: 0.6rem 1rem; font-size: 0.8rem;
+  font-weight: 600; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+.hero-nav a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+.hero-nav a.active { color: #fff; border-bottom-color: var(--secondary); background: rgba(255,255,255,0.08); }
+.hero-nav .icon { margin-right: 0.3rem; }
+
+/* ── Breadcrumb ── */
+.breadcrumb { padding: 0.5rem 1.5rem; font-size: 0.8rem; color: var(--text-light); background: #fff; border-bottom: 1px solid var(--border); }
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb span { margin: 0 0.3rem; }
+
+/* ── Tier navigation ── */
+.tier-nav { display: flex; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--bg); border-bottom: 1px solid var(--border); }
+.tier-nav a { padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+  text-decoration: none; color: var(--text-light); background: #fff; border: 1px solid var(--border); transition: all 0.2s; }
+.tier-nav a:hover { border-color: var(--primary); color: var(--primary); }
+.tier-nav a.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* ── Main ── */
+main { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+.slide { background: var(--bg-card); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 2rem; margin-bottom: 1.5rem; border: 1px solid var(--border); }
+.slide h2 { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
+.slide h3 { font-size: 1.15rem; font-weight: 600; color: var(--text); margin: 1.2rem 0 0.5rem; }
+.slide h4 { font-size: 0.95rem; font-weight: 600; margin: 1rem 0 0.4rem; }
+
+/* ── KPI cards ── */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.kpi { padding: 1.2rem; border-radius: var(--radius); text-align: center; }
+.kpi .value { font-size: 1.8rem; font-weight: 800; }
+.kpi .label { font-size: 0.75rem; color: var(--text-light); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.kpi-blue { background: #EFF6FF; border: 1px solid #BFDBFE; }
+.kpi-blue .value { color: var(--primary); }
+.kpi-green { background: #ECFDF5; border: 1px solid #A7F3D0; }
+.kpi-green .value { color: #059669; }
+.kpi-amber { background: #FFFBEB; border: 1px solid #FDE68A; }
+.kpi-amber .value { color: #D97706; }
+.kpi-red { background: #FEF2F2; border: 1px solid #FECACA; }
+.kpi-red .value { color: var(--danger); }
+
+/* ── Tables ── */
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+th { background: var(--primary); color: #fff; padding: 0.6rem 0.8rem; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.5px; }
+td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border); }
+tr:hover { background: #F8FAFC; }
+tr:nth-child(even) { background: #FAFBFC; }
+tr:nth-child(even):hover { background: #F1F5F9; }
+
+/* ── Badges ── */
+.badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 12px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.3px; }
+.badge-accept { background: #D1FAE5; color: #065F46; }
+.badge-review { background: #FEF3C7; color: #92400E; }
+.badge-risk { background: #FEE2E2; color: #991B1B; }
+.badge-open { background: #FEE2E2; color: #991B1B; }
+.badge-mitigated { background: #D1FAE5; color: #065F46; }
+.badge-monitor { background: #DBEAFE; color: #1E40AF; }
+.badge-accepted { background: #FEF3C7; color: #92400E; }
+.badge-trace { background: #E0E7FF; color: #3730A3; }
+
+/* ── Plot container ── */
+.plot-container { width: 100%; min-height: 400px; margin: 1rem 0; border-radius: var(--radius); overflow: hidden; }
+.plot-container iframe { width: 100%; height: 500px; border: none; border-radius: var(--radius); }
+
+/* ── Comparison grid ── */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1rem 0; }
+.compare-card { padding: 1.5rem; border-radius: var(--radius); border: 2px solid var(--border); }
+.compare-card h4 { color: var(--primary); margin-bottom: 0.8rem; }
+.compare-card.highlight { border-color: var(--secondary); background: #F0FDF9; }
+
+/* ── Collapsible ── */
+details { margin: 0.8rem 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+summary { padding: 0.8rem 1rem; background: #F8FAFC; cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+details > div, details > table, details > p { padding: 0 1rem 1rem; }
+
+/* ── Footer ── */
+footer { text-align: center; padding: 2rem; color: var(--text-light); font-size: 0.75rem; }
+
+/* ── Print ── */
+@media print {
+  .top-bar, .hero-nav, .tier-nav, .breadcrumb { display: none !important; }
+  .slide { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  body { background: #fff; }
+  main { max-width: 100%; padding: 0; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .compare-grid { grid-template-columns: 1fr; }
+  .hero-nav a { padding: 0.5rem 0.6rem; font-size: 0.72rem; }
+}

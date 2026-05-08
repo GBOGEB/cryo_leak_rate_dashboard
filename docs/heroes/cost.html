@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COST — QPLANT Dashboard v2.1.0</title>
+<link rel="stylesheet" href="../assets/style_v2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="top-bar">
+  <div><h1>QPLANT Cryogenic Dashboard</h1><span class="version">v2.1.0 • OUTPUT_2_DMAIC_REFINED</span></div>
+  <div style="font-size:0.8rem"><a href="../index.html" style="color:#93c5fd;text-decoration:none;">🏠 Hub</a></div>
+</div>
+<nav class="hero-nav"><a href="interface.html"><span class="icon">🔗</span>INTERFACE</a><a href="control.html"><span class="icon">⚙️</span>CONTROL</a><a href="design.html"><span class="icon">📐</span>DESIGN</a><a href="cost.html" class="active"><span class="icon">💰</span>COST</a><a href="materials.html"><span class="icon">🧪</span>MATERIALS</a><a href="risk.html"><span class="icon">⚠️</span>RISK</a><a href="operations.html"><span class="icon">🔧</span>OPERATIONS</a></nav>
+<main>
+<div class="breadcrumb"><a href="index.html">Dashboard</a><span>›</span><a href="cost.html">COST</a><span>›</span>Overview</div>
+<div class="tier-nav"><a href="#" onclick="setTier('1');return false;" data-tier="1" class="active">Tier 1 — Executive</a><a href="#" onclick="setTier('2');return false;" data-tier="2">Tier 2 — Monte Carlo</a><a href="#" onclick="setTier('3');return false;" data-tier="3">Tier 3 — Sensitivity</a></div>
+<div id="tier-1" class="tier-content">
+<div class="slide">
+  <h2>💰 COST — Monte Carlo Analysis & TCO</h2>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="value">€389,218</div><div class="label">Median Total Cost (P50)</div></div>
+    <div class="kpi kpi-green"><div class="value">€301,591</div><div class="label">Best Case (P10)</div></div>
+    <div class="kpi kpi-red"><div class="value">€497,158</div><div class="label">Worst Case (P90)</div></div>
+    <div class="kpi kpi-amber"><div class="value">€5,864</div><div class="label">He Cost Median</div></div>
+  </div>
+  <h3>Scenario Summary</h3>
+  <table><thead><tr><th>Scenario</th><th>P10</th><th>P50</th><th>P90</th><th>Mean</th><th>Std Dev</th></tr></thead>
+  <tbody><tr><td><strong>Baseline</strong></td>
+          <td>€301,591</td><td>€389,218</td><td>€497,158</td>
+          <td>€395,091</td><td>€77,041</td></tr><tr><td><strong>Geopolitical Crisis</strong></td>
+          <td>€303,721</td><td>€392,794</td><td>€495,488</td>
+          <td>€397,301</td><td>€76,805</td></tr><tr><td><strong>Supply Chain Disruption</strong></td>
+          <td>€302,489</td><td>€390,532</td><td>€495,067</td>
+          <td>€396,636</td><td>€77,575</td></tr><tr><td><strong>Accelerated Failure</strong></td>
+          <td>€462,742</td><td>€579,638</td><td>€721,670</td>
+          <td>€588,198</td><td>€104,055</td></tr></tbody></table>
+  <div class="plot-container"><iframe src="../visualizations/cost_waterfall.html"></iframe></div>
+</div></div>
+<div id="tier-2" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Monte Carlo Simulation Results</h2>
+  <p><strong>10,000 iterations</strong> using triangular He price distribution (€117 / €120 / €300 per kg)</p>
+  <div class="plot-container"><iframe src="../visualizations/monte_carlo_cost_distribution.html" style="height:720px"></iframe></div>
+  <h3>Distribution Parameters</h3>
+  <table><thead><tr><th>Parameter</th><th>Distribution</th><th>Low</th><th>Mode</th><th>High</th></tr></thead><tbody>
+    <tr><td>Helium price (€/kg)</td><td>Triangular</td><td>€117</td><td>€120</td><td>€300</td></tr>
+    <tr><td>Valve failure rate</td><td>Normal (from MTBF)</td><td>—</td><td>MTBF-based</td><td>—</td></tr>
+    <tr><td>Replacement cost</td><td>Uniform ±20%</td><td>0.8×</td><td>1.0×</td><td>1.2×</td></tr>
+    <tr><td>He loss variation</td><td>Uniform ±20%</td><td>0.8×</td><td>1.0×</td><td>1.2×</td></tr>
+  </tbody></table>
+  <div class="plot-container"><iframe src="../visualizations/scenario_comparison.html"></iframe></div>
+</div></div>
+<div id="tier-3" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Sensitivity Analysis</h2>
+  <div class="plot-container"><iframe src="../visualizations/sensitivity_tornado.html"></iframe></div>
+  <h3>Supplier Cost Comparison</h3>
+  <div class="plot-container"><iframe src="../visualizations/supplier_comparison.html"></iframe></div>
+  <h3>Detailed Supplier Table</h3>
+  <table><thead><tr><th>Criteria</th><th>Meca Inox</th><th>Swagelok SS-42GSE</th></tr></thead><tbody>
+    <tr><td>Leak rate (ambient)</td><td style="color:#EF4444">> 1×10⁻⁹ (derogation)</td><td style="color:#10B981">≤1×10⁻⁹ (standard)</td></tr>
+    <tr><td>Leak rate (restriction)</td><td>1×10⁻⁴</td><td>1×10⁻⁴</td></tr>
+    <tr><td>Actuation</td><td>Pneumatic + solenoid</td><td>Manual</td></tr>
+    <tr><td>Size range</td><td>Large (DN15-DN50)</td><td>Instrumentation (1/4"-1/2")</td></tr>
+    <tr><td>CAPEX (€)</td><td>€4,200</td><td>€4,700</td></tr>
+    <tr><td>Material (body)</td><td>316 SS</td><td>316 SS</td></tr>
+    <tr><td>Material (seal)</td><td>HDPE</td><td>UHMWPE</td></tr>
+    <tr><td>Radiation hardness</td><td>Required ✓</td><td>Required ✓</td></tr>
+    <tr><td>Cost relative</td><td>1.0× (baseline)</td><td>1.12× </td></tr>
+  </tbody></table>
+</div></div></main>
+<footer>QPLANT Cryogenic Leak Rate Dashboard v2.1.0 • OUTPUT_2_DMAIC_REFINED • Generated 2026-05-08T125301Z<br>
+SCK CEN / MYRRHA — Confidential</footer>
+<script src="../assets/heroes.js"></script>
+</body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OPERATIONS — QPLANT Dashboard v2.1.0</title>
+<link rel="stylesheet" href="../assets/style_v2.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="top-bar">
+  <div><h1>QPLANT Cryogenic Dashboard</h1><span class="version">v2.1.0 • OUTPUT_2_DMAIC_REFINED</span></div>
+  <div style="font-size:0.8rem"><a href="../index.html" style="color:#93c5fd;text-decoration:none;">🏠 Hub</a></div>
+</div>
+<nav class="hero-nav"><a href="interface.html"><span class="icon">🔗</span>INTERFACE</a><a href="control.html"><span class="icon">⚙️</span>CONTROL</a><a href="design.html"><span class="icon">📐</span>DESIGN</a><a href="cost.html"><span class="icon">💰</span>COST</a><a href="materials.html"><span class="icon">🧪</span>MATERIALS</a><a href="risk.html"><span class="icon">⚠️</span>RISK</a><a href="operations.html" class="active"><span class="icon">🔧</span>OPERATIONS</a></nav>
+<main>
+<div class="breadcrumb"><a href="index.html">Dashboard</a><span>›</span><a href="operations.html">OPERATIONS</a><span>›</span>Overview</div>
+<div class="tier-nav"><a href="#" onclick="setTier('1');return false;" data-tier="1" class="active">Tier 1 — Overview</a><a href="#" onclick="setTier('2');return false;" data-tier="2">Tier 2 — Reliability</a><a href="#" onclick="setTier('3');return false;" data-tier="3">Tier 3 — Maintenance</a></div>
+<div id="tier-1" class="tier-content">
+<div class="slide">
+  <h2>🔧 OPERATIONS — MTBF, MTTR, MDT & Maintenance</h2>
+  <div class="kpi-grid">
+    <div class="kpi kpi-blue"><div class="value">60,000 h</div><div class="label">Cold Valve MTBF</div></div>
+    <div class="kpi kpi-green"><div class="value">4 h</div><div class="label">Baseline MTTR</div></div>
+    <div class="kpi kpi-amber"><div class="value">12 h</div><div class="label">Baseline MDT</div></div>
+    <div class="kpi kpi-blue"><div class="value">99%</div><div class="label">Target Availability</div></div>
+  </div>
+  <h3>Operational Scenarios</h3>
+  <table><thead><tr><th>Scenario</th><th>Availability</th><th>MTTR</th><th>MDT</th><th>Beam Trips/yr</th><th>He Loss (kg/yr)</th></tr></thead><tbody><tr><td><strong>Baseline Operations</strong></td><td>99.0%</td><td>4h</td><td>12h</td><td>3</td><td>65</td></tr><tr><td><strong>Extended Repair Scenario</strong></td><td>98.5%</td><td>8h</td><td>24h</td><td>5</td><td>75</td></tr><tr><td><strong>Multiple/Cascade Failure</strong></td><td>97.0%</td><td>12h</td><td>48h</td><td>8</td><td>120</td></tr><tr><td><strong>LOOP Event (Loss of Instrument Air)</strong></td><td>95.0%</td><td>24h</td><td>72h</td><td>1</td><td>200</td></tr></tbody></table>
+  <div class="plot-container"><iframe src="../visualizations/helium_sankey.html"></iframe></div>
+</div></div>
+<div id="tier-2" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Reliability Data</h2>
+  <table><thead><tr><th>Component</th><th>MTBF (h)</th><th>MTTR (h)</th><th>MDT (h)</th><th>λ (per 10⁶h)</th><th>Avail. %</th><th>Spare %</th><th>PM Interval</th></tr></thead><tbody><tr><td>Cold Cryogenic Valve</td><td>60,000</td>
+          <td>4</td><td>12</td><td>16.7</td>
+          <td>99.980</td><td>10%</td>
+          <td>24 months</td></tr><tr><td>Warm Pneumatic Valve</td><td>80,000</td>
+          <td>2</td><td>8</td><td>12.5</td>
+          <td>99.990</td><td>5%</td>
+          <td>36 months</td></tr><tr><td>Warm Manual Valve</td><td>120,000</td>
+          <td>1</td><td>4</td><td>8.3</td>
+          <td>99.997</td><td>3%</td>
+          <td>48 months</td></tr><tr><td>Solenoid Pilot</td><td>50,000</td>
+          <td>1.5</td><td>6</td><td>20.0</td>
+          <td>99.970</td><td>15%</td>
+          <td>18 months</td></tr></tbody></table>
+  <h3>Spare Parts Strategy</h3>
+  <table><thead><tr><th>Component</th><th>Fleet Size</th><th>Spare Ratio</th><th>Spares Needed</th><th>Cost/Unit (€)</th><th>Spares Cost (€)</th></tr></thead><tbody>
+    <tr><td>Cold cryogenic valve</td><td>210</td><td>10%</td><td>21</td><td>€8,900</td><td>€186,900</td></tr>
+    <tr><td>Warm pneumatic (Meca Inox)</td><td>180</td><td>5%</td><td>9</td><td>€4,200</td><td>€37,800</td></tr>
+    <tr><td>Warm manual (Swagelok)</td><td>20</td><td>3%</td><td>1</td><td>€4,700</td><td>€4,700</td></tr>
+    <tr><td>Solenoid pilot valves</td><td>230</td><td>15%</td><td>35</td><td>€350</td><td>€12,250</td></tr>
+    <tr><td colspan="5" style="text-align:right;font-weight:700">Total Spares Investment</td><td style="font-weight:700">€241,650</td></tr>
+  </tbody></table>
+</div></div>
+<div id="tier-3" class="tier-content" style="display:none">
+<div class="slide">
+  <h2>Maintenance Schedule</h2>
+  <div class="plot-container"><iframe src="../visualizations/maintenance_gantt.html"></iframe></div>
+  <h3>Preventive Maintenance Tasks</h3>
+  <table><thead><tr><th>Task</th><th>Interval</th><th>Duration</th><th>Scope</th></tr></thead><tbody>
+    <tr><td>Cold valve seat inspection</td><td>24 months</td><td>14 days</td><td>All cold valves (during planned outage)</td></tr>
+    <tr><td>Warm valve seal check</td><td>36 months</td><td>5 days</td><td>All Meca Inox + Swagelok</td></tr>
+    <tr><td>Solenoid pilot replacement</td><td>18 months</td><td>1 day per 50 valves</td><td>Preventive swap program</td></tr>
+    <tr><td>Leak rate verification</td><td>12 months</td><td>14 days</td><td>100% per EN 13185</td></tr>
+    <tr><td>LOOP recovery drill</td><td>12 months</td><td>2 days</td><td>Full system test</td></tr>
+  </tbody></table>
+</div></div></main>
+<footer>QPLANT Cryogenic Leak Rate Dashboard v2.1.0 • OUTPUT_2_DMAIC_REFINED • Generated 2026-05-08T125301Z<br>
+SCK CEN / MYRRHA — Confidential</footer>
+<script src="../assets/heroes.js"></script>
+</body></html>
