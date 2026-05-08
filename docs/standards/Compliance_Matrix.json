@@ -1,0 +1,92 @@
+[
+  {
+    "rtm_id":"RTM-047",
+    "requirement":"Max leak rate to ambient\/INVAC: 1\u00d710\u207b\u2079 mbar\u00b7l\/s",
+    "standard":"EN 13185:2001",
+    "section":"6.2",
+    "test_method":"Helium mass spectrometer (vacuum method)",
+    "acceptance":"<1\u00d710\u207b\u2079 mbar\u00b7l\/s per valve",
+    "deliverable":"Individual valve leak test certificate",
+    "phase":"FAT"
+  },
+  {
+    "rtm_id":"RTM-048",
+    "requirement":"Max 1 Nm\u00b3\/day system helium loss; system leak rate <1\u00d710\u207b\u2075 mbar\u00b7l\/s",
+    "standard":"EN 13185:2001",
+    "section":"6.2 + 6.3",
+    "test_method":"He mass spectrometer + pressure hold test",
+    "acceptance":"<1\u00d710\u207b\u2075 mbar\u00b7l\/s total system",
+    "deliverable":"System leak test report",
+    "phase":"FAT\/SAT"
+  },
+  {
+    "rtm_id":"RTM-050",
+    "requirement":"Valve leak rates per Table 6 (seat: 1\u00d710\u207b\u2074, ambient: 1\u00d710\u207b\u2079)",
+    "standard":"ISO 5208 + EN 13185",
+    "section":"ISO 5208 \u00a76.3.2 + EN 13185 \u00a76.2",
+    "test_method":"Gas seat test (ISO 5208) + He MSLD (EN 13185)",
+    "acceptance":"Seat: <1\u00d710\u207b\u2074 mbar\u00b7l\/s; Ambient: <1\u00d710\u207b\u2079 mbar\u00b7l\/s",
+    "deliverable":"Individual valve certificates (seat + shell)",
+    "phase":"FAT"
+  },
+  {
+    "rtm_id":"RTM-053",
+    "requirement":"Functional test under simulated LOOP conditions",
+    "standard":"EN 13185:2001",
+    "section":"6.2 (sniffing method)",
+    "test_method":"Pressure hold + He sniffing under thermal cycling",
+    "acceptance":"System functional per specification",
+    "deliverable":"SAT report with thermal cycle data",
+    "phase":"SAT"
+  },
+  {
+    "rtm_id":"RTM-060",
+    "requirement":"Manholes\/inspection ports for internal examination",
+    "standard":"PED 2014\/68\/EU",
+    "section":"Annex I, ESR 2.2.3",
+    "test_method":"Design review + dimensional inspection",
+    "acceptance":"Adequate access for internal examination per ESR",
+    "deliverable":"GA drawings showing manhole locations, dimensional report",
+    "phase":"Design"
+  },
+  {
+    "rtm_id":"RTM-061",
+    "requirement":"Surface treatment \u2014 passivation per ASTM A967",
+    "standard":"ASTM A967",
+    "section":"6.2 (citric acid) + 7.4 (ferroxyl test)",
+    "test_method":"Ferroxyl test (free iron detection)",
+    "acceptance":"No blue staining within 15 seconds",
+    "deliverable":"Passivation certificate, ferroxyl test photos, material cert",
+    "phase":"Manufacture"
+  },
+  {
+    "rtm_id":"RTM-062",
+    "requirement":"Piping design for cryogenic helium service",
+    "standard":"ASME B31.3 + EN 13480",
+    "section":"B31.3 \u00a7302.2.2 + EN 13480 Part 3 \u00a76.1",
+    "test_method":"Design calculation review",
+    "acceptance":"Wall thickness \u2265 calculated minimum + allowances",
+    "deliverable":"Pipe design calculation package",
+    "phase":"Design"
+  },
+  {
+    "rtm_id":"RTM-063",
+    "requirement":"Storage vessels interconnected \u2014 pressure design",
+    "standard":"ASME B31.3 + PED 2014\/68\/EU",
+    "section":"B31.3 \u00a7300 + PED Article 4",
+    "test_method":"Hydrostatic test at 1.5\u00d7 design pressure",
+    "acceptance":"No leakage, no permanent deformation at test pressure",
+    "deliverable":"Hydrostatic test report, PED classification",
+    "phase":"FAT"
+  },
+  {
+    "rtm_id":"RTM-065",
+    "requirement":"Measuring points per Table 10 \u2014 sensor specifications",
+    "standard":"IEC 61326 (EMC) + ISO 15649",
+    "section":"Sensor accuracy and EMC compliance",
+    "test_method":"Sensor calibration and EMC type test",
+    "acceptance":"\u00b10.5% accuracy, EMC compliant",
+    "deliverable":"Calibration certificates, EMC type test reports",
+    "phase":"SAT"
+  }
+]

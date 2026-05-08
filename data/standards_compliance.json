@@ -1,0 +1,657 @@
+{
+  "standards": [
+    {
+      "code": "ASME B31.3",
+      "title": "Process Piping",
+      "scope": "Design, materials, fabrication, examination, testing of process piping systems",
+      "sections": [
+        {
+          "section": "300",
+          "title": "Pressure Design of Components",
+          "subsections": [
+            {
+              "number": "302.2.2",
+              "title": "Straight Pipe Under Internal Pressure",
+              "equation": "t = (P × D) / (2 × (S × E + P × Y))",
+              "variables": {
+                "t": "Wall thickness (mm)",
+                "P": "Internal design pressure (MPa)",
+                "D": "Outside diameter (mm)",
+                "S": "Allowable stress (MPa) per Table A-1",
+                "E": "Weld joint efficiency factor per Table A-1B",
+                "Y": "Temperature coefficient per Table 304.1.1"
+              },
+              "activities": ["Calculate minimum wall thickness", "Select pipe schedule ≥ t_min + corrosion allowance", "Document design calculation"],
+              "deliverables": ["Pressure design calculation sheet", "Material specification (ASTM/EN designation)", "Pipe schedule selection record"],
+              "lifecycle_phase": "Design"
+            },
+            {
+              "number": "304.1.2",
+              "title": "Straight Pipe Under External Pressure",
+              "equation": "Per ASME BPV Code Section VIII, Division 1, UG-28",
+              "activities": ["Calculate critical collapse pressure", "Verify wall thickness against external loads", "Consider vacuum conditions for cryogenic service"],
+              "deliverables": ["External pressure design calculation", "Stiffener ring design (if required)"],
+              "lifecycle_phase": "Design"
+            },
+            {
+              "number": "304.3",
+              "title": "Branch Connections",
+              "activities": ["Calculate reinforcement requirements", "Select branch connection type", "Document reinforcement calculation"],
+              "deliverables": ["Branch connection design sheet", "Reinforcement pad specification"],
+              "lifecycle_phase": "Design"
+            }
+          ]
+        },
+        {
+          "section": "323",
+          "title": "General Requirements for Materials",
+          "subsections": [
+            {
+              "number": "323.1",
+              "title": "General Requirements",
+              "activities": ["Verify material suitability for service temperature", "Confirm material listed in Table A-1", "Obtain material test reports (MTR)"],
+              "deliverables": ["Material selection report", "MTR/EN 10204 3.1 certificates", "Low temperature toughness test results"],
+              "lifecycle_phase": "Procurement"
+            },
+            {
+              "number": "323.2.2",
+              "title": "Low Temperature Toughness Tests",
+              "activities": ["Perform Charpy V-notch tests at MDMT", "Verify exemptions per Fig 323.2.2B", "Document impact test results"],
+              "deliverables": ["Impact test certificates", "MDMT calculation record"],
+              "lifecycle_phase": "Procurement"
+            }
+          ]
+        },
+        {
+          "section": "328",
+          "title": "Welding",
+          "subsections": [
+            {
+              "number": "328.2",
+              "title": "Welding Qualifications",
+              "activities": ["Qualify welding procedures (WPS) per ASME IX", "Qualify welders/welding operators", "Maintain qualification records"],
+              "deliverables": ["WPS (Welding Procedure Specification)", "PQR (Procedure Qualification Record)", "WPQ (Welder Performance Qualification)"],
+              "lifecycle_phase": "Manufacture"
+            },
+            {
+              "number": "328.5",
+              "title": "Weld Quality Acceptance",
+              "activities": ["Perform NDE per examination plan", "Evaluate weld quality vs acceptance criteria", "Document all NDE results"],
+              "deliverables": ["Radiographic test reports", "NDE summary report", "Repair records (if applicable)"],
+              "lifecycle_phase": "Manufacture"
+            }
+          ]
+        },
+        {
+          "section": "345",
+          "title": "Examination",
+          "subsections": [
+            {
+              "number": "345.1",
+              "title": "General",
+              "activities": ["Develop examination plan per piping class", "Determine NDE extent (random vs 100%)", "Select examination methods"],
+              "deliverables": ["Inspection and Test Plan (ITP)", "NDE procedure selection"],
+              "lifecycle_phase": "Manufacture"
+            },
+            {
+              "number": "345.2.1",
+              "title": "Welding Procedure Specification (WPS)",
+              "activities": ["Develop WPS document", "Perform procedure qualification test", "Document PQR with mechanical test results"],
+              "deliverables": ["WPS document per ASME IX", "PQR with tensile, bend, impact results", "Welder qualification certificates"],
+              "lifecycle_phase": "Manufacture"
+            },
+            {
+              "number": "345.4",
+              "title": "Types of Examination",
+              "methods": {
+                "VT": "Visual Examination per ASME V Article 9",
+                "RT": "Radiographic Examination per ASME V Article 2",
+                "UT": "Ultrasonic Examination per ASME V Article 4",
+                "PT": "Liquid Penetrant Examination per ASME V Article 6",
+                "MT": "Magnetic Particle Examination per ASME V Article 7"
+              },
+              "activities": ["Select NDE methods per service category", "Qualify NDE personnel to SNT-TC-1A Level II/III", "Perform examinations and record results"],
+              "deliverables": ["NDE reports per method", "NDE personnel qualification records"],
+              "lifecycle_phase": "Manufacture"
+            }
+          ]
+        },
+        {
+          "section": "347",
+          "title": "Testing",
+          "subsections": [
+            {
+              "number": "345.4.2",
+              "title": "Hydrostatic Testing",
+              "equation": "P_test = 1.5 × P_design × (S_test / S_design)",
+              "variables": {
+                "P_test": "Hydrostatic test pressure (barg)",
+                "P_design": "Design pressure (barg)",
+                "S_test": "Allowable stress at test temperature",
+                "S_design": "Allowable stress at design temperature"
+              },
+              "activities": ["Calculate test pressure", "Perform hydrostatic test", "Hold for minimum 10 minutes", "Inspect all joints at test pressure"],
+              "deliverables": ["Hydrostatic test procedure", "Pressure chart/recorder output", "Signed test acceptance certificate"],
+              "lifecycle_phase": "FAT"
+            },
+            {
+              "number": "345.5.4",
+              "title": "Pneumatic Testing",
+              "equation": "P_test = 1.1 × P_design",
+              "activities": ["Prepare safety assessment for pneumatic test", "Pressurize gradually in steps", "Hold and inspect", "Leak test with soap solution or tracer gas"],
+              "deliverables": ["Pneumatic test procedure", "Safety assessment", "Test certificate"],
+              "lifecycle_phase": "FAT"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ASME BPE",
+      "title": "Bioprocessing Equipment (Ultra-Clean Systems)",
+      "scope": "Surface finish, welding, and documentation requirements for high-purity process systems",
+      "sections": [
+        {
+          "section": "SD",
+          "title": "Surface Finish (Design)",
+          "subsections": [
+            {
+              "number": "SD-2.1",
+              "title": "Internal Surface Finish Requirements",
+              "specification": "Ra ≤ 0.4 μm electropolished (EP) for process contact surfaces",
+              "activities": ["Specify surface finish on drawings", "Verify Ra via profilometer", "Document EP process parameters"],
+              "deliverables": ["Surface finish specification", "Profilometer measurement reports", "EP process certification"],
+              "lifecycle_phase": "Design"
+            },
+            {
+              "number": "SD-3.4.2",
+              "title": "Electropolish Requirements",
+              "activities": ["Select EP vendor with BPE experience", "Specify EP parameters (current density, electrolyte, time)", "Measure Ra before and after EP"],
+              "deliverables": ["EP procedure", "Before/after Ra measurements", "Visual inspection records"],
+              "lifecycle_phase": "Manufacture"
+            }
+          ]
+        },
+        {
+          "section": "MJ",
+          "title": "Joining (Welding)",
+          "subsections": [
+            {
+              "number": "MJ-3.1",
+              "title": "Orbital Welding Requirements",
+              "activities": ["Develop orbital WPS per ASME IX + BPE supplementary", "Qualify welds with ID inspection (borescope)", "Purge with inert gas (Ar or He) to <5 ppm O₂"],
+              "deliverables": ["Orbital WPS", "Weld coupon inspection reports (borescope photos)", "Purge gas oxygen records"],
+              "lifecycle_phase": "Manufacture"
+            },
+            {
+              "number": "MJ-3.3",
+              "title": "Weld Acceptance Criteria",
+              "criteria": {
+                "ID_concavity": "≤ 10% of wall thickness",
+                "ID_convexity": "≤ 10% of wall thickness",
+                "ID_discoloration": "Per BPE color chart (max level 4)",
+                "misalignment": "≤ 15% of wall thickness"
+              },
+              "activities": ["Inspect 100% of welds by borescope", "Compare to BPE weld acceptance color chart", "Document all weld inspections"],
+              "deliverables": ["Borescope inspection reports with photos", "Weld log with accept/reject decisions", "Non-conformance reports (if any)"],
+              "lifecycle_phase": "Manufacture"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "EN 13185:2001",
+      "title": "Non-destructive testing — Leak testing — Tracer gas method",
+      "scope": "Leak detection methodology for pressurized and vacuum systems",
+      "sections": [
+        {
+          "section": "6",
+          "title": "Leak Detection Methods",
+          "subsections": [
+            {
+              "number": "6.2",
+              "title": "Helium Mass Spectrometer Leak Detection",
+              "methods": [
+                {
+                  "method": "Vacuum method (outside-in)",
+                  "sensitivity": "1×10⁻¹⁰ mbar·l/s",
+                  "procedure": "Evacuate test volume, spray helium externally, detect helium ingress with mass spectrometer",
+                  "equipment": "Helium leak detector (mass spectrometer), calibrated standard leak",
+                  "acceptance": "Leak rate < specified value per RTM/specification",
+                  "calibration": "Standard leak ±10% NIST-traceable, recalibrated annually",
+                  "deliverables": ["Leak test report with serial numbers", "Calibration certificates for detector and standard leak", "Test setup photographs"],
+                  "lifecycle_phase": "FAT"
+                },
+                {
+                  "method": "Sniffing method (inside-out)",
+                  "sensitivity": "1×10⁻⁶ mbar·l/s",
+                  "procedure": "Pressurize with helium, use sniffer probe externally to locate leaks",
+                  "equipment": "Helium sniffer probe, mass spectrometer",
+                  "acceptance": "No detectable leak above background at specified sensitivity",
+                  "deliverables": ["Sniffing test report", "Leak location map (if applicable)"],
+                  "lifecycle_phase": "SAT"
+                },
+                {
+                  "method": "Pressure hold test (pressure decay)",
+                  "sensitivity": "1×10⁻⁴ mbar·l/s (system-dependent)",
+                  "procedure": "Pressurize system with test gas, monitor pressure decay over 24 hours minimum",
+                  "equation": "Q_leak = (ΔP × V) / Δt",
+                  "variables": {
+                    "Q_leak": "Total leak rate (mbar·l/s)",
+                    "ΔP": "Pressure drop (mbar)",
+                    "V": "System volume (litres)",
+                    "Δt": "Test duration (seconds)"
+                  },
+                  "acceptance": "ΔP < calculated allowable based on volume, temperature stability, and required leak rate",
+                  "deliverables": ["Pressure-time chart (continuous recording)", "Temperature log (to exclude thermal effects)", "Signed acceptance certificate"],
+                  "lifecycle_phase": "SAT"
+                }
+              ]
+            },
+            {
+              "number": "6.3",
+              "title": "Vacuum Method (Bombing/Accumulation)",
+              "methods": [
+                {
+                  "method": "Accumulation test",
+                  "sensitivity": "1×10⁻⁸ mbar·l/s",
+                  "procedure": "Enclose component in sealed chamber, accumulate leaked gas, measure concentration increase",
+                  "deliverables": ["Accumulation test report", "Volume calibration record"],
+                  "lifecycle_phase": "FAT"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section": "7",
+          "title": "Test Report Requirements",
+          "content": "Test reports shall include: test object identification, test method, equipment used (type, serial number), calibration status, test conditions (temperature, pressure), test results, acceptance criteria, pass/fail decision, operator and supervisor signatures, date."
+        }
+      ]
+    },
+    {
+      "code": "PED 2014/68/EU",
+      "title": "Pressure Equipment Directive",
+      "scope": "Placing on the market and putting into service of pressure equipment and assemblies with maximum allowable pressure PS > 0.5 bar",
+      "articles": [
+        {
+          "article": "4",
+          "title": "Classification of Pressure Equipment",
+          "tables": [
+            {
+              "table": "Table 1",
+              "title": "Gases — Group 2 (Helium, non-dangerous)",
+              "description": "Classification based on PS × V product for vessels",
+              "categories": {
+                "SEP": {"condition": "PS × V ≤ 50 bar·L or PS ≤ 1000 bar and V ≤ 1 L", "description": "Sound Engineering Practice — no PED assessment"},
+                "Category_I": {"condition": "50 < PS × V ≤ 200 bar·L", "description": "Internal production control (Module A)"},
+                "Category_II": {"condition": "200 < PS × V ≤ 1000 bar·L", "description": "Internal production control + monitoring (Module A2 or D1 or E1)"},
+                "Category_III": {"condition": "1000 < PS × V ≤ 3000 bar·L", "description": "EU-type examination + PPC (Module B+E or B+C2 or H)"},
+                "Category_IV": {"condition": "PS × V > 3000 bar·L or PS > 1000 bar", "description": "EU-type examination + production QA (Module B+D or B+F or G or H1)"}
+              }
+            },
+            {
+              "table": "Table 6",
+              "title": "Piping — Gases — Group 2",
+              "description": "Classification based on PS × DN for piping",
+              "categories": {
+                "SEP": {"condition": "PS ≤ 0.5 bar or DN ≤ 25", "description": "Sound Engineering Practice"},
+                "Category_I": {"condition": "DN > 100 and PS × DN ≤ 3500", "description": "Module A"},
+                "Category_II": {"condition": "DN > 100 and PS × DN > 3500", "description": "Module A2, D1, or E1"},
+                "Category_III": {"condition": "DN > 250 and PS > 500 bar", "description": "Module B+D, B+F, G, or H1"}
+              }
+            }
+          ],
+          "activities": ["Calculate PS × V for each vessel/assembly", "Calculate PS × DN for each piping run", "Determine category per applicable table", "Select conformity assessment module", "Identify Notified Body requirements"],
+          "deliverables": ["PED classification report per component", "Module selection justification", "Notified Body engagement letter (Category III/IV)"],
+          "lifecycle_phase": "Design"
+        },
+        {
+          "article": "5",
+          "title": "Essential Safety Requirements (ESR)",
+          "annex": "Annex I",
+          "requirements": [
+            {"esr": "2.2.1", "title": "Design for adequate strength", "description": "Design calculations using allowable stress method with safety coefficients: ≥2.4 for austenitic stainless steel, ≥1.5 for yield"},
+            {"esr": "2.2.3", "title": "Means of examination", "description": "Equipment shall be designed to permit internal examination (manholes, inspection ports) — relates to RTM-060"},
+            {"esr": "2.3", "title": "Manufacturing", "description": "Traceability of materials from MTR to finished component"},
+            {"esr": "2.8", "title": "Corrosion/erosion protection", "description": "Surface treatment, electropolish per ASTM A967 — relates to RTM-061"},
+            {"esr": "2.10", "title": "Provision for draining and venting", "description": "Adequate provisions for draining, venting, and purging — relates to cryogenic gas systems"},
+            {"esr": "3.2", "title": "Permanent joining", "description": "Qualified welding procedures, qualified welders, NDE of permanent joints"},
+            {"esr": "7.3", "title": "Marking", "description": "CE marking with Notified Body number, identification plate, maximum/minimum allowable limits"}
+          ],
+          "activities": ["Review ESR checklist against design", "Document compliance with each applicable ESR", "Prepare Technical File content for each ESR"],
+          "deliverables": ["ESR compliance checklist", "Technical File sections per ESR"],
+          "lifecycle_phase": "Design"
+        },
+        {
+          "article": "14",
+          "title": "Conformity Assessment",
+          "modules": {
+            "A": {"title": "Internal production control", "NB_required": false},
+            "A2": {"title": "Internal production control + supervised testing", "NB_required": true},
+            "B": {"title": "EU-type examination", "NB_required": true},
+            "B1": {"title": "EU-type examination (design type)", "NB_required": true},
+            "C2": {"title": "Conformity to type + supervised testing", "NB_required": true},
+            "D": {"title": "Quality assurance of production process", "NB_required": true},
+            "D1": {"title": "Quality assurance of production process", "NB_required": true},
+            "E": {"title": "Product quality assurance", "NB_required": true},
+            "E1": {"title": "Product quality assurance", "NB_required": true},
+            "F": {"title": "Product verification", "NB_required": true},
+            "G": {"title": "Unit verification", "NB_required": true},
+            "H": {"title": "Full quality assurance", "NB_required": true},
+            "H1": {"title": "Full quality assurance with design examination", "NB_required": true}
+          },
+          "activities": ["Select module(s) appropriate for category", "Engage Notified Body (if required)", "Prepare documentation per selected module"],
+          "deliverables": ["Conformity assessment plan", "Notified Body certificate(s)", "Surveillance audit schedule"],
+          "lifecycle_phase": "Design"
+        },
+        {
+          "article": "15",
+          "title": "CE Marking",
+          "requirements": [
+            "Affix CE marking to pressure equipment visible, legible, indelible",
+            "Include Notified Body identification number (Category II+)",
+            "Prepare and maintain Technical File for 10 years",
+            "Issue EU Declaration of Conformity (DoC)",
+            "Affix identification plate with operating limits"
+          ],
+          "deliverables": ["Technical File (design calculations, material certificates, test reports, NDE results, risk assessment)", "EU Declaration of Conformity signed by authorized representative", "CE marking label/plate with NB number", "Identification plate per Annex I §3.3"],
+          "lifecycle_phase": "Pre-delivery"
+        }
+      ]
+    },
+    {
+      "code": "ATEX 2014/34/EU",
+      "title": "Equipment for Explosive Atmospheres",
+      "scope": "Equipment and protective systems intended for use in potentially explosive atmospheres",
+      "sections": [
+        {
+          "section": "1",
+          "title": "Scope and Classification",
+          "subsections": [
+            {
+              "number": "Article 2",
+              "title": "Equipment Categories",
+              "categories": {
+                "Category_1": "Very high level of protection — Zone 0/20",
+                "Category_2": "High level of protection — Zone 1/21",
+                "Category_3": "Normal level of protection — Zone 2/22"
+              },
+              "activities": ["Perform ATEX zone classification", "Determine equipment category per zone", "Select certified equipment"],
+              "deliverables": ["ATEX zone classification drawing", "Equipment selection justification", "Ex certificates for each component"],
+              "lifecycle_phase": "Design",
+              "note": "Helium is non-flammable — ATEX typically not applicable unless hydrogen or other flammable gases present in adjacent zones"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "EN 13480",
+      "title": "Metallic Industrial Piping",
+      "scope": "Design, fabrication, installation, and testing of metallic piping systems",
+      "sections": [
+        {
+          "section": "Part 3",
+          "title": "Design and Calculation",
+          "subsections": [
+            {
+              "number": "6.1",
+              "title": "Wall Thickness Calculation",
+              "equation": "e_n = e_0 + c_1 + c_2",
+              "variables": {
+                "e_n": "Nominal wall thickness (mm)",
+                "e_0": "Minimum required thickness (pressure)",
+                "c_1": "Corrosion/erosion allowance (mm)",
+                "c_2": "Under-tolerance from manufacturing (mm, typically 12.5%)"
+              },
+              "activities": ["Calculate pressure thickness per Part 3", "Add corrosion allowance", "Add manufacturing tolerance", "Verify against selected pipe specification"],
+              "deliverables": ["Pipe wall thickness calculation", "Material data sheet"],
+              "lifecycle_phase": "Design"
+            }
+          ]
+        },
+        {
+          "section": "Part 4",
+          "title": "Fabrication and Installation",
+          "subsections": [
+            {
+              "number": "7",
+              "title": "Welding",
+              "activities": ["Qualify procedures per EN ISO 15614", "Qualify welders per EN ISO 9606", "Perform NDE per Part 5"],
+              "deliverables": ["WPQR (Welding Procedure Qualification Record)", "Welder certificates", "NDE reports"],
+              "lifecycle_phase": "Manufacture"
+            }
+          ]
+        },
+        {
+          "section": "Part 5",
+          "title": "Inspection and Testing",
+          "subsections": [
+            {
+              "number": "9",
+              "title": "Pressure Testing",
+              "activities": ["Perform hydrostatic or pneumatic test", "Document test conditions and results", "Issue test certificate"],
+              "deliverables": ["Pressure test procedure", "Pressure test certificate", "Pressure recorder chart"],
+              "lifecycle_phase": "FAT"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ASTM A967",
+      "title": "Standard Specification for Chemical Passivation Treatments for Stainless Steel Parts",
+      "scope": "Passivation of stainless steel to remove free iron and enhance corrosion resistance",
+      "sections": [
+        {
+          "section": "6",
+          "title": "Passivation Treatments",
+          "subsections": [
+            {
+              "number": "6.1",
+              "title": "Nitric Acid Passivation",
+              "specification": "20-50% HNO₃ at 20-60°C for 20-30 minutes",
+              "activities": ["Clean surface (degrease, remove scale)", "Immerse in nitric acid bath", "Rinse thoroughly with DI water", "Verify passivation"],
+              "deliverables": ["Passivation procedure", "Bath chemistry records", "Verification test results"],
+              "lifecycle_phase": "Manufacture"
+            },
+            {
+              "number": "6.2",
+              "title": "Citric Acid Passivation",
+              "specification": "4-10% citric acid at 20-70°C for 20-60 minutes",
+              "note": "Environmentally preferred alternative to nitric acid",
+              "activities": ["Clean surface", "Immerse in citric acid bath", "Rinse thoroughly", "Verify passivation"],
+              "deliverables": ["Passivation procedure", "Bath chemistry records", "Verification test results"],
+              "lifecycle_phase": "Manufacture"
+            }
+          ]
+        },
+        {
+          "section": "7",
+          "title": "Acceptance Tests",
+          "subsections": [
+            {
+              "number": "7.1",
+              "title": "Water Immersion Test",
+              "activities": ["Immerse passivated part in water for 24 hours", "Inspect for corrosion or rust staining"],
+              "deliverables": ["Test report with pass/fail"],
+              "lifecycle_phase": "Manufacture"
+            },
+            {
+              "number": "7.2",
+              "title": "High Humidity Test",
+              "activities": ["Expose to 97% RH, 35°C for 24 hours", "Inspect for corrosion"],
+              "deliverables": ["Test report"],
+              "lifecycle_phase": "Manufacture"
+            },
+            {
+              "number": "7.4",
+              "title": "Ferroxyl Test (Free Iron Detection)",
+              "specification": "Apply ferroxyl solution (potassium ferricyanide + nitric acid) to surface",
+              "acceptance": "No blue staining within 15 seconds indicates pass",
+              "activities": ["Apply ferroxyl reagent", "Observe for 15 seconds", "Record results", "Photograph test area"],
+              "deliverables": ["Ferroxyl test report", "Photographs of test areas", "Material certificate update"],
+              "lifecycle_phase": "Manufacture"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ISO 5208",
+      "title": "Industrial Valves — Pressure Testing of Metallic Valves",
+      "scope": "Pressure testing procedures and acceptance criteria for industrial valves",
+      "sections": [
+        {
+          "section": "4",
+          "title": "Test Types",
+          "subsections": [
+            {
+              "number": "4.1",
+              "title": "Shell Test",
+              "equation": "P_shell = 1.5 × CWP (for PN ≤ 100)",
+              "activities": ["Pressurize valve shell with test medium", "Hold for specified duration", "Check for external leakage"],
+              "deliverables": ["Shell test certificate"],
+              "lifecycle_phase": "FAT"
+            },
+            {
+              "number": "4.2",
+              "title": "Seat Test (Closure Test)",
+              "leak_rates": {
+                "Rate_A": {"description": "Zero leakage", "rate": "No visible leakage"},
+                "Rate_B": {"description": "Bubble tight", "rate": "No gas bubbles during test"},
+                "Rate_D": {"description": "Metal seated", "rate": "Specified drops/min or cm³/min per DN"},
+                "Rate_E": {"description": "Increased leakage", "rate": "Higher allowable per application"},
+                "Rate_F": {"description": "Special", "rate": "As agreed between purchaser and manufacturer"}
+              },
+              "activities": ["Apply test pressure to upstream side", "Measure leakage on downstream side", "Compare against specified rate class", "Record results per valve serial number"],
+              "deliverables": ["Seat test certificate per valve", "Leak rate measurement data"],
+              "lifecycle_phase": "FAT"
+            }
+          ]
+        },
+        {
+          "section": "6",
+          "title": "Test Procedures",
+          "subsections": [
+            {
+              "number": "6.3.2",
+              "title": "Gas Seat Test",
+              "procedure": "Apply gas pressure (air, N₂, or He) to one side; measure leakage on other side",
+              "duration": "Minimum 15 seconds for DN ≤ 50, up to 120 seconds for DN > 600",
+              "acceptance": "Per specified leak rate class (A through F)",
+              "activities": ["Set up valve in test fixture", "Apply specified test pressure", "Measure leakage", "Record and compare to acceptance criteria"],
+              "deliverables": ["Gas seat test report", "Calibration records for measurement equipment"],
+              "lifecycle_phase": "FAT"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rtm_to_standards_mapping": [
+    {
+      "rtm_id": "RTM-047",
+      "requirement": "Max leak rate to ambient/INVAC: 1×10⁻⁹ mbar·l/s",
+      "standard": "EN 13185:2001",
+      "section": "6.2",
+      "test_method": "Helium mass spectrometer (vacuum method)",
+      "acceptance": "<1×10⁻⁹ mbar·l/s per valve",
+      "deliverable": "Individual valve leak test certificate",
+      "phase": "FAT"
+    },
+    {
+      "rtm_id": "RTM-048",
+      "requirement": "Max 1 Nm³/day system helium loss; system leak rate <1×10⁻⁵ mbar·l/s",
+      "standard": "EN 13185:2001",
+      "section": "6.2 + 6.3",
+      "test_method": "He mass spectrometer + pressure hold test",
+      "acceptance": "<1×10⁻⁵ mbar·l/s total system",
+      "deliverable": "System leak test report",
+      "phase": "FAT/SAT"
+    },
+    {
+      "rtm_id": "RTM-050",
+      "requirement": "Valve leak rates per Table 6 (seat: 1×10⁻⁴, ambient: 1×10⁻⁹)",
+      "standard": "ISO 5208 + EN 13185",
+      "section": "ISO 5208 §6.3.2 + EN 13185 §6.2",
+      "test_method": "Gas seat test (ISO 5208) + He MSLD (EN 13185)",
+      "acceptance": "Seat: <1×10⁻⁴ mbar·l/s; Ambient: <1×10⁻⁹ mbar·l/s",
+      "deliverable": "Individual valve certificates (seat + shell)",
+      "phase": "FAT"
+    },
+    {
+      "rtm_id": "RTM-053",
+      "requirement": "Functional test under simulated LOOP conditions",
+      "standard": "EN 13185:2001",
+      "section": "6.2 (sniffing method)",
+      "test_method": "Pressure hold + He sniffing under thermal cycling",
+      "acceptance": "System functional per specification",
+      "deliverable": "SAT report with thermal cycle data",
+      "phase": "SAT"
+    },
+    {
+      "rtm_id": "RTM-060",
+      "requirement": "Manholes/inspection ports for internal examination",
+      "standard": "PED 2014/68/EU",
+      "section": "Annex I, ESR 2.2.3",
+      "test_method": "Design review + dimensional inspection",
+      "acceptance": "Adequate access for internal examination per ESR",
+      "deliverable": "GA drawings showing manhole locations, dimensional report",
+      "phase": "Design"
+    },
+    {
+      "rtm_id": "RTM-061",
+      "requirement": "Surface treatment — passivation per ASTM A967",
+      "standard": "ASTM A967",
+      "section": "6.2 (citric acid) + 7.4 (ferroxyl test)",
+      "test_method": "Ferroxyl test (free iron detection)",
+      "acceptance": "No blue staining within 15 seconds",
+      "deliverable": "Passivation certificate, ferroxyl test photos, material cert",
+      "phase": "Manufacture"
+    },
+    {
+      "rtm_id": "RTM-062",
+      "requirement": "Piping design for cryogenic helium service",
+      "standard": "ASME B31.3 + EN 13480",
+      "section": "B31.3 §302.2.2 + EN 13480 Part 3 §6.1",
+      "test_method": "Design calculation review",
+      "acceptance": "Wall thickness ≥ calculated minimum + allowances",
+      "deliverable": "Pipe design calculation package",
+      "phase": "Design"
+    },
+    {
+      "rtm_id": "RTM-063",
+      "requirement": "Storage vessels interconnected — pressure design",
+      "standard": "ASME B31.3 + PED 2014/68/EU",
+      "section": "B31.3 §300 + PED Article 4",
+      "test_method": "Hydrostatic test at 1.5× design pressure",
+      "acceptance": "No leakage, no permanent deformation at test pressure",
+      "deliverable": "Hydrostatic test report, PED classification",
+      "phase": "FAT"
+    },
+    {
+      "rtm_id": "RTM-065",
+      "requirement": "Measuring points per Table 10 — sensor specifications",
+      "standard": "IEC 61326 (EMC) + ISO 15649",
+      "section": "Sensor accuracy and EMC compliance",
+      "test_method": "Sensor calibration and EMC type test",
+      "acceptance": "±0.5% accuracy, EMC compliant",
+      "deliverable": "Calibration certificates, EMC type test reports",
+      "phase": "SAT"
+    }
+  ],
+  "lifecycle_phases": [
+    {"phase": "Design", "description": "Detailed design, calculations, material selection, specification development"},
+    {"phase": "Procurement", "description": "Material ordering, vendor qualification, MTR collection"},
+    {"phase": "Manufacture", "description": "Fabrication, welding, NDE, surface treatment, assembly"},
+    {"phase": "FAT", "description": "Factory Acceptance Test at supplier facility — validate component/system performance"},
+    {"phase": "Transport", "description": "Packaging, shipping, preservation, receipt inspection"},
+    {"phase": "SAT", "description": "Site Acceptance Test — functional verification after installation"},
+    {"phase": "Commissioning", "description": "System start-up, performance verification, parameter tuning"},
+    {"phase": "Operation", "description": "Normal operation, maintenance, surveillance, periodic testing"}
+  ]
+}

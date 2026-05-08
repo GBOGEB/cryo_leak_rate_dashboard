@@ -1,0 +1,19 @@
+temperature_K,pressure_bar,phase,density_kg_m3,viscosity_Pa_s,thermal_conductivity_W_mK,specific_heat_J_kgK,speed_of_sound_m_s,compressibility_factor,source
+4,1,"gas (above critical P at this T is ~2.3 bar; at 1 bar, 4K is near two-phase — treat as cold dense gas approximation)",4.856,1.3e-06,0.0098,5193,131,0.98,NIST REFPROP
+4,5,supercritical (above P_c=2.275 bar),32.5,1.5e-06,0.012,12000,120,0.78,NIST REFPROP
+4,12,supercritical (dense),65.0,2.1e-06,0.018,8500,160,0.62,NIST REFPROP
+10,1,gas,1.94,2e-06,0.0155,5193,207,1.002,NIST REFPROP
+10,5,gas,9.8,2.1e-06,0.016,5250,205,0.99,NIST REFPROP
+10,12,gas (dense),23.9,2.3e-06,0.0175,5500,200,0.96,NIST REFPROP
+20,1,gas,0.97,3.3e-06,0.0252,5193,293,1.001,NIST REFPROP
+20,5,gas,4.88,3.35e-06,0.0256,5200,292,1.003,NIST REFPROP
+20,12,gas,11.8,3.5e-06,0.0268,5250,289,1.01,NIST REFPROP
+50,1,gas,0.387,5.8e-06,0.044,5193,464,1.0003,NIST REFPROP
+50,5,gas,1.94,5.85e-06,0.045,5193,463,1.002,NIST REFPROP
+50,12,gas,4.66,5.95e-06,0.046,5200,462,1.005,NIST REFPROP
+80,1,gas,0.242,8.1e-06,0.062,5193,586,1.0002,NIST REFPROP
+80,5,gas,1.21,8.15e-06,0.063,5193,586,1.001,NIST REFPROP
+80,12,gas,2.91,8.25e-06,0.064,5195,585,1.003,NIST REFPROP
+300,1,gas,0.1614,1.96e-05,0.152,5193,1020,1.00005,NIST REFPROP
+300,5,gas,0.808,1.97e-05,0.153,5193,1020,1.0004,NIST REFPROP
+300,12,gas,1.94,1.99e-05,0.154,5194,1019,1.001,NIST REFPROP

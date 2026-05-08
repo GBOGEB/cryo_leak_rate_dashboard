@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OUTPUT_3 — Standards & Statistical Framework v3.0.0</title>
+<style>
+
+:root {
+  --primary: #1a365d;
+  --accent: #2b6cb0;
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #2d3748;
+  --text-light: #718096;
+  --success: #38a169;
+  --warning: #d69e2e;
+  --danger: #e53e3e;
+  --info: #3182ce;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); }
+
+/* Header */
+.app-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.app-header h1 { font-size: 1.1rem; font-weight: 600; }
+.slide-counter { font-size: 0.9rem; opacity: 0.9; font-variant-numeric: tabular-nums; }
+
+/* Progress bar */
+.progress-bar { height: 4px; background: rgba(255,255,255,.2); width: 100%; }
+.progress-fill { height: 100%; background: #68d391; transition: width 0.3s; }
+
+/* Navigation */
+.nav-controls {
+  display: flex; gap: 8px; align-items: center; padding: 10px 24px; background: var(--card);
+  border-bottom: 1px solid var(--border); flex-wrap: wrap;
+}
+.nav-btn {
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px;
+  background: white; cursor: pointer; font-size: 0.85rem; transition: all .15s;
+}
+.nav-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.nav-btn.active { background: var(--accent); color: white; }
+.nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Slide */
+.slide-container { max-width: 1200px; margin: 24px auto; padding: 0 24px; }
+.slide {
+  display: none; background: var(--card); border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0,0,0,.08); padding: 32px; min-height: 500px;
+}
+.slide.active { display: block; }
+.slide h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 16px; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+.slide h3 { color: var(--accent); font-size: 1.15rem; margin: 18px 0 8px; }
+.slide h4 { color: var(--text); font-size: 1rem; margin: 14px 0 6px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85rem; }
+th { background: var(--primary); color: white; padding: 8px 10px; text-align: left; font-weight: 600; }
+td { padding: 7px 10px; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f7fafc; }
+tr:hover { background: #edf2f7; }
+
+/* Badges */
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.badge-accept { background: #c6f6d5; color: #22543d; }
+.badge-review { background: #fefcbf; color: #744210; }
+.badge-risk { background: #fed7d7; color: #742a2a; }
+.badge-trace { background: #bee3f8; color: #2a4365; }
+.badge-design { background: #e9d8fd; color: #44337a; }
+.badge-fat { background: #feebc8; color: #7b341e; }
+.badge-sat { background: #b2f5ea; color: #234e52; }
+.badge-mfg { background: #c4f1f9; color: #0d4e56; }
+
+/* KPI cards */
+.kpi-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
+.kpi { flex: 1; min-width: 140px; padding: 14px; border-radius: 8px; background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%); text-align: center; }
+.kpi .value { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+.kpi .label { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; }
+
+/* Plot iframe */
+.plot-frame { width: 100%; height: 480px; border: none; border-radius: 8px; margin: 12px 0; }
+
+/* Equation block */
+.equation { background: #f0f4f8; padding: 14px 18px; border-left: 4px solid var(--accent); border-radius: 4px; font-family: 'Courier New', monospace; margin: 12px 0; overflow-x: auto; }
+
+/* Procedure steps */
+.procedure { counter-reset: step; list-style: none; padding: 0; }
+.procedure li { counter-increment: step; padding: 8px 0 8px 36px; position: relative; border-left: 2px solid var(--border); margin-left: 12px; }
+.procedure li::before { content: counter(step); position: absolute; left: -14px; width: 26px; height: 26px; background: var(--accent); color: white; border-radius: 50%; text-align: center; line-height: 26px; font-size: 0.8rem; font-weight: 700; }
+
+/* Sidebar thumbnails */
+.thumb-sidebar {
+  position: fixed; right: 0; top: 90px; width: 140px; max-height: calc(100vh - 100px);
+  overflow-y: auto; background: var(--card); border-left: 1px solid var(--border);
+  box-shadow: -2px 0 8px rgba(0,0,0,.05); z-index: 500; padding: 8px;
+}
+.thumb-sidebar .thumb {
+  display: block; padding: 4px 6px; font-size: 0.65rem; border-radius: 4px;
+  margin-bottom: 2px; cursor: pointer; border: 1px solid transparent; color: var(--text-light);
+}
+.thumb-sidebar .thumb:hover { background: #edf2f7; }
+.thumb-sidebar .thumb.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+/* Print */
+@media print {
+  .app-header, .nav-controls, .thumb-sidebar, .progress-bar { display: none !important; }
+  .slide { display: block !important; page-break-after: always; box-shadow: none; border: 1px solid #ccc; }
+  body { background: white; }
+}
+
+/* Fullscreen */
+body.fullscreen .app-header { position: fixed; width: 100%; }
+body.fullscreen .slide-container { margin-top: 70px; }
+
+/* Category colors for charts */
+.cat-standards { border-left: 4px solid #2b6cb0; }
+.cat-leak { border-left: 4px solid #d69e2e; }
+.cat-helium { border-left: 4px solid #38a169; }
+.cat-stats { border-left: 4px solid #9f7aea; }
+.cat-procedures { border-left: 4px solid #e53e3e; }
+
+/* Export buttons */
+.export-bar { display: flex; gap: 8px; margin: 12px 0; }
+.export-btn { padding: 4px 10px; font-size: 0.78rem; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; background: white; }
+.export-btn:hover { background: var(--primary); color: white; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .thumb-sidebar { display: none; }
+  .slide-container { padding: 0 12px; }
+  .slide { padding: 18px; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="app-header">
+    <h1>🔬 OUTPUT_3 — QPLANT Standards & Statistical Framework</h1>
+    <span class="slide-counter" id="slideCounter">Slide 1 of 32</span>
+</header>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:3.1%"></div></div>
+
+<div class="nav-controls">
+    <button class="nav-btn" onclick="firstSlide()" title="Home">⏮</button>
+    <button class="nav-btn" id="btnPrev" onclick="prevSlide()" title="← Previous">◀ Prev</button>
+    <button class="nav-btn" id="btnNext" onclick="nextSlide()" title="Next →">Next ▶</button>
+    <button class="nav-btn" onclick="lastSlide()" title="End">⏭</button>
+    <select id="slideSelector" onchange="jumpToSlide()" style="padding:5px 8px;border-radius:6px;border:1px solid #e2e8f0;font-size:0.85rem;max-width:300px;">
+        <option value="0">1. OUTPUT_3 — Standards & Statistical Framework v3.0.0</option>
+<option value="1">2. Codes & Standards Overview</option>
+<option value="2">3. ASME B31.3 — Process Piping</option>
+<option value="3">4. ASME BPE — Bioprocessing Equipment (Ultra-Clean Systems)</option>
+<option value="4">5. EN 13185:2001 — Non-destructive testing — Leak testing — Tracer gas method</option>
+<option value="5">6. PED 2014/68/EU — Pressure Equipment Directive</option>
+<option value="6">7. ATEX 2014/34/EU — Equipment for Explosive Atmospheres</option>
+<option value="7">8. EN 13480 — Metallic Industrial Piping</option>
+<option value="8">9. RTM → Standards Compliance Matrix</option>
+<option value="9">10. Lifecycle Phase Standards Mapping</option>
+<option value="10">11. FAT Procedure — Valve Leak Testing (EN 13185 + ISO 5208)</option>
+<option value="11">12. SAT Procedure — System-Level Leak Test</option>
+<option value="12">13. PED 2014/68/EU — Compliance Workflow</option>
+<option value="13">14. Extended Leak Rate Analysis (10⁻⁹ to 10⁻⁴)</option>
+<option value="14">15. Temperature Effect with Pressure Isolines</option>
+<option value="15">16. Internal vs External Leakage Comparison</option>
+<option value="16">17. Choked Flow Regime Map</option>
+<option value="17">18. Helium Purity Dilution Over Time</option>
+<option value="18">19. Helium Thermophysical Properties Database</option>
+<option value="19">20. Helium Compressibility Factor</option>
+<option value="20">21. Helium Properties Data Table</option>
+<option value="21">22. Monte Carlo Analysis (n=10,000, seed=42)</option>
+<option value="22">23. Monte Carlo — Cost Component Analysis</option>
+<option value="23">24. Sensitivity Analysis (Variance-Based)</option>
+<option value="24">25. PCA — Scree Plot & Explained Variance</option>
+<option value="25">26. PCA — Biplot (PC1 vs PC2)</option>
+<option value="26">27. Multi-Factor Correlation Heatmap</option>
+<option value="27">28. Valve Fleet Size Sensitivity</option>
+<option value="28">29. Full Conversion Grid (10⁻⁹ to 10⁻⁴)</option>
+<option value="29">30. Statistical Analysis Summary</option>
+<option value="30">31. Documentation Architecture & Export Capabilities</option>
+<option value="31">32. Conclusions & Recommendations</option>
+
+    </select>
+    <span style="flex:1"></span>
+    <button class="nav-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
+    <button class="nav-btn" onclick="printView()" title="Print/PDF">🖨️</button>
+</div>
+
+<div class="slide-container">
+<div class="slide" data-title="OUTPUT_3 — Standards & Statistical Framework v3.0.0">
+<h2>OUTPUT_3 — Standards & Statistical Framework v3.0.0</h2>
+
+    <div class="kpi-row">
+        <div class="kpi"><div class="value">8</div><div class="label">Standards Covered</div></div>
+        <div class="kpi"><div class="value">9</div><div class="label">RTM Mappings</div></div>
+        <div class="kpi"><div class="value">18</div><div class="label">Interactive Charts</div></div>
+        <div class="kpi"><div class="value">10,000</div><div class="label">MC Simulations</div></div>
+        <div class="kpi"><div class="value">6</div><div class="label">PCA Dimensions</div></div>
+    </div>
+    <h3>Scope</h3>
+    <ul>
+        <li>Comprehensive codes/standards compliance framework (ASME B31.3, EN 13185, PED, ISO 5208, …)</li>
+        <li>FAT/SAT procedures with detailed test protocols</li>
+        <li>PED 2014/68/EU compliance workflow</li>
+        <li>Extended leak-rate analysis (10⁻⁹ to 10⁻⁴ mbar·l/s)</li>
+        <li>Helium thermophysical properties database</li>
+        <li>Monte Carlo cost analysis with covariance (10,000 runs, seed=42)</li>
+        <li>PCA, correlation heatmaps, sensitivity indices</li>
+    </ul>
+    <p><strong>Version:</strong> 3.0.0 &nbsp;|&nbsp; <strong>Build Date:</strong> 2026-05-08 &nbsp;|&nbsp;
+    <strong>Author:</strong> QPLANT Engineering Team</p>
+    
+</div>
+<div class="slide cat-standards" data-title="Codes & Standards Overview">
+<h2>Codes & Standards Overview</h2>
+
+    <p>Eight international codes and standards govern the QPLANT cryogenic helium system design, manufacture, testing, and operation.</p>
+    <table><thead><tr><th>Code</th><th>Title</th><th>Sections</th><th>Scope</th></tr></thead>
+    <tbody><tr><td><strong>ASME B31.3</strong></td><td>Process Piping</td><td>5</td><td>Design, materials, fabrication, examination, testing of process piping systems…</td></tr><tr><td><strong>ASME BPE</strong></td><td>Bioprocessing Equipment (Ultra-Clean Systems)</td><td>2</td><td>Surface finish, welding, and documentation requirements for high-purity process …</td></tr><tr><td><strong>EN 13185:2001</strong></td><td>Non-destructive testing — Leak testing — Tracer gas method</td><td>2</td><td>Leak detection methodology for pressurized and vacuum systems…</td></tr><tr><td><strong>PED 2014/68/EU</strong></td><td>Pressure Equipment Directive</td><td>4</td><td>Placing on the market and putting into service of pressure equipment and assembl…</td></tr><tr><td><strong>ATEX 2014/34/EU</strong></td><td>Equipment for Explosive Atmospheres</td><td>1</td><td>Equipment and protective systems intended for use in potentially explosive atmos…</td></tr><tr><td><strong>EN 13480</strong></td><td>Metallic Industrial Piping</td><td>3</td><td>Design, fabrication, installation, and testing of metallic piping systems…</td></tr><tr><td><strong>ASTM A967</strong></td><td>Standard Specification for Chemical Passivation Treatments for Stainless Steel Parts</td><td>2</td><td>Passivation of stainless steel to remove free iron and enhance corrosion resista…</td></tr><tr><td><strong>ISO 5208</strong></td><td>Industrial Valves — Pressure Testing of Metallic Valves</td><td>2</td><td>Pressure testing procedures and acceptance criteria for industrial valves…</td></tr></tbody></table>
+    <h3>Lifecycle Integration</h3>
+    <p>Standards requirements are mapped across 8 lifecycle phases: Design → Procurement → Manufacture → FAT → Transport → SAT → Commissioning → Operation</p>
+    
+</div>
+<div class="slide cat-standards" data-title="ASME B31.3 — Process Piping">
+<h2>ASME B31.3 — Process Piping</h2>
+<p><em>Design, materials, fabrication, examination, testing of process piping systems</em></p><h3>§300 — Pressure Design of Components</h3><h4>302.2.2: Straight Pipe Under Internal Pressure</h4><div class="equation">t = (P × D) / (2 × (S × E + P × Y))</div><p><strong>Activities:</strong></p><ul><li>Calculate minimum wall thickness</li><li>Select pipe schedule ≥ t_min + corrosion allowance</li><li>Document design calculation</li></ul><p><strong>Deliverables:</strong></p><ul><li>Pressure design calculation sheet</li><li>Material specification (ASTM/EN designation)</li><li>Pipe schedule selection record</li></ul><p><span class="badge badge-design">Design</span></p><h4>304.1.2: Straight Pipe Under External Pressure</h4><div class="equation">Per ASME BPV Code Section VIII, Division 1, UG-28</div><p><strong>Activities:</strong></p><ul><li>Calculate critical collapse pressure</li><li>Verify wall thickness against external loads</li><li>Consider vacuum conditions for cryogenic service</li></ul><p><strong>Deliverables:</strong></p><ul><li>External pressure design calculation</li><li>Stiffener ring design (if required)</li></ul><p><span class="badge badge-design">Design</span></p><h4>304.3: Branch Connections</h4><p><strong>Activities:</strong></p><ul><li>Calculate reinforcement requirements</li><li>Select branch connection type</li><li>Document reinforcement calculation</li></ul><p><strong>Deliverables:</strong></p><ul><li>Branch connection design sheet</li><li>Reinforcement pad specification</li></ul><p><span class="badge badge-design">Design</span></p><h3>§323 — General Requirements for Materials</h3><h4>323.1: General Requirements</h4><p><strong>Activities:</strong></p><ul><li>Verify material suitability for service temperature</li><li>Confirm material listed in Table A-1</li><li>Obtain material test reports (MTR)</li></ul><p><strong>Deliverables:</strong></p><ul><li>Material selection report</li><li>MTR/EN 10204 3.1 certificates</li><li>Low temperature toughness test results</li></ul><p><span class="badge badge-design">Procurement</span></p><h4>323.2.2: Low Temperature Toughness Tests</h4><p><strong>Activities:</strong></p><ul><li>Perform Charpy V-notch tests at MDMT</li><li>Verify exemptions per Fig 323.2.2B</li><li>Document impact test results</li></ul><p><strong>Deliverables:</strong></p><ul><li>Impact test certificates</li><li>MDMT calculation record</li></ul><p><span class="badge badge-design">Procurement</span></p><h3>§328 — Welding</h3><h4>328.2: Welding Qualifications</h4><p><strong>Activities:</strong></p><ul><li>Qualify welding procedures (WPS) per ASME IX</li><li>Qualify welders/welding operators</li><li>Maintain qualification records</li></ul><p><strong>Deliverables:</strong></p><ul><li>WPS (Welding Procedure Specification)</li><li>PQR (Procedure Qualification Record)</li><li>WPQ (Welder Performance Qualification)</li></ul><p><span class="badge badge-design">Manufacture</span></p><h4>328.5: Weld Quality Acceptance</h4><p><strong>Activities:</strong></p><ul><li>Perform NDE per examination plan</li><li>Evaluate weld quality vs acceptance criteria</li><li>Document all NDE results</li></ul><p><strong>Deliverables:</strong></p><ul><li>Radiographic test reports</li><li>NDE summary report</li><li>Repair records (if applicable)</li></ul><p><span class="badge badge-design">Manufacture</span></p><h3>§345 — Examination</h3><h4>345.1: General</h4><p><strong>Activities:</strong></p><ul><li>Develop examination plan per piping class</li><li>Determine NDE extent (random vs 100%)</li><li>Select examination methods</li></ul><p><strong>Deliverables:</strong></p><ul><li>Inspection and Test Plan (ITP)</li><li>NDE procedure selection</li></ul><p><span class="badge badge-design">Manufacture</span></p><h4>345.2.1: Welding Procedure Specification (WPS)</h4><p><strong>Activities:</strong></p><ul><li>Develop WPS document</li><li>Perform procedure qualification test</li><li>Document PQR with mechanical test results</li></ul><p><strong>Deliverables:</strong></p><ul><li>WPS document per ASME IX</li><li>PQR with tensile, bend, impact results</li><li>Welder qualification certificates</li></ul><p><span class="badge badge-design">Manufacture</span></p><h4>345.4: Types of Examination</h4><p><strong>Activities:</strong></p><ul><li>Select NDE methods per service category</li><li>Qualify NDE personnel to SNT-TC-1A Level II/III</li><li>Perform examinations and record results</li></ul><p><strong>Deliverables:</strong></p><ul><li>NDE reports per method</li><li>NDE personnel qualification records</li></ul><p><span class="badge badge-design">Manufacture</span></p>
+</div>
+<div class="slide cat-standards" data-title="ASME BPE — Bioprocessing Equipment (Ultra-Clean Systems)">
+<h2>ASME BPE — Bioprocessing Equipment (Ultra-Clean Systems)</h2>
+<p><em>Surface finish, welding, and documentation requirements for high-purity process systems</em></p><h3>§SD — Surface Finish (Design)</h3><h4>SD-2.1: Internal Surface Finish Requirements</h4><p><strong>Activities:</strong></p><ul><li>Specify surface finish on drawings</li><li>Verify Ra via profilometer</li><li>Document EP process parameters</li></ul><p><strong>Deliverables:</strong></p><ul><li>Surface finish specification</li><li>Profilometer measurement reports</li><li>EP process certification</li></ul><p><span class="badge badge-design">Design</span></p><h4>SD-3.4.2: Electropolish Requirements</h4><p><strong>Activities:</strong></p><ul><li>Select EP vendor with BPE experience</li><li>Specify EP parameters (current density, electrolyte, time)</li><li>Measure Ra before and after EP</li></ul><p><strong>Deliverables:</strong></p><ul><li>EP procedure</li><li>Before/after Ra measurements</li><li>Visual inspection records</li></ul><p><span class="badge badge-design">Manufacture</span></p><h3>§MJ — Joining (Welding)</h3><h4>MJ-3.1: Orbital Welding Requirements</h4><p><strong>Activities:</strong></p><ul><li>Develop orbital WPS per ASME IX + BPE supplementary</li><li>Qualify welds with ID inspection (borescope)</li><li>Purge with inert gas (Ar or He) to <5 ppm O₂</li></ul><p><strong>Deliverables:</strong></p><ul><li>Orbital WPS</li><li>Weld coupon inspection reports (borescope photos)</li><li>Purge gas oxygen records</li></ul><p><span class="badge badge-design">Manufacture</span></p><h4>MJ-3.3: Weld Acceptance Criteria</h4><p><strong>Activities:</strong></p><ul><li>Inspect 100% of welds by borescope</li><li>Compare to BPE weld acceptance color chart</li><li>Document all weld inspections</li></ul><p><strong>Deliverables:</strong></p><ul><li>Borescope inspection reports with photos</li><li>Weld log with accept/reject decisions</li><li>Non-conformance reports (if any)</li></ul><p><span class="badge badge-design">Manufacture</span></p>
+</div>
+<div class="slide cat-standards" data-title="EN 13185:2001 — Non-destructive testing — Leak testing — Tracer gas method">
+<h2>EN 13185:2001 — Non-destructive testing — Leak testing — Tracer gas method</h2>
+<p><em>Leak detection methodology for pressurized and vacuum systems</em></p><h3>§6 — Leak Detection Methods</h3><h4>6.2: Helium Mass Spectrometer Leak Detection</h4><h4>6.3: Vacuum Method (Bombing/Accumulation)</h4><h3>§7 — Test Report Requirements</h3>
+</div>
+<div class="slide cat-standards" data-title="PED 2014/68/EU — Pressure Equipment Directive">
+<h2>PED 2014/68/EU — Pressure Equipment Directive</h2>
+<p><em>Placing on the market and putting into service of pressure equipment and assemblies with maximum allowable pressure PS > 0.5 bar</em></p><h3>§4 — Classification of Pressure Equipment</h3><h4>Table 1: Gases — Group 2 (Helium, non-dangerous)</h4><h4>Table 6: Piping — Gases — Group 2</h4><h3>§5 — Essential Safety Requirements (ESR)</h3><h4>2.2.1: Design for adequate strength</h4><h4>2.2.3: Means of examination</h4><h4>2.3: Manufacturing</h4><h3>§14 — Conformity Assessment</h3><h3>§15 — CE Marking</h3>
+</div>
+<div class="slide cat-standards" data-title="ATEX 2014/34/EU — Equipment for Explosive Atmospheres">
+<h2>ATEX 2014/34/EU — Equipment for Explosive Atmospheres</h2>
+<p><em>Equipment and protective systems intended for use in potentially explosive atmospheres</em></p><h3>§1 — Scope and Classification</h3><h4>Article 2: Equipment Categories</h4><p><strong>Activities:</strong></p><ul><li>Perform ATEX zone classification</li><li>Determine equipment category per zone</li><li>Select certified equipment</li></ul><p><strong>Deliverables:</strong></p><ul><li>ATEX zone classification drawing</li><li>Equipment selection justification</li><li>Ex certificates for each component</li></ul><p><span class="badge badge-design">Design</span></p>
+</div>
+<div class="slide cat-standards" data-title="EN 13480 — Metallic Industrial Piping">
+<h2>EN 13480 — Metallic Industrial Piping</h2>
+<p><em>Design, fabrication, installation, and testing of metallic piping systems</em></p><h3>§Part 3 — Design and Calculation</h3><h4>6.1: Wall Thickness Calculation</h4><div class="equation">e_n = e_0 + c_1 + c_2</div><p><strong>Activities:</strong></p><ul><li>Calculate pressure thickness per Part 3</li><li>Add corrosion allowance</li><li>Add manufacturing tolerance</li><li>Verify against selected pipe specification</li></ul><p><strong>Deliverables:</strong></p><ul><li>Pipe wall thickness calculation</li><li>Material data sheet</li></ul><p><span class="badge badge-design">Design</span></p><h3>§Part 4 — Fabrication and Installation</h3><h4>7: Welding</h4><p><strong>Activities:</strong></p><ul><li>Qualify procedures per EN ISO 15614</li><li>Qualify welders per EN ISO 9606</li><li>Perform NDE per Part 5</li></ul><p><strong>Deliverables:</strong></p><ul><li>WPQR (Welding Procedure Qualification Record)</li><li>Welder certificates</li><li>NDE reports</li></ul><p><span class="badge badge-design">Manufacture</span></p><h3>§Part 5 — Inspection and Testing</h3><h4>9: Pressure Testing</h4><p><strong>Activities:</strong></p><ul><li>Perform hydrostatic or pneumatic test</li><li>Document test conditions and results</li><li>Issue test certificate</li></ul><p><strong>Deliverables:</strong></p><ul><li>Pressure test procedure</li><li>Pressure test certificate</li><li>Pressure recorder chart</li></ul><p><span class="badge badge-design">FAT</span></p>
+</div>
+<div class="slide cat-standards" data-title="RTM → Standards Compliance Matrix">
+<h2>RTM → Standards Compliance Matrix</h2>
+
+    <p>Mapping of each RTM requirement to the applicable code, section, test method, acceptance criteria, and deliverable.</p>
+    <table id="tblCompliance"><thead><tr><th>RTM</th><th>Requirement</th><th>Standard</th><th>Section</th><th>Test Method</th><th>Acceptance</th><th>Deliverable</th><th>Phase</th></tr></thead><tbody><tr><td>RTM-047</td><td>Max leak rate to ambient/INVAC: 1×10⁻⁹ mbar·l/s</td><td>EN 13185:2001</td><td>6.2</td><td>Helium mass spectrometer (vacuum method)</td><td><1×10⁻⁹ mbar·l/s per valve</td><td>Individual valve leak test certificate</td><td>FAT</td></tr><tr><td>RTM-048</td><td>Max 1 Nm³/day system helium loss; system leak rate <1×10⁻⁵ mbar·l/s</td><td>EN 13185:2001</td><td>6.2 + 6.3</td><td>He mass spectrometer + pressure hold test</td><td><1×10⁻⁵ mbar·l/s total system</td><td>System leak test report</td><td>FAT/SAT</td></tr><tr><td>RTM-050</td><td>Valve leak rates per Table 6 (seat: 1×10⁻⁴, ambient: 1×10⁻⁹)</td><td>ISO 5208 + EN 13185</td><td>ISO 5208 §6.3.2 + EN 13185 §6.2</td><td>Gas seat test (ISO 5208) + He MSLD (EN 13185)</td><td>Seat: <1×10⁻⁴ mbar·l/s; Ambient: <1×10⁻⁹ mbar·l/s</td><td>Individual valve certificates (seat + shell)</td><td>FAT</td></tr><tr><td>RTM-053</td><td>Functional test under simulated LOOP conditions</td><td>EN 13185:2001</td><td>6.2 (sniffing method)</td><td>Pressure hold + He sniffing under thermal cycling</td><td>System functional per specification</td><td>SAT report with thermal cycle data</td><td>SAT</td></tr><tr><td>RTM-060</td><td>Manholes/inspection ports for internal examination</td><td>PED 2014/68/EU</td><td>Annex I, ESR 2.2.3</td><td>Design review + dimensional inspection</td><td>Adequate access for internal examination per ESR</td><td>GA drawings showing manhole locations, dimensional report</td><td>Design</td></tr><tr><td>RTM-061</td><td>Surface treatment — passivation per ASTM A967</td><td>ASTM A967</td><td>6.2 (citric acid) + 7.4 (ferroxyl test)</td><td>Ferroxyl test (free iron detection)</td><td>No blue staining within 15 seconds</td><td>Passivation certificate, ferroxyl test photos, material cert</td><td>Manufacture</td></tr><tr><td>RTM-062</td><td>Piping design for cryogenic helium service</td><td>ASME B31.3 + EN 13480</td><td>B31.3 §302.2.2 + EN 13480 Part 3 §6.1</td><td>Design calculation review</td><td>Wall thickness ≥ calculated minimum + allowances</td><td>Pipe design calculation package</td><td>Design</td></tr><tr><td>RTM-063</td><td>Storage vessels interconnected — pressure design</td><td>ASME B31.3 + PED 2014/68/EU</td><td>B31.3 §300 + PED Article 4</td><td>Hydrostatic test at 1.5× design pressure</td><td>No leakage, no permanent deformation at test pressure</td><td>Hydrostatic test report, PED classification</td><td>FAT</td></tr><tr><td>RTM-065</td><td>Measuring points per Table 10 — sensor specifications</td><td>IEC 61326 (EMC) + ISO 15649</td><td>Sensor accuracy and EMC compliance</td><td>Sensor calibration and EMC type test</td><td>±0.5% accuracy, EMC compliant</td><td>Calibration certificates, EMC type test reports</td><td>SAT</td></tr></tbody></table>
+    <div class="export-bar">
+        <button class="export-btn" onclick="exportCSV('tblCompliance','compliance_matrix.csv')">📥 Export CSV</button>
+    </div>
+    
+</div>
+<div class="slide cat-standards" data-title="Lifecycle Phase Standards Mapping">
+<h2>Lifecycle Phase Standards Mapping</h2>
+<p>Standards activities mapped to each project lifecycle phase.</p><table id="tblLifecycle"><thead><tr><th>phase</th><th>description</th></tr></thead><tbody><tr><td>Design</td><td>Detailed design, calculations, material selection, specification development</td></tr><tr><td>Procurement</td><td>Material ordering, vendor qualification, MTR collection</td></tr><tr><td>Manufacture</td><td>Fabrication, welding, NDE, surface treatment, assembly</td></tr><tr><td>FAT</td><td>Factory Acceptance Test at supplier facility — validate component/system performance</td></tr><tr><td>Transport</td><td>Packaging, shipping, preservation, receipt inspection</td></tr><tr><td>SAT</td><td>Site Acceptance Test — functional verification after installation</td></tr><tr><td>Commissioning</td><td>System start-up, performance verification, parameter tuning</td></tr><tr><td>Operation</td><td>Normal operation, maintenance, surveillance, periodic testing</td></tr></tbody></table><iframe class="plot-frame" src="visualizations_v3/chart_lifecycle_standards.html" loading="lazy"></iframe>
+</div>
+<div class="slide cat-procedures" data-title="FAT Procedure — Valve Leak Testing (EN 13185 + ISO 5208)">
+<h2>FAT Procedure — Valve Leak Testing (EN 13185 + ISO 5208)</h2>
+
+    <h3>1. Preparation</h3>
+    <ol class="procedure">
+        <li>Install valve in test fixture with known volume calibration</li>
+        <li>Verify helium mass spectrometer calibration (standard leak ±10%, cert &lt;1 year old, NIST-traceable)</li>
+        <li>Evacuate test volume to &lt;1×10⁻³ mbar</li>
+        <li>Record ambient temperature (±2°C stability required)</li>
+        <li>Document valve serial number, manufacturer, model, DN, PN</li>
+    </ol>
+    <h3>2. Test Execution</h3>
+    <ol class="procedure">
+        <li>Pressurize upstream side with helium to operating pressure (specified in ITP)</li>
+        <li>Wait stabilisation period (minimum 5 minutes for thermal equilibrium)</li>
+        <li>Detect helium on downstream (vacuum) side with mass spectrometer</li>
+        <li>Record leak rate in mbar·l/s — minimum 60 seconds continuous measurement</li>
+        <li>Repeat measurement 3 times, report average</li>
+    </ol>
+    <h3>3. Acceptance Criteria (RTM Table 6)</h3>
+    <table>
+        <tr><th>Type</th><th>Limit (mbar·l/s)</th><th>Standard</th></tr>
+        <tr><td>Leak to vacuum (process boundary)</td><td>&lt;1×10⁻⁸</td><td>EN 13185 §6.2</td></tr>
+        <tr><td>Leak to ambient (external)</td><td>&lt;1×10⁻⁹</td><td>EN 13185 §6.2</td></tr>
+        <tr><td>Leak across valve seat (internal)</td><td>&lt;1×10⁻⁴</td><td>ISO 5208 §6.3.2</td></tr>
+        <tr><td>System total</td><td>&lt;1×10⁻⁵</td><td>RTM-048</td></tr>
+    </table>
+    <h3>4. Deliverables</h3>
+    <ul>
+        <li>Leak test data sheet (valve S/N, date, operator, 3× measurements, average, pass/fail)</li>
+        <li>Calibration certificate for mass spectrometer + standard leak</li>
+        <li>Photo evidence of test setup</li>
+        <li>Accept/Reject decision signed by QA inspector</li>
+    </ul>
+    
+</div>
+<div class="slide cat-procedures" data-title="SAT Procedure — System-Level Leak Test">
+<h2>SAT Procedure — System-Level Leak Test</h2>
+
+    <h3>Scope</h3>
+    <p>Entire QPLANT cryogenic helium system after installation — validate RTM-048 and RTM-053.</p>
+    <h3>Method: Pressure Hold Test (24-hour)</h3>
+    <ol class="procedure">
+        <li>Isolate system section under test</li>
+        <li>Pressurize with helium to operating pressure</li>
+        <li>Record initial pressure (P₁) and temperature (T₁)</li>
+        <li>Monitor pressure and temperature continuously for 24 hours (minimum)</li>
+        <li>Record final pressure (P₂) and temperature (T₂)</li>
+        <li>Calculate leak rate: Q = (ΔP × V) / Δt, corrected for temperature variation</li>
+    </ol>
+    <div class="equation">Q_leak = (P₁ - P₂) × V / Δt &nbsp;&nbsp; [mbar·l/s]<br>
+    Temperature correction: Q_corr = Q_leak × (T₁/T₂)</div>
+    <h3>Acceptance</h3>
+    <table>
+        <tr><th>Parameter</th><th>Requirement</th><th>Source</th></tr>
+        <tr><td>Total system leak rate</td><td>&lt;1×10⁻⁵ mbar·l/s</td><td>RTM-048</td></tr>
+        <tr><td>Functional test under LOOP</td><td>System operates per specification</td><td>RTM-053</td></tr>
+        <tr><td>He loss rate</td><td>&lt;1 Nm³/day</td><td>RTM-048</td></tr>
+    </table>
+    <h3>Deliverables</h3>
+    <ul>
+        <li>Pressure-time chart (continuous recording, PDF export)</li>
+        <li>Temperature log (to exclude thermal drift effects)</li>
+        <li>Leak rate calculation sheet</li>
+        <li>Acceptance sign-off (Project Manager + QA)</li>
+        <li>Punch list of items requiring re-test (if any)</li>
+    </ul>
+    
+</div>
+<div class="slide cat-standards" data-title="PED 2014/68/EU — Compliance Workflow">
+<h2>PED 2014/68/EU — Compliance Workflow</h2>
+
+    <h3>Step 1: Classification (Article 4)</h3>
+    <table>
+        <tr><th>Component Example</th><th>PS (bar)</th><th>V (L)</th><th>PS×V</th><th>Category</th><th>Module</th></tr>
+        <tr><td>WSH Cold Storage</td><td>20</td><td>5,000</td><td>100,000</td><td>IV</td><td>B+D or H1</td></tr>
+        <tr><td>Buffer Tank</td><td>12</td><td>500</td><td>6,000</td><td>IV</td><td>B+D or H1</td></tr>
+        <tr><td>Small Accumulator</td><td>5</td><td>50</td><td>250</td><td>II</td><td>A2 or D1</td></tr>
+        <tr><td>Instrumentation Line</td><td>12</td><td>2</td><td>24</td><td>SEP</td><td>None</td></tr>
+    </table>
+    <h3>Step 2: Module Selection (Annex III)</h3>
+    <ul>
+        <li>Category IV → Module B (EU-type examination) + D (QA of production) <strong>OR</strong> Module H1 (Full QA with design examination)</li>
+        <li>Category II → Module A2 (internal production control + supervised testing) or D1/E1</li>
+    </ul>
+    <h3>Step 3: Notified Body Engagement</h3>
+    <ol class="procedure">
+        <li>Select NB (e.g., NB 0051 — TÜV, or NB 0062 — Lloyd's)</li>
+        <li>Submit Technical File for design review</li>
+        <li>NB performs design examination (Module B/B1)</li>
+        <li>NB audits QA system (Module D/H1)</li>
+        <li>NB witnesses final inspection and testing</li>
+    </ol>
+    <h3>Step 4: Essential Safety Requirements (Annex I)</h3>
+    <table>
+        <tr><th>ESR</th><th>Requirement</th><th>QPLANT Relevance</th></tr>
+        <tr><td>2.2.3</td><td>Means of examination</td><td>Manholes per RTM-060</td></tr>
+        <tr><td>2.3</td><td>Allowable stress (SF ≥ 2.4 for austenitic SS)</td><td>Design calculations</td></tr>
+        <tr><td>2.8</td><td>Corrosion protection</td><td>Electropolish per ASTM A967</td></tr>
+        <tr><td>3.2</td><td>Permanent joining</td><td>Qualified WPS, NDE</td></tr>
+        <tr><td>7.3</td><td>Marking</td><td>CE + NB number on plate</td></tr>
+    </table>
+    <h3>Step 5: CE Marking</h3>
+    <ul>
+        <li>Affix CE mark + NB number (e.g., <strong>CE 0051</strong>)</li>
+        <li>Issue EU Declaration of Conformity (DoC)</li>
+        <li>Maintain Technical File for <strong>10 years</strong></li>
+    </ul>
+    
+</div>
+<div class="slide cat-leak" data-title="Extended Leak Rate Analysis (10⁻⁹ to 10⁻⁴)">
+<h2>Extended Leak Rate Analysis (10⁻⁹ to 10⁻⁴)</h2>
+
+    <p>Full 5-order-of-magnitude leak rate range showing helium mass loss at different temperatures.</p>
+    <iframe class="plot-frame" src="visualizations_v3/chart_leak_vs_loss_extended.html" loading="lazy"></iframe>
+    <p>Reference lines mark RTM-047 (ambient boundary), RTM-048 (system cap), and Table 6 (seat leakage).</p>
+    
+</div>
+<div class="slide cat-leak" data-title="Temperature Effect with Pressure Isolines">
+<h2>Temperature Effect with Pressure Isolines</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_temp_effect_pressure.html" loading="lazy"></iframe>
+    <p>Lower temperatures dramatically increase helium loss per unit leak rate due to higher gas density.</p>
+    
+</div>
+<div class="slide cat-leak" data-title="Internal vs External Leakage Comparison">
+<h2>Internal vs External Leakage Comparison</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_internal_vs_external.html" loading="lazy"></iframe>
+    <p>Internal (seat) leakage at 10⁻⁴ mbar·l/s produces ~100,000× more mass loss than external (ambient) leakage at 10⁻⁹ mbar·l/s.</p>
+    
+</div>
+<div class="slide cat-leak" data-title="Choked Flow Regime Map">
+<h2>Choked Flow Regime Map</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_choked_flow.html" loading="lazy"></iframe>
+    <div class="equation">Critical pressure ratio for He (γ=1.66): P_down/P_up &lt; 0.4881</div>
+    <p>At pressure ratios below the critical value, flow becomes sonic and leak rate no longer increases with differential pressure.</p>
+    
+</div>
+<div class="slide cat-leak" data-title="Helium Purity Dilution Over Time">
+<h2>Helium Purity Dilution Over Time</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_purity_dilution.html" loading="lazy"></iframe>
+    <p>Air ingress through leak paths dilutes helium purity. At 10⁻⁴ mbar·l/s total ingress, purity drops measurably within months.</p>
+    
+</div>
+<div class="slide cat-helium" data-title="Helium Thermophysical Properties Database">
+<h2>Helium Thermophysical Properties Database</h2>
+
+    <p>Properties at 18 evaluation points (6 temperatures × 3 pressures). Source: NIST REFPROP correlations for He-4.</p>
+    <iframe class="plot-frame" src="visualizations_v3/chart_helium_properties.html" loading="lazy"></iframe>
+    
+</div>
+<div class="slide cat-helium" data-title="Helium Compressibility Factor">
+<h2>Helium Compressibility Factor</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_compressibility.html" loading="lazy"></iframe>
+    <p>At high temperatures (≥50K) and moderate pressures, helium behaves very close to an ideal gas (Z≈1). 
+    At 4K and 12 bar (supercritical), Z drops to ~0.62 — significant deviation requiring real-gas corrections.</p>
+    
+</div>
+<div class="slide cat-helium" data-title="Helium Properties Data Table">
+<h2>Helium Properties Data Table</h2>
+
+    <table id="tblHelium"><thead><tr><th>T (K)</th><th>P (bar)</th><th>ρ (kg/m³)</th><th>μ (Pa·s)</th><th>k (W/m·K)</th><th>cp (J/kg·K)</th><th>a (m/s)</th><th>Z</th></tr></thead><tbody><tr><td>4.000</td><td>1.000</td><td>4.856</td><td>1.300e-06</td><td>0.010</td><td>5193.000</td><td>131.000</td><td>0.980</td></tr><tr><td>4.000</td><td>5.000</td><td>32.500</td><td>1.500e-06</td><td>0.012</td><td>12000.000</td><td>120.000</td><td>0.780</td></tr><tr><td>4.000</td><td>12.000</td><td>65.000</td><td>2.100e-06</td><td>0.018</td><td>8500.000</td><td>160.000</td><td>0.620</td></tr><tr><td>10.000</td><td>1.000</td><td>1.940</td><td>2.000e-06</td><td>0.015</td><td>5193.000</td><td>207.000</td><td>1.002</td></tr><tr><td>10.000</td><td>5.000</td><td>9.800</td><td>2.100e-06</td><td>0.016</td><td>5250.000</td><td>205.000</td><td>0.990</td></tr><tr><td>10.000</td><td>12.000</td><td>23.900</td><td>2.300e-06</td><td>0.018</td><td>5500.000</td><td>200.000</td><td>0.960</td></tr><tr><td>20.000</td><td>1.000</td><td>0.970</td><td>3.300e-06</td><td>0.025</td><td>5193.000</td><td>293.000</td><td>1.001</td></tr><tr><td>20.000</td><td>5.000</td><td>4.880</td><td>3.350e-06</td><td>0.026</td><td>5200.000</td><td>292.000</td><td>1.003</td></tr><tr><td>20.000</td><td>12.000</td><td>11.800</td><td>3.500e-06</td><td>0.027</td><td>5250.000</td><td>289.000</td><td>1.010</td></tr><tr><td>50.000</td><td>1.000</td><td>0.387</td><td>5.800e-06</td><td>0.044</td><td>5193.000</td><td>464.000</td><td>1.000</td></tr><tr><td>50.000</td><td>5.000</td><td>1.940</td><td>5.850e-06</td><td>0.045</td><td>5193.000</td><td>463.000</td><td>1.002</td></tr><tr><td>50.000</td><td>12.000</td><td>4.660</td><td>5.950e-06</td><td>0.046</td><td>5200.000</td><td>462.000</td><td>1.005</td></tr><tr><td>80.000</td><td>1.000</td><td>0.242</td><td>8.100e-06</td><td>0.062</td><td>5193.000</td><td>586.000</td><td>1.000</td></tr><tr><td>80.000</td><td>5.000</td><td>1.210</td><td>8.150e-06</td><td>0.063</td><td>5193.000</td><td>586.000</td><td>1.001</td></tr><tr><td>80.000</td><td>12.000</td><td>2.910</td><td>8.250e-06</td><td>0.064</td><td>5195.000</td><td>585.000</td><td>1.003</td></tr><tr><td>300.000</td><td>1.000</td><td>0.161</td><td>1.960e-05</td><td>0.152</td><td>5193.000</td><td>1020.000</td><td>1.000</td></tr><tr><td>300.000</td><td>5.000</td><td>0.808</td><td>1.970e-05</td><td>0.153</td><td>5193.000</td><td>1020.000</td><td>1.000</td></tr><tr><td>300.000</td><td>12.000</td><td>1.940</td><td>1.990e-05</td><td>0.154</td><td>5194.000</td><td>1019.000</td><td>1.001</td></tr></tbody></table>
+    <div class="export-bar">
+        <button class="export-btn" onclick="exportCSV('tblHelium','helium_properties.csv')">📥 Export CSV</button>
+    </div>
+    
+</div>
+<div class="slide cat-stats" data-title="Monte Carlo Analysis (n=10,000, seed=42)">
+<h2>Monte Carlo Analysis (n=10,000, seed=42)</h2>
+
+    <div class="kpi-row">
+        <div class="kpi"><div class="value">€55,041</div><div class="label">Mean Annual Cost</div></div>
+        <div class="kpi"><div class="value">€53,326</div><div class="label">Median</div></div>
+        <div class="kpi"><div class="value">€23,570</div><div class="label">Std Dev</div></div>
+        <div class="kpi"><div class="value">€18,224</div><div class="label">P5</div></div>
+        <div class="kpi"><div class="value">€96,172</div><div class="label">P95</div></div>
+    </div>
+    <iframe class="plot-frame" src="visualizations_v3/chart_mc_histogram.html" loading="lazy"></iframe>
+    <h3>Input Distributions</h3>
+    <table>
+        <tr><th>Parameter</th><th>Distribution</th><th>Parameters</th></tr>
+        <tr><td>Helium Price</td><td>Triangular</td><td>min=€117, mode=€120, max=€300 /kg</td></tr>
+        <tr><td>Valve Failure Rate</td><td>|Normal|</td><td>μ=0.02, σ=0.008 /valve/yr</td></tr>
+        <tr><td>MTTR</td><td>Lognormal</td><td>μ_ln=ln(4), σ_ln=0.5 hours</td></tr>
+        <tr><td>Leak Rate Class</td><td>Uniform discrete</td><td>10⁻⁹ to 10⁻⁵ (5 classes)</td></tr>
+        <tr><td>Material</td><td>Bernoulli</td><td>p=0.5 (HDPE/UHMWPE)</td></tr>
+        <tr><td>Valve Count</td><td>N(410, 30), clipped [300,520]</td><td></td></tr>
+    </table>
+    
+</div>
+<div class="slide cat-stats" data-title="Monte Carlo — Cost Component Analysis">
+<h2>Monte Carlo — Cost Component Analysis</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_mc_scatter.html" loading="lazy"></iframe>
+    <iframe class="plot-frame" src="visualizations_v3/chart_cost_breakdown_box.html" loading="lazy"></iframe>
+    
+</div>
+<div class="slide cat-stats" data-title="Sensitivity Analysis (Variance-Based)">
+<h2>Sensitivity Analysis (Variance-Based)</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_sensitivity_bar.html" loading="lazy"></iframe>
+    <h3>Interpretation</h3>
+    <p>First-order sensitivity indices show which input parameters contribute most to the variance in total annual cost.
+    Higher values indicate stronger influence on cost uncertainty.</p>
+    <h3>Covariance Notes</h3>
+    <ul>
+        <li>Helium price and geopolitical risk are correlated in practice (not modelled as independent here for transparency)</li>
+        <li>Leak rate class is the dominant technical driver — selecting tighter classes reduces cost variance</li>
+        <li>Material choice has modest impact (~30% CAPEX difference HDPE vs UHMWPE)</li>
+    </ul>
+    
+</div>
+<div class="slide cat-stats" data-title="PCA — Scree Plot & Explained Variance">
+<h2>PCA — Scree Plot & Explained Variance</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_scree.html" loading="lazy"></iframe>
+    <h3>Component Summary</h3>
+    <table>
+        <tr><th>Component</th><th>Eigenvalue</th><th>Explained (%)</th><th>Cumulative (%)</th></tr>
+    <tr><td>PC1</td><td>1.030</td><td>17.2%</td><td>17.2%</td></tr><tr><td>PC2</td><td>1.015</td><td>16.9%</td><td>34.1%</td></tr><tr><td>PC3</td><td>1.010</td><td>16.8%</td><td>50.9%</td></tr><tr><td>PC4</td><td>1.003</td><td>16.7%</td><td>67.6%</td></tr><tr><td>PC5</td><td>0.987</td><td>16.5%</td><td>84.1%</td></tr><tr><td>PC6</td><td>0.956</td><td>15.9%</td><td>100.0%</td></tr></table>
+    <p>The first 3 principal components explain the majority of variance in the 6-dimensional input space.</p>
+    
+</div>
+<div class="slide cat-stats" data-title="PCA — Biplot (PC1 vs PC2)">
+<h2>PCA — Biplot (PC1 vs PC2)</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_biplot.html" loading="lazy"></iframe>
+    <h3>Variable Loadings</h3>
+    <table id="tblLoadings"><thead><tr><th>Variable</th><th>PC1</th><th>PC2</th><th>PC3</th></tr></thead><tbody><tr><td>he_price_eur_kg</td><td>0.605</td><td>-0.431</td><td>-0.230</td></tr><tr><td>valve_failure_rate</td><td>0.416</td><td>0.432</td><td>0.210</td></tr><tr><td>mttr_hours</td><td>-0.029</td><td>-0.493</td><td>-0.553</td></tr><tr><td>leak_class_idx</td><td>-0.185</td><td>0.423</td><td>-0.511</td></tr><tr><td>material_uhmwpe</td><td>0.328</td><td>0.454</td><td>-0.540</td></tr><tr><td>valve_count</td><td>0.564</td><td>-0.006</td><td>0.209</td></tr></tbody></table>
+    <p>Red arrows show how each input variable projects onto the first two principal components. 
+    Variables pointing in similar directions are correlated; orthogonal variables are independent.</p>
+    
+</div>
+<div class="slide cat-stats" data-title="Multi-Factor Correlation Heatmap">
+<h2>Multi-Factor Correlation Heatmap</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_correlation_heatmap.html" loading="lazy"></iframe>
+    <p>Pearson correlation coefficients between all input parameters and cost outputs.
+    Red = positive correlation, Blue = negative correlation.</p>
+    <h3>Key Observations</h3>
+    <ul>
+        <li>Leak class index is strongly correlated with He loss cost (by construction)</li>
+        <li>Valve count correlates positively with both He loss and maintenance costs</li>
+        <li>Material choice has weak correlation with total cost (30% CAPEX difference is modest)</li>
+    </ul>
+    
+</div>
+<div class="slide cat-stats" data-title="Valve Fleet Size Sensitivity">
+<h2>Valve Fleet Size Sensitivity</h2>
+
+    <iframe class="plot-frame" src="visualizations_v3/chart_valve_fleet_sensitivity.html" loading="lazy"></iframe>
+    <p>Linear relationship between valve count and total helium loss / annual cost, at fixed leak rate class.</p>
+    
+</div>
+<div class="slide cat-leak" data-title="Full Conversion Grid (10⁻⁹ to 10⁻⁴)">
+<h2>Full Conversion Grid (10⁻⁹ to 10⁻⁴)</h2>
+
+    <p>72 evaluation points: 6 leak rates × 4 temperatures × 3 pressures</p>
+    <table id="tblGrid"><thead><tr><th>Leak Rate (mbar·l/s)</th><th>T (K)</th><th>P (bar)</th><th>Mass Loss (g/yr)</th><th>Choked?</th></tr></thead><tbody><tr><td>1.000e-09</td><td>4</td><td>1</td><td>3.798e-04</td><td>No</td></tr><tr><td>1.000e-09</td><td>4</td><td>5</td><td>0.002</td><td>Yes</td></tr><tr><td>1.000e-09</td><td>4</td><td>12</td><td>0.005</td><td>Yes</td></tr><tr><td>1.000e-09</td><td>20</td><td>1</td><td>7.596e-05</td><td>No</td></tr><tr><td>1.000e-09</td><td>20</td><td>5</td><td>3.798e-04</td><td>Yes</td></tr><tr><td>1.000e-09</td><td>20</td><td>12</td><td>9.115e-04</td><td>Yes</td></tr><tr><td>1.000e-09</td><td>80</td><td>1</td><td>1.899e-05</td><td>No</td></tr><tr><td>1.000e-09</td><td>80</td><td>5</td><td>9.495e-05</td><td>Yes</td></tr><tr><td>1.000e-09</td><td>80</td><td>12</td><td>2.279e-04</td><td>Yes</td></tr><tr><td>1.000e-09</td><td>300</td><td>1</td><td>5.064e-06</td><td>No</td></tr><tr><td>1.000e-09</td><td>300</td><td>5</td><td>2.532e-05</td><td>Yes</td></tr><tr><td>1.000e-09</td><td>300</td><td>12</td><td>6.077e-05</td><td>Yes</td></tr><tr><td>1.000e-08</td><td>4</td><td>1</td><td>0.004</td><td>No</td></tr><tr><td>1.000e-08</td><td>4</td><td>5</td><td>0.019</td><td>Yes</td></tr><tr><td>1.000e-08</td><td>4</td><td>12</td><td>0.046</td><td>Yes</td></tr><tr><td>1.000e-08</td><td>20</td><td>1</td><td>7.596e-04</td><td>No</td></tr><tr><td>1.000e-08</td><td>20</td><td>5</td><td>0.004</td><td>Yes</td></tr><tr><td>1.000e-08</td><td>20</td><td>12</td><td>0.009</td><td>Yes</td></tr><tr><td>1.000e-08</td><td>80</td><td>1</td><td>1.899e-04</td><td>No</td></tr><tr><td>1.000e-08</td><td>80</td><td>5</td><td>9.495e-04</td><td>Yes</td></tr><tr><td>1.000e-08</td><td>80</td><td>12</td><td>0.002</td><td>Yes</td></tr><tr><td>1.000e-08</td><td>300</td><td>1</td><td>5.064e-05</td><td>No</td></tr><tr><td>1.000e-08</td><td>300</td><td>5</td><td>2.532e-04</td><td>Yes</td></tr><tr><td>1.000e-08</td><td>300</td><td>12</td><td>6.077e-04</td><td>Yes</td></tr><tr><td>1.000e-07</td><td>4</td><td>1</td><td>0.038</td><td>No</td></tr><tr><td>1.000e-07</td><td>4</td><td>5</td><td>0.190</td><td>Yes</td></tr><tr><td>1.000e-07</td><td>4</td><td>12</td><td>0.456</td><td>Yes</td></tr><tr><td>1.000e-07</td><td>20</td><td>1</td><td>0.008</td><td>No</td></tr><tr><td>1.000e-07</td><td>20</td><td>5</td><td>0.038</td><td>Yes</td></tr><tr><td>1.000e-07</td><td>20</td><td>12</td><td>0.091</td><td>Yes</td></tr><tr><td>1.000e-07</td><td>80</td><td>1</td><td>0.002</td><td>No</td></tr><tr><td>1.000e-07</td><td>80</td><td>5</td><td>0.009</td><td>Yes</td></tr><tr><td>1.000e-07</td><td>80</td><td>12</td><td>0.023</td><td>Yes</td></tr><tr><td>1.000e-07</td><td>300</td><td>1</td><td>5.064e-04</td><td>No</td></tr><tr><td>1.000e-07</td><td>300</td><td>5</td><td>0.003</td><td>Yes</td></tr><tr><td>1.000e-07</td><td>300</td><td>12</td><td>0.006</td><td>Yes</td></tr><tr><td>1.000e-06</td><td>4</td><td>1</td><td>0.380</td><td>No</td></tr><tr><td>1.000e-06</td><td>4</td><td>5</td><td>1.899</td><td>Yes</td></tr><tr><td>1.000e-06</td><td>4</td><td>12</td><td>4.558</td><td>Yes</td></tr><tr><td>1.000e-06</td><td>20</td><td>1</td><td>0.076</td><td>No</td></tr><tr><td>1.000e-06</td><td>20</td><td>5</td><td>0.380</td><td>Yes</td></tr><tr><td>1.000e-06</td><td>20</td><td>12</td><td>0.912</td><td>Yes</td></tr><tr><td>1.000e-06</td><td>80</td><td>1</td><td>0.019</td><td>No</td></tr><tr><td>1.000e-06</td><td>80</td><td>5</td><td>0.095</td><td>Yes</td></tr><tr><td>1.000e-06</td><td>80</td><td>12</td><td>0.228</td><td>Yes</td></tr><tr><td>1.000e-06</td><td>300</td><td>1</td><td>0.005</td><td>No</td></tr><tr><td>1.000e-06</td><td>300</td><td>5</td><td>0.025</td><td>Yes</td></tr><tr><td>1.000e-06</td><td>300</td><td>12</td><td>0.061</td><td>Yes</td></tr><tr><td>1.000e-05</td><td>4</td><td>1</td><td>3.798</td><td>No</td></tr><tr><td>1.000e-05</td><td>4</td><td>5</td><td>18.990</td><td>Yes</td></tr><tr><td>1.000e-05</td><td>4</td><td>12</td><td>45.576</td><td>Yes</td></tr><tr><td>1.000e-05</td><td>20</td><td>1</td><td>0.760</td><td>No</td></tr><tr><td>1.000e-05</td><td>20</td><td>5</td><td>3.798</td><td>Yes</td></tr><tr><td>1.000e-05</td><td>20</td><td>12</td><td>9.115</td><td>Yes</td></tr><tr><td>1.000e-05</td><td>80</td><td>1</td><td>0.190</td><td>No</td></tr><tr><td>1.000e-05</td><td>80</td><td>5</td><td>0.949</td><td>Yes</td></tr><tr><td>1.000e-05</td><td>80</td><td>12</td><td>2.279</td><td>Yes</td></tr><tr><td>1.000e-05</td><td>300</td><td>1</td><td>0.051</td><td>No</td></tr><tr><td>1.000e-05</td><td>300</td><td>5</td><td>0.253</td><td>Yes</td></tr><tr><td>1.000e-05</td><td>300</td><td>12</td><td>0.608</td><td>Yes</td></tr><tr><td>1.000e-04</td><td>4</td><td>1</td><td>37.980</td><td>No</td></tr><tr><td>1.000e-04</td><td>4</td><td>5</td><td>189.899</td><td>Yes</td></tr><tr><td>1.000e-04</td><td>4</td><td>12</td><td>455.757</td><td>Yes</td></tr><tr><td>1.000e-04</td><td>20</td><td>1</td><td>7.596</td><td>No</td></tr><tr><td>1.000e-04</td><td>20</td><td>5</td><td>37.980</td><td>Yes</td></tr><tr><td>1.000e-04</td><td>20</td><td>12</td><td>91.151</td><td>Yes</td></tr><tr><td>1.000e-04</td><td>80</td><td>1</td><td>1.899</td><td>No</td></tr><tr><td>1.000e-04</td><td>80</td><td>5</td><td>9.495</td><td>Yes</td></tr><tr><td>1.000e-04</td><td>80</td><td>12</td><td>22.788</td><td>Yes</td></tr><tr><td>1.000e-04</td><td>300</td><td>1</td><td>0.506</td><td>No</td></tr><tr><td>1.000e-04</td><td>300</td><td>5</td><td>2.532</td><td>Yes</td></tr><tr><td>1.000e-04</td><td>300</td><td>12</td><td>6.077</td><td>Yes</td></tr></tbody></table>
+    <div class="export-bar">
+        <button class="export-btn" onclick="exportCSV('tblGrid','conversion_grid.csv')">📥 Export CSV</button>
+    </div>
+    
+</div>
+<div class="slide cat-stats" data-title="Statistical Analysis Summary">
+<h2>Statistical Analysis Summary</h2>
+
+    <div class="kpi-row">
+        <div class="kpi"><div class="value">10,000</div><div class="label">MC Iterations</div></div>
+        <div class="kpi"><div class="value">42</div><div class="label">RNG Seed</div></div>
+        <div class="kpi"><div class="value">6</div><div class="label">PCA Dimensions</div></div>
+        <div class="kpi"><div class="value">51%</div><div class="label">PC1-3 Var Explained</div></div>
+    </div>
+    <h3>Monte Carlo Summary</h3>
+    <table>
+        <tr><th>Statistic</th><th>Value</th></tr>
+        <tr><td>Mean</td><td>€55,041</td></tr>
+        <tr><td>Median</td><td>€53,326</td></tr>
+        <tr><td>Std Dev</td><td>€23,570</td></tr>
+        <tr><td>5th Percentile</td><td>€18,224</td></tr>
+        <tr><td>95th Percentile</td><td>€96,172</td></tr>
+        <tr><td>Min</td><td>€71</td></tr>
+        <tr><td>Max</td><td>€162,571</td></tr>
+    </table>
+    <h3>Reproducibility</h3>
+    <p>All Monte Carlo runs use <code>numpy.random.default_rng(seed=42)</code>.
+    Results are deterministic — re-running with same seed produces identical outputs.</p>
+    
+</div>
+<div class="slide" data-title="Documentation Architecture & Export Capabilities">
+<h2>Documentation Architecture & Export Capabilities</h2>
+
+    <h3>Output Structure</h3>
+    <table>
+        <tr><th>Directory</th><th>Contents</th><th>Format</th></tr>
+        <tr><td><code>docs/index_v3.html</code></td><td>Master slide navigator (this file)</td><td>HTML</td></tr>
+        <tr><td><code>docs/standards/</code></td><td>FAT/SAT procedures, PED workflow, compliance matrix</td><td>MD, CSV, JSON</td></tr>
+        <tr><td><code>docs/statistical/</code></td><td>MC stats, PCA results, sensitivity indices</td><td>JSON</td></tr>
+        <tr><td><code>docs/visualizations_v3/</code></td><td>15 interactive Plotly charts</td><td>HTML</td></tr>
+        <tr><td><code>docs/tables_v3/</code></td><td>All data tables</td><td>CSV</td></tr>
+        <tr><td><code>docs/helium_properties/</code></td><td>He property database</td><td>JSON, CSV</td></tr>
+        <tr><td><code>docs/data_exports/</code></td><td>Full conversion grid, MC summary</td><td>CSV, JSON</td></tr>
+        <tr><td><code>data/</code></td><td>Source data (standards, He properties, scenarios)</td><td>JSON</td></tr>
+    </table>
+    <h3>Export Capabilities</h3>
+    <ul>
+        <li><strong>CSV:</strong> One-click download from any table (📥 button)</li>
+        <li><strong>JSON:</strong> Structured data for programmatic access</li>
+        <li><strong>PNG/SVG:</strong> Plotly charts export via chart toolbar (📷 icon)</li>
+        <li><strong>PDF:</strong> Print view (🖨️ button) optimised for A4 output</li>
+        <li><strong>Interactive HTML:</strong> Each chart is a standalone shareable file</li>
+    </ul>
+    <h3>Mathematical Rigour</h3>
+    <ul>
+        <li>All equations rendered with proper notation</li>
+        <li>Unit conversions documented step-by-step in calc_leak_rate.py</li>
+        <li>Monte Carlo reproducible via seed=42</li>
+        <li>PCA eigendecomposition from numpy.linalg.eigh</li>
+        <li>Sensitivity indices: variance-based (Sobol first-order approximation)</li>
+    </ul>
+    
+</div>
+<div class="slide" data-title="Conclusions & Recommendations">
+<h2>Conclusions & Recommendations</h2>
+
+    <h3>Standards Compliance</h3>
+    <ul>
+        <li>8 codes/standards mapped with specific subsections, equations, activities, and deliverables</li>
+        <li>9 RTM requirements traced to applicable standards with test methods and acceptance criteria</li>
+        <li>PED classification shows most QPLANT vessels fall in Category III/IV — Notified Body required</li>
+    </ul>
+    <h3>Leak Rate Analysis</h3>
+    <ul>
+        <li>Extended analysis covers full 10⁻⁹ to 10⁻⁴ range (5 orders of magnitude)</li>
+        <li>Internal (seat) leakage at 10⁻⁴ dominates helium loss — priority for valve selection</li>
+        <li>Choked flow analysis confirms sonic conditions at P_down/P_up &lt; 0.488</li>
+        <li>Helium purity dilution quantified — air ingress at 10⁻⁴ mbar·l/s causes measurable degradation</li>
+    </ul>
+    <h3>Statistical Insights</h3>
+    <ul>
+        <li>Monte Carlo (10,000 runs): Mean annual cost €55,041 (P5–P95: €18,224–€96,172)</li>
+        <li>Leak rate class is the dominant cost driver — tighter classes dramatically reduce cost variance</li>
+        <li>PCA shows first 3 components capture 51% of input variance</li>
+    </ul>
+    <h3>Next Steps</h3>
+    <ol>
+        <li>Validate helium property data with CoolProp calculations at actual QPLANT operating points</li>
+        <li>Create new valve sub-class with higher He-to-air leak rate tolerance (derogation path)</li>
+        <li>Engage GBO for short calculation on acceptable leak tightness relaxation</li>
+        <li>Review Cryoworld proposed variants against updated leak specifications</li>
+    </ol>
+    
+</div>
+
+</div>
+
+<div class="thumb-sidebar" id="thumbSidebar"></div>
+
+<script>
+
+let currentSlide = 0;
+let totalSlides = 0;
+
+function initSlides() {
+  const slides = document.querySelectorAll('.slide');
+  totalSlides = slides.length;
+  showSlide(0);
+  document.addEventListener('keydown', handleKey);
+  buildThumbnails();
+}
+
+function showSlide(n) {
+  const slides = document.querySelectorAll('.slide');
+  if (n < 0) n = 0;
+  if (n >= totalSlides) n = totalSlides - 1;
+  slides.forEach((s, i) => s.classList.toggle('active', i === n));
+  currentSlide = n;
+  updateUI();
+}
+
+function nextSlide() { showSlide(currentSlide + 1); }
+function prevSlide() { showSlide(currentSlide - 1); }
+function firstSlide() { showSlide(0); }
+function lastSlide() { showSlide(totalSlides - 1); }
+
+function handleKey(e) {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nextSlide(); }
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+  if (e.key === 'Home') { e.preventDefault(); firstSlide(); }
+  if (e.key === 'End') { e.preventDefault(); lastSlide(); }
+  if (e.key === 'f' || e.key === 'F11') { e.preventDefault(); toggleFullscreen(); }
+}
+
+function updateUI() {
+  document.getElementById('slideCounter').textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+  const pct = ((currentSlide + 1) / totalSlides) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('btnPrev').disabled = currentSlide === 0;
+  document.getElementById('btnNext').disabled = currentSlide === totalSlides - 1;
+
+  // Update jump selector
+  const sel = document.getElementById('slideSelector');
+  if (sel) sel.value = currentSlide;
+
+  // Update thumbnails
+  document.querySelectorAll('.thumb-sidebar .thumb').forEach((t, i) => {
+    t.classList.toggle('active', i === currentSlide);
+  });
+}
+
+function jumpToSlide() {
+  const sel = document.getElementById('slideSelector');
+  showSlide(parseInt(sel.value));
+}
+
+function buildThumbnails() {
+  const sidebar = document.getElementById('thumbSidebar');
+  if (!sidebar) return;
+  const slides = document.querySelectorAll('.slide');
+  slides.forEach((s, i) => {
+    const t = document.createElement('div');
+    t.className = 'thumb';
+    t.textContent = (i + 1) + '. ' + (s.dataset.title || 'Slide');
+    t.onclick = () => showSlide(i);
+    sidebar.appendChild(t);
+  });
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+    document.body.classList.add('fullscreen');
+  } else {
+    document.exitFullscreen();
+    document.body.classList.remove('fullscreen');
+  }
+}
+
+function printView() { window.print(); }
+
+function exportCSV(tableId, filename) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  let csv = [];
+  const rows = table.querySelectorAll('tr');
+  rows.forEach(row => {
+    const cols = row.querySelectorAll('th, td');
+    csv.push(Array.from(cols).map(c => '"' + c.textContent.replace(/"/g, '""') + '"').join(','));
+  });
+  const blob = new Blob([csv.join('\n')], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename || 'export.csv';
+  a.click();
+}
+
+document.addEventListener('DOMContentLoaded', initSlides);
+
+</script>
+</body>
+</html>
