@@ -1,0 +1,66 @@
+[
+  {
+    "valve_type":"Meca Inox",
+    "leak_class_mbar_l_s":0.000000001,
+    "mtbf_years":8.0,
+    "mttr_h":6.0,
+    "mdt_h":14.0,
+    "availability":0.9997812978
+  },
+  {
+    "valve_type":"Meca Inox",
+    "leak_class_mbar_l_s":0.00000001,
+    "mtbf_years":5.0,
+    "mttr_h":6.0,
+    "mdt_h":14.0,
+    "availability":0.9996501225
+  },
+  {
+    "valve_type":"Meca Inox",
+    "leak_class_mbar_l_s":0.00001,
+    "mtbf_years":3.5,
+    "mttr_h":6.0,
+    "mdt_h":14.0,
+    "availability":0.9995002499
+  },
+  {
+    "valve_type":"Meca Inox",
+    "leak_class_mbar_l_s":0.0001,
+    "mtbf_years":2.5,
+    "mttr_h":6.0,
+    "mdt_h":14.0,
+    "availability":0.9993004897
+  },
+  {
+    "valve_type":"Swagelok",
+    "leak_class_mbar_l_s":0.000000001,
+    "mtbf_years":8.0,
+    "mttr_h":4.0,
+    "mdt_h":12.0,
+    "availability":0.9998125351
+  },
+  {
+    "valve_type":"Swagelok",
+    "leak_class_mbar_l_s":0.00000001,
+    "mtbf_years":5.0,
+    "mttr_h":4.0,
+    "mdt_h":12.0,
+    "availability":0.99970009
+  },
+  {
+    "valve_type":"Swagelok",
+    "leak_class_mbar_l_s":0.00001,
+    "mtbf_years":3.5,
+    "mttr_h":4.0,
+    "mdt_h":12.0,
+    "availability":0.9995716122
+  },
+  {
+    "valve_type":"Swagelok",
+    "leak_class_mbar_l_s":0.0001,
+    "mtbf_years":2.5,
+    "mttr_h":4.0,
+    "mdt_h":12.0,
+    "availability":0.9994003598
+  }
+]

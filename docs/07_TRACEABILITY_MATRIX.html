@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>07_TRACEABILITY_MATRIX.html</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fb; color: #14213d; }
+    header { background: #14213d; color: white; padding: 14px 18px; position: sticky; top: 0; z-index: 99; }
+    nav a { color: #cfe3ff; text-decoration: none; font-size: 12px; margin-right: 8px; }
+    nav a.active { color: #ffd166; font-weight: 700; }
+    main { max-width: 1200px; margin: 20px auto; background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    h1, h2, h3 { color: #0b3d91; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 24px; font-size: 13px; }
+    th, td { border: 1px solid #d7dbe4; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #edf2ff; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; }
+    .kpi { background: #eef7ff; border-left: 5px solid #0b3d91; padding: 10px 12px; border-radius: 6px; }
+    .small { font-size: 12px; color: #555; }
+    iframe { width: 100%; height: 520px; border: 1px solid #ccd3e0; border-radius: 6px; margin-bottom: 16px; }
+    .math { background: #0b132b; color: #d8e2ff; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+<header>
+  <div><strong>Cryogenic Leak Rate Analysis Dashboard — OUTPUT_1_BASELINE</strong></div>
+  <nav><a class="" href="index.html">index</a> | <a class="" href="01_EXECUTIVE_SUMMARY.html">01_EXECUTIVE_SUMMARY</a> | <a class="" href="02_LEAK_RATE_TRANSLATION.html">02_LEAK_RATE_TRANSLATION</a> | <a class="" href="03_MATHS_PROOF.html">03_MATHS_PROOF</a> | <a class="" href="04_PLOTS_AND_VISUAL_EVIDENCE.html">04_PLOTS_AND_VISUAL_EVIDENCE</a> | <a class="" href="05_VALVE_CLASS_COMPARISON.html">05_VALVE_CLASS_COMPARISON</a> | <a class="" href="06_ENGINEERING_RATIONALE.html">06_ENGINEERING_RATIONALE</a> | <a class="active" href="07_TRACEABILITY_MATRIX.html">07_TRACEABILITY_MATRIX</a> | <a class="" href="08_VERSION_HISTORY.html">08_VERSION_HISTORY</a> | <a class="" href="09_BUILD_AND_RUNTIME_REPORT.html">09_BUILD_AND_RUNTIME_REPORT</a></nav>
+</header>
+<main>
+
+<h1>07 Traceability Matrix</h1>
+<p>Mapping RTM-047 through RTM-067 to implementation and verification artefacts.</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>requirement_id</th>
+      <th>requirement_summary</th>
+      <th>implemented_in</th>
+      <th>verification_method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RTM-047</td>
+      <td>Leak-to-mass-flow translation</td>
+      <td>src/calculations/engineering.py</td>
+      <td>Analytical formula check</td>
+    </tr>
+    <tr>
+      <td>RTM-048</td>
+      <td>Temperature-pressure sensitivity</td>
+      <td>outputs/json/leak_rate_conversion_table.json</td>
+      <td>Cross-table consistency</td>
+    </tr>
+    <tr>
+      <td>RTM-049</td>
+      <td>Reliability / RAM metrics</td>
+      <td>outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html</td>
+      <td>Plot inspection</td>
+    </tr>
+    <tr>
+      <td>RTM-050</td>
+      <td>Cost / TCO assessment</td>
+      <td>outputs/html/05_VALVE_CLASS_COMPARISON.html</td>
+      <td>Scenario replay</td>
+    </tr>
+    <tr>
+      <td>RTM-051</td>
+      <td>Traceability and versioning</td>
+      <td>outputs/html/07_TRACEABILITY_MATRIX.html</td>
+      <td>Version metadata check</td>
+    </tr>
+    <tr>
+      <td>RTM-052</td>
+      <td>Leak-to-mass-flow translation</td>
+      <td>src/calculations/engineering.py</td>
+      <td>Analytical formula check</td>
+    </tr>
+    <tr>
+      <td>RTM-053</td>
+      <td>Temperature-pressure sensitivity</td>
+      <td>outputs/json/leak_rate_conversion_table.json</td>
+      <td>Cross-table consistency</td>
+    </tr>
+    <tr>
+      <td>RTM-054</td>
+      <td>Reliability / RAM metrics</td>
+      <td>outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html</td>
+      <td>Plot inspection</td>
+    </tr>
+    <tr>
+      <td>RTM-055</td>
+      <td>Cost / TCO assessment</td>
+      <td>outputs/html/05_VALVE_CLASS_COMPARISON.html</td>
+      <td>Scenario replay</td>
+    </tr>
+    <tr>
+      <td>RTM-056</td>
+      <td>Traceability and versioning</td>
+      <td>outputs/html/07_TRACEABILITY_MATRIX.html</td>
+      <td>Version metadata check</td>
+    </tr>
+    <tr>
+      <td>RTM-057</td>
+      <td>Leak-to-mass-flow translation</td>
+      <td>src/calculations/engineering.py</td>
+      <td>Analytical formula check</td>
+    </tr>
+    <tr>
+      <td>RTM-058</td>
+      <td>Temperature-pressure sensitivity</td>
+      <td>outputs/json/leak_rate_conversion_table.json</td>
+      <td>Cross-table consistency</td>
+    </tr>
+    <tr>
+      <td>RTM-059</td>
+      <td>Reliability / RAM metrics</td>
+      <td>outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html</td>
+      <td>Plot inspection</td>
+    </tr>
+    <tr>
+      <td>RTM-060</td>
+      <td>Cost / TCO assessment</td>
+      <td>outputs/html/05_VALVE_CLASS_COMPARISON.html</td>
+      <td>Scenario replay</td>
+    </tr>
+    <tr>
+      <td>RTM-061</td>
+      <td>Traceability and versioning</td>
+      <td>outputs/html/07_TRACEABILITY_MATRIX.html</td>
+      <td>Version metadata check</td>
+    </tr>
+    <tr>
+      <td>RTM-062</td>
+      <td>Leak-to-mass-flow translation</td>
+      <td>src/calculations/engineering.py</td>
+      <td>Analytical formula check</td>
+    </tr>
+    <tr>
+      <td>RTM-063</td>
+      <td>Temperature-pressure sensitivity</td>
+      <td>outputs/json/leak_rate_conversion_table.json</td>
+      <td>Cross-table consistency</td>
+    </tr>
+    <tr>
+      <td>RTM-064</td>
+      <td>Reliability / RAM metrics</td>
+      <td>outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html</td>
+      <td>Plot inspection</td>
+    </tr>
+    <tr>
+      <td>RTM-065</td>
+      <td>Cost / TCO assessment</td>
+      <td>outputs/html/05_VALVE_CLASS_COMPARISON.html</td>
+      <td>Scenario replay</td>
+    </tr>
+    <tr>
+      <td>RTM-066</td>
+      <td>Traceability and versioning</td>
+      <td>outputs/html/07_TRACEABILITY_MATRIX.html</td>
+      <td>Version metadata check</td>
+    </tr>
+    <tr>
+      <td>RTM-067</td>
+      <td>Leak-to-mass-flow translation</td>
+      <td>src/calculations/engineering.py</td>
+      <td>Analytical formula check</td>
+    </tr>
+  </tbody>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,38 @@
+[
+  {
+    "segment":"Cold valves leak-tight",
+    "count":105,
+    "leak_class":0.000000001,
+    "temperature_K":20,
+    "pressure_bar":5,
+    "mass_loss_g_year_each":0.3798353502,
+    "mass_loss_g_year_total":39.8827117681
+  },
+  {
+    "segment":"Cold valves standard",
+    "count":105,
+    "leak_class":0.00000001,
+    "temperature_K":20,
+    "pressure_bar":5,
+    "mass_loss_g_year_each":3.7983535017,
+    "mass_loss_g_year_total":398.8271176806
+  },
+  {
+    "segment":"Warm valves Meca Inox",
+    "count":100,
+    "leak_class":0.00001,
+    "temperature_K":300,
+    "pressure_bar":5,
+    "mass_loss_g_year_each":253.2235667813,
+    "mass_loss_g_year_total":25322.3566781331
+  },
+  {
+    "segment":"Warm valves Swagelok",
+    "count":100,
+    "leak_class":0.00001,
+    "temperature_K":300,
+    "pressure_bar":5,
+    "mass_loss_g_year_each":253.2235667813,
+    "mass_loss_g_year_total":25322.3566781331
+  }
+]

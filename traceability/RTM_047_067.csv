@@ -1,0 +1,22 @@
+requirement_id,requirement_summary,implemented_in,verification_method
+RTM-047,Leak-to-mass-flow translation,src/calculations/engineering.py,Analytical formula check
+RTM-048,Temperature-pressure sensitivity,outputs/json/leak_rate_conversion_table.json,Cross-table consistency
+RTM-049,Reliability / RAM metrics,outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html,Plot inspection
+RTM-050,Cost / TCO assessment,outputs/html/05_VALVE_CLASS_COMPARISON.html,Scenario replay
+RTM-051,Traceability and versioning,outputs/html/07_TRACEABILITY_MATRIX.html,Version metadata check
+RTM-052,Leak-to-mass-flow translation,src/calculations/engineering.py,Analytical formula check
+RTM-053,Temperature-pressure sensitivity,outputs/json/leak_rate_conversion_table.json,Cross-table consistency
+RTM-054,Reliability / RAM metrics,outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html,Plot inspection
+RTM-055,Cost / TCO assessment,outputs/html/05_VALVE_CLASS_COMPARISON.html,Scenario replay
+RTM-056,Traceability and versioning,outputs/html/07_TRACEABILITY_MATRIX.html,Version metadata check
+RTM-057,Leak-to-mass-flow translation,src/calculations/engineering.py,Analytical formula check
+RTM-058,Temperature-pressure sensitivity,outputs/json/leak_rate_conversion_table.json,Cross-table consistency
+RTM-059,Reliability / RAM metrics,outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html,Plot inspection
+RTM-060,Cost / TCO assessment,outputs/html/05_VALVE_CLASS_COMPARISON.html,Scenario replay
+RTM-061,Traceability and versioning,outputs/html/07_TRACEABILITY_MATRIX.html,Version metadata check
+RTM-062,Leak-to-mass-flow translation,src/calculations/engineering.py,Analytical formula check
+RTM-063,Temperature-pressure sensitivity,outputs/json/leak_rate_conversion_table.json,Cross-table consistency
+RTM-064,Reliability / RAM metrics,outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html,Plot inspection
+RTM-065,Cost / TCO assessment,outputs/html/05_VALVE_CLASS_COMPARISON.html,Scenario replay
+RTM-066,Traceability and versioning,outputs/html/07_TRACEABILITY_MATRIX.html,Version metadata check
+RTM-067,Leak-to-mass-flow translation,src/calculations/engineering.py,Analytical formula check

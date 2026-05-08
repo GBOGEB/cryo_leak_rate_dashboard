@@ -1,0 +1,16 @@
+[
+  {
+    "valve_population":"Cold valves",
+    "count":210,
+    "weighted_mtbf_years":4.75,
+    "expected_failures_per_year":44.2105263158,
+    "recommended_spares_per_year":69
+  },
+  {
+    "valve_population":"Warm valves",
+    "count":200,
+    "weighted_mtbf_years":4.75,
+    "expected_failures_per_year":42.1052631579,
+    "recommended_spares_per_year":66
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "baseline": "OUTPUT_1_BASELINE",
+  "timestamp": "2026-05-08T09:39:29.887594+00:00",
+  "dmaic_iteration": 0,
+  "git_ready": true,
+  "changes": [
+    "Initial leak-rate dashboard baseline",
+    "Added 5 interactive plotly visualizations",
+    "Added traceability matrix RTM-047..067",
+    "Generated GitHub Pages-ready docs outputs"
+  ]
+}

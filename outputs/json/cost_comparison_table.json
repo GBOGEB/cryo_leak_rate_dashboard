@@ -1,0 +1,34 @@
+[
+  {
+    "class":"Leak-tight",
+    "leak_class_mbar_l_s":0.000000001,
+    "valve_capex_eur":9500,
+    "helium_loss_kg_over_life":0.0010128943,
+    "helium_cost_over_life_eur":0.015193414,
+    "tco_per_valve_eur":9500.015193414
+  },
+  {
+    "class":"High-integrity",
+    "leak_class_mbar_l_s":0.00000001,
+    "valve_capex_eur":7000,
+    "helium_loss_kg_over_life":0.0101289427,
+    "helium_cost_over_life_eur":0.1519341401,
+    "tco_per_valve_eur":7000.1519341401
+  },
+  {
+    "class":"Industrial",
+    "leak_class_mbar_l_s":0.00001,
+    "valve_capex_eur":4200,
+    "helium_loss_kg_over_life":10.1289426713,
+    "helium_cost_over_life_eur":151.9341400688,
+    "tco_per_valve_eur":4351.9341400688
+  },
+  {
+    "class":"Seat leakage",
+    "leak_class_mbar_l_s":0.0001,
+    "valve_capex_eur":3200,
+    "helium_loss_kg_over_life":101.2894267125,
+    "helium_cost_over_life_eur":1519.341400688,
+    "tco_per_valve_eur":4719.341400688
+  }
+]

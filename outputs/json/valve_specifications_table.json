@@ -1,0 +1,23 @@
+[
+  {
+    "valve_type":"Meca Inox ball valve",
+    "application":"Larger warm On\/Off valves",
+    "seal_material":"HDPE",
+    "offered_leak_class_mbar_l_s":"~1e-5 to ambient (not 1e-9)",
+    "source":"Uploaded slide section 2.3.4 Warm valves"
+  },
+  {
+    "valve_type":"Swagelok SS-42GSE",
+    "application":"Instrumentation manual valves",
+    "seal_material":"UHMWPE",
+    "offered_leak_class_mbar_l_s":"~1e-5 to ambient (non-hermetic)",
+    "source":"Uploaded slide section 2.3.4 Warm valves"
+  },
+  {
+    "valve_type":"Specified target class",
+    "application":"Helium circuit\/weld to vacuum",
+    "seal_material":"High integrity",
+    "offered_leak_class_mbar_l_s":"1e-8",
+    "source":"Addendum II Table 4 leakage requirements"
+  }
+]

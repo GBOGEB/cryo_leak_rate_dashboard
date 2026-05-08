@@ -1,0 +1,128 @@
+[
+  {
+    "requirement_id":"RTM-047",
+    "requirement_summary":"Leak-to-mass-flow translation",
+    "implemented_in":"src\/calculations\/engineering.py",
+    "verification_method":"Analytical formula check"
+  },
+  {
+    "requirement_id":"RTM-048",
+    "requirement_summary":"Temperature-pressure sensitivity",
+    "implemented_in":"outputs\/json\/leak_rate_conversion_table.json",
+    "verification_method":"Cross-table consistency"
+  },
+  {
+    "requirement_id":"RTM-049",
+    "requirement_summary":"Reliability \/ RAM metrics",
+    "implemented_in":"outputs\/html\/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+    "verification_method":"Plot inspection"
+  },
+  {
+    "requirement_id":"RTM-050",
+    "requirement_summary":"Cost \/ TCO assessment",
+    "implemented_in":"outputs\/html\/05_VALVE_CLASS_COMPARISON.html",
+    "verification_method":"Scenario replay"
+  },
+  {
+    "requirement_id":"RTM-051",
+    "requirement_summary":"Traceability and versioning",
+    "implemented_in":"outputs\/html\/07_TRACEABILITY_MATRIX.html",
+    "verification_method":"Version metadata check"
+  },
+  {
+    "requirement_id":"RTM-052",
+    "requirement_summary":"Leak-to-mass-flow translation",
+    "implemented_in":"src\/calculations\/engineering.py",
+    "verification_method":"Analytical formula check"
+  },
+  {
+    "requirement_id":"RTM-053",
+    "requirement_summary":"Temperature-pressure sensitivity",
+    "implemented_in":"outputs\/json\/leak_rate_conversion_table.json",
+    "verification_method":"Cross-table consistency"
+  },
+  {
+    "requirement_id":"RTM-054",
+    "requirement_summary":"Reliability \/ RAM metrics",
+    "implemented_in":"outputs\/html\/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+    "verification_method":"Plot inspection"
+  },
+  {
+    "requirement_id":"RTM-055",
+    "requirement_summary":"Cost \/ TCO assessment",
+    "implemented_in":"outputs\/html\/05_VALVE_CLASS_COMPARISON.html",
+    "verification_method":"Scenario replay"
+  },
+  {
+    "requirement_id":"RTM-056",
+    "requirement_summary":"Traceability and versioning",
+    "implemented_in":"outputs\/html\/07_TRACEABILITY_MATRIX.html",
+    "verification_method":"Version metadata check"
+  },
+  {
+    "requirement_id":"RTM-057",
+    "requirement_summary":"Leak-to-mass-flow translation",
+    "implemented_in":"src\/calculations\/engineering.py",
+    "verification_method":"Analytical formula check"
+  },
+  {
+    "requirement_id":"RTM-058",
+    "requirement_summary":"Temperature-pressure sensitivity",
+    "implemented_in":"outputs\/json\/leak_rate_conversion_table.json",
+    "verification_method":"Cross-table consistency"
+  },
+  {
+    "requirement_id":"RTM-059",
+    "requirement_summary":"Reliability \/ RAM metrics",
+    "implemented_in":"outputs\/html\/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+    "verification_method":"Plot inspection"
+  },
+  {
+    "requirement_id":"RTM-060",
+    "requirement_summary":"Cost \/ TCO assessment",
+    "implemented_in":"outputs\/html\/05_VALVE_CLASS_COMPARISON.html",
+    "verification_method":"Scenario replay"
+  },
+  {
+    "requirement_id":"RTM-061",
+    "requirement_summary":"Traceability and versioning",
+    "implemented_in":"outputs\/html\/07_TRACEABILITY_MATRIX.html",
+    "verification_method":"Version metadata check"
+  },
+  {
+    "requirement_id":"RTM-062",
+    "requirement_summary":"Leak-to-mass-flow translation",
+    "implemented_in":"src\/calculations\/engineering.py",
+    "verification_method":"Analytical formula check"
+  },
+  {
+    "requirement_id":"RTM-063",
+    "requirement_summary":"Temperature-pressure sensitivity",
+    "implemented_in":"outputs\/json\/leak_rate_conversion_table.json",
+    "verification_method":"Cross-table consistency"
+  },
+  {
+    "requirement_id":"RTM-064",
+    "requirement_summary":"Reliability \/ RAM metrics",
+    "implemented_in":"outputs\/html\/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+    "verification_method":"Plot inspection"
+  },
+  {
+    "requirement_id":"RTM-065",
+    "requirement_summary":"Cost \/ TCO assessment",
+    "implemented_in":"outputs\/html\/05_VALVE_CLASS_COMPARISON.html",
+    "verification_method":"Scenario replay"
+  },
+  {
+    "requirement_id":"RTM-066",
+    "requirement_summary":"Traceability and versioning",
+    "implemented_in":"outputs\/html\/07_TRACEABILITY_MATRIX.html",
+    "verification_method":"Version metadata check"
+  },
+  {
+    "requirement_id":"RTM-067",
+    "requirement_summary":"Leak-to-mass-flow translation",
+    "implemented_in":"src\/calculations\/engineering.py",
+    "verification_method":"Analytical formula check"
+  }
+]

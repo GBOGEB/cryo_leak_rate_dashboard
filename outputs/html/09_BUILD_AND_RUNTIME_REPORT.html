@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>09_BUILD_AND_RUNTIME_REPORT.html</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fb; color: #14213d; }
+    header { background: #14213d; color: white; padding: 14px 18px; position: sticky; top: 0; z-index: 99; }
+    nav a { color: #cfe3ff; text-decoration: none; font-size: 12px; margin-right: 8px; }
+    nav a.active { color: #ffd166; font-weight: 700; }
+    main { max-width: 1200px; margin: 20px auto; background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    h1, h2, h3 { color: #0b3d91; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 24px; font-size: 13px; }
+    th, td { border: 1px solid #d7dbe4; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #edf2ff; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; }
+    .kpi { background: #eef7ff; border-left: 5px solid #0b3d91; padding: 10px 12px; border-radius: 6px; }
+    .small { font-size: 12px; color: #555; }
+    iframe { width: 100%; height: 520px; border: 1px solid #ccd3e0; border-radius: 6px; margin-bottom: 16px; }
+    .math { background: #0b132b; color: #d8e2ff; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+<header>
+  <div><strong>Cryogenic Leak Rate Analysis Dashboard — OUTPUT_1_BASELINE</strong></div>
+  <nav><a class="" href="index.html">index</a> | <a class="" href="01_EXECUTIVE_SUMMARY.html">01_EXECUTIVE_SUMMARY</a> | <a class="" href="02_LEAK_RATE_TRANSLATION.html">02_LEAK_RATE_TRANSLATION</a> | <a class="" href="03_MATHS_PROOF.html">03_MATHS_PROOF</a> | <a class="" href="04_PLOTS_AND_VISUAL_EVIDENCE.html">04_PLOTS_AND_VISUAL_EVIDENCE</a> | <a class="" href="05_VALVE_CLASS_COMPARISON.html">05_VALVE_CLASS_COMPARISON</a> | <a class="" href="06_ENGINEERING_RATIONALE.html">06_ENGINEERING_RATIONALE</a> | <a class="" href="07_TRACEABILITY_MATRIX.html">07_TRACEABILITY_MATRIX</a> | <a class="" href="08_VERSION_HISTORY.html">08_VERSION_HISTORY</a> | <a class="active" href="09_BUILD_AND_RUNTIME_REPORT.html">09_BUILD_AND_RUNTIME_REPORT</a></nav>
+</header>
+<main>
+
+<h1>09 Build and Runtime Report</h1>
+<pre>{
+  "build_timestamp": "2026-05-08T09:39:29.887594+00:00",
+  "python_files": [
+    "src/__init__.py",
+    "src/build_dashboard.py",
+    "src/calculations/__init__.py",
+    "src/calculations/engineering.py",
+    "src/plotting/__init__.py",
+    "src/plotting/plot_factory.py"
+  ],
+  "generated_html_files": [
+    "outputs/html/01_EXECUTIVE_SUMMARY.html",
+    "outputs/html/02_LEAK_RATE_TRANSLATION.html",
+    "outputs/html/03_MATHS_PROOF.html",
+    "outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+    "outputs/html/05_VALVE_CLASS_COMPARISON.html",
+    "outputs/html/06_ENGINEERING_RATIONALE.html",
+    "outputs/html/07_TRACEABILITY_MATRIX.html",
+    "outputs/html/08_VERSION_HISTORY.html",
+    "outputs/html/09_BUILD_AND_RUNTIME_REPORT.html",
+    "outputs/html/index.html"
+  ],
+  "generated_plot_files": [
+    "outputs/html/plots/plot1_leak_vs_loss.html",
+    "outputs/html/plots/plot2_temp_effect.html",
+    "outputs/html/plots/plot3_valve_comparison.html",
+    "outputs/html/plots/plot4_system_projection.html",
+    "outputs/html/plots/plot5_reliability_dashboard.html"
+  ],
+  "generated_json_files": [
+    "outputs/json/build_runtime_report.json",
+    "outputs/json/cost_comparison_table.json",
+    "outputs/json/leak_rate_conversion_table.json",
+    "outputs/json/reliability_metrics_table.json",
+    "outputs/json/spare_parts_strategy_table.json",
+    "outputs/json/system_inventory_table.json",
+    "outputs/json/traceability_matrix.json",
+    "outputs/json/valve_specifications_table.json"
+  ],
+  "input_assumptions": {
+    "temperature_grid_K": [
+      4,
+      10,
+      20,
+      50,
+      80,
+      300
+    ],
+    "pressure_grid_bar_abs": [
+      1,
+      5,
+      12
+    ],
+    "leak_classes_mbar_l_s": [
+      1e-09,
+      1e-08,
+      1e-05,
+      0.0001
+    ],
+    "helium_price_eur_kg": 15,
+    "cold_valves": 210,
+    "warm_valves": 200
+  }
+}</pre>
+
+</main>
+</body>
+</html>

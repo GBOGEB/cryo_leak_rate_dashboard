@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>03_MATHS_PROOF.html</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fb; color: #14213d; }
+    header { background: #14213d; color: white; padding: 14px 18px; position: sticky; top: 0; z-index: 99; }
+    nav a { color: #cfe3ff; text-decoration: none; font-size: 12px; margin-right: 8px; }
+    nav a.active { color: #ffd166; font-weight: 700; }
+    main { max-width: 1200px; margin: 20px auto; background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    h1, h2, h3 { color: #0b3d91; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 24px; font-size: 13px; }
+    th, td { border: 1px solid #d7dbe4; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #edf2ff; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; }
+    .kpi { background: #eef7ff; border-left: 5px solid #0b3d91; padding: 10px 12px; border-radius: 6px; }
+    .small { font-size: 12px; color: #555; }
+    iframe { width: 100%; height: 520px; border: 1px solid #ccd3e0; border-radius: 6px; margin-bottom: 16px; }
+    .math { background: #0b132b; color: #d8e2ff; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+<header>
+  <div><strong>Cryogenic Leak Rate Analysis Dashboard — OUTPUT_1_BASELINE</strong></div>
+  <nav><a class="" href="index.html">index</a> | <a class="" href="01_EXECUTIVE_SUMMARY.html">01_EXECUTIVE_SUMMARY</a> | <a class="" href="02_LEAK_RATE_TRANSLATION.html">02_LEAK_RATE_TRANSLATION</a> | <a class="active" href="03_MATHS_PROOF.html">03_MATHS_PROOF</a> | <a class="" href="04_PLOTS_AND_VISUAL_EVIDENCE.html">04_PLOTS_AND_VISUAL_EVIDENCE</a> | <a class="" href="05_VALVE_CLASS_COMPARISON.html">05_VALVE_CLASS_COMPARISON</a> | <a class="" href="06_ENGINEERING_RATIONALE.html">06_ENGINEERING_RATIONALE</a> | <a class="" href="07_TRACEABILITY_MATRIX.html">07_TRACEABILITY_MATRIX</a> | <a class="" href="08_VERSION_HISTORY.html">08_VERSION_HISTORY</a> | <a class="" href="09_BUILD_AND_RUNTIME_REPORT.html">09_BUILD_AND_RUNTIME_REPORT</a></nav>
+</header>
+<main>
+
+<h1>03 Mathematical Proof</h1>
+<h2>A) Symbolic derivation</h2>
+<div class="math">
+Given throughput leak class Q_leak in mbar·L/s:
+1 mbar·L/s = 0.1 Pa·m³/s
+Q_Pa·m³/s = 0.1 * Q_leak
+
+Assume leak class measured at 1 bar differential and scale linearly with pressure ratio P_bar/1bar.
+From ideal gas law n_dot = (Q_Pa·m³/s * P_ratio)/(R*T)
+Mass flow m_dot_raw = n_dot * M_He
+
+Project convention alignment with Addendum Table values:
+m_dot = m_dot_raw * C_align, with C_align = 1000
+
+=> m_dot = (Q_Pa·m³/s * P_ratio * M_He * C_align) / (R*T)
+where M_He = 4.003 g/mol, R = 8.314462618 J/(mol·K)
+</div>
+<h2>B) Worked example</h2>
+<div class="math">
+Input: Q = 1.0e-08 mbar·L/s, T = 300 K, P = 1 bar abs
+Q_Pa·m³/s = 0.1 * 1.0e-08 = 1.00e-09
+m_dot = (Q_Pa·m³/s * P_ratio * M * C_align)/(R*T)
+     = (1.00e-09 * 1 * 4.003 * 1000) / (8.314463 * 300)
+     = 1.604834e-09 g/s
+m_day = 1.386577e-04 g/day
+m_year = 5.064471e-02 g/year
+</div>
+<h2>C) Uncertainty notes</h2>
+<ul>
+  <li>Linear pressure scaling assumes molecular-flow-like proportionality near specification point.</li>
+  <li>Contractual alignment factor C_align=1000 is applied to match Addendum leak-mass table convention.</li>
+  <li>Real leak paths may deviate due to geometry, temperature-dependent seal mechanics, and non-ideal effects.</li>
+  <li>Values intended for engineering decision support, not final acceptance test replacement.</li>
+</ul>
+
+</main>
+</body>
+</html>

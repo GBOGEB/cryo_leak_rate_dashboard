@@ -1,0 +1,64 @@
+{
+  "build_timestamp": "2026-05-08T09:39:29.887594+00:00",
+  "python_files": [
+    "src/__init__.py",
+    "src/build_dashboard.py",
+    "src/calculations/__init__.py",
+    "src/calculations/engineering.py",
+    "src/plotting/__init__.py",
+    "src/plotting/plot_factory.py"
+  ],
+  "generated_html_files": [
+    "outputs/html/01_EXECUTIVE_SUMMARY.html",
+    "outputs/html/02_LEAK_RATE_TRANSLATION.html",
+    "outputs/html/03_MATHS_PROOF.html",
+    "outputs/html/04_PLOTS_AND_VISUAL_EVIDENCE.html",
+    "outputs/html/05_VALVE_CLASS_COMPARISON.html",
+    "outputs/html/06_ENGINEERING_RATIONALE.html",
+    "outputs/html/07_TRACEABILITY_MATRIX.html",
+    "outputs/html/08_VERSION_HISTORY.html",
+    "outputs/html/09_BUILD_AND_RUNTIME_REPORT.html",
+    "outputs/html/index.html"
+  ],
+  "generated_plot_files": [
+    "outputs/html/plots/plot1_leak_vs_loss.html",
+    "outputs/html/plots/plot2_temp_effect.html",
+    "outputs/html/plots/plot3_valve_comparison.html",
+    "outputs/html/plots/plot4_system_projection.html",
+    "outputs/html/plots/plot5_reliability_dashboard.html"
+  ],
+  "generated_json_files": [
+    "outputs/json/build_runtime_report.json",
+    "outputs/json/cost_comparison_table.json",
+    "outputs/json/leak_rate_conversion_table.json",
+    "outputs/json/reliability_metrics_table.json",
+    "outputs/json/spare_parts_strategy_table.json",
+    "outputs/json/system_inventory_table.json",
+    "outputs/json/traceability_matrix.json",
+    "outputs/json/valve_specifications_table.json"
+  ],
+  "input_assumptions": {
+    "temperature_grid_K": [
+      4,
+      10,
+      20,
+      50,
+      80,
+      300
+    ],
+    "pressure_grid_bar_abs": [
+      1,
+      5,
+      12
+    ],
+    "leak_classes_mbar_l_s": [
+      1e-09,
+      1e-08,
+      1e-05,
+      0.0001
+    ],
+    "helium_price_eur_kg": 15,
+    "cold_valves": 210,
+    "warm_valves": 200
+  }
+}
