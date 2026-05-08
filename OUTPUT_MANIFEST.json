@@ -4,10 +4,10 @@
   "files": [
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778233276.17514,
+      "modified_timestamp": 1778234786.5488262,
       "path": ".abacus.donotdelete",
-      "sha256": "600a1abb52895cc66076bb2d02b5a47ee2ddb882e27fc41652087443e199660b",
-      "size_bytes": 45688,
+      "sha256": "9aa9f85e3291497324562696c69be943f670d830ab14763f2b8301108bd2ec6e",
+      "size_bytes": 58636,
       "source_inputs": [
         "data/leak_classes.json",
         "data/valve_candidates.json",
@@ -68,7 +68,7 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234630.360369,
+      "modified_timestamp": 1778234676.7476501,
       "path": ".pytest_cache/v/cache/nodeids",
       "sha256": "8462def0a2d2e169e76f7d8cd3ad66900ad55de0ebb8e7b816b19a3bcb23faf7",
       "size_bytes": 523,
@@ -132,10 +132,10 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234674.6869237,
+      "modified_timestamp": 1778238406.9677062,
       "path": "OUTPUT_MANIFEST.json",
-      "sha256": "dc725abf8212daaec9667171fd565747f623b8949e3d02d6aab849c6db549b51",
-      "size_bytes": 67968,
+      "sha256": "84025caba2ae16a54dcb339311cfc319321ddfc0906b378bffbcf569e844756e",
+      "size_bytes": 67971,
       "source_inputs": [
         "data/leak_classes.json",
         "data/valve_candidates.json",
@@ -276,7 +276,7 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2370613,
+      "modified_timestamp": 1778238503.050583,
       "path": "docs/assets/style.css",
       "sha256": "ac5a056ef9b5e7dc9f798139430eac383b06339a5ad0baf5c813b6e3fa572340",
       "size_bytes": 2537,
@@ -292,7 +292,7 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.237127,
+      "modified_timestamp": 1778238503.050645,
       "path": "docs/assets/triage.js",
       "sha256": "847ddb402264c68ea6f726343343f8f55ed931337a524b47c64df4bbd4918866",
       "size_bytes": 386,
@@ -310,7 +310,7 @@
       "audience": "specialist",
       "builder_version": "2.0.0",
       "density": "high",
-      "modified_timestamp": 1778234676.2330325,
+      "modified_timestamp": 1778238503.0467377,
       "path": "docs/calculations.html",
       "purpose": "formula proof",
       "sha256": "1e433067e01397f05370c344636fcd991df69734387e6081019a3b6094f7e89d",
@@ -329,7 +329,7 @@
       "audience": "engineer",
       "builder_version": "2.0.0",
       "density": "medium",
-      "modified_timestamp": 1778234676.2329652,
+      "modified_timestamp": 1778238503.0466692,
       "path": "docs/dashboard.html",
       "purpose": "interactive evidence",
       "sha256": "1b23f6441181262893613c0e6c1ee31a96b7ff11223a786094cba55299b5c257",
@@ -348,7 +348,7 @@
       "audience": "manager",
       "builder_version": "2.0.0",
       "density": "low",
-      "modified_timestamp": 1778234676.2330766,
+      "modified_timestamp": 1778238503.0467803,
       "path": "docs/executive_summary.html",
       "purpose": "decision summary",
       "sha256": "55358679ae4ec396d38574c3b965b1c29e5cc26ed5f4c9905bc44c6d9a8da0d7",
@@ -367,7 +367,7 @@
       "audience": "manager",
       "builder_version": "2.0.0",
       "density": "medium",
-      "modified_timestamp": 1778234676.2742097,
+      "modified_timestamp": 1778238503.0861454,
       "path": "docs/handover.html",
       "purpose": "handover dossier",
       "sha256": "5f73bd76413333a6218d1c6d82c19da4efc3ea21e263bc425b9af5659e175700",
@@ -386,11 +386,11 @@
       "audience": "manager",
       "builder_version": "2.0.0",
       "density": "medium",
-      "modified_timestamp": 1778234676.5911226,
+      "modified_timestamp": 1778238503.345309,
       "path": "docs/handover.pdf",
       "purpose": "formal export",
-      "sha256": "ade35931a49071fe45cc230bbe5a54efd19dc4d33cdf2718c3f977b3b494a10b",
-      "size_bytes": 26211,
+      "sha256": "5257095c8a9a44c506e3bc03b610df174c73fea5bd9d2ad9ca7e43e0518e19a6",
+      "size_bytes": 26207,
       "source_inputs": [
         "data/leak_classes.json",
         "data/valve_candidates.json",
@@ -403,7 +403,7 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2329,
+      "modified_timestamp": 1778238503.0466063,
       "path": "docs/index.html",
       "sha256": "6ab722e9e793e68fdf3eddef1e7dfe066b4c190656a14d1981134a2657c38c83",
       "size_bytes": 2210,
@@ -419,9 +419,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2181046,
+      "modified_timestamp": 1778238503.033744,
       "path": "docs/plots/plot1_leak_vs_loss.html",
-      "sha256": "9923e5e5f36ec70204d0cd39cf877ed68e31bdeff107832096df4472f51d38c0",
+      "sha256": "504852fd4efd9182e4932a736aaf9048cd4f48bd00dff25e9df60b720c8237fe",
       "size_bytes": 10954,
       "source_inputs": [
         "data/leak_classes.json",
@@ -435,9 +435,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2201848,
+      "modified_timestamp": 1778238503.0350177,
       "path": "docs/plots/plot2_temp_pressure_effects.html",
-      "sha256": "4f75099683e258e67f62f30dba9e4a8f7c91dc2d69e6434e0615ea84f9d9099e",
+      "sha256": "a67b39b907df23cb9545698ce872aa1d531ffc815d2b65333a13caa8003503af",
       "size_bytes": 9647,
       "source_inputs": [
         "data/leak_classes.json",
@@ -451,9 +451,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.222004,
+      "modified_timestamp": 1778238503.036157,
       "path": "docs/plots/plot3_cost_vs_leaktightness.html",
-      "sha256": "d078a583401a0bcbed523da7f9251a091463d1cdacddd05d42aec47108fc9407",
+      "sha256": "590777b1b1ec534ea3075cb83f6da05934344a55a4352bf7c2bd3d3a28722c1a",
       "size_bytes": 8760,
       "source_inputs": [
         "data/leak_classes.json",
@@ -467,9 +467,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.223132,
+      "modified_timestamp": 1778238503.037221,
       "path": "docs/plots/plot4_fleet_sensitivity.html",
-      "sha256": "925803a995e034cf1a8efa94604f66822d0f3e9c495b0da88d8f221e4e67b0f6",
+      "sha256": "4f9dbf593edc34e1002e20e8a9d643fdf2d1a3577afe5f74df18befa44ace2c2",
       "size_bytes": 8046,
       "source_inputs": [
         "data/leak_classes.json",
@@ -483,9 +483,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2241192,
+      "modified_timestamp": 1778238503.038466,
       "path": "docs/plots/plot5_reliability.html",
-      "sha256": "69e9665f082dca51291a51e6dd0351ccb5f55981d51f42d616515f9dbb1a56b7",
+      "sha256": "5beeb9e51c6d3f3b4eb75e5c5fc2242dbd94f7933bfd3a520756bb79fa345182",
       "size_bytes": 9041,
       "source_inputs": [
         "data/leak_classes.json",
@@ -501,7 +501,7 @@
       "audience": "specialist",
       "builder_version": "2.0.0",
       "density": "high",
-      "modified_timestamp": 1778234676.2331138,
+      "modified_timestamp": 1778238503.046813,
       "path": "docs/rtm_traceability.html",
       "purpose": "requirement mapping",
       "sha256": "5c0a70512121ea95d2f155cec695633c18493a81ca1261ac8394698743e84fa3",
@@ -518,7 +518,7 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.5928676,
+      "modified_timestamp": 1778238503.3468072,
       "path": "docs/source/assumptions.md",
       "sha256": "e07fd3c1f5897da4396acfe14b0df933d8ef531831f92ed0b39ba5775ec7c1bc",
       "size_bytes": 713,
@@ -534,7 +534,7 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.592918,
+      "modified_timestamp": 1778238503.3468585,
       "path": "docs/source/developer_notes.md",
       "sha256": "f443eef5fa9634272d5131f392c8e26264a604e2886783258bfc7885cad9b2a6",
       "size_bytes": 757,
@@ -550,7 +550,7 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.5927632,
+      "modified_timestamp": 1778238503.3467317,
       "path": "docs/source/handover.md",
       "sha256": "b5970e6ff8fa13e7fc73ec7c63dfd3133a07e069ad3e90e707e25935b8f47028",
       "size_bytes": 4826,
@@ -566,7 +566,7 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.592965,
+      "modified_timestamp": 1778238503.346905,
       "path": "docs/source/rtm_traceability.md",
       "sha256": "e5152ba9d4650608b79433904682d3b2f72b7db6809bdcacb3d66cd86e2251b5",
       "size_bytes": 4055,
@@ -950,10 +950,10 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234674.688378,
+      "modified_timestamp": 1778238406.9688427,
       "path": "outputs/manifests/latest_manifest.json",
-      "sha256": "dc725abf8212daaec9667171fd565747f623b8949e3d02d6aab849c6db549b51",
-      "size_bytes": 67968,
+      "sha256": "84025caba2ae16a54dcb339311cfc319321ddfc0906b378bffbcf569e844756e",
+      "size_bytes": 67971,
       "source_inputs": [
         "data/leak_classes.json",
         "data/valve_candidates.json",
@@ -998,9 +998,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2167985,
+      "modified_timestamp": 1778238503.03293,
       "path": "outputs/plots/plot1_leak_vs_loss.html",
-      "sha256": "207ebd459034effc406929e38e31cc0a540c43cf7f72889d0a675f5fcc2f7312",
+      "sha256": "da4c16a8d66d19505ce30053cf8f29025d4f5ef867b6557905a8cd04eb83d77b",
       "size_bytes": 10954,
       "source_inputs": [
         "data/leak_classes.json",
@@ -1014,9 +1014,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2191372,
+      "modified_timestamp": 1778238503.0343845,
       "path": "outputs/plots/plot2_temp_pressure_effects.html",
-      "sha256": "64211780a28b5d2aa12e08813930e3dfeb23b5f28320262673fa825a994a45bd",
+      "sha256": "46f8970aecccb7fa17528d0ede0c8e02e7e7315d528b58c475e0aba30cab53c9",
       "size_bytes": 9647,
       "source_inputs": [
         "data/leak_classes.json",
@@ -1030,9 +1030,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2211494,
+      "modified_timestamp": 1778238503.035594,
       "path": "outputs/plots/plot3_cost_vs_leaktightness.html",
-      "sha256": "935f4346c8ffc5d263fefb0ff1a2f1ba4e10db78a3455dabd715a489e37ef4b6",
+      "sha256": "80a3bcea8950ed7bc3d544d970c39c700f38c89edc88489b43b37b9dfb442505",
       "size_bytes": 8760,
       "source_inputs": [
         "data/leak_classes.json",
@@ -1046,9 +1046,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.222586,
+      "modified_timestamp": 1778238503.0366743,
       "path": "outputs/plots/plot4_fleet_sensitivity.html",
-      "sha256": "d3755ae42afadf6af0ac68767bcb4ea3a5ab8e76a441cf48b3d39f6cc740c087",
+      "sha256": "0da6275953b102dad44b4e0fb1b566fd1350a614486705d78167679a38111dc2",
       "size_bytes": 8046,
       "source_inputs": [
         "data/leak_classes.json",
@@ -1062,9 +1062,9 @@
     },
     {
       "builder_version": "2.0.0",
-      "modified_timestamp": 1778234676.2237384,
+      "modified_timestamp": 1778238503.037805,
       "path": "outputs/plots/plot5_reliability.html",
-      "sha256": "a1fccfbc967916f3ffd914965c272e1e58955f20747671d2b172345479241c49",
+      "sha256": "e42863beb69746aee27d8a57ea8f6a5df74cb60c75d935d1912ff1d10032e2ce",
       "size_bytes": 9041,
       "source_inputs": [
         "data/leak_classes.json",
