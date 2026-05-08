@@ -1,6 +1,163 @@
 {
-  "description": "Helium thermophysical properties at evaluation points. Source: NIST REFPROP / CoolProp correlations for He-4.",
-  "note": "All values for gaseous helium. Helium critical point: T_c=5.195K, P_c=2.275bar. Below ~5.2K at low pressure, helium may be liquid or superfluid.",
+  "description": "Helium-4 thermophysical properties — gas AND liquid phases. Source: NIST REFPROP / CoolProp correlations.",
+  "note": "Critical point: T_c = 5.195 K, P_c = 2.275 bar (227.5 kPa). Lambda point (superfluid transition): T_λ = 2.1768 K at SVP.",
+  "critical_point": {
+    "temperature_K": 5.195,
+    "pressure_bar": 2.275,
+    "density_kg_m3": 69.64,
+    "source": "NIST"
+  },
+  "lambda_point": {
+    "temperature_K": 2.1768,
+    "pressure_bar": 0.05,
+    "note": "Transition from He-I (normal liquid) to He-II (superfluid)",
+    "source": "NIST"
+  },
+  "liquid_phase": {
+    "description": "Saturated liquid helium-4 properties along the saturation curve",
+    "saturation_curve": [
+      {
+        "temperature_K": 2.5,
+        "pressure_bar": 0.0648,
+        "density_liquid_kg_m3": 145.2,
+        "density_vapor_kg_m3": 0.95,
+        "enthalpy_vaporization_kJ_kg": 23.1,
+        "specific_heat_liquid_kJ_kgK": 2.74,
+        "thermal_conductivity_liquid_W_mK": 0.0195,
+        "viscosity_liquid_Pa_s": 0.0,
+        "surface_tension_N_m": 0.000355,
+        "phase": "superfluid He-II",
+        "source": "NIST REFPROP"
+      },
+      {
+        "temperature_K": 3.0,
+        "pressure_bar": 0.117,
+        "density_liquid_kg_m3": 141.3,
+        "density_vapor_kg_m3": 1.44,
+        "enthalpy_vaporization_kJ_kg": 22.5,
+        "specific_heat_liquid_kJ_kgK": 3.48,
+        "thermal_conductivity_liquid_W_mK": 0.0191,
+        "viscosity_liquid_Pa_s": 3.6e-6,
+        "surface_tension_N_m": 0.000349,
+        "phase": "normal liquid He-I",
+        "source": "NIST REFPROP"
+      },
+      {
+        "temperature_K": 3.5,
+        "pressure_bar": 0.227,
+        "density_liquid_kg_m3": 136.8,
+        "density_vapor_kg_m3": 2.38,
+        "enthalpy_vaporization_kJ_kg": 21.8,
+        "specific_heat_liquid_kJ_kgK": 4.01,
+        "thermal_conductivity_liquid_W_mK": 0.0189,
+        "viscosity_liquid_Pa_s": 3.55e-6,
+        "surface_tension_N_m": 0.000338,
+        "phase": "normal liquid He-I",
+        "source": "NIST REFPROP"
+      },
+      {
+        "temperature_K": 4.0,
+        "pressure_bar": 0.813,
+        "density_liquid_kg_m3": 130.4,
+        "density_vapor_kg_m3": 6.40,
+        "enthalpy_vaporization_kJ_kg": 21.1,
+        "specific_heat_liquid_kJ_kgK": 4.42,
+        "thermal_conductivity_liquid_W_mK": 0.0187,
+        "viscosity_liquid_Pa_s": 3.5e-6,
+        "surface_tension_N_m": 0.000320,
+        "phase": "normal liquid He-I",
+        "source": "NIST REFPROP"
+      },
+      {
+        "temperature_K": 4.222,
+        "pressure_bar": 1.0,
+        "density_liquid_kg_m3": 124.96,
+        "density_vapor_kg_m3": 16.89,
+        "enthalpy_vaporization_kJ_kg": 20.9,
+        "specific_heat_liquid_kJ_kgK": 4.57,
+        "thermal_conductivity_liquid_W_mK": 0.0187,
+        "viscosity_liquid_Pa_s": 3.5e-6,
+        "surface_tension_N_m": 0.000354,
+        "phase": "normal liquid He-I (normal boiling point)",
+        "source": "NIST REFPROP"
+      },
+      {
+        "temperature_K": 4.5,
+        "pressure_bar": 1.48,
+        "density_liquid_kg_m3": 119.8,
+        "density_vapor_kg_m3": 22.5,
+        "enthalpy_vaporization_kJ_kg": 19.5,
+        "specific_heat_liquid_kJ_kgK": 5.15,
+        "thermal_conductivity_liquid_W_mK": 0.0185,
+        "viscosity_liquid_Pa_s": 3.45e-6,
+        "surface_tension_N_m": 0.000280,
+        "phase": "normal liquid He-I",
+        "source": "NIST REFPROP"
+      },
+      {
+        "temperature_K": 4.8,
+        "pressure_bar": 1.76,
+        "density_liquid_kg_m3": 112.0,
+        "density_vapor_kg_m3": 30.5,
+        "enthalpy_vaporization_kJ_kg": 16.8,
+        "specific_heat_liquid_kJ_kgK": 6.50,
+        "thermal_conductivity_liquid_W_mK": 0.0182,
+        "viscosity_liquid_Pa_s": 3.4e-6,
+        "surface_tension_N_m": 0.000210,
+        "phase": "normal liquid He-I (approaching critical)",
+        "source": "NIST REFPROP"
+      },
+      {
+        "temperature_K": 5.0,
+        "pressure_bar": 2.04,
+        "density_liquid_kg_m3": 100.5,
+        "density_vapor_kg_m3": 40.2,
+        "enthalpy_vaporization_kJ_kg": 11.5,
+        "specific_heat_liquid_kJ_kgK": 10.0,
+        "thermal_conductivity_liquid_W_mK": 0.0178,
+        "viscosity_liquid_Pa_s": 3.3e-6,
+        "surface_tension_N_m": 0.000120,
+        "phase": "normal liquid He-I (near-critical)",
+        "source": "NIST REFPROP"
+      },
+      {
+        "temperature_K": 5.19,
+        "pressure_bar": 2.27,
+        "density_liquid_kg_m3": 69.64,
+        "density_vapor_kg_m3": 69.64,
+        "enthalpy_vaporization_kJ_kg": 0.0,
+        "specific_heat_liquid_kJ_kgK": null,
+        "thermal_conductivity_liquid_W_mK": null,
+        "viscosity_liquid_Pa_s": null,
+        "surface_tension_N_m": 0.0,
+        "phase": "critical point",
+        "source": "NIST REFPROP"
+      }
+    ],
+    "subcooled_liquid": [
+      {
+        "temperature_K": 4.0,
+        "pressure_bar": 1.5,
+        "density_kg_m3": 131.2,
+        "specific_heat_kJ_kgK": 4.40,
+        "note": "Subcooled ~0.22K below Tsat at 1.5 bar"
+      },
+      {
+        "temperature_K": 4.0,
+        "pressure_bar": 2.0,
+        "density_kg_m3": 132.5,
+        "specific_heat_kJ_kgK": 4.35,
+        "note": "Subcooled ~0.8K below Tsat at 2.0 bar"
+      },
+      {
+        "temperature_K": 4.0,
+        "pressure_bar": 3.0,
+        "density_kg_m3": 135.0,
+        "specific_heat_kJ_kgK": 4.28,
+        "note": "Supercritical pressure (above Pc=2.275 bar) but below Tc"
+      }
+    ]
+  },
   "evaluation_points": [
     {"temperature_K": 4, "pressure_bar": 1, "phase": "gas (above critical P at this T is ~2.3 bar; at 1 bar, 4K is near two-phase — treat as cold dense gas approximation)", "density_kg_m3": 4.856, "viscosity_Pa_s": 1.30e-6, "thermal_conductivity_W_mK": 0.0098, "specific_heat_J_kgK": 5193, "speed_of_sound_m_s": 131, "compressibility_factor": 0.98, "source": "NIST REFPROP"},
     {"temperature_K": 4, "pressure_bar": 5, "phase": "supercritical (above P_c=2.275 bar)", "density_kg_m3": 32.5, "viscosity_Pa_s": 1.50e-6, "thermal_conductivity_W_mK": 0.0120, "specific_heat_J_kgK": 12000, "speed_of_sound_m_s": 120, "compressibility_factor": 0.78, "source": "NIST REFPROP"},

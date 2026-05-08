@@ -1,0 +1,112 @@
+{
+  "description": "HP Compressor specifications for helium supply system. v3.1.0",
+  "version": "3.1.0",
+  "compressors": {
+    "FSD575_VFD": {
+      "model": "FSD575 with VFD",
+      "type": "Oil-flooded screw compressor",
+      "capacity_nm3_h": 575,
+      "discharge_pressure_barg": "14-16",
+      "motor_power_kw": 400,
+      "vfd_range_pct": "30-100",
+      "efficiency_iso1217_pct": "70-75",
+      "turndown_ratio": "3:1",
+      "oil_separator": "Integrated coalescing",
+      "cooling": "Water-cooled",
+      "noise_dba": "85-90",
+      "footprint_m": "2.0 × 3.0",
+      "weight_kg": 3000,
+      "maintenance": {
+        "oil_change_hours": 4000,
+        "separator_service_hours": 8000,
+        "major_overhaul_hours": 25000,
+        "annual_cost_eur": 15000
+      },
+      "capital_cost_eur": "175,000 - 205,000",
+      "capital_cost_mid_eur": 190000,
+      "lifecycle_cost_eur_yr": 50000,
+      "mtbf_hours": 8760,
+      "mttr_hours": 8,
+      "notes": "VFD adds ~€30k per unit. Provides 30-100% speed range for energy optimization.",
+      "source": "Industry estimate, KAESER/Atlas Copco equivalent class"
+    },
+    "HSD_Twin_Combi": {
+      "model": "HSD Twin Combi",
+      "type": "Oil-free centrifugal twin-head compressor",
+      "capacity_nm3_h": 1150,
+      "stages": 2,
+      "speed_rpm": "30,000-50,000",
+      "discharge_pressure_barg": "14-16",
+      "motor_power_kw": 575,
+      "bearings": "Active Magnetic Bearings (AMB)",
+      "efficiency_pct": "80-85",
+      "turndown_pct": "70-105",
+      "surge_control": "Active anti-surge valve",
+      "cooling": "Air-cooled with water intercooler",
+      "noise_dba": "75-80",
+      "footprint_m": "2.0 × 4.0",
+      "weight_kg": 5000,
+      "maintenance": {
+        "bearing_replacement_hours": 50000,
+        "annual_inspection_hours": 8760,
+        "annual_cost_eur": 10000
+      },
+      "capital_cost_eur": "300,000 - 400,000",
+      "capital_cost_mid_eur": 350000,
+      "lifecycle_cost_eur_yr": 30000,
+      "mtbf_hours": 8760,
+      "mttr_hours": 8,
+      "notes": "Oil-free operation eliminates oil contamination risk. Magnetic bearings reduce maintenance. Twin-head provides 2-stage compression in single package.",
+      "source": "Industry estimate, Atlas Copco/MAN Energy class"
+    }
+  },
+  "configurations": {
+    "N3_baseline": {
+      "description": "3 compressors, each 50% capacity, 2 running + 1 standby",
+      "units": 3,
+      "capacity_per_unit_pct": 50,
+      "redundancy": "2-of-3",
+      "total_capex_eur": 525000,
+      "compressor_model": "Generic screw (fixed speed)"
+    },
+    "N1_FSD575_A1": {
+      "description": "4× FSD575 VFD, each 33% capacity, 3 running + 1 standby",
+      "units": 4,
+      "capacity_per_unit_pct": 33.3,
+      "redundancy": "3-of-4",
+      "total_capex_eur": 820000,
+      "compressor_model": "FSD575_VFD"
+    },
+    "N1_FSD575_A2": {
+      "description": "4× FSD575 VFD, each 50% capacity, 2 running + 2 standby",
+      "units": 4,
+      "capacity_per_unit_pct": 50,
+      "redundancy": "2-of-4",
+      "total_capex_eur": 820000,
+      "compressor_model": "FSD575_VFD"
+    },
+    "N1_HSD_twin": {
+      "description": "2× HSD Twin Combi, each 100% capacity, 1 running + 1 standby (true N+1)",
+      "units": 2,
+      "capacity_per_unit_pct": 100,
+      "redundancy": "1-of-2",
+      "total_capex_eur": 700000,
+      "compressor_model": "HSD_Twin_Combi"
+    }
+  },
+  "comparison_summary": {
+    "columns": ["Parameter", "4× FSD575 VFD", "2× HSD Twin Combi"],
+    "rows": [
+      ["Redundancy", "N+1 (3+1 or 2+2)", "True N+1 (1+1)"],
+      ["Technology", "Oil-flooded screw", "Oil-free centrifugal"],
+      ["Efficiency", "70-75% (part load with VFD)", "80-85% (full load)"],
+      ["Maintenance", "Oil changes, separator service", "Bearing replacement, less frequent"],
+      ["Turndown", "Excellent (VFD 30-100%)", "Limited (surge control 70-100%)"],
+      ["Footprint", "Larger (4 units × 6 m²)", "Smaller (2 units × 8 m²)"],
+      ["Noise", "Higher (85-90 dBA)", "Lower (75-80 dBA)"],
+      ["Capital Cost", "€760k-820k (4 units)", "€600k-800k (2 units)"],
+      ["Lifecycle Cost", "Higher (oil, filters)", "Lower (oil-free)"],
+      ["Oil contamination risk", "Yes (requires oil removal)", "No (oil-free)"]
+    ]
+  }
+}

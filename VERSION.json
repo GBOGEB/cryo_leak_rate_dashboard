@@ -1,18 +1,15 @@
 {
-  "version": "2.1.0",
-  "baseline": "OUTPUT_2_DMAIC_REFINED",
-  "timestamp": "2026-05-08T125301Z",
-  "dmaic_iteration": 2,
-  "git_ready": true,
-  "features": [
-    "MAPPING_HEROES navigation (7 heroes, 3 tiers each)",
-    "Monte Carlo cost analysis (10,000 runs \u00d7 4 scenarios)",
-    "Supplier comparison (Meca Inox vs Swagelok)",
-    "Enhanced Plotly visualizations (9 interactive charts)",
-    "Material specifications database (316L, HDPE, UHMWPE)",
-    "Risk register (10 risks, heatmap)",
-    "Operations modeling (MTBF, MTTR, MDT, spare parts)",
-    "Speaker notes (8 slide-level markdown files)",
-    "Professional presentation styling"
+  "version": "3.1.0",
+  "codename": "Liquid Helium Operations & HP Compressor Redundancy",
+  "date": "2026-05-08",
+  "changes": [
+    "Extended helium_properties.json with liquid phase data (saturation curve, subcooled)",
+    "New module: src/liquid_he_loss.py — leak rate to liquid inventory loss conversion",
+    "New module: src/compressor_reliability.py — k-of-M availability, VFD energy savings",
+    "New module: src/wcs_scenarios.py — WCS.HP protection, interlocks, leak budget",
+    "New data: data/compressor_specs.json — FSD575 and HSD Twin Combi specifications",
+    "6 new Plotly visualizations in docs/visualizations_v3/",
+    "3 new documentation pages: Liquid He Guide, HP Redundancy, WCS.HP Protection",
+    "40-slide master navigator: docs/index_v3_1.html"
   ]
 }

@@ -1,0 +1,5 @@
+circuit,budget_mbar_l_s,fraction_pct,justification
+Main Hp Supply,7e-06,70,"Critical path: compressors → QVB, largest valve count"
+Sidestreams,2e-06,20,"Non-critical: recovery, purification, research taps (can be shut off)"
+Contingency,1e-06,10,"Future expansions, measurement error margin"
+TOTAL,1e-05,100,RTM-048 system cap

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liquid Helium Operations Guide — QPLANT v3.1.0</title>
+<style>
+:root { --primary: #1a365d; --accent: #2b6cb0; --bg: #f7fafc; --card: #fff; --border: #e2e8f0; --text: #2d3748; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter','Segoe UI',system-ui,sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 18px 32px; }
+.header h1 { font-size: 1.3rem; }
+.header p { opacity: 0.85; font-size: 0.85rem; }
+main { max-width: 1100px; margin: 24px auto; padding: 0 24px; }
+.card { background: var(--card); border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,.06); padding: 28px; margin-bottom: 24px; }
+h2 { color: var(--primary); font-size: 1.35rem; margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px; }
+h3 { color: var(--accent); margin: 16px 0 8px; }
+h4 { margin: 12px 0 6px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85rem; }
+th { background: var(--primary); color: white; padding: 8px 10px; text-align: left; }
+td { padding: 7px 10px; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f7fafc; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.badge-accept { background: #c6f6d5; color: #22543d; }
+.badge-review { background: #fefcbf; color: #744210; }
+.badge-risk { background: #fed7d7; color: #742a2a; }
+.badge-info { background: #bee3f8; color: #2a4365; }
+.equation { background: #f0f4f8; padding: 14px 18px; border-left: 4px solid var(--accent); border-radius: 4px; font-family: 'Courier New',monospace; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+.kpi-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+.kpi { flex: 1; min-width: 130px; padding: 14px; border-radius: 8px; background: linear-gradient(135deg, #ebf8ff, #bee3f8); text-align: center; }
+.kpi .value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+.kpi .label { font-size: 0.78rem; color: #718096; margin-top: 3px; }
+iframe { width: 100%; height: 500px; border: none; border-radius: 8px; margin: 10px 0; }
+a { color: var(--accent); }
+.nav { padding: 10px 32px; background: white; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.nav a { margin-right: 16px; text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Liquid Helium Operations Guide</h1>
+  <p>QPLANT Cryogenic Leak Rate Dashboard — v3.1.0 · Liquid Helium Operations & HP Compressor Redundancy</p>
+</div>
+<div class="nav">
+  <a href="index_v3_1.html">◀ Navigator</a>
+  <a href="liquid_he/Liquid_Operations_Guide.html">Liquid He</a>
+  <a href="compressors/HP_Redundancy_Analysis.html">HP Compressors</a>
+  <a href="compressors/WCS_HP_Protection.html">WCS.HP Protection</a>
+  <a href="index.html">v2.5 Dashboard</a>
+  <a href="index_v3.html">v3.0 Standards</a>
+</div>
+<main>
+
+<div class="card">
+  <h2>Liquid Helium Properties at Normal Boiling Point (4.222 K, 1 atm)</h2>
+  <div class="kpi-row">
+    <div class="kpi"><div class="value">4.222 K</div><div class="label">Normal Boiling Point</div></div>
+    <div class="kpi"><div class="value">124.96</div><div class="label">Density (kg/m³)</div></div>
+    <div class="kpi"><div class="value">20.9</div><div class="label">ΔH_vap (kJ/kg)</div></div>
+    <div class="kpi"><div class="value">5.195 K</div><div class="label">Critical Temperature</div></div>
+    <div class="kpi"><div class="value">2.275 bar</div><div class="label">Critical Pressure</div></div>
+  </div>
+
+  <h3>Saturation Curve Summary</h3>
+  <table>
+    <tr><th>T (K)</th><th>P (bar)</th><th>ρ_liq (kg/m³)</th><th>ΔH_vap (kJ/kg)</th><th>Phase</th></tr>
+    <tr><td>2.5</td><td>0.065</td><td>145.2</td><td>23.1</td><td>Superfluid He-II</td></tr>
+    <tr><td>3.0</td><td>0.117</td><td>141.3</td><td>22.5</td><td>Normal He-I</td></tr>
+    <tr><td>4.0</td><td>0.813</td><td>130.4</td><td>21.1</td><td>Normal He-I</td></tr>
+    <tr><td>4.222</td><td>1.000</td><td>124.96</td><td>20.9</td><td>NBP</td></tr>
+    <tr><td>4.5</td><td>1.48</td><td>119.8</td><td>19.5</td><td>Normal He-I</td></tr>
+    <tr><td>5.0</td><td>2.04</td><td>100.5</td><td>11.5</td><td>Near-critical</td></tr>
+    <tr><td>5.19</td><td>2.27</td><td>69.64</td><td>0</td><td>Critical point</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Leak Rate → Liquid Inventory Loss Conversion</h2>
+
+  <h3>Physics</h3>
+  <p>A gas leak from a liquid-filled volume causes the liquid to boil off to replace lost gas (mass conservation). The conversion follows:</p>
+
+  <div class="equation">ṁ_gas = (Q [Pa·m³/s] × M [kg/mol]) / (R [J/mol·K] × T [K])
+where: Q = leak rate in Pa·m³/s  (1 mbar·L/s = 0.1 Pa·m³/s)
+       M = 0.004003 kg/mol (He-4)
+       R = 8.3145 J/(mol·K)
+
+Liquid volume loss: V̇_liq = ṁ_gas / ρ_liq   (ρ_liq = 125 kg/m³ at NBP)</div>
+
+  <h3>Standard Leak Rate → Liquid Loss Table (at 4.222 K, 1 bar)</h3>
+  <table>
+    <tr><th>Leak Rate (mbar·L/s)</th><th>Mass Loss (g/yr)</th><th>Mass Loss (kg/yr)</th><th>Liquid Loss (L/yr)</th><th>Cost (€/yr)</th></tr>
+    <tr>
+  <td>1e-09</td>
+  <td>0.0004</td>
+  <td>0.000000</td>
+  <td>0.000003</td>
+  <td>€0.0000</td>
+</tr>
+<tr>
+  <td>1e-08</td>
+  <td>0.0036</td>
+  <td>0.000004</td>
+  <td>0.000029</td>
+  <td>€0.0004</td>
+</tr>
+<tr>
+  <td>1e-07</td>
+  <td>0.0360</td>
+  <td>0.000036</td>
+  <td>0.000288</td>
+  <td>€0.0043</td>
+</tr>
+<tr>
+  <td>1e-06</td>
+  <td>0.3599</td>
+  <td>0.000360</td>
+  <td>0.002880</td>
+  <td>€0.0432</td>
+</tr>
+<tr>
+  <td>1e-05</td>
+  <td>3.5986</td>
+  <td>0.003599</td>
+  <td>0.028798</td>
+  <td>€0.4318</td>
+</tr>
+<tr>
+  <td>1e-04</td>
+  <td>35.9863</td>
+  <td>0.035986</td>
+  <td>0.287983</td>
+  <td>€4.3184</td>
+</tr>
+<tr>
+  <td>1e-03</td>
+  <td>359.8630</td>
+  <td>0.359863</td>
+  <td>2.879825</td>
+  <td>€43.1836</td>
+</tr>
+<tr>
+  <td>1e-02</td>
+  <td>3598.6296</td>
+  <td>3.598630</td>
+  <td>28.798252</td>
+  <td>€431.8355</td>
+</tr>
+
+  </table>
+  <p><em>Cost basis: €120/kg liquid helium (2024 market estimate).</em></p>
+</div>
+
+<div class="card">
+  <h2>Liquid Inventory Depletion — WSH 5,000 L Vessel</h2>
+  <iframe src="../visualizations_v3/liquid_inventory_depletion.html"></iframe>
+
+  <h3>Time to 20% Threshold (Minimum Operating Level)</h3>
+  <table>
+    <tr><th>Leak Rate (mbar·L/s)</th><th>Time to 20% Level</th></tr>
+    <tr><td>1e-09</td><td>>1e+09 years</td></tr>
+<tr><td>1e-08</td><td>>1e+08 years</td></tr>
+<tr><td>1e-05</td><td>>1e+05 years</td></tr>
+<tr><td>1e-04</td><td>>1e+04 years</td></tr>
+
+  </table>
+  <p>At the tightest spec (10⁻⁹ mbar·L/s), liquid loss from leaks is negligible over operational lifetimes.
+     At 10⁻⁴ mbar·L/s, losses are measurable but still small (0.29 L/yr).</p>
+</div>
+
+<div class="card">
+  <h2>Boil-off Rate vs Leak Rate (Temperature Dependence)</h2>
+  <iframe src="../visualizations_v3/boiloff_vs_leakrate.html"></iframe>
+  <p>Higher gas temperatures at the leak point yield <em>lower</em> mass flow for the same volumetric throughput
+     (ideal gas: n ∝ PV/T). Cold leaks (4K) lose more mass per mbar·L/s than warm leaks (300K).</p>
+</div>
+
+</main>
+</body>
+</html>

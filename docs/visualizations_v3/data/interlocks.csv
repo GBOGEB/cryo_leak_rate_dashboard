@@ -1,0 +1,7 @@
+condition,setpoint,action,purpose,priority
+HP header pressure LOW,< 13.5 barg,Close sidestream isolation valves,Protect main HP supply from sidestream leaks,WARNING
+HP header pressure LOW-LOW,< 13.0 barg,Alarm + start backup compressor,"Prevent beam dump, restore redundancy",ALARM
+Compressor failure (any),Trip signal from PLC,Start standby compressor (auto),Maintain N redundancy,AUTO
+2 compressors failed,Second trip within MTTR window,Reduce beam to 50% intensity,Match available compressor capacity,ALARM
+Sidestream leak detected,Local He detector > 100 ppm,Isolate affected branch (NC valve closes),"Limit He loss, protect inventory",AUTO
+All compressors failed,No running units,"Emergency beam shutdown, vent to recovery","Safe shutdown, minimize He loss",TRIP

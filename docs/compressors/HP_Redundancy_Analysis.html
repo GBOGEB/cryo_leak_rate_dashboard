@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HP Compressor Redundancy Analysis — QPLANT v3.1.0</title>
+<style>
+:root { --primary: #1a365d; --accent: #2b6cb0; --bg: #f7fafc; --card: #fff; --border: #e2e8f0; --text: #2d3748; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter','Segoe UI',system-ui,sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+.header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 18px 32px; }
+.header h1 { font-size: 1.3rem; }
+.header p { opacity: 0.85; font-size: 0.85rem; }
+main { max-width: 1100px; margin: 24px auto; padding: 0 24px; }
+.card { background: var(--card); border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,.06); padding: 28px; margin-bottom: 24px; }
+h2 { color: var(--primary); font-size: 1.35rem; margin-bottom: 14px; border-bottom: 2px solid var(--accent); padding-bottom: 6px; }
+h3 { color: var(--accent); margin: 16px 0 8px; }
+h4 { margin: 12px 0 6px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85rem; }
+th { background: var(--primary); color: white; padding: 8px 10px; text-align: left; }
+td { padding: 7px 10px; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f7fafc; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.badge-accept { background: #c6f6d5; color: #22543d; }
+.badge-review { background: #fefcbf; color: #744210; }
+.badge-risk { background: #fed7d7; color: #742a2a; }
+.badge-info { background: #bee3f8; color: #2a4365; }
+.equation { background: #f0f4f8; padding: 14px 18px; border-left: 4px solid var(--accent); border-radius: 4px; font-family: 'Courier New',monospace; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+.kpi-row { display: flex; gap: 14px; flex-wrap: wrap; margin: 14px 0; }
+.kpi { flex: 1; min-width: 130px; padding: 14px; border-radius: 8px; background: linear-gradient(135deg, #ebf8ff, #bee3f8); text-align: center; }
+.kpi .value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+.kpi .label { font-size: 0.78rem; color: #718096; margin-top: 3px; }
+iframe { width: 100%; height: 500px; border: none; border-radius: 8px; margin: 10px 0; }
+a { color: var(--accent); }
+.nav { padding: 10px 32px; background: white; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.nav a { margin-right: 16px; text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>HP Compressor Redundancy Analysis</h1>
+  <p>QPLANT Cryogenic Leak Rate Dashboard — v3.1.0 · Liquid Helium Operations & HP Compressor Redundancy</p>
+</div>
+<div class="nav">
+  <a href="index_v3_1.html">◀ Navigator</a>
+  <a href="liquid_he/Liquid_Operations_Guide.html">Liquid He</a>
+  <a href="compressors/HP_Redundancy_Analysis.html">HP Compressors</a>
+  <a href="compressors/WCS_HP_Protection.html">WCS.HP Protection</a>
+  <a href="index.html">v2.5 Dashboard</a>
+  <a href="index_v3.html">v3.0 Standards</a>
+</div>
+<main>
+
+<div class="card">
+  <h2>HP Compressor System Architecture</h2>
+  <div class="kpi-row">
+    <div class="kpi"><div class="value">14 barg</div><div class="label">HP Header Pressure</div></div>
+    <div class="kpi"><div class="value">3 → 4</div><div class="label">Compressor Options</div></div>
+    <div class="kpi"><div class="value">99.999%+</div><div class="label">Target Availability</div></div>
+    <div class="kpi"><div class="value">8 h</div><div class="label">MTTR (conservative)</div></div>
+  </div>
+
+  <h3>Configuration Options</h3>
+  <p><strong>Baseline (N=3):</strong> 3 compressors, each 50% capacity. 2 running + 1 standby.</p>
+  <p><strong>Option A (FSD575 VFD):</strong> 4× oil-flooded screw with Variable Frequency Drive.</p>
+  <p><strong>Option B (HSD Twin Combi):</strong> 2× oil-free centrifugal twin-head, each 100% capacity (true N+1).</p>
+</div>
+
+<div class="card">
+  <h2>Reliability & Availability Comparison</h2>
+
+  <h3>Formulas</h3>
+  <div class="equation">Single unit:  A = MTBF / (MTBF + MTTR) = 8760 / (8760 + 8) = 99.91%
+k-of-M system: A_sys = Σ(i=k..M) C(M,i) × A^i × (1-A)^(M-i)
+2-of-3:  A_sys = A²(3 − 2A) = 99.9997%
+3-of-4:  A_sys = A³(4 − 3A) = 99.9995%
+2-of-4:  A_sys = 6A⁴ − 8A³ + 3A² (via binomial) → ~100%
+1-of-2:  A_sys = 2A − A² = 99.9999%</div>
+
+  <h3>Comparison Table</h3>
+  <table>
+    <tr><th>Configuration</th><th>Units</th><th>Redundancy</th><th>Type</th><th>Availability</th><th>Downtime (h/yr)</th><th>MTBF (years)</th><th>CAPEX</th><th>OPEX/yr</th></tr>
+    <tr>
+  <td>N=3 Baseline (2-of-3)</td><td>3×50%</td><td>2-of-3</td>
+  <td>oil-flooded screw</td><td>99.9998%</td>
+  <td>0.0219</td><td>366</td>
+  <td>€525,000</td><td>€1,005,000</td>
+</tr>
+<tr>
+  <td>N+1 FSD575 VFD (3-of-4)</td><td>4×33%</td><td>3-of-4</td>
+  <td>oil-flooded screw + VFD</td><td>99.9995%</td>
+  <td>0.0437</td><td>183</td>
+  <td>€820,000</td><td>€569,196</td>
+</tr>
+<tr>
+  <td>N+1 FSD575 VFD (2-of-4)</td><td>4×50%</td><td>2-of-4</td>
+  <td>oil-flooded screw + VFD</td><td>100.0000%</td>
+  <td>0.0000</td><td>300784</td>
+  <td>€820,000</td><td>€399,464</td>
+</tr>
+<tr>
+  <td>N+1 HSD Twin Combi (1-of-2)</td><td>2×100%</td><td>1-of-2</td>
+  <td>oil-free centrifugal twin-head</td><td>99.9999%</td>
+  <td>0.0073</td><td>1097</td>
+  <td>€700,000</td><td>€710,000</td>
+</tr>
+
+  </table>
+
+  <iframe src="../visualizations_v3/compressor_availability_comparison.html"></iframe>
+</div>
+
+<div class="card">
+  <h2>VFD Energy Savings Analysis (FSD575, 400 kW)</h2>
+
+  <h3>Affinity Law</h3>
+  <div class="equation">P_VFD = P_full × (load_fraction)³ / η_VFD
+P_fixed ≈ P_full × (0.4 + 0.6 × load_fraction)   [slide-valve unloading]
+
+At 70% load:  P_fixed = 328 kW,  P_VFD = 141 kW  →  savings: 57%</div>
+
+  <table>
+    <tr><th>Load</th><th>Fixed Speed (kW)</th><th>VFD (kW)</th><th>Savings</th><th>Annual Savings (€/yr)</th></tr>
+    <tr>
+  <td>30%</td><td>232</td>
+  <td>11</td><td>95.2%</td>
+  <td>€265,039</td>
+</tr>
+<tr>
+  <td>40%</td><td>256</td>
+  <td>26</td><td>89.7%</td>
+  <td>€275,530</td>
+</tr>
+<tr>
+  <td>50%</td><td>280</td>
+  <td>52</td><td>81.6%</td>
+  <td>€274,144</td>
+</tr>
+<tr>
+  <td>60%</td><td>304</td>
+  <td>89</td><td>70.7%</td>
+  <td>€257,913</td>
+</tr>
+<tr>
+  <td>70%</td><td>328</td>
+  <td>141</td><td>56.9%</td>
+  <td>€223,868</td>
+</tr>
+<tr>
+  <td>80%</td><td>352</td>
+  <td>211</td><td>40.0%</td>
+  <td>€169,039</td>
+</tr>
+<tr>
+  <td>90%</td><td>376</td>
+  <td>301</td><td>20.0%</td>
+  <td>€90,458</td>
+</tr>
+<tr>
+  <td>100%</td><td>400</td>
+  <td>412</td><td>-3.1%</td>
+  <td>€-14,845</td>
+</tr>
+
+  </table>
+
+  <iframe src="../visualizations_v3/vfd_energy_savings.html"></iframe>
+</div>
+
+<div class="card">
+  <h2>Redundancy Cost-Benefit Analysis</h2>
+  <iframe src="../visualizations_v3/redundancy_cost_benefit.html"></iframe>
+
+  <h3>FSD575 vs HSD Twin Combi — Key Trade-offs</h3>
+  <table>
+    <tr><th>Parameter</th><th>4× FSD575 VFD</th><th>2× HSD Twin Combi</th></tr>
+    <tr><td>Redundancy</td><td>N+1 (3+1 or 2+2)</td><td>True N+1 (1+1)</td></tr>
+    <tr><td>Technology</td><td>Oil-flooded screw</td><td>Oil-free centrifugal</td></tr>
+    <tr><td>Efficiency</td><td>70-75%</td><td>80-85%</td></tr>
+    <tr><td>Turndown</td><td>Excellent (VFD 30-100%)</td><td>Limited (70-100%)</td></tr>
+    <tr><td>Maintenance</td><td>Oil changes, separator</td><td>Bearings, less frequent</td></tr>
+    <tr><td>Capital Cost</td><td>€760k-820k</td><td>€600k-800k</td></tr>
+    <tr><td>Oil contamination</td><td>Yes (requires removal)</td><td>No (oil-free)</td></tr>
+  </table>
+</div>
+
+</main>
+</body>
+</html>

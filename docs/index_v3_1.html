@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OUTPUT_3.1 — Liquid He Operations & HP Compressor Redundancy v3.1.0</title>
+<style>
+:root {
+  --primary: #1a365d; --accent: #2b6cb0; --bg: #f7fafc; --card: #ffffff;
+  --border: #e2e8f0; --text: #2d3748; --text-light: #718096;
+  --success: #38a169; --warning: #d69e2e; --danger: #e53e3e; --info: #3182ce;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter','Segoe UI',system-ui,sans-serif; background: var(--bg); color: var(--text); }
+.app-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.app-header h1 { font-size: 1.1rem; font-weight: 600; }
+.slide-counter { font-size: 0.9rem; opacity: 0.9; font-variant-numeric: tabular-nums; }
+.progress-bar { height: 4px; background: rgba(255,255,255,.2); width: 100%; }
+.progress-fill { height: 100%; background: #68d391; transition: width 0.3s; }
+.nav-controls {
+  display: flex; gap: 8px; align-items: center; padding: 10px 24px; background: var(--card);
+  border-bottom: 1px solid var(--border); flex-wrap: wrap;
+}
+.nav-btn {
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px;
+  background: white; cursor: pointer; font-size: 0.82rem; transition: all .15s;
+}
+.nav-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
+.nav-btn.active { background: var(--accent); color: white; }
+.slide-container { max-width: 1200px; margin: 24px auto; padding: 0 24px; }
+.slide {
+  display: none; background: var(--card); border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0,0,0,.08); padding: 32px; min-height: 500px;
+}
+.slide.active { display: block; }
+.slide h2 { color: var(--primary); font-size: 1.5rem; margin-bottom: 16px; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+.slide h3 { color: var(--accent); font-size: 1.15rem; margin: 18px 0 8px; }
+.slide h4 { color: var(--text); font-size: 1rem; margin: 14px 0 6px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.85rem; }
+th { background: var(--primary); color: white; padding: 8px 10px; text-align: left; font-weight: 600; }
+td { padding: 7px 10px; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) { background: #f7fafc; }
+tr:hover { background: #edf2f7; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.badge-accept { background: #c6f6d5; color: #22543d; }
+.badge-review { background: #fefcbf; color: #744210; }
+.badge-risk { background: #fed7d7; color: #742a2a; }
+.badge-trace { background: #bee3f8; color: #2a4365; }
+.badge-new { background: #e9d8fd; color: #44337a; }
+.kpi-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
+.kpi { flex: 1; min-width: 140px; padding: 14px; border-radius: 8px; background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%); text-align: center; }
+.kpi .value { font-size: 1.6rem; font-weight: 700; color: var(--primary); }
+.kpi .label { font-size: 0.78rem; color: var(--text-light); margin-top: 4px; }
+.plot-frame { width: 100%; height: 480px; border: none; border-radius: 8px; margin: 12px 0; }
+.equation { background: #f0f4f8; padding: 14px 18px; border-left: 4px solid var(--accent); border-radius: 4px; font-family: 'Courier New',monospace; margin: 12px 0; overflow-x: auto; white-space: pre-wrap; }
+.thumb-sidebar {
+  position: fixed; right: 0; top: 90px; width: 160px; max-height: calc(100vh - 100px);
+  overflow-y: auto; background: var(--card); border-left: 1px solid var(--border);
+  padding: 8px 0; font-size: 0.72rem; z-index: 500;
+}
+.thumb { padding: 4px 10px; cursor: pointer; border-bottom: 1px solid var(--border); }
+.thumb:hover { background: #edf2f7; }
+.thumb.active { background: #bee3f8; font-weight: 600; }
+@media(max-width: 900px) { .thumb-sidebar { display:none; } }
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <h1>OUTPUT_3.1 — Liquid He Operations & HP Compressor Redundancy v3.1.0</h1>
+  <span class="slide-counter" id="slideCounter">1 / 39</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:2.6%"></div></div>
+
+<div class="nav-controls">
+  <button class="nav-btn" onclick="prevSlide()">◀ Prev</button>
+  <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+  <span style="margin:0 8px;color:#a0aec0;">|</span>
+  <button class="nav-btn" onclick="goSlide(1)">Overview</button>
+<button class="nav-btn" onclick="goSlide(5)">Liquid He</button>
+<button class="nav-btn" onclick="goSlide(11)">HP Compressors</button>
+<button class="nav-btn" onclick="goSlide(20)">WCS.HP</button>
+<button class="nav-btn" onclick="goSlide(28)">Derogation</button>
+<button class="nav-btn" onclick="goSlide(32)">Compliance</button>
+<button class="nav-btn" onclick="goSlide(36)">Methodology</button>
+
+</div>
+
+<div class="thumb-sidebar" id="thumbSidebar">
+<div class="thumb" onclick="goSlide(1)" title="v3.1.0 Overview">1. v3.1.0 Overview</div>
+<div class="thumb" onclick="goSlide(2)" title="System Architecture Overview">2. System Architecture Overv…</div>
+<div class="thumb" onclick="goSlide(3)" title="Deliverables Summary">3. Deliverables Summary</div>
+<div class="thumb" onclick="goSlide(4)" title="Version History">4. Version History</div>
+<div class="thumb" onclick="goSlide(5)" title="Liquid He Properties">5. Liquid He Properties</div>
+<div class="thumb" onclick="goSlide(6)" title="Superfluid He & Phase Diagram">6. Superfluid He & Phase Dia…</div>
+<div class="thumb" onclick="goSlide(7)" title="Leak Rate → Liquid Loss Physics">7. Leak Rate → Liquid Loss P…</div>
+<div class="thumb" onclick="goSlide(8)" title="Leak Rate → Liquid Loss Table">8. Leak Rate → Liquid Loss T…</div>
+<div class="thumb" onclick="goSlide(9)" title="Liquid Inventory Depletion Chart">9. Liquid Inventory Depletio…</div>
+<div class="thumb" onclick="goSlide(10)" title="Boil-off vs Leak Rate Chart">10. Boil-off vs Leak Rate Cha…</div>
+<div class="thumb" onclick="goSlide(11)" title="HP Compressor Overview">11. HP Compressor Overview</div>
+<div class="thumb" onclick="goSlide(12)" title="N=3 Baseline Configuration">12. N=3 Baseline Configuratio…</div>
+<div class="thumb" onclick="goSlide(13)" title="FSD575 VFD Specifications">13. FSD575 VFD Specifications</div>
+<div class="thumb" onclick="goSlide(14)" title="HSD Twin Combi Specifications">14. HSD Twin Combi Specificat…</div>
+<div class="thumb" onclick="goSlide(15)" title="Reliability Comparison Table">15. Reliability Comparison Ta…</div>
+<div class="thumb" onclick="goSlide(16)" title="Availability Comparison Chart">16. Availability Comparison C…</div>
+<div class="thumb" onclick="goSlide(17)" title="FSD575 vs HSD Comparison">17. FSD575 vs HSD Comparison</div>
+<div class="thumb" onclick="goSlide(18)" title="VFD Energy Savings">18. VFD Energy Savings</div>
+<div class="thumb" onclick="goSlide(19)" title="Redundancy Cost-Benefit">19. Redundancy Cost-Benefit</div>
+<div class="thumb" onclick="goSlide(20)" title="WCS.HP Overview">20. WCS.HP Overview</div>
+<div class="thumb" onclick="goSlide(21)" title="Leak Budget Allocation">21. Leak Budget Allocation</div>
+<div class="thumb" onclick="goSlide(22)" title="Interlock Logic">22. Interlock Logic</div>
+<div class="thumb" onclick="goSlide(23)" title="WCS.HP Architecture Diagram">23. WCS.HP Architecture Diagr…</div>
+<div class="thumb" onclick="goSlide(24)" title="WCS Scenario Analysis">24. WCS Scenario Analysis</div>
+<div class="thumb" onclick="goSlide(25)" title="Scenario 1: Normal Operation">25. Scenario 1: Normal Operat…</div>
+<div class="thumb" onclick="goSlide(26)" title="Scenario 2: WCS (1 Failed)">26. Scenario 2: WCS (1 Failed…</div>
+<div class="thumb" onclick="goSlide(27)" title="Scenario 3: Emergency (2 Failed)">27. Scenario 3: Emergency (2 …</div>
+<div class="thumb" onclick="goSlide(28)" title="Warm Valve Derogation Context">28. Warm Valve Derogation Con…</div>
+<div class="thumb" onclick="goSlide(29)" title="Warm Valve Impact Analysis">29. Warm Valve Impact Analysi…</div>
+<div class="thumb" onclick="goSlide(30)" title="Valve Classification Table">30. Valve Classification Tabl…</div>
+<div class="thumb" onclick="goSlide(31)" title="Derogation Recommendation">31. Derogation Recommendation</div>
+<div class="thumb" onclick="goSlide(32)" title="PED Classification">32. PED Classification</div>
+<div class="thumb" onclick="goSlide(33)" title="EN 13458 Compliance">33. EN 13458 Compliance</div>
+<div class="thumb" onclick="goSlide(34)" title="EN 13185 Leak Detection">34. EN 13185 Leak Detection</div>
+<div class="thumb" onclick="goSlide(35)" title="RTM Traceability Update">35. RTM Traceability Update</div>
+<div class="thumb" onclick="goSlide(36)" title="Calculation Methodology">36. Calculation Methodology</div>
+<div class="thumb" onclick="goSlide(37)" title="Data Sources & Assumptions">37. Data Sources & Assumption…</div>
+<div class="thumb" onclick="goSlide(38)" title="Open Items & Next Steps">38. Open Items & Next Steps</div>
+<div class="thumb" onclick="goSlide(39)" title="Conclusions & Recommendations">39. Conclusions & Recommendat…</div>
+
+</div>
+
+<div class="slide-container" style="margin-right:170px;">
+<div class="slide active" data-title="v3.1.0 Overview">
+
+<h2>OUTPUT_3.1.0 — Liquid Helium Operations & HP Compressor Redundancy</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="value">v3.1.0</div><div class="label">Version</div></div>
+  <div class="kpi"><div class="value">40</div><div class="label">Slides</div></div>
+  <div class="kpi"><div class="value">6</div><div class="label">New Charts</div></div>
+  <div class="kpi"><div class="value">3</div><div class="label">New Modules</div></div>
+</div>
+<h3>What's New in v3.1.0</h3>
+<ul>
+  <li><strong>Liquid helium inventory management</strong> — all calculations now in liquid He context at 4K</li>
+  <li><strong>HP compressor redundancy analysis</strong> — N=3 vs N+1 (FSD575 VFD, HSD Twin Combi)</li>
+  <li><strong>WCS.HP supply protection</strong> — leak budget, interlocks, scenario analysis</li>
+  <li><strong>6 new interactive Plotly charts</strong> — liquid depletion, compressor availability, VFD savings, etc.</li>
+  <li><strong>3 Python calculation modules</strong> — liquid_he_loss.py, compressor_reliability.py, wcs_scenarios.py</li>
+</ul>
+<h3>Document Links</h3>
+<p>
+  <a href="liquid_he/Liquid_Operations_Guide.html">📄 Liquid He Operations Guide</a> ·
+  <a href="compressors/HP_Redundancy_Analysis.html">📄 HP Redundancy Analysis</a> ·
+  <a href="compressors/WCS_HP_Protection.html">📄 WCS.HP Protection</a>
+</p>
+
+</div>
+
+<div class="slide" data-title="System Architecture Overview">
+
+<h2>QPLANT Helium System Architecture</h2>
+<h3>Primary Mode: Liquid Helium at 4K</h3>
+<p>The QPLANT cryogenic system operates with <strong>liquid helium</strong> at 4K as the primary coolant.
+   The Warm Storage Holders (WSH) contain the liquid helium inventory. Leaks from the system cause
+   liquid inventory loss through boil-off.</p>
+<h3>HP Compressor Supply</h3>
+<p>The HP compressor system provides helium at <strong>14 barg</strong> (15 bara) to the main beam cooling loop.
+   Redundancy options range from N=3 (baseline) to N+1 configurations with FSD575 VFD or HSD Twin Combi.</p>
+<h3>Key System Parameters</h3>
+<table>
+  <tr><th>Parameter</th><th>Value</th><th>Source</th></tr>
+  <tr><td>Operating temperature</td><td>4.222 K (NBP at 1 atm)</td><td>NIST</td></tr>
+  <tr><td>Liquid density</td><td>124.96 kg/m³</td><td>NIST REFPROP</td></tr>
+  <tr><td>HP supply pressure</td><td>14 barg (15 bara)</td><td>QPLANT spec</td></tr>
+  <tr><td>System leak budget</td><td>1×10⁻⁵ mbar·L/s</td><td>RTM-048</td></tr>
+  <tr><td>WSH capacity</td><td>5,000 L</td><td>Design basis</td></tr>
+  <tr><td>He recovery target</td><td>200 g/s</td><td>RTM-054</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="Deliverables Summary">
+
+<h2>v3.1.0 Deliverables</h2>
+<h3>New Files Created</h3>
+<table>
+  <tr><th>Category</th><th>File</th><th>Description</th></tr>
+  <tr><td>Data</td><td>data/helium_properties.json</td><td>Extended with liquid phase (saturation curve, subcooled)</td></tr>
+  <tr><td>Data</td><td>data/compressor_specs.json</td><td>FSD575 & HSD Twin specifications</td></tr>
+  <tr><td>Module</td><td>src/liquid_he_loss.py</td><td>Leak rate → liquid loss conversion</td></tr>
+  <tr><td>Module</td><td>src/compressor_reliability.py</td><td>k-of-M availability, VFD savings</td></tr>
+  <tr><td>Module</td><td>src/wcs_scenarios.py</td><td>WCS scenarios, interlocks, leak budget</td></tr>
+  <tr><td>Chart</td><td>liquid_inventory_depletion.html</td><td>WSH 5000L depletion over time</td></tr>
+  <tr><td>Chart</td><td>compressor_availability_comparison.html</td><td>Availability bar chart (nines)</td></tr>
+  <tr><td>Chart</td><td>boiloff_vs_leakrate.html</td><td>Boil-off & cost vs leak rate</td></tr>
+  <tr><td>Chart</td><td>wcs_hp_architecture.html</td><td>HP supply block diagram</td></tr>
+  <tr><td>Chart</td><td>redundancy_cost_benefit.html</td><td>CAPEX vs availability scatter</td></tr>
+  <tr><td>Chart</td><td>vfd_energy_savings.html</td><td>Fixed-speed vs VFD bars</td></tr>
+  <tr><td>Doc</td><td>Liquid_Operations_Guide.html</td><td>Full liquid He reference</td></tr>
+  <tr><td>Doc</td><td>HP_Redundancy_Analysis.html</td><td>Compressor comparison</td></tr>
+  <tr><td>Doc</td><td>WCS_HP_Protection.html</td><td>Supply protection analysis</td></tr>
+  <tr><td>Nav</td><td>index_v3_1.html</td><td>40-slide master navigator</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="Version History">
+
+<h2>Version History</h2>
+<table>
+  <tr><th>Version</th><th>Date</th><th>Description</th></tr>
+  <tr><td><span class="badge badge-trace">v1.0</span></td><td>2026-05</td><td>Initial baseline — leak rate conversion (had ×1000 error)</td></tr>
+  <tr><td><span class="badge badge-accept">v2.0</span></td><td>2026-05</td><td>Corrected physics, triage system, DMAIC, handover package</td></tr>
+  <tr><td><span class="badge badge-accept">v2.5</span></td><td>2026-05</td><td>Visual dashboard (18 charts), material comparison, Monte Carlo</td></tr>
+  <tr><td><span class="badge badge-accept">v3.0</span></td><td>2026-05</td><td>Standards & statistical framework, PCA, compliance tables</td></tr>
+  <tr><td><span class="badge badge-new">v3.1</span></td><td>2026-05</td><td>Liquid He operations, HP compressor redundancy, WCS.HP protection</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="Liquid He Properties">
+
+<h2>Liquid Helium-4 Thermophysical Properties</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="value">4.222 K</div><div class="label">Normal Boiling Point</div></div>
+  <div class="kpi"><div class="value">124.96</div><div class="label">ρ_liq (kg/m³)</div></div>
+  <div class="kpi"><div class="value">20.9</div><div class="label">ΔH_vap (kJ/kg)</div></div>
+  <div class="kpi"><div class="value">5.195 K</div><div class="label">T_critical</div></div>
+  <div class="kpi"><div class="value">2.275 bar</div><div class="label">P_critical</div></div>
+</div>
+<h3>Saturation Curve</h3>
+<table>
+  <tr><th>T (K)</th><th>P (bar)</th><th>ρ_liq (kg/m³)</th><th>ρ_vap (kg/m³)</th><th>ΔH_vap (kJ/kg)</th><th>Phase</th></tr>
+  <tr><td>2.5</td><td>0.065</td><td>145.2</td><td>0.95</td><td>23.1</td><td>Superfluid He-II</td></tr>
+  <tr><td>3.0</td><td>0.117</td><td>141.3</td><td>1.44</td><td>22.5</td><td>Normal He-I</td></tr>
+  <tr><td>4.0</td><td>0.813</td><td>130.4</td><td>6.40</td><td>21.1</td><td>Normal He-I</td></tr>
+  <tr><td>4.222</td><td>1.000</td><td>124.96</td><td>16.89</td><td>20.9</td><td>NBP</td></tr>
+  <tr><td>4.5</td><td>1.48</td><td>119.8</td><td>22.5</td><td>19.5</td><td>Normal He-I</td></tr>
+  <tr><td>5.0</td><td>2.04</td><td>100.5</td><td>40.2</td><td>11.5</td><td>Near-critical</td></tr>
+  <tr><td>5.19</td><td>2.27</td><td>69.64</td><td>69.64</td><td>0</td><td>Critical point</td></tr>
+</table>
+<p><em>Data source: NIST REFPROP He-4. Lambda point (superfluid transition): T_λ = 2.1768 K at SVP.</em></p>
+
+</div>
+
+<div class="slide" data-title="Superfluid He & Phase Diagram">
+
+<h2>Helium Phase Diagram & Superfluid Transition</h2>
+<h3>Unique Properties of He-4</h3>
+<ul>
+  <li>Helium is the <strong>only element that remains liquid at 0 K</strong> (at ambient pressure)</li>
+  <li><strong>Lambda transition</strong> at 2.1768 K: He-I (normal) → He-II (superfluid)</li>
+  <li>Superfluid He-II has <strong>zero viscosity</strong> and extremely high thermal conductivity</li>
+  <li>Critical point at only 5.195 K, 2.275 bar — very narrow liquid range</li>
+</ul>
+<h3>Implications for Leak Analysis</h3>
+<table>
+  <tr><th>Aspect</th><th>Impact</th></tr>
+  <tr><td>Narrow liquid range (4.2–5.2 K)</td><td>Small temperature excursions → phase change</td></tr>
+  <tr><td>Low latent heat (20.9 kJ/kg)</td><td>Small heat inputs cause significant boil-off</td></tr>
+  <tr><td>Low surface tension (0.35 mN/m)</td><td>Can penetrate very small leak paths</td></tr>
+  <tr><td>Low viscosity (3.5 μPa·s)</td><td>High mobility through micro-cracks</td></tr>
+  <tr><td>Low density (125 kg/m³)</td><td>Large volumes needed for modest mass</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="Leak Rate → Liquid Loss Physics">
+
+<h2>Leak Rate to Liquid Inventory Loss — Physics</h2>
+<h3>Mass Conservation Principle</h3>
+<p>A gas leak from the ullage space above liquid helium causes the liquid to boil off
+   to replace the lost gas molecules. At steady state:</p>
+<div class="equation">ṁ_leak,gas = ṁ_boiloff,liquid   (mass conservation)
+
+Gas mass flow from leak rate:
+  ṁ = (Q × M) / (R × T)
+
+where:
+  Q = leak rate [Pa·m³/s]   (1 mbar·L/s = 0.1 Pa·m³/s)
+  M = 0.004003 kg/mol       (He-4 molar mass)
+  R = 8.3145 J/(mol·K)      (universal gas constant)
+  T = temperature at leak    [K]
+
+Liquid volume loss rate:
+  V̇_liq = ṁ / ρ_liq    (ρ_liq = 124.96 kg/m³ at NBP)</div>
+<p><strong>Key insight:</strong> Cold leaks (4K) lose more mass per mbar·L/s than warm leaks (300K),
+   because n ∝ PV/T — more moles at lower T for same throughput.</p>
+
+</div>
+
+<div class="slide" data-title="Leak Rate → Liquid Loss Table">
+
+<h2>Standard Leak Rate → Liquid He Loss Conversion</h2>
+<p>Conditions: T = 4.222 K (NBP), P = 1 bar, ρ_liq = 125 kg/m³. Cost: €120/kg.</p>
+<table>
+  <tr><th>Leak Rate (mbar·L/s)</th><th>Mass Loss (g/yr)</th><th>Liquid Loss (L/yr)</th><th>Cost (€/yr)</th></tr>
+  <tr><td>1e-09</td><td>0.0004</td><td>0.000003</td><td>€0.0000</td></tr>
+<tr><td>1e-08</td><td>0.0036</td><td>0.000029</td><td>€0.0004</td></tr>
+<tr><td>1e-07</td><td>0.0360</td><td>0.000288</td><td>€0.0043</td></tr>
+<tr><td>1e-06</td><td>0.3599</td><td>0.002880</td><td>€0.0432</td></tr>
+<tr><td>1e-05</td><td>3.5986</td><td>0.028798</td><td>€0.4318</td></tr>
+<tr><td>1e-04</td><td>35.9863</td><td>0.287983</td><td>€4.3184</td></tr>
+<tr><td>1e-03</td><td>359.8630</td><td>2.879825</td><td>€43.1836</td></tr>
+<tr><td>1e-02</td><td>3598.6296</td><td>28.798252</td><td>€431.8355</td></tr>
+
+</table>
+<h3>Interpretation</h3>
+<ul>
+  <li>At 10⁻⁹ mbar·L/s (ultra-tight): 0.00036 g/yr — completely negligible</li>
+  <li>At 10⁻⁵ mbar·L/s (RTM-048 cap): 3.6 g/yr — very small, 0.03 L/yr liquid</li>
+  <li>At 10⁻⁴ mbar·L/s (warm valve offer): 36 g/yr — 0.29 L/yr, still manageable</li>
+  <li>At 10⁻² mbar·L/s (significant leak): 3,600 g/yr — 29 L/yr, needs attention</li>
+</ul>
+
+</div>
+
+<div class="slide" data-title="Liquid Inventory Depletion Chart">
+
+<h2>Liquid He Inventory Depletion — WSH 5,000 L Vessel</h2>
+<iframe class="plot-frame" src="visualizations_v3/liquid_inventory_depletion.html"></iframe>
+<p>Even at the least tight specification (10⁻⁴ mbar·L/s), liquid helium loss from valve leaks
+   is extremely small compared to the 5,000 L inventory. The dominant He loss mechanism in practice
+   is static heat leak (boil-off from insulation imperfection), not valve leaks.</p>
+<p><strong>Conclusion:</strong> The valve leak rate specification has minimal impact on liquid inventory
+   management. The derogation request for warm valves (higher leak rate) is justified from an
+   inventory perspective.</p>
+
+</div>
+
+<div class="slide" data-title="Boil-off vs Leak Rate Chart">
+
+<h2>Boil-off Rate & Cost vs Leak Rate</h2>
+<iframe class="plot-frame" src="visualizations_v3/boiloff_vs_leakrate.html"></iframe>
+<p>Three temperature regimes are shown: 4K (liquid space), 80K (radiation shield), 300K (ambient).
+   The 4K curve represents the worst case (most mass per throughput unit).
+   At typical valve leak rates (10⁻⁹ to 10⁻⁴), the cost impact is negligible (&lt; €5/year).</p>
+
+</div>
+
+<div class="slide" data-title="HP Compressor Overview">
+
+<h2>HP Compressor Supply System</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="value">14 barg</div><div class="label">HP Header Pressure</div></div>
+  <div class="kpi"><div class="value">3 or 4</div><div class="label">Compressor Options</div></div>
+  <div class="kpi"><div class="value">99.999%+</div><div class="label">Target Availability</div></div>
+  <div class="kpi"><div class="value">575 Nm³/h</div><div class="label">FSD575 Capacity</div></div>
+</div>
+<h3>System Purpose</h3>
+<p>The HP compressor system supplies compressed helium at 14 barg to the main beam cooling loop
+   (QVB heat exchangers, WSH pressurisation, beam cooling circuits).
+   Reliability is critical — compressor failure degrades or stops beam operation.</p>
+<h3>Options Under Consideration</h3>
+<table>
+  <tr><th>Option</th><th>Config</th><th>Type</th></tr>
+  <tr><td>Baseline (N=3)</td><td>3× 50% each, 2 running + 1 standby</td><td>Generic screw</td></tr>
+  <tr><td>Option A: FSD575 VFD</td><td>4× with Variable Frequency Drive</td><td>Oil-flooded screw + VFD</td></tr>
+  <tr><td>Option B: HSD Twin</td><td>2× 100% each, 1 running + 1 standby</td><td>Oil-free centrifugal</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="N=3 Baseline Configuration">
+
+<h2>Baseline: N=3 Compressor Configuration</h2>
+<h3>Configuration</h3>
+<ul>
+  <li>3 compressors, each sized at <strong>50% capacity</strong></li>
+  <li>Normal operation: 2 running (100% total), 1 standby</li>
+  <li>System works if ≥ 2 of 3 operational (2-out-of-3)</li>
+</ul>
+<h3>Failure Scenarios</h3>
+<table>
+  <tr><th>Failed Units</th><th>Available Capacity</th><th>Status</th></tr>
+  <tr><td>0</td><td>150% (all 3 running for overload)</td><td><span class="badge badge-accept">NOMINAL</span></td></tr>
+  <tr><td>1</td><td>100% (2 remaining = nominal)</td><td><span class="badge badge-accept">OK</span></td></tr>
+  <tr><td>2</td><td>50% (degraded, beam limited)</td><td><span class="badge badge-risk">DEGRADED</span></td></tr>
+  <tr><td>3</td><td>0% (system down)</td><td><span class="badge badge-risk">FAILED</span></td></tr>
+</table>
+<h3>Reliability</h3>
+<div class="equation">A_single = MTBF/(MTBF+MTTR) = 8760/(8760+8) = 99.91%
+A_sys(2-of-3) = A²(3−2A) = 0.9991²(3−2×0.9991) = 99.9997%
+Downtime: 0.022 h/yr</div>
+
+</div>
+
+<div class="slide" data-title="FSD575 VFD Specifications">
+
+<h2>FSD575 with Variable Frequency Drive — Specifications</h2>
+<table>
+  <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
+  <tr><td>Type</td><td>Oil-flooded screw</td><td>Standard industrial</td></tr>
+  <tr><td>Capacity</td><td>575 Nm³/h @ STP</td><td>Per unit</td></tr>
+  <tr><td>Discharge pressure</td><td>14-16 barg</td><td>Per QPLANT spec</td></tr>
+  <tr><td>Motor power</td><td>~400 kW</td><td>Estimated from capacity</td></tr>
+  <tr><td>VFD range</td><td>30-100% speed</td><td>Turndown ratio 3:1</td></tr>
+  <tr><td>Efficiency</td><td>70-75% (ISO 1217)</td><td>Typical for class</td></tr>
+  <tr><td>Oil separator</td><td>Integrated coalescing</td><td>Standard</td></tr>
+  <tr><td>Cooling</td><td>Water-cooled</td><td>Typical for this size</td></tr>
+  <tr><td>Noise</td><td>85-90 dB(A)</td><td>Enclosure recommended</td></tr>
+  <tr><td>Footprint</td><td>2 × 3 m per unit</td><td>Excluding services</td></tr>
+  <tr><td>Weight</td><td>~3,000 kg</td><td>Installed</td></tr>
+  <tr><td>Capital cost</td><td>€175k-205k</td><td>VFD adds ~€30k</td></tr>
+  <tr><td>Maintenance</td><td>Oil: 4,000h, Separator: 8,000h</td><td>Annual: ~€15k</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="HSD Twin Combi Specifications">
+
+<h2>HSD Twin Combi — Specifications</h2>
+<table>
+  <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
+  <tr><td>Type</td><td>Oil-free centrifugal (twin-head)</td><td>High-speed</td></tr>
+  <tr><td>Capacity</td><td>1,150 Nm³/h per unit (2×575)</td><td>Each = 100%</td></tr>
+  <tr><td>Stages</td><td>2 per unit (twin-head)</td><td>2-stage compression</td></tr>
+  <tr><td>Speed</td><td>30,000-50,000 RPM</td><td>High-speed</td></tr>
+  <tr><td>Bearings</td><td>Active Magnetic (AMB)</td><td>Oil-free</td></tr>
+  <tr><td>Efficiency</td><td>80-85%</td><td>Higher than screw</td></tr>
+  <tr><td>Turndown</td><td>70-105% (IGV/blow-off)</td><td>Limited vs VFD</td></tr>
+  <tr><td>Surge control</td><td>Active anti-surge valve</td><td>Required</td></tr>
+  <tr><td>Cooling</td><td>Air-cooled + water intercooler</td><td>Compact</td></tr>
+  <tr><td>Noise</td><td>75-80 dB(A)</td><td>Quieter, enclosed</td></tr>
+  <tr><td>Footprint</td><td>2 × 4 m per unit</td><td>Larger per unit</td></tr>
+  <tr><td>Weight</td><td>~5,000 kg</td><td>Gearbox + intercooler</td></tr>
+  <tr><td>Capital cost</td><td>€300k-400k per unit</td><td>Higher tech</td></tr>
+  <tr><td>Maintenance</td><td>Bearing: 50,000h</td><td>Annual: ~€10k</td></tr>
+</table>
+<p><strong>Assumption:</strong> "HSD Twin Combi" = 2 units, each a twin-head (2-stage) compressor, providing true N+1 redundancy.</p>
+
+</div>
+
+<div class="slide" data-title="Reliability Comparison Table">
+
+<h2>Reliability & Availability Comparison</h2>
+<h3>Formulas</h3>
+<div class="equation">Single unit: A = MTBF/(MTBF+MTTR) = 8760/(8760+8) = 99.91%
+k-of-M system: A_sys = Σ(i=k..M) C(M,i) × Aⁱ × (1-A)^(M-i)</div>
+<table>
+  <tr><th>Configuration</th><th>Units</th><th>Redundancy</th><th>Availability</th><th>Downtime (h/yr)</th><th>MTBF (years)</th><th>CAPEX</th></tr>
+  <tr><td>N=3 Baseline (2-of-3)</td><td>3×50%</td><td>2-of-3</td><td>99.9998%</td><td>0.0219</td><td>366</td><td>€525,000</td></tr>
+<tr><td>N+1 FSD575 VFD (3-of-4)</td><td>4×33%</td><td>3-of-4</td><td>99.9995%</td><td>0.0437</td><td>183</td><td>€820,000</td></tr>
+<tr><td>N+1 FSD575 VFD (2-of-4)</td><td>4×50%</td><td>2-of-4</td><td>100.0000%</td><td>0.0000</td><td>300784</td><td>€820,000</td></tr>
+<tr><td>N+1 HSD Twin Combi (1-of-2)</td><td>2×100%</td><td>1-of-2</td><td>99.9999%</td><td>0.0073</td><td>1097</td><td>€700,000</td></tr>
+
+</table>
+<p>All configurations exceed 99.99% availability. The 2-of-4 option approaches 100% availability
+   with two spare units.</p>
+
+</div>
+
+<div class="slide" data-title="Availability Comparison Chart">
+
+<h2>HP Compressor Availability — Visual Comparison</h2>
+<iframe class="plot-frame" src="visualizations_v3/compressor_availability_comparison.html"></iframe>
+<p>Availability expressed in "nines" (−log₁₀(1−A)). Each additional "nine" represents a 10× reduction
+   in downtime. All options exceed 4 nines (99.99%), with 2-of-4 reaching nearly 6 nines.</p>
+
+</div>
+
+<div class="slide" data-title="FSD575 vs HSD Comparison">
+
+<h2>FSD575 VFD vs HSD Twin Combi — Trade-off Matrix</h2>
+<table>
+  <tr><th>Parameter</th><th>4× FSD575 VFD</th><th>2× HSD Twin Combi</th></tr>
+  <tr><td>Redundancy</td><td>N+1 (3+1 or 2+2)</td><td>True N+1 (1+1)</td></tr>
+  <tr><td>Technology</td><td>Oil-flooded screw</td><td>Oil-free centrifugal</td></tr>
+  <tr><td>Efficiency</td><td>70-75% (part load with VFD)</td><td>80-85% (full load)</td></tr>
+  <tr><td>Maintenance</td><td>Oil changes, separator service</td><td>Bearing replacement, less frequent</td></tr>
+  <tr><td>Turndown</td><td>Excellent (30-100%)</td><td>Limited (70-100%)</td></tr>
+  <tr><td>Footprint</td><td>Larger (4 × 6m² = 24m²)</td><td>Smaller (2 × 8m² = 16m²)</td></tr>
+  <tr><td>Noise</td><td>Higher (85-90 dBA)</td><td>Lower (75-80 dBA)</td></tr>
+  <tr><td>Capital Cost</td><td>€760k-820k</td><td>€600k-800k</td></tr>
+  <tr><td>Oil contamination</td><td>Yes (requires oil removal)</td><td>No (oil-free)</td></tr>
+  <tr><td>Complexity</td><td>Proven technology, simpler</td><td>Higher tech, magnetic bearings</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="VFD Energy Savings">
+
+<h2>VFD Energy Savings — FSD575 (400 kW)</h2>
+<iframe class="plot-frame" src="visualizations_v3/vfd_energy_savings.html"></iframe>
+<p>VFD provides significant energy savings at partial loads (affinity law: P ∝ Speed³).
+   At typical 70% average load, VFD saves ~57% energy per compressor.
+   At 100% load, VFD introduces 3% loss (power electronics overhead).</p>
+<div class="equation">Annual savings at 70% avg load (per compressor):
+  ΔE = (328 − 141) kW × 8,000 h = 1,496,000 kWh/yr
+  Cost: 1,496,000 × €0.15 = €224k/yr per unit</div>
+
+</div>
+
+<div class="slide" data-title="Redundancy Cost-Benefit">
+
+<h2>Redundancy Cost-Benefit Analysis</h2>
+<iframe class="plot-frame" src="visualizations_v3/redundancy_cost_benefit.html"></iframe>
+<p>Bubble size represents annual energy cost. The HSD Twin Combi offers the best availability
+   per euro of capital investment, while the FSD575 VFD options offer superior energy efficiency
+   through variable-speed operation.</p>
+
+</div>
+
+<div class="slide" data-title="WCS.HP Overview">
+
+<h2>WCS.HP Supply Protection — Overview</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="value">14 barg</div><div class="label">Nominal HP Header</div></div>
+  <div class="kpi"><div class="value">1×10⁻⁵</div><div class="label">Total Leak Budget</div></div>
+  <div class="kpi"><div class="value">70/20/10</div><div class="label">Main/Side/Cont (%)</div></div>
+  <div class="kpi"><div class="value">13.5 barg</div><div class="label">Isolation Trigger</div></div>
+</div>
+<h3>Design Principle</h3>
+<p><strong>WCS.HP</strong> (Worst Case Supply — High Pressure) ensures sidestream activities
+   (recovery, purification, research taps) do <strong>not</strong> compromise the main 14 barg supply.
+   Fail-safe isolation valves on sidestreams close automatically when HP header pressure drops.</p>
+
+</div>
+
+<div class="slide" data-title="Leak Budget Allocation">
+
+<h2>Leak Rate Budget Allocation</h2>
+<p>Total system budget: <strong>1×10⁻⁵ mbar·L/s</strong> (RTM-048 system cap)</p>
+<table>
+  <tr><th>Circuit</th><th>Budget (mbar·L/s)</th><th>Fraction</th><th>Justification</th></tr>
+  <tr><td>Main Hp Supply</td><td>7e-06</td><td>70%</td><td>Critical path: compressors → QVB, largest valve count</td></tr>
+<tr><td>Sidestreams</td><td>2e-06</td><td>20%</td><td>Non-critical: recovery, purification, research taps (can be shut off)</td></tr>
+<tr><td>Contingency</td><td>1e-06</td><td>10%</td><td>Future expansions, measurement error margin</td></tr>
+<tr><td>TOTAL</td><td>1e-05</td><td>100%</td><td>RTM-048 system cap</td></tr>
+
+</table>
+<h3>Protection Strategy</h3>
+<ol>
+  <li><strong>Normal:</strong> All circuits active, total leak within budget</li>
+  <li><strong>WCS trigger:</strong> HP pressure < 13.5 barg → close sidestream valves, recover 20% budget</li>
+  <li><strong>Emergency:</strong> HP pressure < 13.0 barg → alarm, start backup compressor, reduce beam</li>
+</ol>
+
+</div>
+
+<div class="slide" data-title="Interlock Logic">
+
+<h2>Interlock Logic Table</h2>
+<table>
+  <tr><th>Condition</th><th>Setpoint</th><th>Action</th><th>Purpose</th><th>Priority</th></tr>
+  <tr><td>HP header pressure LOW</td><td>< 13.5 barg</td><td>Close sidestream isolation valves</td><td>Protect main HP supply from sidestream leaks</td><td><span class='badge badge-review'>WARNING</span></td></tr>
+<tr><td>HP header pressure LOW-LOW</td><td>< 13.0 barg</td><td>Alarm + start backup compressor</td><td>Prevent beam dump, restore redundancy</td><td><span class='badge badge-risk'>ALARM</span></td></tr>
+<tr><td>Compressor failure (any)</td><td>Trip signal from PLC</td><td>Start standby compressor (auto)</td><td>Maintain N redundancy</td><td><span class='badge badge-accept'>AUTO</span></td></tr>
+<tr><td>2 compressors failed</td><td>Second trip within MTTR window</td><td>Reduce beam to 50% intensity</td><td>Match available compressor capacity</td><td><span class='badge badge-risk'>ALARM</span></td></tr>
+<tr><td>Sidestream leak detected</td><td>Local He detector > 100 ppm</td><td>Isolate affected branch (NC valve closes)</td><td>Limit He loss, protect inventory</td><td><span class='badge badge-accept'>AUTO</span></td></tr>
+<tr><td>All compressors failed</td><td>No running units</td><td>Emergency beam shutdown, vent to recovery</td><td>Safe shutdown, minimize He loss</td><td><span class='badge badge-risk'>TRIP</span></td></tr>
+
+</table>
+
+</div>
+
+<div class="slide" data-title="WCS.HP Architecture Diagram">
+
+<h2>WCS.HP Supply Architecture — Block Diagram</h2>
+<iframe class="plot-frame" style="height:640px;" src="visualizations_v3/wcs_hp_architecture.html"></iframe>
+<p>Compressors in parallel feed the HP header at 14 barg. Check valves prevent backflow.
+   The main supply branch (QVB/WSH/Beam) receives 70% of the leak budget.
+   Sidestream branches have normally-closed isolation valves that close on low HP pressure.</p>
+
+</div>
+
+<div class="slide" data-title="WCS Scenario Analysis">
+
+<h2>WCS Scenario Analysis</h2>
+<table>
+  <tr><th>Scenario</th><th>Compressors (run/avail)</th><th>Capacity</th><th>HP Header</th><th>Sidestreams</th><th>Beam</th><th>Status</th></tr>
+  <tr><td>Normal Operation</td><td>2/3</td><td>100%</td><td>14.0</td><td>Open</td><td>100%</td><td><span class='badge badge-accept'>NOMINAL</span></td></tr>
+<tr><td>WCS — 1 Compressor Failed</td><td>2/2</td><td>100%</td><td>13.8</td><td>Closed</td><td>100%</td><td><span class='badge badge-review'>WARNING</span></td></tr>
+<tr><td>Emergency — 2 Compressors Failed</td><td>1/1</td><td>50%</td><td>13.2</td><td>Closed</td><td>50%</td><td><span class='badge badge-risk'>ALARM</span></td></tr>
+<tr><td>Total Failure</td><td>0/0</td><td>0%</td><td>0.0</td><td>Closed</td><td>0%</td><td><span class='badge badge-risk'>TRIP</span></td></tr>
+
+</table>
+
+</div>
+
+<div class="slide" data-title="Scenario 1: Normal Operation">
+
+<h2>Scenario 1: Normal Operation</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="value">3</div><div class="label">Compressors Available</div></div>
+  <div class="kpi"><div class="value">2</div><div class="label">Running</div></div>
+  <div class="kpi"><div class="value">14.0 barg</div><div class="label">HP Header</div></div>
+  <div class="kpi"><div class="value">100%</div><div class="label">Beam Operation</div></div>
+</div>
+<h3>Operating State</h3>
+<ul>
+  <li>All 3 compressors available: 2 running (100% capacity), 1 standby</li>
+  <li>HP header stable at 14.0 barg</li>
+  <li>Sidestreams: <strong>Open</strong> — recovery, purification, research taps active</li>
+  <li>Total leak budget used: 9×10⁻⁶ mbar·L/s (90% of allowable)</li>
+  <li>Full beam operation at 100% intensity</li>
+</ul>
+<p><span class="badge badge-accept">NOMINAL</span> — System fully operational with margin.</p>
+
+</div>
+
+<div class="slide" data-title="Scenario 2: WCS (1 Failed)">
+
+<h2>Scenario 2: WCS — 1 Compressor Failed</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="value">2</div><div class="label">Compressors Available</div></div>
+  <div class="kpi"><div class="value">2</div><div class="label">Running (no standby)</div></div>
+  <div class="kpi"><div class="value">13.8 barg</div><div class="label">HP Header</div></div>
+  <div class="kpi"><div class="value">100%</div><div class="label">Beam (maintained)</div></div>
+</div>
+<h3>Response</h3>
+<ul>
+  <li>2 compressors running at 100% capacity, <strong>no standby margin</strong></li>
+  <li>HP header slightly reduced to 13.8 barg</li>
+  <li>Sidestreams: <strong>Closed</strong> by interlock (precautionary isolation)</li>
+  <li>Leak budget reduced to 7×10⁻⁶ mbar·L/s (main supply only)</li>
+  <li>Beam operation maintained at 100%</li>
+  <li>Maintenance team dispatched to repair failed compressor</li>
+</ul>
+<p><span class="badge badge-review">WARNING</span> — Operational but no redundancy margin.</p>
+
+</div>
+
+<div class="slide" data-title="Scenario 3: Emergency (2 Failed)">
+
+<h2>Scenario 3: Emergency — 2 Compressors Failed</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="value">1</div><div class="label">Compressor Available</div></div>
+  <div class="kpi"><div class="value">50%</div><div class="label">Capacity</div></div>
+  <div class="kpi"><div class="value">13.2 barg</div><div class="label">HP Header</div></div>
+  <div class="kpi"><div class="value">50%</div><div class="label">Beam (reduced)</div></div>
+</div>
+<h3>Response</h3>
+<ul>
+  <li>1 compressor running at 50% capacity</li>
+  <li>HP header dropped to 13.2 barg — below LOW-LOW threshold</li>
+  <li>Sidestreams: <strong>Closed</strong></li>
+  <li>Beam intensity reduced to 50% to match available capacity</li>
+  <li>Total leak budget: 3.5×10⁻⁶ mbar·L/s (half load)</li>
+  <li><strong>Priority repair</strong> of failed compressors</li>
+</ul>
+<p><span class="badge badge-risk">ALARM</span> — Degraded operation, immediate repair needed.</p>
+
+</div>
+
+<div class="slide" data-title="Warm Valve Derogation Context">
+
+<h2>Warm Valve Leak Tightness Derogation</h2>
+<h3>Background (from Cryoworld Offer)</h3>
+<p>For warm On/Off valves (W1d), Cryoworld proposes <strong>pneumatic ball valves of Meca Inox</strong>
+   with HDPE sealing. These valves do not comply with the specified He leak rate of 1×10⁻⁹ mbar·L/s
+   (considered unnecessarily stringent for warm service).</p>
+<h3>Proposed Approach</h3>
+<ul>
+  <li>Create a new sub-class (W1d) with higher allowable leak rate to ambient</li>
+  <li>Ask GBO to perform short calculation on acceptable leak rate</li>
+  <li>Look into spec of proposed variants from Cryoworld</li>
+</ul>
+<h3>Valve Proposals</h3>
+<table>
+  <tr><th>Type</th><th>Application</th></tr>
+  <tr><td>Meca Inox ball valves with HDPE seals</td><td>Larger size manual valves</td></tr>
+  <tr><td>Swagelok SS-42GSE with UHMWPE seal</td><td>Instrumentation valves</td></tr>
+</table>
+<p>Both types are suitable for the specified radiation environment and are an economic solution.</p>
+
+</div>
+
+<div class="slide" data-title="Warm Valve Impact Analysis">
+
+<h2>Impact of Derogation on Liquid He Inventory</h2>
+<h3>Leak Rate Comparison: W1d Warm Valves</h3>
+<table>
+  <tr><th>Spec</th><th>Leak Rate</th><th>Mass Loss (g/yr)</th><th>Liquid Loss (L/yr)</th><th>Cost (€/yr)</th></tr>
+  <tr><td>Original (1×10⁻⁹)</td><td>1×10⁻⁹ mbar·L/s</td><td>0.00036</td><td>0.000003</td><td>€0.00004</td></tr>
+  <tr><td>Proposed (1×10⁻⁵)</td><td>1×10⁻⁵ mbar·L/s</td><td>3.60</td><td>0.029</td><td>€0.43</td></tr>
+  <tr><td>Worst case (1×10⁻⁴)</td><td>1×10⁻⁴ mbar·L/s</td><td>35.99</td><td>0.288</td><td>€4.32</td></tr>
+</table>
+<p><strong>Note:</strong> These are per-valve values at 4.222K. In practice, warm valves operate at 273-323K,
+   where losses are even smaller (by factor T_warm/T_cold ≈ 70×).</p>
+<h3>At Warm Temperature (300K)</h3>
+<p>At 300K, the mass flow for same throughput is reduced by 300/4.222 ≈ 71× compared to 4K.
+   For 1×10⁻⁴ mbar·L/s at 300K: mass loss = 0.51 g/yr per valve. Completely negligible.</p>
+<h3>Conclusion</h3>
+<p><span class="badge badge-accept">ACCEPT</span> The derogation is justified.
+   Even at 1×10⁻⁴ mbar·L/s, the liquid He inventory impact from warm valves is negligible.
+   The economic solution (Meca Inox / Swagelok) is appropriate.</p>
+
+</div>
+
+<div class="slide" data-title="Valve Classification Table">
+
+<h2>Control Valve Classification (CV Classes)</h2>
+<table>
+  <tr><th>Class</th><th>CV</th><th>CV</th><th>CV</th><th>CV</th></tr>
+  <tr><td>Sub-class</td><td>Q1</td><td>Q2d</td><td>W1d</td><td>W3</td></tr>
+  <tr><td>Temp range (K)</td><td>1.5 - 373</td><td>1.5 - 373</td><td>273 - 323</td><td>273 - 323</td></tr>
+  <tr><td>Conduction heat min.</td><td>yes</td><td>no</td><td>no</td><td>no</td></tr>
+  <tr><td>Actuation</td><td>indirect-pneumatic</td><td>indirect-pneumatic</td><td>indirect-pneumatic</td><td>direct-electrical</td></tr>
+  <tr style="background:#fefcbf;"><td><strong>Max leak to ambient</strong></td><td><strong>1.0E-09</strong></td><td><strong>1.0E-09</strong></td><td><strong>1.0E-09</strong></td><td><strong>1.0E-09</strong></td></tr>
+  <tr style="background:#fefcbf;"><td><strong>Max leak across</strong></td><td><strong>1.0E-04</strong></td><td><strong>1.0E-04</strong></td><td><strong>1.0E-04</strong></td><td><strong>1.0E-04</strong></td></tr>
+  <tr><td>Electrical valve tech</td><td>piezo</td><td>piezo</td><td>solenoid</td><td>solenoid</td></tr>
+  <tr><td>Position indicator</td><td>continuous</td><td>limit switches</td><td>limit switches</td><td>limit switch</td></tr>
+  <tr><td>Radiation hardness</td><td>required</td><td>required</td><td>required</td><td>not required</td></tr>
+</table>
+<p><em>Highlighted rows show the current leak rate specs that Cryoworld is requesting derogation for (W1d class).</em></p>
+
+</div>
+
+<div class="slide" data-title="Derogation Recommendation">
+
+<h2>Derogation Recommendation Summary</h2>
+<h3>Key Findings</h3>
+<ol>
+  <li>The 1×10⁻⁹ mbar·L/s to-ambient spec is <strong>unnecessarily stringent</strong> for warm valves (273-323K)</li>
+  <li>Liquid He inventory impact at 1×10⁻⁴ mbar·L/s warm valve is <strong>0.007 g/yr</strong> (at 300K)</li>
+  <li>Proposed Meca Inox ball valves with HDPE seals are <strong>industry standard</strong> for radiation environments</li>
+  <li>Economic benefit: HDPE ball valves are significantly cheaper than bellow-sealed alternatives</li>
+</ol>
+<h3>Recommended Actions</h3>
+<table>
+  <tr><th>#</th><th>Action</th><th>Owner</th><th>Status</th></tr>
+  <tr><td>1</td><td>Create W1d sub-class with 1×10⁻⁵ or 1×10⁻⁴ to-ambient</td><td>SCK CEN</td><td><span class="badge badge-review">REVIEW</span></td></tr>
+  <tr><td>2</td><td>GBO to perform short calculation on acceptable limit</td><td>GBO</td><td><span class="badge badge-review">PENDING</span></td></tr>
+  <tr><td>3</td><td>Review Cryoworld proposed variants and validate</td><td>SCK CEN</td><td><span class="badge badge-review">PENDING</span></td></tr>
+  <tr><td>4</td><td>Document derogation in SoR matrix</td><td>SCK CEN</td><td><span class="badge badge-trace">TODO</span></td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="PED Classification">
+
+<h2>PED Classification — HP System at 14 barg</h2>
+<h3>Pressure Equipment Directive 2014/68/EU</h3>
+<p>The HP helium supply operates at <strong>15 bara (14 barg)</strong>, which places it in
+   PED Category II or III depending on volume:</p>
+<table>
+  <tr><th>Parameter</th><th>Value</th><th>PED Implication</th></tr>
+  <tr><td>Max pressure</td><td>15 bara (14 barg)</td><td>Above 0.5 bar → PED applies</td></tr>
+  <tr><td>Fluid group</td><td>Group 2 (He, non-dangerous)</td><td>Less stringent than Group 1</td></tr>
+  <tr><td>PS × V</td><td>Depends on vessel size</td><td>Category I if < 1000 bar·L</td></tr>
+  <tr><td>Module</td><td>A2 or D/D1</td><td>Notified body for Cat ≥ II</td></tr>
+</table>
+<h3>ASME B31.3 — Cryogenic Service</h3>
+<ul>
+  <li>Impact testing required for materials below −29°C (−20°F)</li>
+  <li>He at 4K: extreme cryogenic service → austenitic stainless steel (AISI 316L)</li>
+  <li>Welding procedures per ASME IX, post-weld heat treatment not required for 316L</li>
+</ul>
+
+</div>
+
+<div class="slide" data-title="EN 13458 Compliance">
+
+<h2>EN 13458 — Cryogenic Vessels</h2>
+<h3>Static Vacuum-Insulated Vessels</h3>
+<p>The WSH (Warm Storage Holder) containing 5,000 L liquid He must comply with EN 13458-2 for design
+   and EN 13458-3 for operational requirements.</p>
+<table>
+  <tr><th>Requirement</th><th>EN 13458 Clause</th><th>Status</th></tr>
+  <tr><td>Design pressure</td><td>§5.2</td><td>Per MAWP calculation</td></tr>
+  <tr><td>Vacuum insulation</td><td>§6.3</td><td>MLI + vacuum jacket</td></tr>
+  <tr><td>Safety devices</td><td>§7</td><td>PRV, burst disc, vacuum gauge</td></tr>
+  <tr><td>Level measurement</td><td>§8.2</td><td>Capacitance or differential pressure</td></tr>
+  <tr><td>Leak testing</td><td>§9.3</td><td>He mass spectrometer, <1×10⁻⁸ mbar·L/s</td></tr>
+  <tr><td>Documentation</td><td>§10</td><td>Design file, operating manual</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="EN 13185 Leak Detection">
+
+<h2>EN 13185 — Leak Detection Methods</h2>
+<table>
+  <tr><th>Method</th><th>Sensitivity (mbar·L/s)</th><th>Application</th></tr>
+  <tr><td>He mass spectrometer (vacuum)</td><td>10⁻¹² to 10⁻⁸</td><td>Cold valves, vessel welds</td></tr>
+  <tr><td>He mass spectrometer (sniffer)</td><td>10⁻⁷ to 10⁻⁵</td><td>Field testing, warm valves</td></tr>
+  <tr><td>Pressure decay</td><td>10⁻⁵ to 10⁻²</td><td>System-level testing</td></tr>
+  <tr><td>Bubble test</td><td>10⁻⁴ to 10⁻¹</td><td>Gross leak detection</td></tr>
+</table>
+<h3>Testing Strategy for Warm Valves (W1d)</h3>
+<p>If the derogation is approved to 1×10⁻⁵ or 1×10⁻⁴ mbar·L/s, sniffer testing is sufficient.
+   This is significantly faster and cheaper than vacuum-mode mass spectrometer testing required
+   for the 1×10⁻⁹ specification.</p>
+
+</div>
+
+<div class="slide" data-title="RTM Traceability Update">
+
+<h2>Requirements Traceability — v3.1.0 Updates</h2>
+<table>
+  <tr><th>RTM ID</th><th>Requirement</th><th>v3.1 Update</th><th>Status</th></tr>
+  <tr><td>RTM-048</td><td>System max leak: 1×10⁻⁵ mbar·L/s</td><td>Liquid loss: 3.6 g/yr (negligible)</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
+  <tr><td>RTM-049</td><td>Valve leak to ambient: 1×10⁻⁹</td><td>Warm valve derogation analysis added</td><td><span class="badge badge-review">REVIEW</span></td></tr>
+  <tr><td>RTM-053</td><td>MTTR: 4-8 hours</td><td>Used in compressor availability model</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
+  <tr><td>RTM-054</td><td>Recovery: 200 g/s</td><td>WCS scenario uses this as demand basis</td><td><span class="badge badge-trace">TRACE</span></td></tr>
+  <tr><td>NEW</td><td>HP availability >99.99%</td><td>All configs exceed target</td><td><span class="badge badge-new">NEW</span></td></tr>
+  <tr><td>NEW</td><td>WCS protection logic</td><td>Interlock table defined</td><td><span class="badge badge-new">NEW</span></td></tr>
+  <tr><td>NEW</td><td>VFD energy optimization</td><td>Savings calculated: €224k/yr/unit</td><td><span class="badge badge-new">NEW</span></td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="Calculation Methodology">
+
+<h2>Calculation Methodology Summary</h2>
+<h3>Liquid He Loss (src/liquid_he_loss.py)</h3>
+<div class="equation">ṁ = Q_Pa_m3_s × M_He / (R × T)
+Q_Pa_m3_s = Q_mbar_l_s × 0.1
+V̇_liq = ṁ / ρ_liq (125 kg/m³)</div>
+<h3>Compressor Reliability (src/compressor_reliability.py)</h3>
+<div class="equation">A_single = MTBF / (MTBF + MTTR)
+A_sys(k-of-M) = Σ_{i=k}^{M} C(M,i) × A^i × (1-A)^(M-i)
+MTBF_sys ≈ A_sys × MTTR / (1-A_sys)</div>
+<h3>VFD Savings</h3>
+<div class="equation">P_VFD = P_full × (load)³ / η_VFD     (affinity law)
+P_fixed ≈ P_full × (0.4 + 0.6 × load) (slide valve)
+ΔCost = ΔP × hours × €/kWh</div>
+
+</div>
+
+<div class="slide" data-title="Data Sources & Assumptions">
+
+<h2>Data Sources & Key Assumptions</h2>
+<table>
+  <tr><th>Data</th><th>Source</th><th>Confidence</th></tr>
+  <tr><td>He-4 properties</td><td>NIST REFPROP</td><td><span class="badge badge-accept">HIGH</span></td></tr>
+  <tr><td>Valve leak rates</td><td>RTM-048, RTM-049, EN 13185</td><td><span class="badge badge-accept">HIGH</span></td></tr>
+  <tr><td>FSD575 specs</td><td>Industry estimate (KAESER class)</td><td><span class="badge badge-review">MEDIUM</span></td></tr>
+  <tr><td>HSD Twin specs</td><td>Industry estimate (Atlas Copco class)</td><td><span class="badge badge-review">MEDIUM</span></td></tr>
+  <tr><td>MTBF = 8760 h</td><td>Conservative assumption</td><td><span class="badge badge-review">MEDIUM</span></td></tr>
+  <tr><td>MTTR = 8 h</td><td>RTM-053 (upper bound)</td><td><span class="badge badge-accept">HIGH</span></td></tr>
+  <tr><td>He price €120/kg</td><td>2024 market estimate</td><td><span class="badge badge-review">MEDIUM</span></td></tr>
+  <tr><td>Electricity €0.15/kWh</td><td>Industrial rate (Belgium)</td><td><span class="badge badge-accept">HIGH</span></td></tr>
+</table>
+<h3>Key Assumptions</h3>
+<ul>
+  <li>Ideal gas law applies (Z ≈ 1 for low-pressure gas leaks)</li>
+  <li>Leak rate measured at reference conditions (as per EN 1779)</li>
+  <li>Compressor failures are independent (no common-cause)</li>
+  <li>VFD affinity law: P ∝ Speed³ (approximate for screw compressors)</li>
+  <li>WSH capacity: 5,000 L liquid (design basis, to be confirmed)</li>
+</ul>
+
+</div>
+
+<div class="slide" data-title="Open Items & Next Steps">
+
+<h2>Open Items & Next Steps</h2>
+<table>
+  <tr><th>#</th><th>Item</th><th>Priority</th><th>Owner</th></tr>
+  <tr><td>1</td><td>Confirm HSD Twin Combi exact configuration (M definition)</td><td><span class="badge badge-risk">HIGH</span></td><td>Vendor</td></tr>
+  <tr><td>2</td><td>GBO calculation for warm valve acceptable leak rate</td><td><span class="badge badge-risk">HIGH</span></td><td>GBO</td></tr>
+  <tr><td>3</td><td>Confirm WSH vessel capacity (5,000 L assumed)</td><td><span class="badge badge-review">MEDIUM</span></td><td>Design</td></tr>
+  <tr><td>4</td><td>Get actual FSD575 / HSD vendor quotation</td><td><span class="badge badge-review">MEDIUM</span></td><td>Procurement</td></tr>
+  <tr><td>5</td><td>Validate MTBF data against manufacturer data sheets</td><td><span class="badge badge-review">MEDIUM</span></td><td>Reliability</td></tr>
+  <tr><td>6</td><td>Integrate with SoR Requirements Matrix</td><td><span class="badge badge-review">MEDIUM</span></td><td>Systems</td></tr>
+  <tr><td>7</td><td>PED category assessment for HP compressor vessels</td><td><span class="badge badge-trace">LOW</span></td><td>Design</td></tr>
+  <tr><td>8</td><td>Common-cause failure analysis for compressors</td><td><span class="badge badge-trace">LOW</span></td><td>Reliability</td></tr>
+</table>
+
+</div>
+
+<div class="slide" data-title="Conclusions & Recommendations">
+
+<h2>Conclusions & Recommendations</h2>
+<h3>Liquid Helium Operations</h3>
+<ul>
+  <li>Valve leak rates (10⁻⁹ to 10⁻⁴ mbar·L/s) have <strong>negligible impact</strong> on liquid He inventory</li>
+  <li>The warm valve derogation (1×10⁻⁹ → 1×10⁻⁵ or 10⁻⁴) is <strong>justified</strong></li>
+  <li>Static heat leak (insulation quality) dominates boil-off, not valve leaks</li>
+</ul>
+<h3>HP Compressor Redundancy</h3>
+<ul>
+  <li>All options (N=3, N+1 FSD575, N+1 HSD) exceed 99.99% availability</li>
+  <li><strong>Recommended: N+1 FSD575 VFD (2-of-4)</strong> for best combination of availability, energy efficiency, and proven technology</li>
+  <li>VFD provides ~€224k/yr energy savings per compressor at 70% load</li>
+</ul>
+<h3>WCS.HP Protection</h3>
+<ul>
+  <li>70/20/10 leak budget allocation (main/sidestream/contingency) provides adequate margin</li>
+  <li>Interlock logic ensures sidestream isolation before main supply is compromised</li>
+  <li>System can maintain 100% beam at single compressor failure, 50% at double failure</li>
+</ul>
+
+</div>
+
+
+</div>
+
+<script>
+let current = 1;
+const total = 39;
+
+function goSlide(n) {
+  if (n < 1 || n > total) return;
+  document.querySelectorAll('.slide')[current-1].classList.remove('active');
+  current = n;
+  document.querySelectorAll('.slide')[current-1].classList.add('active');
+  document.getElementById('slideCounter').textContent = current + ' / ' + total;
+  document.getElementById('progressFill').style.width = (current/total*100) + '%';
+  document.querySelectorAll('.thumb').forEach((t,i) => t.classList.toggle('active', i===current-1));
+  window.scrollTo(0,0);
+}
+function nextSlide() { goSlide(current+1); }
+function prevSlide() { goSlide(current-1); }
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight'||e.key===' ') nextSlide();
+  if (e.key==='ArrowLeft') prevSlide();
+});
+// init
+document.querySelectorAll('.thumb')[0]?.classList.add('active');
+</script>
+</body>
+</html>
