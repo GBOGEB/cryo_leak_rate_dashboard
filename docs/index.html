@@ -1,293 +1,99 @@
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset='utf-8' />
-<meta name='viewport' content='width=device-width, initial-scale=1' />
-<title>QPLANT Visual Dashboard v2.5.0</title>
-<style>
-body {font-family: Inter, Arial, sans-serif; margin:0; background:#f8fafc; color:#0f172a;}
-header {background:#1e3a8a; color:white; padding:18px 24px;}
-main {padding:20px; max-width:1300px; margin:auto;}
-.hero {background:white; border-radius:10px; padding:18px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.08);}
-.grid {display:grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap:12px;}
-.card {background:white; border:1px solid #e2e8f0; border-radius:10px; padding:12px;}
-.actions a {display:inline-block; margin-right:8px; margin-top:6px; font-size:13px;}
-.controls {display:flex; gap:12px; flex-wrap:wrap; align-items:center;}
-label {font-size:14px;}
-input,select {padding:6px 8px; border:1px solid #cbd5e1; border-radius:6px;}
-.kpi {display:grid; grid-template-columns:repeat(3,minmax(120px,1fr)); gap:8px; margin-top:8px;}
-.kpi div {background:#e2e8f0; border-radius:8px; padding:8px; text-align:center;}
-small.note {display:block; color:#334155; margin-top:10px;}
-</style>
-<script>
-function filterCharts() {
-  const cat = document.getElementById('cat').value;
-  const supplier = document.getElementById('supplier').value;
-  document.querySelectorAll('.card').forEach(card => {
-    const okCat = cat === 'all' || card.dataset.category === cat;
-    const txt = card.textContent.toLowerCase();
-    const okSupplier = supplier === 'all' || txt.includes(supplier.toLowerCase());
-    card.style.display = (okCat && okSupplier) ? 'block' : 'none';
-  });
-}
-
-function compute() {
-  const count = Number(document.getElementById('count').value || 0);
-  const leak = Number(document.getElementById('leak').value || 0);
-  const temp = Number(document.getElementById('temp').value || 300);
-  const pressure = Number(document.getElementById('pressure').value || 1);
-  const material = document.getElementById('material').value;
-  const service = document.getElementById('service').value;
-
-  const R = 8.314462618;
-  const M = 4.002602; // g/mol
-  const secYear = 365.25 * 86400;
-  const q = leak * 0.1; // Pa m3/s
-  const nDot = (q * pressure) / (R * temp);
-  const gYear = nDot * M * secYear * count;
-  const kgYear = gYear / 1000;
-  const hePrice = 180;
-  const sealPremium = material === 'UHMWPE' ? 120 : 80;
-  const annualCost = kgYear * hePrice + count * sealPremium * 0.08;
-
-  document.getElementById('out_g').textContent = gYear.toFixed(4);
-  document.getElementById('out_kg').textContent = kgYear.toFixed(6);
-  document.getElementById('out_cost').textContent = '€' + annualCost.toFixed(2);
-  document.getElementById('out_note').textContent = 'Service=' + service + ', Material=' + material + ', He price=€180/kg';
-}
-</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cryo Dashboard Handover Hub</title>
+  <style>
+    :root { --bg:#f5f7fb; --card:#fff; --line:#d9e0ea; --text:#1f2a37; --accent:#225ea8; }
+    body { margin:0; font-family:Inter,Segoe UI,Arial,sans-serif; background:var(--bg); color:var(--text); }
+    header { padding:20px 24px; background:linear-gradient(120deg,#12355b,#2a6fba); color:#fff; }
+    header h1 { margin:0; font-size:1.35rem; }
+    header p { margin:.35rem 0 0; opacity:.95; }
+    main { padding:24px; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(280px,1fr)); gap:16px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; box-shadow:0 2px 6px rgba(0,0,0,.04); }
+    .card-head { display:flex; justify-content:space-between; gap:8px; align-items:start; }
+    .card h2 { margin:0 0 8px; font-size:1.02rem; }
+    .badge { background:#e7f0ff; color:#0f4085; border-radius:999px; padding:2px 9px; font-size:.74rem; font-weight:700; }
+    .pill { display:inline-block; border-radius:999px; padding:3px 10px; font-size:.76rem; font-weight:700; margin:6px 0 10px; }
+    .ok { background:#d9f7e5; color:#166534; }
+    .progress { background:#fff4d6; color:#92400e; }
+    .pending { background:#eceff4; color:#475569; }
+    ul { margin:0; padding-left:18px; }
+    li { margin:6px 0; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .updated { margin-top:10px; font-size:.8rem; color:#556; }
+    .download { margin-top:16px; background:#fff; border:1px dashed #aac; padding:12px; border-radius:10px; }
+    footer { margin-top:16px; font-size:.83rem; color:#334; }
+    code { background:#eef2ff; padding:1px 5px; border-radius:4px; }
+    @media (max-width: 900px) { .grid { grid-template-columns:1fr; } }
+  </style>
 </head>
 <body>
-<header>
-  <h2>OUTPUT_2.5_VISUAL_ENHANCED — Material-Specific Visual Dashboard Suite</h2>
-  <p>HDPE vs UHMWPE comparison with derogation justification for Meca Inox warm valves</p>
-</header>
-<main>
-  <section class='hero'>
-    <h3>Visual Gallery (18 charts)</h3>
-    <div class='controls'>
-      <label>Category <select id='cat' onchange='filterCharts()'><option value='all'>All</option><option value='Cost Analysis'>Cost Analysis</option><option value='Leak Rate Fundamentals'>Leak Rate Fundamentals</option><option value='Operating Conditions'>Operating Conditions</option><option value='Supplier & Material Analysis'>Supplier & Material Analysis</option></select></label>
-      <label>Supplier <select id='supplier' onchange='filterCharts()'><option value='all'>All</option><option value='Meca'>Meca Inox</option><option value='Swagelok'>Swagelok</option></select></label>
-      <a href='../VISUAL_CATALOG.md' target='_blank'>Open VISUAL_CATALOG.md</a>
-    </div>
-    <div class='grid'>
-            <div class='card' data-category='Leak Rate Fundamentals'>
-              <h4>chart01_leak_vs_loss_material_overlay: Enhanced Leak Rate vs He Loss</h4>
-              <p><b>Category:</b> Leak Rate Fundamentals</p>
-              <div class='actions'>
-                <a href='visualizations/chart01_leak_vs_loss_material_overlay.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart01_leak_vs_loss_material_overlay.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
+  <header>
+    <h1>Cryo Dashboard Handover Hub</h1>
+    <p>Self-documenting delivery index for recursive/idempotent operations (v3.1.0)</p>
+  </header>
+  <main>
+    <div class="grid">
+            <section class="card">
+              <div class="card-head">
+                <h2>Phase 1: Requirements & Compliance</h2>
+                <span class="badge">v3.1.0</span>
               </div>
-            </div>
+              <span class="pill ok">Verified</span>
+              <ul><li><a href="../data/standards_compliance.json">Standards compliance database</a></li><li><a href="standards/Compliance_Matrix.html">RTM traceability matrix</a></li><li><a href="standards/FAT_SAT_Procedures.md">FAT/SAT procedures</a></li></ul>
+              <div class="updated">Last updated: 2026-05-09T20:41:16.541124+00:00</div>
+            </section>
             
-            <div class='card' data-category='Leak Rate Fundamentals'>
-              <h4>chart02_temperature_sensitivity_pressure_isolines: Temperature Sensitivity (pressure isolines)</h4>
-              <p><b>Category:</b> Leak Rate Fundamentals</p>
-              <div class='actions'>
-                <a href='visualizations/chart02_temperature_sensitivity_pressure_isolines.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart02_temperature_sensitivity_pressure_isolines.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Leak Rate Fundamentals'>
-              <h4>chart03_pressure_sensitivity_temperature_isolines: Pressure Sensitivity (temperature isolines)</h4>
-              <p><b>Category:</b> Leak Rate Fundamentals</p>
-              <div class='actions'>
-                <a href='visualizations/chart03_pressure_sensitivity_temperature_isolines.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart03_pressure_sensitivity_temperature_isolines.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Leak Rate Fundamentals'>
-              <h4>chart04_valve_size_impact: Valve Size Impact</h4>
-              <p><b>Category:</b> Leak Rate Fundamentals</p>
-              <div class='actions'>
-                <a href='visualizations/chart04_valve_size_impact.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart04_valve_size_impact.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Leak Rate Fundamentals'>
-              <h4>chart05_seal_material_comparison: Seal Material Comparison</h4>
-              <p><b>Category:</b> Leak Rate Fundamentals</p>
-              <div class='actions'>
-                <a href='visualizations/chart05_seal_material_comparison.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart05_seal_material_comparison.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Supplier & Material Analysis'>
-              <h4>chart06_supplier_performance_matrix: Supplier Performance Matrix</h4>
-              <p><b>Category:</b> Supplier & Material Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart06_supplier_performance_matrix.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart06_supplier_performance_matrix.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Supplier & Material Analysis'>
-              <h4>chart07_material_cost_breakdown: Material Cost Breakdown</h4>
-              <p><b>Category:</b> Supplier & Material Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart07_material_cost_breakdown.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart07_material_cost_breakdown.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Supplier & Material Analysis'>
-              <h4>chart08_radiation_tolerance_curves: Radiation Tolerance</h4>
-              <p><b>Category:</b> Supplier & Material Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart08_radiation_tolerance_curves.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart08_radiation_tolerance_curves.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Supplier & Material Analysis'>
-              <h4>chart09_welding_cost_by_size: Welding Cost by Size</h4>
-              <p><b>Category:</b> Supplier & Material Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart09_welding_cost_by_size.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart09_welding_cost_by_size.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Operating Conditions'>
-              <h4>chart10_warm_service_analysis: Warm Service Analysis</h4>
-              <p><b>Category:</b> Operating Conditions</p>
-              <div class='actions'>
-                <a href='visualizations/chart10_warm_service_analysis.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart10_warm_service_analysis.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Operating Conditions'>
-              <h4>chart11_cold_service_analysis: Cold Service Analysis</h4>
-              <p><b>Category:</b> Operating Conditions</p>
-              <div class='actions'>
-                <a href='visualizations/chart11_cold_service_analysis.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart11_cold_service_analysis.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Operating Conditions'>
-              <h4>chart12_helium_guard_systems: Helium Guard Systems</h4>
-              <p><b>Category:</b> Operating Conditions</p>
-              <div class='actions'>
-                <a href='visualizations/chart12_helium_guard_systems.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart12_helium_guard_systems.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Operating Conditions'>
-              <h4>chart13_internal_protect_systems: Internal Protect Systems</h4>
-              <p><b>Category:</b> Operating Conditions</p>
-              <div class='actions'>
-                <a href='visualizations/chart13_internal_protect_systems.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart13_internal_protect_systems.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Cost Analysis'>
-              <h4>chart14_cost_waterfall: Cost Waterfall</h4>
-              <p><b>Category:</b> Cost Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart14_cost_waterfall.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart14_cost_waterfall.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Cost Analysis'>
-              <h4>chart15_monte_carlo_results: Monte Carlo Results</h4>
-              <p><b>Category:</b> Cost Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart15_monte_carlo_results.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart15_monte_carlo_results.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Cost Analysis'>
-              <h4>chart16_sensitivity_analysis: Sensitivity Analysis</h4>
-              <p><b>Category:</b> Cost Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart16_sensitivity_analysis.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart16_sensitivity_analysis.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Cost Analysis'>
-              <h4>chart17_lifecycle_tco_secondary_axis: Lifecycle TCO Comparison</h4>
-              <p><b>Category:</b> Cost Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart17_lifecycle_tco_secondary_axis.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart17_lifecycle_tco_secondary_axis.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            
-            <div class='card' data-category='Cost Analysis'>
-              <h4>chart18_valve_replacement_strategy: Valve Replacement Strategy Cost</h4>
-              <p><b>Category:</b> Cost Analysis</p>
-              <div class='actions'>
-                <a href='visualizations/chart18_valve_replacement_strategy.html' target='_blank'>Open interactive chart</a>
-                <a href='visualizations/data/chart18_valve_replacement_strategy.csv' target='_blank'>CSV</a>
-                <a href='../src/generate_visuals_v3.py' target='_blank'>Python regen</a>
-              </div>
-            </div>
-            </div>
-  </section>
 
-  <section class='hero'>
-    <h3>Interactive Calculator</h3>
-    <div class='controls'>
-      <label>Valve count <input id='count' type='number' value='210' oninput='compute()'/></label>
-      <label>Leak rate (mbar·l/s) <input id='leak' type='number' step='1e-9' value='1e-8' oninput='compute()'/></label>
-      <label>Temperature (K) <input id='temp' type='number' value='300' oninput='compute()'/></label>
-      <label>Pressure (bar) <input id='pressure' type='number' value='5' oninput='compute()'/></label>
-      <label>Service
-        <select id='service' onchange='compute()'>
-          <option>Warm</option><option>Cold</option><option>Helium guard</option><option>Internal protect</option>
-        </select>
-      </label>
-      <label>Material
-        <select id='material' onchange='compute()'>
-          <option>HDPE</option><option>UHMWPE</option>
-        </select>
-      </label>
-    </div>
-    <div class='kpi'>
-      <div><b id='out_g'>0</b><br/>g/year</div>
-      <div><b id='out_kg'>0</b><br/>kg/year</div>
-      <div><b id='out_cost'>€0</b><br/>annual estimate</div>
-    </div>
-    <small class='note' id='out_note'></small>
-  </section>
+            <section class="card">
+              <div class="card-head">
+                <h2>Phase 2: Development</h2>
+                <span class="badge">v3.1.0</span>
+              </div>
+              <span class="pill ok">Verified</span>
+              <ul><li><a href="../src/">Source modules</a></li><li><a href="../src/liquid_he_loss.py">Liquid He calculator</a></li><li><a href="../src/compressor_reliability.py">Compressor reliability</a></li></ul>
+              <div class="updated">Last updated: 2026-05-09T20:41:16.541124+00:00</div>
+            </section>
+            
 
-  <section class='hero'>
-    <h3>Material and Cost Tables</h3>
-    <ul>
-      <li><a href='tables/supplier_comparison.html' target='_blank'>Supplier comparison</a></li>
-      <li><a href='tables/material_costs.html' target='_blank'>Material costs</a></li>
-      <li><a href='tables/operating_conditions.html' target='_blank'>Operating conditions</a></li>
-      <li><a href='tables/helium_loss_by_valve_count.html' target='_blank'>Helium loss by valve count</a></li>
-    </ul>
-  </section>
-</main>
-<script>compute();</script>
-</body></html>
+            <section class="card">
+              <div class="card-head">
+                <h2>Phase 3: Analysis & Outputs</h2>
+                <span class="badge">v3.1.0</span>
+              </div>
+              <span class="pill ok">Verified</span>
+              <ul><li><a href="index_v3_1.html">40-slide dense navigator</a></li><li><a href="STAKEHOLDER_PRESENTATION.html">📊 Stakeholder Presentation (10 slides)</a></li><li><a href="visualizations_v3/">15+ Plotly charts</a></li><li><a href="statistical/">Statistical reports</a></li></ul>
+              <div class="updated">Last updated: 2026-05-09T20:41:16.541124+00:00</div>
+            </section>
+            
+
+            <section class="card">
+              <div class="card-head">
+                <h2>Phase 4: QA & Deployment</h2>
+                <span class="badge">v3.1.0</span>
+              </div>
+              <span class="pill ok">Verified (18/18 tests pass)</span>
+              <ul><li><a href="../tests/">Test suite</a></li><li><a href="../dist/test-report.html">Test report</a></li><li><a href="../dist/handover.zip">Package bundle</a></li></ul>
+              <div class="updated">Last updated: 2026-05-09T20:41:16.541124+00:00</div>
+            </section>
+            </div>
+
+    <section class="download">
+      <h3>Downloads</h3>
+      <ul>
+        <li><a href="../dist/handover.zip">handover.zip</a></li>
+        <li><a href="../dist/test-report.html">test-report.html</a></li>
+      </ul>
+      <p><strong>To Rebuild:</strong> run <code>./setup.sh</code></p>
+    </section>
+
+    <footer>
+      Build timestamp: 2026-05-09T20:41:16.541124+00:00 · Git commit: b8094c8 · Build status: verified · Test coverage: 6%
+    </footer>
+  </main>
+</body>
+</html>

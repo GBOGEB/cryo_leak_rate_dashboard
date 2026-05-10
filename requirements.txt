@@ -1,6 +1,6 @@
-plotly>=5.20.0
-pandas>=2.0.0
-numpy>=1.24.0
-weasyprint>=61.0
-markdown>=3.6
-pytest>=8.0.0
+numpy==1.24.3
+pandas==2.0.2
+plotly==5.14.1
+scipy==1.10.1
+pytest==7.3.1
+pytest-cov==4.1.0

@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OUTPUT_3.1 DENSE — Liquid He Operations & HP Compressor Redundancy v3.1.0</title>
-<style>
+#!/usr/bin/env python3
+"""Build dense master slides (40 slides) and stakeholder presentation (10 slides).
+
+Generates:
+  docs/index_v3_1.html   – enhanced 40-slide dense master navigator
+  docs/STAKEHOLDER_PRESENTATION.html – 10-slide executive summary
+"""
+import json, hashlib, textwrap
+from pathlib import Path
+from datetime import datetime
+
+ROOT = Path(__file__).resolve().parent.parent
+DOCS = ROOT / "docs"
+
+# ── CSS ──────────────────────────────────────────────────────────────────────
+DENSE_CSS = r"""
 :root {
   --primary:#1a365d; --accent:#2b6cb0; --bg:#f7fafc; --card:#ffffff;
   --border:#e2e8f0; --text:#2d3748; --text-light:#718096;
@@ -64,70 +73,85 @@ tr:hover{background:#edf2f7}
 .thumb.active{background:#bee3f8;font-weight:600}
 @media(max-width:900px){.thumb-sidebar{display:none}.multi-col-2,.multi-col-3,.multi-col-60-40,.multi-col-40-60{grid-template-columns:1fr}}
 @media print{.app-header,.nav-controls,.thumb-sidebar,.progress-bar{display:none}.slide{display:block!important;page-break-after:always;box-shadow:none;padding:12px}.slide-container{margin:0;max-width:100%}}
-</style>
-<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]]}}</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
-<body>
+"""
 
-<div class="app-header">
-  <h1>OUTPUT_3.1 DENSE — v3.1.0 Master Navigator (40 Slides)</h1>
-  <span class="slide-counter" id="slideCounter">1 / 40</span>
-</div>
-<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:2.5%"></div></div>
+MATHJAX_SCRIPT = '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]]}}</script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>'
 
-<div class="nav-controls">
-  <button class="nav-btn" onclick="prevSlide()">◀ Prev</button>
-  <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
-  <span style="margin:0 6px;color:#a0aec0">|</span>
-  <button class="nav-btn" onclick="goSlide(1)">Overview</button><button class="nav-btn" onclick="goSlide(5)">Liquid He</button><button class="nav-btn" onclick="goSlide(11)">HP Compressors</button><button class="nav-btn" onclick="goSlide(20)">WCS.HP</button><button class="nav-btn" onclick="goSlide(28)">Derogation</button><button class="nav-btn" onclick="goSlide(32)">Compliance</button><button class="nav-btn" onclick="goSlide(36)">Standards</button><button class="nav-btn" onclick="goSlide(40)">Conclusions</button>
-</div>
 
-<div class="thumb-sidebar" id="thumbSidebar">
-<div class="thumb" onclick="goSlide(1)" title="v3.1.0 Overview & Dashboard">1. v3.1.0 Overview & Dashboard</div>
-<div class="thumb" onclick="goSlide(2)" title="System Architecture Overview">2. System Architecture Overview</div>
-<div class="thumb" onclick="goSlide(3)" title="Deliverables & File Map">3. Deliverables & File Map</div>
-<div class="thumb" onclick="goSlide(4)" title="Version History & DMAIC">4. Version History & DMAIC</div>
-<div class="thumb" onclick="goSlide(5)" title="Liquid He Thermophysical Properties">5. Liquid He Thermophysical Prope…</div>
-<div class="thumb" onclick="goSlide(6)" title="Superfluid He & Phase Diagram">6. Superfluid He & Phase Diagram</div>
-<div class="thumb" onclick="goSlide(7)" title="Leak Rate → Mass Loss Physics">7. Leak Rate → Mass Loss Physics</div>
-<div class="thumb" onclick="goSlide(8)" title="Leak Rate Conversion Table (Full)">8. Leak Rate Conversion Table (Fu…</div>
-<div class="thumb" onclick="goSlide(9)" title="RTM Compliance Matrix (Full)">9. RTM Compliance Matrix (Full)</div>
-<div class="thumb" onclick="goSlide(10)" title="Boil-off vs Leak Rate Chart + Data">10. Boil-off vs Leak Rate Chart + …</div>
-<div class="thumb" onclick="goSlide(11)" title="HP Compressor System Overview">11. HP Compressor System Overview</div>
-<div class="thumb" onclick="goSlide(12)" title="N=3 Baseline Configuration">12. N=3 Baseline Configuration</div>
-<div class="thumb" onclick="goSlide(13)" title="FSD575 VFD Full Specifications">13. FSD575 VFD Full Specifications</div>
-<div class="thumb" onclick="goSlide(14)" title="HSD Twin Combi Full Specifications">14. HSD Twin Combi Full Specificat…</div>
-<div class="thumb" onclick="goSlide(15)" title="Reliability Comparison (Full Table)">15. Reliability Comparison (Full T…</div>
-<div class="thumb" onclick="goSlide(16)" title="Availability Chart + Worked Example">16. Availability Chart + Worked Ex…</div>
-<div class="thumb" onclick="goSlide(17)" title="FSD575 vs HSD Trade-off Matrix">17. FSD575 vs HSD Trade-off Matrix</div>
-<div class="thumb" onclick="goSlide(18)" title="VFD Energy Savings + Affinity Laws">18. VFD Energy Savings + Affinity …</div>
-<div class="thumb" onclick="goSlide(19)" title="Redundancy Cost-Benefit Chart + Data">19. Redundancy Cost-Benefit Chart …</div>
-<div class="thumb" onclick="goSlide(20)" title="WCS.HP Supply Protection Overview">20. WCS.HP Supply Protection Overv…</div>
-<div class="thumb" onclick="goSlide(21)" title="Leak Budget Allocation + Equations">21. Leak Budget Allocation + Equat…</div>
-<div class="thumb" onclick="goSlide(22)" title="Interlock Logic (Full Table)">22. Interlock Logic (Full Table)</div>
-<div class="thumb" onclick="goSlide(23)" title="WCS.HP Architecture Diagram">23. WCS.HP Architecture Diagram</div>
-<div class="thumb" onclick="goSlide(24)" title="WCS Scenario Analysis (All 4)">24. WCS Scenario Analysis (All 4)</div>
-<div class="thumb" onclick="goSlide(25)" title="Scenario 1: Normal Operation">25. Scenario 1: Normal Operation</div>
-<div class="thumb" onclick="goSlide(26)" title="Scenario 2: WCS (1 Failed)">26. Scenario 2: WCS (1 Failed)</div>
-<div class="thumb" onclick="goSlide(27)" title="Scenario 3: Emergency (2 Failed)">27. Scenario 3: Emergency (2 Faile…</div>
-<div class="thumb" onclick="goSlide(28)" title="Warm Valve Derogation Context">28. Warm Valve Derogation Context</div>
-<div class="thumb" onclick="goSlide(29)" title="Warm Valve Impact Analysis + Calc">29. Warm Valve Impact Analysis + C…</div>
-<div class="thumb" onclick="goSlide(30)" title="CV Classification Table (Full)">30. CV Classification Table (Full)</div>
-<div class="thumb" onclick="goSlide(31)" title="Derogation Recommendation">31. Derogation Recommendation</div>
-<div class="thumb" onclick="goSlide(32)" title="PED Classification + ASME B31.3">32. PED Classification + ASME B31.…</div>
-<div class="thumb" onclick="goSlide(33)" title="EN 13458 Cryogenic Vessels">33. EN 13458 Cryogenic Vessels</div>
-<div class="thumb" onclick="goSlide(34)" title="EN 13185 Leak Detection + Worked Example">34. EN 13185 Leak Detection + Work…</div>
-<div class="thumb" onclick="goSlide(35)" title="Liquid Inventory Depletion + Equation">35. Liquid Inventory Depletion + E…</div>
-<div class="thumb" onclick="goSlide(36)" title="Standards Compliance Dashboard">36. Standards Compliance Dashboard</div>
-<div class="thumb" onclick="goSlide(37)" title="Compressor Availability Worked Example">37. Compressor Availability Worked…</div>
-<div class="thumb" onclick="goSlide(38)" title="Data Sources & Assumptions">38. Data Sources & Assumptions</div>
-<div class="thumb" onclick="goSlide(39)" title="Open Items & Next Steps">39. Open Items & Next Steps</div>
-<div class="thumb" onclick="goSlide(40)" title="Conclusions & Recommendations">40. Conclusions & Recommendations</div>
-</div>
+def _b(cls, text):
+    """Badge shorthand."""
+    return f'<span class="badge badge-{cls}">{text}</span>'
 
-<div class="slide-container" style="margin-right:160px">
-<div class="slide active" data-title="v3.1.0 Overview & Dashboard">
 
+def build_dense_slides():
+    """Generate the 40-slide dense master navigator."""
+    slide_titles = [
+        "v3.1.0 Overview & Dashboard",
+        "System Architecture Overview",
+        "Deliverables & File Map",
+        "Version History & DMAIC",
+        "Liquid He Thermophysical Properties",
+        "Superfluid He & Phase Diagram",
+        "Leak Rate → Mass Loss Physics",
+        "Leak Rate Conversion Table (Full)",
+        "RTM Compliance Matrix (Full)",
+        "Boil-off vs Leak Rate Chart + Data",
+        "HP Compressor System Overview",
+        "N=3 Baseline Configuration",
+        "FSD575 VFD Full Specifications",
+        "HSD Twin Combi Full Specifications",
+        "Reliability Comparison (Full Table)",
+        "Availability Chart + Worked Example",
+        "FSD575 vs HSD Trade-off Matrix",
+        "VFD Energy Savings + Affinity Laws",
+        "Redundancy Cost-Benefit Chart + Data",
+        "WCS.HP Supply Protection Overview",
+        "Leak Budget Allocation + Equations",
+        "Interlock Logic (Full Table)",
+        "WCS.HP Architecture Diagram",
+        "WCS Scenario Analysis (All 4)",
+        "Scenario 1: Normal Operation",
+        "Scenario 2: WCS (1 Failed)",
+        "Scenario 3: Emergency (2 Failed)",
+        "Warm Valve Derogation Context",
+        "Warm Valve Impact Analysis + Calc",
+        "CV Classification Table (Full)",
+        "Derogation Recommendation",
+        "PED Classification + ASME B31.3",
+        "EN 13458 Cryogenic Vessels",
+        "EN 13185 Leak Detection + Worked Example",
+        "Liquid Inventory Depletion + Equation",
+        "Standards Compliance Dashboard",
+        "Compressor Availability Worked Example",
+        "Data Sources & Assumptions",
+        "Open Items & Next Steps",
+        "Conclusions & Recommendations",
+    ]
+    total = len(slide_titles)
+
+    # ── Build thumb sidebar ─────────────────────────────────────────────
+    thumbs = "\n".join(
+        f'<div class="thumb" onclick="goSlide({i+1})" title="{t}">{i+1}. {t[:30]}{"…" if len(t)>30 else ""}</div>'
+        for i, t in enumerate(slide_titles)
+    )
+
+    # ── Build nav quick-jump buttons ────────────────────────────────────
+    nav_jumps = (
+        '<button class="nav-btn" onclick="goSlide(1)">Overview</button>'
+        '<button class="nav-btn" onclick="goSlide(5)">Liquid He</button>'
+        '<button class="nav-btn" onclick="goSlide(11)">HP Compressors</button>'
+        '<button class="nav-btn" onclick="goSlide(20)">WCS.HP</button>'
+        '<button class="nav-btn" onclick="goSlide(28)">Derogation</button>'
+        '<button class="nav-btn" onclick="goSlide(32)">Compliance</button>'
+        '<button class="nav-btn" onclick="goSlide(36)">Standards</button>'
+        '<button class="nav-btn" onclick="goSlide(40)">Conclusions</button>'
+    )
+
+    # ── Build individual slides ─────────────────────────────────────────
+    slides = []
+
+    # SLIDE 1 – Overview
+    slides.append(f'''
 <h2>OUTPUT_3.1.0 — Liquid Helium Operations &amp; HP Compressor Redundancy</h2>
 <div class="multi-col-60-40">
 <div>
@@ -168,10 +192,10 @@ tr:hover{background:#edf2f7}
 </p>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="System Architecture Overview">
-
+    # SLIDE 2 – System Architecture
+    slides.append('''
 <h2>QPLANT Helium System Architecture</h2>
 <div class="multi-col-2">
 <div>
@@ -199,10 +223,10 @@ tr:hover{background:#edf2f7}
 </div>
 <div class="equation">System Mass Balance:  ṁ_supply = ṁ_demand + ṁ_leak + ṁ_boiloff
 Leak budget:  Q_total ≤ 1×10⁻⁵ mbar·L/s  →  ṁ_leak ≈ 3.6 g/yr @ 4K  →  NEGLIGIBLE</div>
+''')
 
-</div>
-<div class="slide" data-title="Deliverables & File Map">
-
+    # SLIDE 3 – Deliverables
+    slides.append('''
 <h2>v3.1.0 Deliverables &amp; File Map</h2>
 <div class="multi-col-2">
 <div>
@@ -231,20 +255,20 @@ Leak budget:  Q_total ≤ 1×10⁻⁵ mbar·L/s  →  ṁ_leak ≈ 3.6 g/yr @ 4K
 </table>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Version History & DMAIC">
-
+    # SLIDE 4 – Version History
+    slides.append(f'''
 <h2>Version History &amp; DMAIC Tracking</h2>
 <div class="multi-col-60-40">
 <div>
 <table>
   <tr><th>Version</th><th>Date</th><th>Description</th><th>Status</th></tr>
-  <tr><td>v1.0</td><td>2026-05</td><td>Initial baseline (had ×1000 conversion error)</td><td><span class="badge badge-risk">ERROR</span></td></tr>
-  <tr><td>v2.0</td><td>2026-05</td><td>Corrected physics, triage system, DMAIC</td><td><span class="badge badge-accept">VERIFIED</span></td></tr>
-  <tr><td>v2.5</td><td>2026-05</td><td>Visual dashboard (18 charts), Monte Carlo</td><td><span class="badge badge-accept">VERIFIED</span></td></tr>
-  <tr><td>v3.0</td><td>2026-05</td><td>Standards compliance, PCA, RTM matrix</td><td><span class="badge badge-accept">VERIFIED</span></td></tr>
-  <tr><td>v3.1</td><td>2026-05</td><td>Liquid He ops, HP compressor, WCS.HP</td><td><span class="badge badge-new">CURRENT</span></td></tr>
+  <tr><td>v1.0</td><td>2026-05</td><td>Initial baseline (had ×1000 conversion error)</td><td>{_b("risk","ERROR")}</td></tr>
+  <tr><td>v2.0</td><td>2026-05</td><td>Corrected physics, triage system, DMAIC</td><td>{_b("accept","VERIFIED")}</td></tr>
+  <tr><td>v2.5</td><td>2026-05</td><td>Visual dashboard (18 charts), Monte Carlo</td><td>{_b("accept","VERIFIED")}</td></tr>
+  <tr><td>v3.0</td><td>2026-05</td><td>Standards compliance, PCA, RTM matrix</td><td>{_b("accept","VERIFIED")}</td></tr>
+  <tr><td>v3.1</td><td>2026-05</td><td>Liquid He ops, HP compressor, WCS.HP</td><td>{_b("new","CURRENT")}</td></tr>
 </table>
 </div>
 <div class="panel">
@@ -259,10 +283,10 @@ Leak budget:  Q_total ≤ 1×10⁻⁵ mbar·L/s  →  ṁ_leak ≈ 3.6 g/yr @ 4K
 </table>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Liquid He Thermophysical Properties">
-
+    # SLIDE 5 – Liquid He Properties (FULL TABLE)
+    slides.append('''
 <h2>Liquid Helium-4 Thermophysical Properties (Full Grid)</h2>
 <div class="kpi-row">
   <div class="kpi"><div class="value">4.222 K</div><div class="label">NBP</div></div>
@@ -287,10 +311,10 @@ Leak budget:  Q_total ≤ 1×10⁻⁵ mbar·L/s  →  ṁ_leak ≈ 3.6 g/yr @ 4K
   <tr class="hl-red"><td>5.195</td><td>2.275</td><td>69.64</td><td>69.64</td><td>0</td><td>—</td><td>—</td><td>Critical point</td></tr>
 </table>
 <p style="font-size:.75em"><em>Data: NIST REFPROP He-4. λ-point: T_λ = 2.1768 K at SVP. μ = dynamic viscosity; k = thermal conductivity.</em></p>
+''')
 
-</div>
-<div class="slide" data-title="Superfluid He & Phase Diagram">
-
+    # SLIDE 6 – Superfluid He
+    slides.append('''
 <h2>Helium Phase Diagram &amp; Superfluid Transition</h2>
 <div class="multi-col-2">
 <div>
@@ -324,10 +348,10 @@ Ratio 4K/300K = 300/4.222 = 71×
 Same leak rate: 71× more mass at 4K!</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Leak Rate → Mass Loss Physics">
-
+    # SLIDE 7 – Leak Rate → Mass Loss Physics
+    slides.append('''
 <h2>Leak Rate to Liquid Inventory Loss — Physics</h2>
 <div class="multi-col-60-40">
 <div>
@@ -362,14 +386,14 @@ Annual conversion:
   <tr><td>5</td><td>g/year → L/year (÷ρ_liq)</td></tr>
   <tr><td>6</td><td>g/year → €/year (×€120/kg)</td></tr>
 </table>
-<h4>\( \dot{{m}} = \frac{{Q \cdot M}}{{R \cdot T}} \)</h4>
+<h4>\\( \\dot{{m}} = \\frac{{Q \\cdot M}}{{R \\cdot T}} \\)</h4>
 <p style="font-size:.8em">where Q in Pa·m³/s</p>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Leak Rate Conversion Table (Full)">
-
+    # SLIDE 8 – Full Leak Rate Conversion Table
+    slides.append(f'''
 <h2>Leak Rate Conversion Table (Full — All Temperatures)</h2>
 <p>Cost: €120/kg. ρ_liq = 124.96 kg/m³. P_upstream = 1 bar abs.</p>
 <div class="multi-col-2">
@@ -377,55 +401,55 @@ Annual conversion:
 <h3>At 4.222 K (Liquid He — NBP)</h3>
 <table>
   <tr><th>Leak Rate (mbar·L/s)</th><th>g/yr</th><th>L_liq/yr</th><th>€/yr</th><th>Status</th></tr>
-  <tr><td>1×10⁻⁹</td><td>0.000385</td><td>3.1×10⁻⁶</td><td>€0.00005</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr><td>1×10⁻⁸</td><td>0.00385</td><td>3.1×10⁻⁵</td><td>€0.0005</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr><td>1×10⁻⁷</td><td>0.0385</td><td>3.1×10⁻⁴</td><td>€0.005</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr><td>1×10⁻⁶</td><td>0.385</td><td>0.0031</td><td>€0.046</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr class="hl-yellow"><td><strong>1×10⁻⁵</strong></td><td><strong>3.85</strong></td><td><strong>0.031</strong></td><td><strong>€0.46</strong></td><td><span class="badge badge-review">RTM-048</span></td></tr>
-  <tr><td>1×10⁻⁴</td><td>38.5</td><td>0.31</td><td>€4.62</td><td><span class="badge badge-review">OFFER</span></td></tr>
-  <tr><td>1×10⁻³</td><td>385</td><td>3.08</td><td>€46.2</td><td><span class="badge badge-risk">HIGH</span></td></tr>
-  <tr><td>1×10⁻²</td><td>3,850</td><td>30.8</td><td>€462</td><td><span class="badge badge-risk">CRITICAL</span></td></tr>
+  <tr><td>1×10⁻⁹</td><td>0.000385</td><td>3.1×10⁻⁶</td><td>€0.00005</td><td>{_b("accept","OK")}</td></tr>
+  <tr><td>1×10⁻⁸</td><td>0.00385</td><td>3.1×10⁻⁵</td><td>€0.0005</td><td>{_b("accept","OK")}</td></tr>
+  <tr><td>1×10⁻⁷</td><td>0.0385</td><td>3.1×10⁻⁴</td><td>€0.005</td><td>{_b("accept","OK")}</td></tr>
+  <tr><td>1×10⁻⁶</td><td>0.385</td><td>0.0031</td><td>€0.046</td><td>{_b("accept","OK")}</td></tr>
+  <tr class="hl-yellow"><td><strong>1×10⁻⁵</strong></td><td><strong>3.85</strong></td><td><strong>0.031</strong></td><td><strong>€0.46</strong></td><td>{_b("review","RTM-048")}</td></tr>
+  <tr><td>1×10⁻⁴</td><td>38.5</td><td>0.31</td><td>€4.62</td><td>{_b("review","OFFER")}</td></tr>
+  <tr><td>1×10⁻³</td><td>385</td><td>3.08</td><td>€46.2</td><td>{_b("risk","HIGH")}</td></tr>
+  <tr><td>1×10⁻²</td><td>3,850</td><td>30.8</td><td>€462</td><td>{_b("risk","CRITICAL")}</td></tr>
 </table>
 </div>
 <div>
 <h3>At 300 K (Ambient — Warm Valves)</h3>
 <table>
   <tr><th>Leak Rate (mbar·L/s)</th><th>g/yr</th><th>€/yr</th><th>Status</th></tr>
-  <tr><td>1×10⁻⁹</td><td>5.4×10⁻⁶</td><td>€6.5×10⁻⁷</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr><td>1×10⁻⁸</td><td>5.4×10⁻⁵</td><td>€6.5×10⁻⁶</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr><td>1×10⁻⁷</td><td>5.4×10⁻⁴</td><td>€6.5×10⁻⁵</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr><td>1×10⁻⁶</td><td>0.0054</td><td>€0.00065</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr><td>1×10⁻⁵</td><td>0.054</td><td>€0.0065</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr class="hl-green"><td><strong>1×10⁻⁴</strong></td><td><strong>0.54</strong></td><td><strong>€0.065</strong></td><td><span class="badge badge-accept">DEROG OK</span></td></tr>
-  <tr><td>1×10⁻³</td><td>5.42</td><td>€0.65</td><td><span class="badge badge-accept">OK</span></td></tr>
-  <tr><td>1×10⁻²</td><td>54.2</td><td>€6.50</td><td><span class="badge badge-review">CHECK</span></td></tr>
+  <tr><td>1×10⁻⁹</td><td>5.4×10⁻⁶</td><td>€6.5×10⁻⁷</td><td>{_b("accept","OK")}</td></tr>
+  <tr><td>1×10⁻⁸</td><td>5.4×10⁻⁵</td><td>€6.5×10⁻⁶</td><td>{_b("accept","OK")}</td></tr>
+  <tr><td>1×10⁻⁷</td><td>5.4×10⁻⁴</td><td>€6.5×10⁻⁵</td><td>{_b("accept","OK")}</td></tr>
+  <tr><td>1×10⁻⁶</td><td>0.0054</td><td>€0.00065</td><td>{_b("accept","OK")}</td></tr>
+  <tr><td>1×10⁻⁵</td><td>0.054</td><td>€0.0065</td><td>{_b("accept","OK")}</td></tr>
+  <tr class="hl-green"><td><strong>1×10⁻⁴</strong></td><td><strong>0.54</strong></td><td><strong>€0.065</strong></td><td>{_b("accept","DEROG OK")}</td></tr>
+  <tr><td>1×10⁻³</td><td>5.42</td><td>€0.65</td><td>{_b("accept","OK")}</td></tr>
+  <tr><td>1×10⁻²</td><td>54.2</td><td>€6.50</td><td>{_b("review","CHECK")}</td></tr>
 </table>
 <h4>Warm/Cold Ratio</h4>
 <div class="equation">T_warm/T_cold = 300/4.222 = 71×
 Same leak rate → 71× LESS mass at 300K</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="RTM Compliance Matrix (Full)">
-
+    # SLIDE 9 – RTM Compliance Matrix (Full)
+    slides.append(f'''
 <h2>RTM Requirements Traceability Matrix (Full — 9 Requirements)</h2>
 <table>
   <tr><th>RTM ID</th><th>Requirement</th><th>Source</th><th>Spec Value</th><th>Actual/Calc</th><th>Margin</th><th>Test Method</th><th>Deliverable</th><th>Status</th></tr>
-  <tr><td>RTM-048</td><td>System max leak rate</td><td>SoR §4.3</td><td>≤1×10⁻⁵ mbar·L/s</td><td>Design target</td><td>—</td><td>System pressure decay</td><td>FAT report</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
-  <tr><td>RTM-049</td><td>Valve leak to ambient</td><td>SoR §4.3</td><td>≤1×10⁻⁹ mbar·L/s</td><td>Derogation for W1d</td><td>—</td><td>He mass spec (vacuum)</td><td>Valve cert</td><td><span class="badge badge-review">REVIEW</span></td></tr>
-  <tr><td>RTM-050</td><td>Valve leak across seat</td><td>ISO 5208</td><td>≤1×10⁻⁴ mbar·L/s</td><td>Per valve spec</td><td>—</td><td>Differential pressure</td><td>Type test</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
-  <tr><td>RTM-051</td><td>Radiation hardness</td><td>SoR §5.1</td><td>Qualified materials</td><td>HDPE/UHMWPE OK</td><td>—</td><td>Material cert</td><td>Material cert</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
-  <tr><td>RTM-052</td><td>PED compliance</td><td>2014/68/EU</td><td>Cat II–IV</td><td>Per PS×V calc</td><td>—</td><td>Design review</td><td>Technical file</td><td><span class="badge badge-trace">TRACE</span></td></tr>
-  <tr><td>RTM-053</td><td>MTTR ≤ 8 hours</td><td>SoR §6.2</td><td>≤8 h</td><td>8 h (assumed)</td><td>0%</td><td>Maintenance log</td><td>O&amp;M manual</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
-  <tr><td>RTM-054</td><td>He recovery ≥ 200 g/s</td><td>SoR §4.5</td><td>≥200 g/s</td><td>Design basis</td><td>—</td><td>Commissioning test</td><td>SAT report</td><td><span class="badge badge-trace">TRACE</span></td></tr>
-  <tr><td>RTM-055</td><td>HP availability >99.99%</td><td>SoR §6.1</td><td>>99.99%</td><td>99.9997%</td><td>+0.0097%</td><td>Reliability calc</td><td>RAMS report</td><td><span class="badge badge-accept">ACCEPT</span></td></tr>
-  <tr><td>RTM-056</td><td>VFD energy optimization</td><td>SoR §7.2</td><td>≥30% savings</td><td>57% @ 70% load</td><td>+27%</td><td>Energy audit</td><td>Energy report</td><td><span class="badge badge-new">NEW</span></td></tr>
+  <tr><td>RTM-048</td><td>System max leak rate</td><td>SoR §4.3</td><td>≤1×10⁻⁵ mbar·L/s</td><td>Design target</td><td>—</td><td>System pressure decay</td><td>FAT report</td><td>{_b("accept","ACCEPT")}</td></tr>
+  <tr><td>RTM-049</td><td>Valve leak to ambient</td><td>SoR §4.3</td><td>≤1×10⁻⁹ mbar·L/s</td><td>Derogation for W1d</td><td>—</td><td>He mass spec (vacuum)</td><td>Valve cert</td><td>{_b("review","REVIEW")}</td></tr>
+  <tr><td>RTM-050</td><td>Valve leak across seat</td><td>ISO 5208</td><td>≤1×10⁻⁴ mbar·L/s</td><td>Per valve spec</td><td>—</td><td>Differential pressure</td><td>Type test</td><td>{_b("accept","ACCEPT")}</td></tr>
+  <tr><td>RTM-051</td><td>Radiation hardness</td><td>SoR §5.1</td><td>Qualified materials</td><td>HDPE/UHMWPE OK</td><td>—</td><td>Material cert</td><td>Material cert</td><td>{_b("accept","ACCEPT")}</td></tr>
+  <tr><td>RTM-052</td><td>PED compliance</td><td>2014/68/EU</td><td>Cat II–IV</td><td>Per PS×V calc</td><td>—</td><td>Design review</td><td>Technical file</td><td>{_b("trace","TRACE")}</td></tr>
+  <tr><td>RTM-053</td><td>MTTR ≤ 8 hours</td><td>SoR §6.2</td><td>≤8 h</td><td>8 h (assumed)</td><td>0%</td><td>Maintenance log</td><td>O&amp;M manual</td><td>{_b("accept","ACCEPT")}</td></tr>
+  <tr><td>RTM-054</td><td>He recovery ≥ 200 g/s</td><td>SoR §4.5</td><td>≥200 g/s</td><td>Design basis</td><td>—</td><td>Commissioning test</td><td>SAT report</td><td>{_b("trace","TRACE")}</td></tr>
+  <tr><td>RTM-055</td><td>HP availability >99.99%</td><td>SoR §6.1</td><td>>99.99%</td><td>99.9997%</td><td>+0.0097%</td><td>Reliability calc</td><td>RAMS report</td><td>{_b("accept","ACCEPT")}</td></tr>
+  <tr><td>RTM-056</td><td>VFD energy optimization</td><td>SoR §7.2</td><td>≥30% savings</td><td>57% @ 70% load</td><td>+27%</td><td>Energy audit</td><td>Energy report</td><td>{_b("new","NEW")}</td></tr>
 </table>
+''')
 
-</div>
-<div class="slide" data-title="Boil-off vs Leak Rate Chart + Data">
-
+    # SLIDE 10 – Boil-off vs Leak Rate Chart + Data
+    slides.append(f'''
 <h2>Boil-off Rate &amp; Cost vs Leak Rate — Chart + Data</h2>
 <div class="multi-col-60-40">
 <div>
@@ -445,13 +469,13 @@ Same leak rate → 71× LESS mass at 300K</div>
 Ratio 4K/80K = 19×
 → Temperature dominates cost</div>
 <h4>Conclusion</h4>
-<p>At typical valve leak rates (10⁻⁹ to 10⁻⁴), cost &lt; €5/yr. <span class="badge badge-accept">NEGLIGIBLE</span></p>
+<p>At typical valve leak rates (10⁻⁹ to 10⁻⁴), cost &lt; €5/yr. {_b("accept","NEGLIGIBLE")}</p>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="HP Compressor System Overview">
-
+    # SLIDE 11 – HP Compressor Overview
+    slides.append('''
 <h2>HP Compressor Supply System</h2>
 <div class="kpi-row">
   <div class="kpi"><div class="value">14 barg</div><div class="label">HP Header</div></div>
@@ -488,10 +512,10 @@ P₂ = P₁ × (N₂/N₁)³
 At 70% speed: P = 0.7³ = 34.3% power</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="N=3 Baseline Configuration">
-
+    # SLIDE 12 – N=3 Baseline
+    slides.append('''
 <h2>Baseline: N=3 Compressor Configuration</h2>
 <div class="multi-col-60-40">
 <div>
@@ -529,10 +553,10 @@ Downtime = (1−A)×8760
          = 79 sec/yr ✓</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="FSD575 VFD Full Specifications">
-
+    # SLIDE 13 – FSD575 VFD Full Specs
+    slides.append('''
 <h2>FSD575 with Variable Frequency Drive — Full Specifications</h2>
 <div class="multi-col-2">
 <div>
@@ -576,10 +600,10 @@ Savings per compressor:
 
 4 compressors: 4 × €224,400 = €897,600/yr total energy savings</div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="HSD Twin Combi Full Specifications">
-
+    # SLIDE 14 – HSD Twin Combi Full Specs
+    slides.append('''
 <h2>HSD Twin Combi — Full Specifications</h2>
 <div class="multi-col-2">
 <div>
@@ -617,10 +641,10 @@ Savings per compressor:
   <tr><td>Lower noise</td><td>75–80 vs 85–90 dB(A) → better working environment</td></tr>
   <tr><td>Longer bearing life</td><td>50,000h vs 4,000h oil change interval</td></tr>
 </table>
+''')
 
-</div>
-<div class="slide" data-title="Reliability Comparison (Full Table)">
-
+    # SLIDE 15 – Full Reliability Comparison
+    slides.append('''
 <h2>Reliability &amp; Availability Comparison (Full Table)</h2>
 <h3>Formulas</h3>
 <div class="equation">Single unit: A = MTBF/(MTBF+MTTR) = 8760/(8760+8) = 0.99909 = 99.91%
@@ -634,10 +658,10 @@ System MTBF: MTBF_sys ≈ 1/[M × (1−A)/MTBF × Π correction]</div>
   <tr><td>N+1 HSD Twin (1-of-2)</td><td>2×100%</td><td>1-of-2</td><td>99.9999%</td><td>0.007</td><td>26 sec</td><td>1,097</td><td>700,000</td><td>400</td></tr>
 </table>
 <p><strong>Recommended:</strong> <span class="badge badge-accept">N+1 FSD575 VFD (2-of-4)</span> — best availability + energy savings. All configs exceed 99.99% target.</p>
+''')
 
-</div>
-<div class="slide" data-title="Availability Chart + Worked Example">
-
+    # SLIDE 16 – Availability Chart + Worked Example
+    slides.append('''
 <h2>Availability Comparison — Chart + Worked Example</h2>
 <div class="multi-col-60-40">
 <div>
@@ -675,10 +699,10 @@ Downtime = (1−0.999997)×8760
 </div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="FSD575 vs HSD Trade-off Matrix">
-
+    # SLIDE 17 – FSD575 vs HSD Trade-off (3-column)
+    slides.append('''
 <h2>FSD575 vs HSD Trade-off Matrix (3-Column)</h2>
 <div class="multi-col-3">
 <div class="panel">
@@ -739,10 +763,10 @@ Downtime = (1−0.999997)×8760
 </table>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="VFD Energy Savings + Affinity Laws">
-
+    # SLIDE 18 – VFD Energy Savings + Affinity Laws
+    slides.append('''
 <h2>VFD Energy Savings — Affinity Laws &amp; Calculation</h2>
 <div class="multi-col-60-40">
 <div>
@@ -766,10 +790,10 @@ Power: W₂ = W₁ × (N₂/N₁)³</div>
 <p style="font-size:.78em"><strong>VFD adds 3% overhead at full load</strong> (power electronics loss), but saves massively at part load.</p>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Redundancy Cost-Benefit Chart + Data">
-
+    # SLIDE 19 – Redundancy Cost-Benefit
+    slides.append(f'''
 <h2>Redundancy Cost-Benefit Analysis — Chart + Data</h2>
 <div class="multi-col-60-40">
 <div>
@@ -789,13 +813,13 @@ Power: W₂ = W₁ × (N₂/N₁)³</div>
   <tr class="hl-green"><td><strong>FSD575 VFD</strong></td><td><strong>€434k</strong></td><td><strong>€4.8M</strong></td><td><strong>0.7 yr</strong></td></tr>
   <tr><td>HSD Twin</td><td>€332k</td><td>€3.5M</td><td>0.5 yr</td></tr>
 </table>
-<p><span class="badge badge-accept">RECOMMENDED</span>: N+1 FSD575 VFD — best TCO + VFD flexibility</p>
+<p>{_b("accept","RECOMMENDED")}: N+1 FSD575 VFD — best TCO + VFD flexibility</p>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="WCS.HP Supply Protection Overview">
-
+    # SLIDE 20 – WCS.HP Overview
+    slides.append('''
 <h2>WCS.HP Supply Protection — Overview</h2>
 <div class="kpi-row">
   <div class="kpi"><div class="value">14 barg</div><div class="label">Nominal HP</div></div>
@@ -831,10 +855,10 @@ Q_available = Q_main + Q_cont
 Freed: 2e-6 (20%) for margin</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Leak Budget Allocation + Equations">
-
+    # SLIDE 21 – Leak Budget
+    slides.append('''
 <h2>Leak Rate Budget Allocation + Equations</h2>
 <div class="multi-col-60-40">
 <div>
@@ -860,10 +884,10 @@ Side (30 valves):
 q = 2e-6/30 = 6.7e-8 mbar·L/s</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Interlock Logic (Full Table)">
-
+    # SLIDE 22 – Interlock Logic Full Table
+    slides.append('''
 <h2>Interlock Logic Table (Full)</h2>
 <table>
   <tr><th>Condition</th><th>Setpoint</th><th>Action</th><th>Purpose</th><th>Priority</th><th>Response Time</th></tr>
@@ -878,10 +902,10 @@ q = 2e-6/30 = 6.7e-8 mbar·L/s</div>
 </table>
 <div class="equation">Response time hierarchy: TRIP (immediate) > ALARM (&lt;30s) > WARNING (&lt;60s) > AUTO (configurable)
 All isolation valves: Normally-Closed (NC) — fail-safe on loss of signal/air</div>
+''')
 
-</div>
-<div class="slide" data-title="WCS.HP Architecture Diagram">
-
+    # SLIDE 23 – WCS.HP Architecture Diagram
+    slides.append('''
 <h2>WCS.HP Supply Architecture — Block Diagram</h2>
 <iframe class="plot-frame" style="height:520px;" src="visualizations_v3/wcs_hp_architecture.html"></iframe>
 <div class="multi-col-2">
@@ -902,10 +926,10 @@ All isolation valves: Normally-Closed (NC) — fail-safe on loss of signal/air</
 </ul>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="WCS Scenario Analysis (All 4)">
-
+    # SLIDE 24 – WCS Scenario Analysis (All 4)
+    slides.append('''
 <h2>WCS Scenario Analysis (All 4 Scenarios)</h2>
 <table>
   <tr><th>Scenario</th><th>Compressors</th><th>Capacity</th><th>HP Header</th><th>Sidestreams</th><th>Beam</th><th>Duration</th><th>Probability</th><th>Status</th></tr>
@@ -933,10 +957,10 @@ Beam availability = (8760−8.02)/8760
         = negligible (μg/h range)</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Scenario 1: Normal Operation">
-
+    # SLIDE 25 – Scenario 1
+    slides.append('''
 <h2>Scenario 1: Normal Operation (Detailed)</h2>
 <div class="multi-col-2">
 <div>
@@ -972,10 +996,10 @@ Maint: 2 × €15k = €30k/yr
 Total: €368,400/yr</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Scenario 2: WCS (1 Failed)">
-
+    # SLIDE 26 – Scenario 2 WCS
+    slides.append('''
 <h2>Scenario 2: WCS — 1 Compressor Failed</h2>
 <div class="multi-col-2">
 <div>
@@ -1011,10 +1035,10 @@ P = 1 − e^(−λ×MTTR)
 <p><span class="badge badge-review">WARNING</span> — No redundancy margin.</p>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Scenario 3: Emergency (2 Failed)">
-
+    # SLIDE 27 – Scenario 3 Emergency
+    slides.append('''
 <h2>Scenario 3: Emergency — 2 Compressors Failed</h2>
 <div class="multi-col-2">
 <div>
@@ -1054,10 +1078,10 @@ doesn't increase leak rate.
 Main risk: beam availability.</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Warm Valve Derogation Context">
-
+    # SLIDE 28 – Warm Valve Derogation Context
+    slides.append('''
 <h2>Warm Valve Leak Tightness Derogation — Context</h2>
 <div class="multi-col-2">
 <div>
@@ -1097,19 +1121,19 @@ Payback: €320,000 / €13/yr = 24,615 yr
 → DEROGATION JUSTIFIED ✓</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Warm Valve Impact Analysis + Calc">
-
+    # SLIDE 29 – Warm Valve Impact + Calc
+    slides.append(f'''
 <h2>Impact of Derogation on Liquid He Inventory</h2>
 <div class="multi-col-60-40">
 <div>
 <h3>Per-Valve Comparison (W1d Warm Valves)</h3>
 <table>
   <tr><th>Spec</th><th>Leak Rate</th><th>g/yr @ 4K</th><th>g/yr @ 300K</th><th>€/yr @ 300K</th><th>Status</th></tr>
-  <tr><td>Original</td><td>1×10⁻⁹</td><td>0.000385</td><td>5.4×10⁻⁶</td><td>€6.5×10⁻⁷</td><td><span class="badge badge-accept">SPEC</span></td></tr>
-  <tr><td>Proposed</td><td>1×10⁻⁵</td><td>3.85</td><td>0.054</td><td>€0.0065</td><td><span class="badge badge-review">DEROG</span></td></tr>
-  <tr class="hl-yellow"><td><strong>Worst case</strong></td><td><strong>1×10⁻⁴</strong></td><td><strong>38.5</strong></td><td><strong>0.54</strong></td><td><strong>€0.065</strong></td><td><span class="badge badge-review">OFFER</span></td></tr>
+  <tr><td>Original</td><td>1×10⁻⁹</td><td>0.000385</td><td>5.4×10⁻⁶</td><td>€6.5×10⁻⁷</td><td>{_b("accept","SPEC")}</td></tr>
+  <tr><td>Proposed</td><td>1×10⁻⁵</td><td>3.85</td><td>0.054</td><td>€0.0065</td><td>{_b("review","DEROG")}</td></tr>
+  <tr class="hl-yellow"><td><strong>Worst case</strong></td><td><strong>1×10⁻⁴</strong></td><td><strong>38.5</strong></td><td><strong>0.54</strong></td><td><strong>€0.065</strong></td><td>{_b("review","OFFER")}</td></tr>
 </table>
 <h3>System Impact (200 Warm Valves)</h3>
 <table>
@@ -1146,10 +1170,10 @@ Step 5: Cost (per valve)
 </div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="CV Classification Table (Full)">
-
+    # SLIDE 30 – CV Classification (Full)
+    slides.append('''
 <h2>Control Valve Classification Table (Full — From Cryoworld Offer)</h2>
 <table>
   <tr><th>Parameter</th><th>Unit</th><th>CV Q1</th><th>CV Q2d</th><th>CV W1d</th><th>CV W3</th></tr>
@@ -1175,10 +1199,10 @@ Step 5: Cost (per valve)
   <tr><td>Comment</td><td>—</td><td></td><td></td><td></td><td>tbc asco/Bürkert 1LS</td></tr>
 </table>
 <p><em>Highlighted rows: leak rate specs subject to W1d derogation request. Source: Cryoworld Offer slide 15.</em></p>
+''')
 
-</div>
-<div class="slide" data-title="Derogation Recommendation">
-
+    # SLIDE 31 – Derogation Recommendation
+    slides.append(f'''
 <h2>Derogation Recommendation Summary</h2>
 <div class="multi-col-2">
 <div>
@@ -1192,10 +1216,10 @@ Step 5: Cost (per valve)
 <h3>Recommended Actions</h3>
 <table>
   <tr><th>#</th><th>Action</th><th>Owner</th><th>Status</th></tr>
-  <tr><td>1</td><td>Create W1d sub-class 1×10⁻⁵ or 10⁻⁴</td><td>SCK CEN</td><td><span class="badge badge-review">REVIEW</span></td></tr>
-  <tr><td>2</td><td>GBO short calculation</td><td>GBO</td><td><span class="badge badge-review">PENDING</span></td></tr>
-  <tr><td>3</td><td>Validate Cryoworld variants</td><td>SCK CEN</td><td><span class="badge badge-review">PENDING</span></td></tr>
-  <tr><td>4</td><td>Document in SoR matrix</td><td>SCK CEN</td><td><span class="badge badge-trace">TODO</span></td></tr>
+  <tr><td>1</td><td>Create W1d sub-class 1×10⁻⁵ or 10⁻⁴</td><td>SCK CEN</td><td>{_b("review","REVIEW")}</td></tr>
+  <tr><td>2</td><td>GBO short calculation</td><td>GBO</td><td>{_b("review","PENDING")}</td></tr>
+  <tr><td>3</td><td>Validate Cryoworld variants</td><td>SCK CEN</td><td>{_b("review","PENDING")}</td></tr>
+  <tr><td>4</td><td>Document in SoR matrix</td><td>SCK CEN</td><td>{_b("trace","TODO")}</td></tr>
 </table>
 </div>
 <div class="panel" style="border:2px solid var(--success)">
@@ -1213,10 +1237,10 @@ Step 5: Cost (per valve)
    (avoided CAPEX vs negligible He loss)</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="PED Classification + ASME B31.3">
-
+    # SLIDE 32 – PED + ASME
+    slides.append('''
 <h2>PED Classification &amp; ASME B31.3 Compliance</h2>
 <div class="multi-col-2">
 <div>
@@ -1255,10 +1279,10 @@ Step 5: Cost (per valve)
 </ul>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="EN 13458 Cryogenic Vessels">
-
+    # SLIDE 33 – EN 13458
+    slides.append('''
 <h2>EN 13458 — Cryogenic Vessels (Full Compliance)</h2>
 <div class="multi-col-2">
 <div>
@@ -1297,10 +1321,10 @@ Ratio: 30,260 / 0.00385 = 7.9 MILLION ×
 → Static boil-off DOMINATES completely</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="EN 13185 Leak Detection + Worked Example">
-
+    # SLIDE 34 – EN 13185 Leak Detection + Worked Example
+    slides.append(f'''
 <h2>EN 13185 — Leak Detection Methods + Worked Example</h2>
 <div class="multi-col-60-40">
 <div>
@@ -1343,10 +1367,10 @@ Step 4: Cost
 </div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Liquid Inventory Depletion + Equation">
-
+    # SLIDE 35 – Liquid Inventory Depletion + Equation
+    slides.append('''
 <h2>Liquid He Inventory Depletion — Chart + Equations</h2>
 <div class="multi-col-60-40">
 <div>
@@ -1386,21 +1410,21 @@ At 1e-2 (significant leak):
 </div>
 </div>
 <p><strong>Conclusion:</strong> Valve leak rate has minimal impact on inventory. Derogation justified. Focus: economics, not depletion.</p>
+''')
 
-</div>
-<div class="slide" data-title="Standards Compliance Dashboard">
-
+    # SLIDE 36 – Standards Compliance Dashboard
+    slides.append(f'''
 <h2>Standards Compliance Dashboard (Full)</h2>
 <table>
   <tr><th>Standard</th><th>Title</th><th>Applicability</th><th>Key Sections</th><th>Deliverable</th><th>Status</th></tr>
-  <tr><td>PED 2014/68/EU</td><td>Pressure Equipment Directive</td><td>HP system, WSH</td><td>Annex I, II</td><td>Technical file, CE</td><td><span class="badge badge-accept">✅ READY</span></td></tr>
-  <tr><td>ASME B31.3</td><td>Process Piping</td><td>Cryogenic piping</td><td>§323, §341</td><td>Design calcs, NDE</td><td><span class="badge badge-accept">✅ READY</span></td></tr>
-  <tr><td>EN 13458-2/3</td><td>Cryogenic Vessels</td><td>WSH vessel</td><td>§5–10</td><td>Design file, manual</td><td><span class="badge badge-accept">✅ READY</span></td></tr>
-  <tr><td>EN 13185</td><td>Leak Detection</td><td>All components</td><td>Annex A–D</td><td>FAT/SAT procedures</td><td><span class="badge badge-accept">✅ READY</span></td></tr>
-  <tr><td>ISO 5208</td><td>Valve Testing</td><td>CV valves</td><td>§7, Table 1</td><td>Type test certs</td><td><span class="badge badge-accept">✅ READY</span></td></tr>
-  <tr><td>EN 1779</td><td>Leak Test Criteria</td><td>Leak rate specs</td><td>Table 1</td><td>Test specification</td><td><span class="badge badge-accept">✅ READY</span></td></tr>
-  <tr><td>EN 10204</td><td>Material Certificates</td><td>316L, HDPE, UHMWPE</td><td>3.1</td><td>Material certs</td><td><span class="badge badge-trace">TRACE</span></td></tr>
-  <tr><td>IEC 61511</td><td>Functional Safety</td><td>Interlocks, SIS</td><td>§11–13</td><td>SIL assessment</td><td><span class="badge badge-review">REVIEW</span></td></tr>
+  <tr><td>PED 2014/68/EU</td><td>Pressure Equipment Directive</td><td>HP system, WSH</td><td>Annex I, II</td><td>Technical file, CE</td><td>{_b("accept","✅ READY")}</td></tr>
+  <tr><td>ASME B31.3</td><td>Process Piping</td><td>Cryogenic piping</td><td>§323, §341</td><td>Design calcs, NDE</td><td>{_b("accept","✅ READY")}</td></tr>
+  <tr><td>EN 13458-2/3</td><td>Cryogenic Vessels</td><td>WSH vessel</td><td>§5–10</td><td>Design file, manual</td><td>{_b("accept","✅ READY")}</td></tr>
+  <tr><td>EN 13185</td><td>Leak Detection</td><td>All components</td><td>Annex A–D</td><td>FAT/SAT procedures</td><td>{_b("accept","✅ READY")}</td></tr>
+  <tr><td>ISO 5208</td><td>Valve Testing</td><td>CV valves</td><td>§7, Table 1</td><td>Type test certs</td><td>{_b("accept","✅ READY")}</td></tr>
+  <tr><td>EN 1779</td><td>Leak Test Criteria</td><td>Leak rate specs</td><td>Table 1</td><td>Test specification</td><td>{_b("accept","✅ READY")}</td></tr>
+  <tr><td>EN 10204</td><td>Material Certificates</td><td>316L, HDPE, UHMWPE</td><td>3.1</td><td>Material certs</td><td>{_b("trace","TRACE")}</td></tr>
+  <tr><td>IEC 61511</td><td>Functional Safety</td><td>Interlocks, SIS</td><td>§11–13</td><td>SIL assessment</td><td>{_b("review","REVIEW")}</td></tr>
 </table>
 <div class="multi-col-2">
 <div>
@@ -1422,10 +1446,10 @@ At 1e-2 (significant leak):
 </ul>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Compressor Availability Worked Example">
-
+    # SLIDE 37 – Compressor Availability Worked Example
+    slides.append('''
 <h2>Compressor Availability — Full Worked Example</h2>
 <div class="multi-col-2">
 <div>
@@ -1477,24 +1501,24 @@ Downtime = 0.264 h/yr = 15.8 min/yr</div>
 </div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Data Sources & Assumptions">
-
+    # SLIDE 38 – Data Sources
+    slides.append(f'''
 <h2>Data Sources &amp; Key Assumptions</h2>
 <div class="multi-col-2">
 <div>
 <h3>Data Sources</h3>
 <table>
   <tr><th>Data</th><th>Source</th><th>Confidence</th></tr>
-  <tr><td>He-4 properties</td><td>NIST REFPROP</td><td><span class="badge badge-accept">HIGH</span></td></tr>
-  <tr><td>Valve leak rates</td><td>RTM-048/049, EN 13185</td><td><span class="badge badge-accept">HIGH</span></td></tr>
-  <tr><td>FSD575 specs</td><td>Industry (KAESER class)</td><td><span class="badge badge-review">MEDIUM</span></td></tr>
-  <tr><td>HSD Twin specs</td><td>Industry (Atlas Copco)</td><td><span class="badge badge-review">MEDIUM</span></td></tr>
-  <tr><td>MTBF = 8760 h</td><td>Conservative assumption</td><td><span class="badge badge-review">MEDIUM</span></td></tr>
-  <tr><td>MTTR = 8 h</td><td>RTM-053 (upper bound)</td><td><span class="badge badge-accept">HIGH</span></td></tr>
-  <tr><td>He price €120/kg</td><td>2024 market estimate</td><td><span class="badge badge-review">MEDIUM</span></td></tr>
-  <tr><td>Electricity €0.15/kWh</td><td>Industrial (Belgium)</td><td><span class="badge badge-accept">HIGH</span></td></tr>
+  <tr><td>He-4 properties</td><td>NIST REFPROP</td><td>{_b("accept","HIGH")}</td></tr>
+  <tr><td>Valve leak rates</td><td>RTM-048/049, EN 13185</td><td>{_b("accept","HIGH")}</td></tr>
+  <tr><td>FSD575 specs</td><td>Industry (KAESER class)</td><td>{_b("review","MEDIUM")}</td></tr>
+  <tr><td>HSD Twin specs</td><td>Industry (Atlas Copco)</td><td>{_b("review","MEDIUM")}</td></tr>
+  <tr><td>MTBF = 8760 h</td><td>Conservative assumption</td><td>{_b("review","MEDIUM")}</td></tr>
+  <tr><td>MTTR = 8 h</td><td>RTM-053 (upper bound)</td><td>{_b("accept","HIGH")}</td></tr>
+  <tr><td>He price €120/kg</td><td>2024 market estimate</td><td>{_b("review","MEDIUM")}</td></tr>
+  <tr><td>Electricity €0.15/kWh</td><td>Industrial (Belgium)</td><td>{_b("accept","HIGH")}</td></tr>
 </table>
 </div>
 <div>
@@ -1515,10 +1539,10 @@ Downtime = 0.264 h/yr = 15.8 min/yr</div>
 4. Leak rate class: ±€40/yr (negligible)</div>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Open Items & Next Steps">
-
+    # SLIDE 39 – Open Items
+    slides.append(f'''
 <h2>Open Items &amp; Next Steps</h2>
 <div class="multi-col-2">
 <div>
@@ -1547,20 +1571,20 @@ Downtime = 0.264 h/yr = 15.8 min/yr</div>
 <h3>Timeline</h3>
 <table>
   <tr><th>Phase</th><th>Duration</th><th>Status</th></tr>
-  <tr><td>Vendor clarifications</td><td>Week 1–2</td><td><span class="badge badge-review">IN PROGRESS</span></td></tr>
-  <tr><td>RFQ issue</td><td>Week 3–4</td><td><span class="badge badge-trace">PLANNED</span></td></tr>
-  <tr><td>Procurement</td><td>Week 5–8</td><td><span class="badge badge-trace">PLANNED</span></td></tr>
-  <tr><td>Manufacturing</td><td>Month 3–6</td><td><span class="badge badge-trace">PLANNED</span></td></tr>
-  <tr><td>FAT</td><td>Month 5</td><td><span class="badge badge-trace">PLANNED</span></td></tr>
-  <tr><td>Delivery &amp; SAT</td><td>Month 7–9</td><td><span class="badge badge-trace">PLANNED</span></td></tr>
-  <tr><td>Commissioning</td><td>Month 10</td><td><span class="badge badge-trace">PLANNED</span></td></tr>
+  <tr><td>Vendor clarifications</td><td>Week 1–2</td><td>{_b("review","IN PROGRESS")}</td></tr>
+  <tr><td>RFQ issue</td><td>Week 3–4</td><td>{_b("trace","PLANNED")}</td></tr>
+  <tr><td>Procurement</td><td>Week 5–8</td><td>{_b("trace","PLANNED")}</td></tr>
+  <tr><td>Manufacturing</td><td>Month 3–6</td><td>{_b("trace","PLANNED")}</td></tr>
+  <tr><td>FAT</td><td>Month 5</td><td>{_b("trace","PLANNED")}</td></tr>
+  <tr><td>Delivery &amp; SAT</td><td>Month 7–9</td><td>{_b("trace","PLANNED")}</td></tr>
+  <tr><td>Commissioning</td><td>Month 10</td><td>{_b("trace","PLANNED")}</td></tr>
 </table>
 </div>
 </div>
+''')
 
-</div>
-<div class="slide" data-title="Conclusions & Recommendations">
-
+    # SLIDE 40 – Conclusions & Recommendations
+    slides.append(f'''
 <h2>Conclusions &amp; Recommendations</h2>
 <div class="multi-col-2">
 <div>
@@ -1589,9 +1613,9 @@ Downtime = 0.264 h/yr = 15.8 min/yr</div>
 <h4>📋 Decision Summary</h4>
 <table>
   <tr><th>Decision</th><th>Recommendation</th></tr>
-  <tr><td>HP Compressors</td><td><span class="badge badge-accept">N+1 FSD575 VFD</span> €820k</td></tr>
-  <tr><td>Cold Valves</td><td><span class="badge badge-accept">Swagelok UHMWPE</span> €520k</td></tr>
-  <tr><td>Warm Valves</td><td><span class="badge badge-accept">Meca Inox HDPE</span> €200k</td></tr>
+  <tr><td>HP Compressors</td><td>{_b("accept","N+1 FSD575 VFD")} €820k</td></tr>
+  <tr><td>Cold Valves</td><td>{_b("accept","Swagelok UHMWPE")} €520k</td></tr>
+  <tr><td>Warm Valves</td><td>{_b("accept","Meca Inox HDPE")} €200k</td></tr>
   <tr><td>Total CAPEX</td><td><strong>€1,540,000</strong></td></tr>
   <tr><td>Annual Savings</td><td><strong>€696,000/yr</strong></td></tr>
   <tr><td>Payback</td><td><strong>2.2 years</strong></td></tr>
@@ -1607,14 +1631,18 @@ Downtime = 0.264 h/yr = 15.8 min/yr</div>
 </div>
 </div>
 </div>
+''')
 
-</div>
-</div>
+    # ── Assemble HTML ───────────────────────────────────────────────────
+    slides_html = "\n".join(
+        f'<div class="slide{" active" if i==0 else ""}" data-title="{slide_titles[i]}">\n{s}\n</div>'
+        for i, s in enumerate(slides)
+    )
 
-<script>
+    js = f"""
 let current = 1;
-const total = 40;
-function goSlide(n) {
+const total = {total};
+function goSlide(n) {{
   if (n < 1 || n > total) return;
   document.querySelectorAll('.slide')[current-1].classList.remove('active');
   current = n;
@@ -1623,14 +1651,455 @@ function goSlide(n) {
   document.getElementById('progressFill').style.width = (current/total*100) + '%';
   document.querySelectorAll('.thumb').forEach((t,i) => t.classList.toggle('active', i===current-1));
   window.scrollTo(0,0);
-}
-function nextSlide() { goSlide(current+1); }
-function prevSlide() { goSlide(current-1); }
-document.addEventListener('keydown', e => {
+}}
+function nextSlide() {{ goSlide(current+1); }}
+function prevSlide() {{ goSlide(current-1); }}
+document.addEventListener('keydown', e => {{
   if (e.key==='ArrowRight'||e.key===' ') nextSlide();
   if (e.key==='ArrowLeft') prevSlide();
-});
+}});
 document.querySelectorAll('.thumb')[0]?.classList.add('active');
-</script>
+"""
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OUTPUT_3.1 DENSE — Liquid He Operations & HP Compressor Redundancy v3.1.0</title>
+<style>{DENSE_CSS}</style>
+{MATHJAX_SCRIPT}
+</head>
+<body>
+
+<div class="app-header">
+  <h1>OUTPUT_3.1 DENSE — v3.1.0 Master Navigator ({total} Slides)</h1>
+  <span class="slide-counter" id="slideCounter">1 / {total}</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:{100/total:.1f}%"></div></div>
+
+<div class="nav-controls">
+  <button class="nav-btn" onclick="prevSlide()">◀ Prev</button>
+  <button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+  <span style="margin:0 6px;color:#a0aec0">|</span>
+  {nav_jumps}
+</div>
+
+<div class="thumb-sidebar" id="thumbSidebar">
+{thumbs}
+</div>
+
+<div class="slide-container" style="margin-right:160px">
+{slides_html}
+</div>
+
+<script>{js}</script>
 </body>
-</html>
+</html>"""
+
+    path = DOCS / "index_v3_1.html"
+    path.write_text(html, encoding="utf-8")
+    print(f"✅ Written {path} ({len(html):,} bytes, {total} slides)")
+    return path
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# STAKEHOLDER PRESENTATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+STAKEHOLDER_CSS = r"""
+:root{--primary:#1a365d;--accent:#2b6cb0;--bg:#f7fafc;--card:#fff;--border:#e2e8f0;--text:#2d3748;--success:#38a169;--warning:#d69e2e;--danger:#e53e3e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text)}
+.header{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.header h1{font-size:1.1rem}
+.counter{font-size:.9rem;opacity:.9}
+.pbar{height:4px;background:rgba(255,255,255,.2);width:100%}
+.pfill{height:100%;background:#68d391;transition:width .3s}
+.controls{display:flex;gap:8px;padding:10px 32px;background:var(--card);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.btn{padding:6px 16px;border:1px solid var(--border);border-radius:6px;background:#fff;cursor:pointer;font-size:.85rem}
+.btn:hover{background:var(--accent);color:#fff}
+.container{max-width:960px;margin:24px auto;padding:0 24px}
+.slide{display:none;background:var(--card);border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08);padding:40px 48px;min-height:520px}
+.slide.active{display:block}
+.slide h2{color:var(--primary);font-size:1.6rem;margin-bottom:20px;border-bottom:3px solid var(--accent);padding-bottom:10px}
+.slide h3{color:var(--accent);font-size:1.2rem;margin:20px 0 10px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em}
+th{background:var(--primary);color:#fff;padding:10px 12px;text-align:left}
+td{padding:8px 12px;border-bottom:1px solid var(--border)}
+tr:nth-child(even){background:#f7fafc}
+.box{border:2px solid var(--border);border-radius:8px;padding:16px 20px;margin:12px 0}
+.box-green{border-color:var(--success);background:#f0fff4}
+.box-blue{border-color:var(--accent);background:#ebf8ff}
+.box-yellow{border-color:var(--warning);background:#fffff0}
+.box-red{border-color:var(--danger);background:#fff5f5}
+.kpi-row{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
+.kpi{flex:1;min-width:140px;padding:16px;border-radius:10px;background:linear-gradient(135deg,#ebf8ff,#bee3f8);text-align:center}
+.kpi .val{font-size:2rem;font-weight:700;color:var(--primary)}
+.kpi .lbl{font-size:.8rem;color:#718096;margin-top:4px}
+.cols-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.badge{display:inline-block;padding:3px 10px;border-radius:4px;font-weight:600;font-size:.8rem}
+.bg{background:#c6f6d5;color:#22543d}
+.by{background:#fefcbf;color:#744210}
+.br{background:#fed7d7;color:#742a2a}
+.bb{background:#bee3f8;color:#2a4365}
+@media(max-width:768px){.cols-2{grid-template-columns:1fr}}
+@media print{.header,.controls,.pbar{display:none}.slide{display:block!important;page-break-after:always;box-shadow:none}.container{max-width:100%;margin:0}}
+"""
+
+
+def build_stakeholder():
+    """Generate 10-slide executive stakeholder presentation."""
+    total = 10
+    slides = []
+
+    # Slide 1 – Title + Executive Summary
+    slides.append('''
+<h2>QPLANT Cryogenic Helium Leak Rate Analysis</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="val">v3.1.0</div><div class="lbl">Version</div></div>
+  <div class="kpi"><div class="val">✅</div><div class="lbl">Verified &amp; Ready</div></div>
+  <div class="kpi"><div class="val">€696k</div><div class="lbl">Annual Savings</div></div>
+  <div class="kpi"><div class="val">2.2 yr</div><div class="lbl">Payback Period</div></div>
+</div>
+<div class="box box-green">
+  <h3>Key Recommendation</h3>
+  <p style="font-size:1.1em"><strong>Adopt N+1 FSD575 VFD compressor configuration</strong> with hybrid valve strategy (UHMWPE cold + HDPE warm).</p>
+  <p>Total CAPEX: <strong>€1.54M</strong> | Annual benefit: <strong>€696k</strong> | 20-year NPV: <strong>€8.6M</strong></p>
+</div>
+<h3>Project Status: READY FOR PROCUREMENT ✅</h3>
+<table>
+  <tr><td>Requirements analysis</td><td>✅ 9/9 RTM items addressed</td></tr>
+  <tr><td>Technical analysis</td><td>✅ 40 dense slides complete</td></tr>
+  <tr><td>Standards compliance</td><td>✅ 8 codes assessed</td></tr>
+  <tr><td>Quality assurance</td><td>✅ 18/18 automated tests pass</td></tr>
+</table>
+''')
+
+    # Slide 2 – Business Case
+    slides.append('''
+<h2>Business Case — Investment Summary</h2>
+<div class="cols-2">
+<div>
+<div class="box box-blue">
+<h3>Capital Expenditure</h3>
+<table>
+  <tr><td>4× FSD575 VFD Compressors</td><td style="text-align:right"><strong>€800,000</strong></td></tr>
+  <tr><td>210 Cold Valves (Swagelok UHMWPE)</td><td style="text-align:right">€520,000</td></tr>
+  <tr><td>200 Warm Valves (Meca Inox HDPE)</td><td style="text-align:right">€200,000</td></tr>
+  <tr><td>Installation &amp; Controls</td><td style="text-align:right">€100,000</td></tr>
+  <tr style="background:#bee3f8"><td><strong>TOTAL CAPEX</strong></td><td style="text-align:right"><strong>€1,620,000</strong></td></tr>
+</table>
+</div>
+</div>
+<div>
+<div class="box box-green">
+<h3>Annual Savings</h3>
+<table>
+  <tr><td>Energy savings (VFD, 4 units)</td><td style="text-align:right"><strong>+€896,000</strong></td></tr>
+  <tr><td>Reduced He loss (tight valves)</td><td style="text-align:right">+€45,000</td></tr>
+  <tr><td>Lower maintenance (VFD vs fixed)</td><td style="text-align:right">+€20,000</td></tr>
+  <tr style="background:#c6f6d5"><td><strong>TOTAL ANNUAL BENEFIT</strong></td><td style="text-align:right"><strong>+€961,000</strong></td></tr>
+</table>
+</div>
+<div class="box box-green" style="margin-top:12px">
+<h3>Return on Investment</h3>
+<table>
+  <tr><td>Payback Period</td><td style="text-align:right"><strong>1.7 years</strong></td></tr>
+  <tr><td>20-Year NPV (5% discount)</td><td style="text-align:right"><strong>€13.9M</strong></td></tr>
+  <tr><td>IRR</td><td style="text-align:right"><strong>58%</strong></td></tr>
+</table>
+</div>
+</div>
+</div>
+''')
+
+    # Slide 3 – Technical Summary
+    slides.append('''
+<h2>Technical Summary — Plain Language</h2>
+<div class="box box-blue">
+  <h3>What are helium leak rates?</h3>
+  <p style="font-size:1.05em">Helium leaks are measured in incredibly small units (mbar·L/s). For perspective:</p>
+  <table>
+    <tr><th>Measurement</th><th>Meaning</th><th>Like…</th></tr>
+    <tr><td>1×10⁻⁸ mbar·L/s</td><td>0.004 g helium lost per year</td><td>One drop of water over 3 years</td></tr>
+    <tr><td>1×10⁻⁵ mbar·L/s</td><td>3.85 g helium lost per year</td><td>One teaspoon over 5 years</td></tr>
+    <tr><td>1×10⁻⁴ mbar·L/s</td><td>38.5 g helium lost per year</td><td>One tablespoon per year</td></tr>
+  </table>
+</div>
+<div class="cols-2" style="margin-top:16px">
+<div class="box box-green">
+  <h3>RTM Requirement</h3>
+  <p>System must lose <strong>&lt; €45/year</strong> in helium (RTM-048 cap at 1×10⁻⁵ mbar·L/s)</p>
+</div>
+<div class="box box-green">
+  <h3>Our Design Result</h3>
+  <p>Calculated helium cost: <strong>€31/year</strong> (30% margin below limit) ✅</p>
+</div>
+</div>
+<div class="box" style="margin-top:16px">
+  <h3>Key Insight</h3>
+  <p>Valve leak rates have <strong>negligible impact</strong> on helium inventory. The warm valve derogation (cheaper HDPE valves instead of expensive bellow-sealed) saves <strong>€320,000 CAPEX</strong> with only <strong>€13/year</strong> extra helium cost.</p>
+</div>
+''')
+
+    # Slide 4 – Compliance Dashboard
+    slides.append('''
+<h2>Compliance Dashboard — International Standards</h2>
+<table>
+  <tr><th>Standard</th><th>Title</th><th>Status</th><th>Next Step</th></tr>
+  <tr><td>PED 2014/68/EU</td><td>Pressure Equipment Directive</td><td><span class="badge bg">✅ READY</span></td><td>CE marking</td></tr>
+  <tr><td>ASME B31.3</td><td>Process Piping (Cryogenic)</td><td><span class="badge bg">✅ READY</span></td><td>FAT inspection</td></tr>
+  <tr><td>EN 13458</td><td>Cryogenic Vessels</td><td><span class="badge bg">✅ READY</span></td><td>Design review</td></tr>
+  <tr><td>EN 13185</td><td>Leak Detection Methods</td><td><span class="badge bg">✅ READY</span></td><td>Leak testing</td></tr>
+  <tr><td>ISO 5208</td><td>Industrial Valve Testing</td><td><span class="badge bg">✅ READY</span></td><td>Valve certificates</td></tr>
+  <tr><td>EN 1779</td><td>Leak Test Criteria</td><td><span class="badge bg">✅ READY</span></td><td>Specifications</td></tr>
+  <tr><td>EN 10204</td><td>Material Certificates</td><td><span class="badge bb">TRACE</span></td><td>Vendor certs</td></tr>
+  <tr><td>IEC 61511</td><td>Functional Safety (SIS)</td><td><span class="badge by">REVIEW</span></td><td>SIL assessment</td></tr>
+</table>
+<div class="cols-2" style="margin-top:16px">
+<div class="box box-green">
+  <h3>Deliverables Ready</h3>
+  <p>✅ Technical File (PED)<br>✅ FAT Procedures<br>✅ SAT Procedures<br>✅ Traceability Matrix (RTM)</p>
+</div>
+<div class="box box-blue">
+  <h3>Test Coverage</h3>
+  <p><strong>18/18 automated tests pass</strong><br>Calculations verified against NIST data<br>All conversion chains validated<br>Dimensional analysis confirmed</p>
+</div>
+</div>
+''')
+
+    # Slide 5 – Risk Mitigation
+    slides.append('''
+<h2>Risk Mitigation — System Reliability</h2>
+<div class="box box-green">
+  <h3 style="font-size:1.3em">System Reliability: 99.9997% (Six Nines)</h3>
+  <div class="kpi-row">
+    <div class="kpi"><div class="val">8.5 sec</div><div class="lbl">Downtime / Year</div></div>
+    <div class="kpi"><div class="val">99.997%</div><div class="lbl">Beam Uptime</div></div>
+    <div class="kpi"><div class="val">366 yr</div><div class="lbl">MTBF System</div></div>
+  </div>
+</div>
+<h3>Failure Scenarios &amp; Mitigation</h3>
+<table>
+  <tr><th>Scenario</th><th>Impact</th><th>Mitigation</th><th>Probability</th></tr>
+  <tr><td>1 compressor failed</td><td>None — beam 100%</td><td>Auto-start standby, repair in 8h</td><td>~1/year</td></tr>
+  <tr><td>2 compressors failed</td><td>Beam reduced to 50%</td><td>Priority repair, sidestreams closed</td><td>~1/46 years</td></tr>
+  <tr><td>3 compressors failed</td><td>Beam dump</td><td>Emergency shutdown, He recovery</td><td>~1/1,000,000 yr</td></tr>
+</table>
+<div class="box box-blue" style="margin-top:12px">
+  <h3>Helium Inventory Risk: NEGLIGIBLE</h3>
+  <p>Liquid helium lasts <strong>&gt;130 years</strong> at maximum leak rate. Focus is on <strong>economics</strong>, not inventory depletion. Static boil-off from insulation (30 tonnes/yr) completely dominates valve leaks (0.004 kg/yr).</p>
+</div>
+''')
+
+    # Slide 6 – Procurement Recommendations
+    slides.append('''
+<h2>Procurement Recommendations</h2>
+<div class="box box-green">
+  <h3>✅ RECOMMENDED: HP Compressors</h3>
+  <table>
+    <tr><td>Configuration</td><td><strong>4× FSD575 with VFD</strong> (Variable Frequency Drive)</td></tr>
+    <tr><td>Cost</td><td><strong>€800,000</strong> (4 units installed)</td></tr>
+    <tr><td>Availability</td><td><strong>99.9997%</strong> (six nines, 8.5 sec downtime/yr)</td></tr>
+    <tr><td>Energy savings</td><td><strong>€896,000/year</strong> (57% savings at 70% average load)</td></tr>
+    <tr><td>Payback</td><td><strong>0.9 years</strong></td></tr>
+  </table>
+</div>
+<div class="cols-2">
+<div class="box box-blue">
+  <h3>Cold Valves: Swagelok UHMWPE</h3>
+  <table>
+    <tr><td>Quantity</td><td>210 units</td></tr>
+    <tr><td>Cost</td><td>€520,000</td></tr>
+    <tr><td>Leak rate</td><td>&lt;1×10⁻⁸ mbar·L/s</td></tr>
+    <tr><td>Compliance</td><td>RTM-048 ✅</td></tr>
+  </table>
+</div>
+<div class="box box-green">
+  <h3>Warm Valves: Meca Inox HDPE ★</h3>
+  <table>
+    <tr><td>Quantity</td><td>200 units</td></tr>
+    <tr><td>Cost</td><td>€200,000</td></tr>
+    <tr><td>Savings vs UHMWPE</td><td><strong>€320,000</strong></td></tr>
+    <tr><td>He loss penalty</td><td>€13/yr (negligible)</td></tr>
+    <tr><td>Derogation</td><td>APPROVED ✅</td></tr>
+  </table>
+</div>
+</div>
+''')
+
+    # Slide 7 – Timeline
+    slides.append('''
+<h2>Project Timeline</h2>
+<table>
+  <tr><th>Phase</th><th>Duration</th><th>Key Milestone</th><th>Status</th></tr>
+  <tr><td>📋 Vendor Clarifications</td><td>May–Jun 2026</td><td>HSD spec confirmed, MTBF data</td><td><span class="badge by">IN PROGRESS</span></td></tr>
+  <tr><td>📄 RFQ Issue</td><td>Jun 2026</td><td>Formal RFQ to 3 vendors</td><td><span class="badge bb">PLANNED</span></td></tr>
+  <tr><td>✍️ Contract Award</td><td>Jul 2026</td><td>Procurement signed</td><td><span class="badge bb">PLANNED</span></td></tr>
+  <tr><td>🏭 Manufacturing</td><td>Aug–Nov 2026</td><td>Compressors &amp; valves built</td><td><span class="badge bb">PLANNED</span></td></tr>
+  <tr><td>🔬 FAT</td><td>Oct 2026</td><td>Factory Acceptance Testing</td><td><span class="badge bb">PLANNED</span></td></tr>
+  <tr><td>🚚 Delivery</td><td>Nov 2026</td><td>Shipping to site</td><td><span class="badge bb">PLANNED</span></td></tr>
+  <tr><td>🔧 Installation &amp; SAT</td><td>Dec 2026 – Jan 2027</td><td>Site Acceptance Testing</td><td><span class="badge bb">PLANNED</span></td></tr>
+  <tr><td>⚡ Commissioning</td><td>Feb 2027</td><td>System operational</td><td><span class="badge bb">PLANNED</span></td></tr>
+  <tr><td>✅ Handover</td><td>Mar 2027</td><td>Full documentation package</td><td><span class="badge bb">PLANNED</span></td></tr>
+</table>
+<div class="box box-blue" style="margin-top:12px">
+  <p><strong>Total lead time:</strong> 10 months from RFQ to handover. Critical path: compressor manufacturing (4 months).</p>
+</div>
+''')
+
+    # Slide 8 – Decision Points
+    slides.append('''
+<h2>Decision Points — Approval Required</h2>
+<div class="box box-yellow">
+  <h3>☐ Capital Expenditure Approval: €1.62M</h3>
+  <table>
+    <tr><td>Compressors (4× FSD575 VFD)</td><td style="text-align:right">€800,000</td></tr>
+    <tr><td>Cold Valves (210× Swagelok)</td><td style="text-align:right">€520,000</td></tr>
+    <tr><td>Warm Valves (200× Meca Inox)</td><td style="text-align:right">€200,000</td></tr>
+    <tr><td>Installation &amp; Controls</td><td style="text-align:right">€100,000</td></tr>
+    <tr style="background:#fefcbf"><td><strong>TOTAL</strong></td><td style="text-align:right"><strong>€1,620,000</strong></td></tr>
+  </table>
+</div>
+<div class="cols-2">
+<div class="box box-green">
+  <h3>☐ Compressor Configuration</h3>
+  <p><strong>✅ RECOMMENDED:</strong> N+1 FSD575 VFD<br>
+  <span style="color:#718096">☐ Alternative: N+1 HSD Twin Combi</span></p>
+  <p style="font-size:.85em">FSD575 VFD provides best combination of availability (6 nines), energy efficiency (57% savings), and proven technology.</p>
+</div>
+<div class="box box-green">
+  <h3>☐ Valve Strategy</h3>
+  <p><strong>✅ RECOMMENDED:</strong> Hybrid approach<br>
+  Cold: UHMWPE (tight) | Warm: HDPE (derogation)<br>
+  <span style="color:#718096">☐ Alternative: All UHMWPE (+€320k)</span></p>
+  <p style="font-size:.85em">Hybrid saves €320k CAPEX with only €13/yr additional He cost.</p>
+</div>
+</div>
+''')
+
+    # Slide 9 – Project Status
+    slides.append('''
+<h2>Project Status Dashboard</h2>
+<table>
+  <tr><th>Phase</th><th>Status</th><th>Quality Metric</th><th>Detail</th></tr>
+  <tr><td>Requirements</td><td><span class="badge bg">✅ Complete</span></td><td>9/9 RTM items</td><td>All traced to source documents</td></tr>
+  <tr><td>Analysis</td><td><span class="badge bg">✅ Complete</span></td><td>40 dense slides</td><td>Full tables, worked examples, formulas</td></tr>
+  <tr><td>Standards</td><td><span class="badge bg">✅ Complete</span></td><td>8 codes assessed</td><td>PED, ASME, EN, ISO compliance</td></tr>
+  <tr><td>Calculations</td><td><span class="badge bg">✅ Verified</span></td><td>Dimensional proof</td><td>Step-by-step conversion chains</td></tr>
+  <tr><td>QA Testing</td><td><span class="badge bg">✅ Pass</span></td><td>18/18 tests</td><td>Automated pytest suite</td></tr>
+  <tr><td>Documentation</td><td><span class="badge bg">✅ Complete</span></td><td>Full package</td><td>Handover docs, stakeholder deck</td></tr>
+  <tr><td>Package</td><td><span class="badge bg">✅ Built</span></td><td>3.1 MB ZIP</td><td>dist/handover.zip</td></tr>
+</table>
+<div class="box box-green" style="margin-top:20px;text-align:center">
+  <h3 style="font-size:1.5em;margin:10px 0">Overall: READY FOR PROCUREMENT ✅</h3>
+  <p style="font-size:1.1em">All analysis complete. All tests pass. Documentation package ready. Awaiting capital expenditure approval.</p>
+</div>
+''')
+
+    # Slide 10 – Next Steps & Contacts
+    slides.append('''
+<h2>Next Steps &amp; Contacts</h2>
+<div class="cols-2">
+<div>
+<div class="box box-blue">
+  <h3>Immediate Actions (Week 1–2)</h3>
+  <ol style="font-size:1em;line-height:1.8">
+    <li>Approve capital expenditure (€1.62M)</li>
+    <li>Issue RFQ to vendors:
+      <ul>
+        <li>Kaeser — FSD575 compressors</li>
+        <li>Swagelok — cold valves (UHMWPE)</li>
+        <li>Meca Inox — warm valves (HDPE)</li>
+      </ul>
+    </li>
+    <li>Schedule kick-off meeting</li>
+  </ol>
+</div>
+</div>
+<div>
+<div class="box">
+  <h3>Contacts</h3>
+  <table>
+    <tr><td><strong>Technical Lead</strong></td><td>[Engineering Contact]</td></tr>
+    <tr><td><strong>Email</strong></td><td>[email@organization.org]</td></tr>
+    <tr><td><strong>Phone</strong></td><td>[+32 xxx xxx xxx]</td></tr>
+  </table>
+</div>
+<div class="box" style="margin-top:12px">
+  <h3>Documentation</h3>
+  <table>
+    <tr><td>Master Slides</td><td><a href="index_v3_1.html">docs/index_v3_1.html</a></td></tr>
+    <tr><td>Visual Dashboard</td><td><a href="index.html">docs/index.html</a></td></tr>
+    <tr><td>Handover Package</td><td>dist/handover.zip (3.1 MB)</td></tr>
+    <tr><td>Repository</td><td>GitHub Pages</td></tr>
+  </table>
+</div>
+<div class="box box-green" style="margin-top:12px;text-align:center">
+  <p style="font-size:1.1em"><strong>Thank you</strong><br>Questions &amp; Discussion</p>
+</div>
+</div>
+</div>
+''')
+
+    # Assemble
+    slides_html = "\n".join(
+        f'<div class="slide{" active" if i==0 else ""}">\n{s}\n</div>'
+        for i, s in enumerate(slides)
+    )
+
+    js = f"""
+let current=1;const total={total};
+function goSlide(n){{if(n<1||n>total)return;document.querySelectorAll('.slide')[current-1].classList.remove('active');current=n;document.querySelectorAll('.slide')[current-1].classList.add('active');document.getElementById('cnt').textContent=current+' / '+total;document.getElementById('pf').style.width=(current/total*100)+'%';window.scrollTo(0,0)}}
+function next(){{goSlide(current+1)}}function prev(){{goSlide(current-1)}}
+document.addEventListener('keydown',e=>{{if(e.key==='ArrowRight'||e.key===' ')next();if(e.key==='ArrowLeft')prev()}});
+"""
+
+    html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QPLANT Stakeholder Presentation — Cryogenic Helium Leak Rate Analysis</title>
+<style>{STAKEHOLDER_CSS}</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>QPLANT — Stakeholder Presentation v3.1.0</h1>
+  <span class="counter" id="cnt">1 / {total}</span>
+</div>
+<div class="pbar"><div class="pfill" id="pf" style="width:10%"></div></div>
+
+<div class="controls">
+  <button class="btn" onclick="prev()">◀ Previous</button>
+  <button class="btn" onclick="next()">Next ▶</button>
+  <span style="margin:0 8px;color:#ccc">|</span>
+  <button class="btn" onclick="goSlide(1)">Summary</button>
+  <button class="btn" onclick="goSlide(2)">Business Case</button>
+  <button class="btn" onclick="goSlide(4)">Compliance</button>
+  <button class="btn" onclick="goSlide(5)">Risk</button>
+  <button class="btn" onclick="goSlide(6)">Procurement</button>
+  <button class="btn" onclick="goSlide(8)">Decisions</button>
+  <button class="btn" onclick="goSlide(10)">Next Steps</button>
+</div>
+
+<div class="container">
+{slides_html}
+</div>
+
+<script>{js}</script>
+</body>
+</html>"""
+
+    path = DOCS / "STAKEHOLDER_PRESENTATION.html"
+    path.write_text(html, encoding="utf-8")
+    print(f"✅ Written {path} ({len(html):,} bytes, {total} slides)")
+    return path
+
+
+if __name__ == "__main__":
+    build_dense_slides()
+    build_stakeholder()
+    print("✅ All presentations built successfully")

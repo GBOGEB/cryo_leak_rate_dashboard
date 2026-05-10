@@ -1,0 +1,1294 @@
+{
+  "build": {
+    "builder": "setup.sh v3.1.0",
+    "git_commit": "b8094c8",
+    "status": "verified",
+    "timestamp": "2026-05-09T20:41:16.541124+00:00"
+  },
+  "dependencies": {
+    "numpy": "1.24.3",
+    "pandas": "2.0.2",
+    "plotly": "5.14.1",
+    "python": "3.11.6",
+    "scipy": "1.10.1"
+  },
+  "files": {
+    "CHANGELOG.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:07:01.834112+00:00",
+      "sha256": "136220485aa7e9efb9047dd7f1133a288150bb3cf864da5a1873e626579a7091",
+      "size": 909
+    },
+    "README.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:06:47.195065+00:00",
+      "sha256": "5e5f41c1fc1b1a69900cf6e75785cfeeadc3417576dea767d615f84ef13480d1",
+      "size": 2217
+    },
+    "VERSION": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:05:57.324568+00:00",
+      "sha256": "b2f44d3b6e29f8b1b73ea4735f006affc4d198e1fd9c7d50e736159b1ef636c6",
+      "size": 6
+    },
+    "data/compressor_specs.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:50:41.649066+00:00",
+      "sha256": "370f9b3ddb51fe1f94c706aa2d02995dfef208508e0e6974d60321b5c6b0f928",
+      "size": 4268
+    },
+    "data/helium_properties.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:46:07.193039+00:00",
+      "sha256": "9502a68cfc1eb40a729fd3938929c1f0e03d155921a1ff0328944c06a100c2d2",
+      "size": 10430
+    },
+    "data/leak_classes.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:57:07.903224+00:00",
+      "sha256": "d47835b66db44db038e939f2b078a71743ef6befca8510f729956bed68da243d",
+      "size": 1249
+    },
+    "data/material_costs.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.081564+00:00",
+      "sha256": "d4ed1f6fcd4f125c00cf6ba8168cc717ab160d4e3d94553ddd35826bb1ab8e95",
+      "size": 1505
+    },
+    "data/meca_inox_specs.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.080580+00:00",
+      "sha256": "7d6ed3bb93f2ce24914264e0796f1528eb23813c5981679b4d2ac9062ca9b3c5",
+      "size": 539
+    },
+    "data/operating_conditions.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.081823+00:00",
+      "sha256": "91209ff8896bb652ae24d0af7caad30a992c5deeb8564d052f42a0f65cd93008",
+      "size": 1419
+    },
+    "data/scenarios.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T10:02:43.094778+00:00",
+      "sha256": "ae9f059a85d53b5e5010038e48e619327a2ec5ef359dc33b25b46c4fece9f4fd",
+      "size": 2022
+    },
+    "data/source_anchors.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:57:45.121152+00:00",
+      "sha256": "3a9e1dda9112d7f66ab6dafb8d3094efb56c90677d89d3c19f8369c7afd78b05",
+      "size": 1221
+    },
+    "data/standards_compliance.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:43:53.248980+00:00",
+      "sha256": "79c2c1a0ba4acafd6b25c045f822e2f533ade8b240248b525229bf2e5c8944a8",
+      "size": 33921
+    },
+    "data/swagelok_specs.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.080711+00:00",
+      "sha256": "be7adff7cf602c8dfb91e818675abd03d01ede411a151f2ca73bfbb54f443f5c",
+      "size": 557
+    },
+    "data/valve_candidates.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:57:16.969139+00:00",
+      "sha256": "64cd5fec40bda6646aed87caf8e38a2684037fd7bbc7d3b469f6f8afb15b9168",
+      "size": 1238
+    },
+    "docs/HANDOVER_AGENT.docx": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:07.016491+00:00",
+      "sha256": "d846e2c3e060a1556a6f7e361ff6e206896ffb4dafd3a4277472b18c3fab1871",
+      "size": 11306
+    },
+    "docs/HANDOVER_AGENT.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:05.686214+00:00",
+      "sha256": "ae05455e06e1d45c6c465d897b2ae885c29817e20626b6e072ac7af44a6f412e",
+      "size": 1760
+    },
+    "docs/HANDOVER_AGENT.pdf": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:06.904456+00:00",
+      "sha256": "90315189e49832764bc10f1f7890587a0de19572a37c8a60b77acf4ec7f0a09c",
+      "size": 20702
+    },
+    "docs/assets/heroes.js": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.118487+00:00",
+      "sha256": "b2eb4adac6af816b09e9737b7a8eca1bc1eb85a2068d1f7523efe9cba9f6dadf",
+      "size": 781
+    },
+    "docs/assets/style.css": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:11.865183+00:00",
+      "sha256": "ac5a056ef9b5e7dc9f798139430eac383b06339a5ad0baf5c813b6e3fa572340",
+      "size": 2537
+    },
+    "docs/assets/style_v2.css": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.119488+00:00",
+      "sha256": "77690e9bba292ba2b683cc6520cb07089c7d0b5ea6a926c02dd29c4ea79f6d3f",
+      "size": 6290
+    },
+    "docs/assets/triage.js": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:11.865241+00:00",
+      "sha256": "847ddb402264c68ea6f726343343f8f55ed931337a524b47c64df4bbd4918866",
+      "size": 386
+    },
+    "docs/backlog.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:06:30.726430+00:00",
+      "sha256": "ed63d0ee1ed5378235a3cf29317d8edf4330493c53424369ab88bc33ef353442",
+      "size": 2424
+    },
+    "docs/calculations.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:11.861442+00:00",
+      "sha256": "1e433067e01397f05370c344636fcd991df69734387e6081019a3b6094f7e89d",
+      "size": 26980
+    },
+    "docs/changelog.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:06:38.294957+00:00",
+      "sha256": "980d43d7dfd60a08e21fd6c057e3dc56492481a81c20026755c0ab29fd186727",
+      "size": 1514
+    },
+    "docs/compressors/HP_Redundancy_Analysis.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:58:44.024203+00:00",
+      "sha256": "8be25287b7ad682138b16a1073fff3a629dbd6e3af5b7cf7ac7f478e0b7fc54b",
+      "size": 7796
+    },
+    "docs/compressors/WCS_HP_Protection.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:58:44.025318+00:00",
+      "sha256": "16cb67857b10cbafc7c1e2327858bb2b08c0573511f54190c30fc695886c1c61",
+      "size": 8053
+    },
+    "docs/dashboard.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:11.861394+00:00",
+      "sha256": "1b23f6441181262893613c0e6c1ee31a96b7ff11223a786094cba55299b5c257",
+      "size": 4170
+    },
+    "docs/data_exports/full_conversion_grid.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:16.140694+00:00",
+      "sha256": "367b490203e5ca383ee3712f9e0a91eb5064c3b23ccc83576cd3e342c9be7b59",
+      "size": 20734
+    },
+    "docs/data_exports/full_conversion_grid.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:16.141671+00:00",
+      "sha256": "82fe316c9576ff440806e82f3ffd66b6e42a1c5195959182216604a9b4e679d7",
+      "size": 47177
+    },
+    "docs/data_exports/helium_properties.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:16.143046+00:00",
+      "sha256": "57b5ca138681bd86543c94d491e26cfa2a398385d673e5820839eeeece8f2e10",
+      "size": 1366
+    },
+    "docs/data_exports/mc_summary_statistics.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:16.159148+00:00",
+      "sha256": "c048ae4f106df88a44b956990f6936f2c1cc620a3da4a1ed8a8647a151109859",
+      "size": 780
+    },
+    "docs/executive_summary.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:11.861515+00:00",
+      "sha256": "55358679ae4ec396d38574c3b965b1c29e5cc26ed5f4c9905bc44c6d9a8da0d7",
+      "size": 2527
+    },
+    "docs/handover.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:11.923463+00:00",
+      "sha256": "5f73bd76413333a6218d1c6d82c19da4efc3ea21e263bc425b9af5659e175700",
+      "size": 8524
+    },
+    "docs/handover.pdf": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.120487+00:00",
+      "sha256": "5257095c8a9a44c506e3bc03b610df174c73fea5bd9d2ad9ca7e43e0518e19a6",
+      "size": 26207
+    },
+    "docs/handover_link.txt": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:12.253715+00:00",
+      "sha256": "6e45aa4268c47ce5a6077e1c8bfec5295712b876016fe70697e3a662590d6e6c",
+      "size": 45
+    },
+    "docs/heroes/control.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.121487+00:00",
+      "sha256": "7ab181283908c89015d69c44654d659f731ea6c8d0dd3864059ce550ceb00c3e",
+      "size": 5998
+    },
+    "docs/heroes/cost.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.122488+00:00",
+      "sha256": "1530a32ba0ad29c73928f52b3c1e09fca1980e46c4809766bd9a7ed9505518b9",
+      "size": 5821
+    },
+    "docs/heroes/design.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.122488+00:00",
+      "sha256": "000ca24a541e1254970aae7fa1955f8bb6e96bafce4ebd723fd64487639a8b64",
+      "size": 10714
+    },
+    "docs/heroes/interface.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.123487+00:00",
+      "sha256": "82e84aa6f7429b304eee74376e241bc7817797cf0528d640d46fa41831ad5868",
+      "size": 4894
+    },
+    "docs/heroes/materials.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.124487+00:00",
+      "sha256": "fa1973bfe718c387ec81d115d37ed2a3c8868b4a502c31c939be9abc9e447fcb",
+      "size": 6551
+    },
+    "docs/heroes/operations.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.124487+00:00",
+      "sha256": "73fb4900acf4355cf60b835531ea00f94ee12ca829689c4753164243aa8a9cfb",
+      "size": 6015
+    },
+    "docs/heroes/risk.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.125488+00:00",
+      "sha256": "b9cc15008cbbacecbc9adcb54f21e0d019c7dde854be85648a8d7586420c2fbd",
+      "size": 8749
+    },
+    "docs/index.html": {
+      "generated_from": [
+        "src/build_dashboard.py",
+        "docs/manifest.json"
+      ],
+      "last_modified": "2026-05-09T20:41:16.335638+00:00",
+      "sha256": "33592fdcb6c128c3ec9855d7778d58114247f45ecca28dbab09f325a24fa279c",
+      "size": 4995
+    },
+    "docs/index_v3.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:16.137178+00:00",
+      "sha256": "691a9bd6d39d1d627598cdca6ccb81fa57998f727206a673376baca82f2364b4",
+      "size": 60222
+    },
+    "docs/index_v3_1.html": {
+      "description": "40-slide dense master navigator with worked examples, full tables, multi-column layouts",
+      "type": "presentation",
+      "audience": "engineer",
+      "version_added": "3.1.0",
+      "sha256": "6f1a83aa27423f1b9cf86965796dac90d5bd1f7d5afab84e89d82476d3ff213d",
+      "size_bytes": 80387,
+      "modified": "2026-05-10T04:29:03.119200Z",
+      "slides": 40,
+      "features": [
+        "multi-column layouts",
+        "worked examples",
+        "LaTeX formulas",
+        "full data tables",
+        "color-coded status"
+      ]
+    },
+    "docs/liquid_he/Liquid_Operations_Guide.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:58:44.023220+00:00",
+      "sha256": "e0a2ebf87328cb2542095a1cd10b7d8aa522b6abe8153d94297fbaa4c669d5ef",
+      "size": 7437
+    },
+    "docs/notes/slide_001_title.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.126487+00:00",
+      "sha256": "5205eb51983341d957d4fc1ff9ee6987e0bdee991792e4d38589583a19112d3e",
+      "size": 376
+    },
+    "docs/notes/slide_002_interface_overview.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.126487+00:00",
+      "sha256": "411463a93810f7e17ad71b997671b517887a6a5f7a2766e62ab580acb4fc2c6a",
+      "size": 446
+    },
+    "docs/notes/slide_003_control.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.127487+00:00",
+      "sha256": "0bb98e3370c005fb7d8f9c9c7f6ed24301ab1c98f5c483b3870883ce05c9d77d",
+      "size": 417
+    },
+    "docs/notes/slide_004_design.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.127487+00:00",
+      "sha256": "c5793e662e8fab10dbd9652ac60ced256a36efc6f3b0c175cde2856f9f6ae72d",
+      "size": 485
+    },
+    "docs/notes/slide_005_cost.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.128488+00:00",
+      "sha256": "5d90d572bc62c2c92ef0116ae281d2074c882d8573affdcca19992b3b8c4de8c",
+      "size": 643
+    },
+    "docs/notes/slide_006_materials.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.129488+00:00",
+      "sha256": "3b452f952ada1beae457a414adce4572faa6b23d24ab5996794782edea186bfe",
+      "size": 398
+    },
+    "docs/notes/slide_007_risk.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.130487+00:00",
+      "sha256": "3519f08e9cbd8813b4e77dbe3bd930655174a81ccdea79d0c2236b4e199296a1",
+      "size": 473
+    },
+    "docs/notes/slide_008_operations.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.130487+00:00",
+      "sha256": "8050766b6b8f9effc77c332864b94d75d33b5b00581b07e9c8ca4d98428551ab",
+      "size": 487
+    },
+    "docs/plots/plot1_leak_vs_loss.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.132038+00:00",
+      "sha256": "504852fd4efd9182e4932a736aaf9048cd4f48bd00dff25e9df60b720c8237fe",
+      "size": 10954
+    },
+    "docs/plots/plot2_temp_pressure_effects.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.132488+00:00",
+      "sha256": "a67b39b907df23cb9545698ce872aa1d531ffc815d2b65333a13caa8003503af",
+      "size": 9647
+    },
+    "docs/plots/plot3_cost_vs_leaktightness.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.132488+00:00",
+      "sha256": "590777b1b1ec534ea3075cb83f6da05934344a55a4352bf7c2bd3d3a28722c1a",
+      "size": 8760
+    },
+    "docs/plots/plot4_fleet_sensitivity.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.133487+00:00",
+      "sha256": "4f9dbf593edc34e1002e20e8a9d643fdf2d1a3577afe5f74df18befa44ace2c2",
+      "size": 8046
+    },
+    "docs/plots/plot5_reliability.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.134488+00:00",
+      "sha256": "5beeb9e51c6d3f3b4eb75e5c5fc2242dbd94f7933bfd3a520756bb79fa345182",
+      "size": 9041
+    },
+    "docs/presentation.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.082597+00:00",
+      "sha256": "c1884613ae29c41a1231aaefa4e00d51c644c146552cbad4fa91b02ea189e9d2",
+      "size": 1581
+    },
+    "docs/presentation.pdf": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.218530+00:00",
+      "sha256": "227ed974f3d6d302f4f2cf391c5104a1c76a09b1bb802b858b7d78e77fd85853",
+      "size": 17350
+    },
+    "docs/rtm_traceability.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:11.861558+00:00",
+      "sha256": "5c0a70512121ea95d2f155cec695633c18493a81ca1261ac8394698743e84fa3",
+      "size": 7718
+    },
+    "docs/source/assumptions.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:12.179061+00:00",
+      "sha256": "e07fd3c1f5897da4396acfe14b0df933d8ef531831f92ed0b39ba5775ec7c1bc",
+      "size": 713
+    },
+    "docs/source/developer_notes.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:12.179115+00:00",
+      "sha256": "f443eef5fa9634272d5131f392c8e26264a604e2886783258bfc7885cad9b2a6",
+      "size": 757
+    },
+    "docs/source/handover.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:12.178982+00:00",
+      "sha256": "b5970e6ff8fa13e7fc73ec7c63dfd3133a07e069ad3e90e707e25935b8f47028",
+      "size": 4826
+    },
+    "docs/source/rtm_traceability.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:26:12.179165+00:00",
+      "sha256": "e5152ba9d4650608b79433904682d3b2f72b7db6809bdcacb3d66cd86e2251b5",
+      "size": 4055
+    },
+    "docs/standards/Compliance_Matrix.csv": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:16.138515+00:00",
+      "sha256": "40f70c12f229018c598cda051c812c3957759bf736a78fcc9e97d5c69f52086c",
+      "size": 2245
+    },
+    "docs/standards/Compliance_Matrix.json": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:16.139036+00:00",
+      "sha256": "fc95187a24b53a0500eb5abac153c5d3db99250bf99d4450b0860a2633477160",
+      "size": 3729
+    },
+    "docs/standards/FAT_SAT_Procedures.md": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:16.137418+00:00",
+      "sha256": "6dc803f19b9bc9b878c02e0cc5d9f0bc9af9e154bfcd71bb269dde38efcc35ae",
+      "size": 2540
+    },
+    "docs/standards/PED_Compliance_Workflow.md": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:16.137513+00:00",
+      "sha256": "281d3c5a513054f240102d22fe262bb9ea462c19adc355bc80cb7375c0867a45",
+      "size": 2099
+    },
+    "docs/statistical/mc_stats.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.947020+00:00",
+      "sha256": "a6190a0b8e62c1b07586a18b64f4f093d327cfa5a64fc22736ebd8bf92754651",
+      "size": 241
+    },
+    "docs/statistical/pca_result.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:16.068677+00:00",
+      "sha256": "901b36fc2ac8c0b8ba3eceeeedf2de5b6a4c9f05a13ff73807fef2c7e0b1d7ba",
+      "size": 1547
+    },
+    "docs/statistical/sensitivity_indices.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.947104+00:00",
+      "sha256": "eed50e8147f505acc9b835fb5e52498043b21fd73e893edf96736e978dbb2b78",
+      "size": 216
+    },
+    "docs/tables/helium_loss_by_valve_count.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.075625+00:00",
+      "sha256": "4c57c720ba0e17263a9c7677cd7a63fd42b07ff37a0361389601a97d46ab8c3f",
+      "size": 1355
+    },
+    "docs/tables/material_costs.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.078195+00:00",
+      "sha256": "897cdb90b2479959258696b30c8c283d61027d2108a59f32f72411b84523e620",
+      "size": 1602
+    },
+    "docs/tables/operating_conditions.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.080392+00:00",
+      "sha256": "564485de20a1af98fb089d4bfa879c96c1d4fe9ae0f979a228b5e04d30e07917",
+      "size": 1258
+    },
+    "docs/tables/supplier_comparison.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.072282+00:00",
+      "sha256": "6e65a1be6f0f34255978f146ad85aba2af2cae4ba110a6a4c3fe8af7af446992",
+      "size": 1347
+    },
+    "docs/tables_v3/choked_flow.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.214779+00:00",
+      "sha256": "545dc1428c539a85c92d3967f1cb7eecdc0eeaa0700484427e9496ff24e89c83",
+      "size": 3133
+    },
+    "docs/tables_v3/compressibility.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.484716+00:00",
+      "sha256": "57b5ca138681bd86543c94d491e26cfa2a398385d673e5820839eeeece8f2e10",
+      "size": 1366
+    },
+    "docs/tables_v3/correlation_matrix.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:16.126838+00:00",
+      "sha256": "f1f8179d6759adf557abbba8bb26cfe038b7425204aefab9668122b985c46974",
+      "size": 1811
+    },
+    "docs/tables_v3/helium_properties.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.429389+00:00",
+      "sha256": "57b5ca138681bd86543c94d491e26cfa2a398385d673e5820839eeeece8f2e10",
+      "size": 1366
+    },
+    "docs/tables_v3/internal_vs_external.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.378632+00:00",
+      "sha256": "e6048659ab568080dc7b089314c473340dd71dcc79354d847cbe024cecb71fed",
+      "size": 287
+    },
+    "docs/tables_v3/leak_vs_loss_extended.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.149860+00:00",
+      "sha256": "2053938b271eb8cdaec4b2d3b68c171ec5d56beed641396347e788359e689da2",
+      "size": 16223
+    },
+    "docs/tables_v3/monte_carlo_full.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.946133+00:00",
+      "sha256": "184c71cb5b5bd74d3c9583c41b322f40428ff42a9c9c19d4622d30cadfc2ed03",
+      "size": 1483427
+    },
+    "docs/tables_v3/pca_loadings.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:16.067585+00:00",
+      "sha256": "4878937697362ef6ebaf0db994d2de04b0388fdd44b26a2bead00eaa1dcef67f",
+      "size": 461
+    },
+    "docs/tables_v3/pca_scree.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.987887+00:00",
+      "sha256": "19f59b68434148ee6820ce3ca47fbb994ddf7930b3782ce9a1f108bb5d3a15f6",
+      "size": 401
+    },
+    "docs/tables_v3/purity_dilution.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.264577+00:00",
+      "sha256": "0889a324f6b87728c9170551e7ee4ae92721892e65cf1002e78125017a5951b1",
+      "size": 25118
+    },
+    "docs/tables_v3/sensitivity_indices.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.742552+00:00",
+      "sha256": "6fcbc14f075216c30df3f13d92a2d9f9b2cb88f5afac5b9baba12191bfb6ca87",
+      "size": 196
+    },
+    "docs/tables_v3/temp_effect_pressure.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.193595+00:00",
+      "sha256": "325e763e1a3e2338bd7a68be1b66cab26590e16b3231b7ab357e454cfa74d9df",
+      "size": 10484
+    },
+    "docs/tables_v3/valve_fleet_sensitivity.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:41:15.590841+00:00",
+      "sha256": "9ca2b692554cedf8a72401ae892585b946e4329f767543b809d7a9c109554d4c",
+      "size": 1398
+    },
+    "docs/triage_compliance.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.135488+00:00",
+      "sha256": "014b7b04b0492e9ebe4944b187c8a514fe90b57206aefaa6586ebaabf1fb981d",
+      "size": 91546
+    },
+    "docs/visual_catalog.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.082480+00:00",
+      "sha256": "7beda81ba77390b6a56a656c43d57b6e30f8429a84c3e965cbd2287905d6097f",
+      "size": 5767
+    },
+    "docs/visualizations/chart01_leak_vs_loss_material_overlay.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.676314+00:00",
+      "sha256": "0c791bdcadc7c814cca8abf97c3f3dc8f3f809beeb7b41fd4b725ffc9a003c70",
+      "size": 42156
+    },
+    "docs/visualizations/chart02_temperature_sensitivity_pressure_isolines.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.690639+00:00",
+      "sha256": "c561da405f97c6602b454eb3940c19b087f25e851cc2d97950a5ce1c4bc8628a",
+      "size": 11793
+    },
+    "docs/visualizations/chart03_pressure_sensitivity_temperature_isolines.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.718884+00:00",
+      "sha256": "3fc0eb8918e1df6fc5eed0e2f7a14dddc66a159b2eb9e1be781b15b574b3157c",
+      "size": 27872
+    },
+    "docs/visualizations/chart04_valve_size_impact.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.733071+00:00",
+      "sha256": "37591d05781c5e4ddc86c6c7cc134421cf508635c26e518c256f53faea293482",
+      "size": 9214
+    },
+    "docs/visualizations/chart05_seal_material_comparison.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.745784+00:00",
+      "sha256": "d8e4f0e5aa0d5b4d00874f47ff657b916f791b13a225e738ee7381352f3b75b8",
+      "size": 9235
+    },
+    "docs/visualizations/chart06_supplier_performance_matrix.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.787800+00:00",
+      "sha256": "4987e2f2889cf4f4f65ed8515f0e60e9c70c7579bfc5c6e822f3d26fc0c72214",
+      "size": 9924
+    },
+    "docs/visualizations/chart07_material_cost_breakdown.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.812204+00:00",
+      "sha256": "bf6566a5118ffd32c7390ce05ca7caa693e9ff85d23cb3bfea1558e8f4efaac8",
+      "size": 10405
+    },
+    "docs/visualizations/chart08_radiation_tolerance_curves.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.825658+00:00",
+      "sha256": "a5f7679467fed6aae9be1b2f0f4d28f0074e94cc06ecfb11b6677bfb736b2684",
+      "size": 14732
+    },
+    "docs/visualizations/chart09_welding_cost_by_size.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.837712+00:00",
+      "sha256": "f3f804863a93d8d084597e2dbde21a9970a98b7de349ff4e1fc581d79b188033",
+      "size": 9085
+    },
+    "docs/visualizations/chart10_warm_service_analysis.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.850153+00:00",
+      "sha256": "f74b48fc6b84331e2855fb818db8cf0e63facaeda70479005bb219de4c4ba6b1",
+      "size": 9666
+    },
+    "docs/visualizations/chart11_cold_service_analysis.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.862260+00:00",
+      "sha256": "4d0a79d8b30fd1d29a420b45428e403bd1db7de6af68ed7ff15ee98ab9e58ea9",
+      "size": 9311
+    },
+    "docs/visualizations/chart12_helium_guard_systems.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.888097+00:00",
+      "sha256": "2234de321e22fb0027c4aacfa65a7ab13a6ca401f2c79624926586e0d8bdeb03",
+      "size": 10204
+    },
+    "docs/visualizations/chart13_internal_protect_systems.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.900570+00:00",
+      "sha256": "3e22760046017101f8449d67dec32fd47975b555713876e894a21d9a451c1bdd",
+      "size": 9165
+    },
+    "docs/visualizations/chart14_cost_waterfall.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.914093+00:00",
+      "sha256": "c9aa3862525fa23454d5a1005a25408491549e329af5fc467ad171ee35c3eadd",
+      "size": 9047
+    },
+    "docs/visualizations/chart15_monte_carlo_results.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.010939+00:00",
+      "sha256": "c0cced05131ef895a9c077778484cd0e6b231d4550d4e26b84be38b6f2b9924b",
+      "size": 154217
+    },
+    "docs/visualizations/chart16_sensitivity_analysis.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.024461+00:00",
+      "sha256": "acd277b7ab9cbd78a137e4efa920ff2dd73877be477dfb2545df3f659b4d2f08",
+      "size": 9264
+    },
+    "docs/visualizations/chart17_lifecycle_tco_secondary_axis.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.048460+00:00",
+      "sha256": "de60c5cb3560490d82512d387a7fe9014dbfc6f7f4500e0815f67b1f1c19a62c",
+      "size": 13071
+    },
+    "docs/visualizations/chart18_valve_replacement_strategy.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.067547+00:00",
+      "sha256": "4a77c22759f6e9e6b9e70e703bb5a99a5abb62ecafa42a0d24ab0ca1b1711a69",
+      "size": 9270
+    },
+    "docs/visualizations/cost_waterfall.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.135488+00:00",
+      "sha256": "a79233510b1a319b3719009df995879ab99eac192eaaf05ce114b5ffcbfa57f0",
+      "size": 8615
+    },
+    "docs/visualizations/data/chart01_leak_vs_loss_material_overlay.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.672300+00:00",
+      "sha256": "d409269c77fe9f7d7c2436c94c17e9f69747832c9fb5695a71195c7d5e95e806",
+      "size": 48956
+    },
+    "docs/visualizations/data/chart02_temperature_sensitivity_pressure_isolines.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.689744+00:00",
+      "sha256": "15a43d61e6407f2db953f3e634d83bc4585b6c80f496f183ea5afe51853d538a",
+      "size": 3001
+    },
+    "docs/visualizations/data/chart03_pressure_sensitivity_temperature_isolines.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.716300+00:00",
+      "sha256": "72ccacda831fcfa050cefaa6ae55a4c0789fd301026ea4dd4be5626d901ab02a",
+      "size": 21003
+    },
+    "docs/visualizations/data/chart04_valve_size_impact.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.732284+00:00",
+      "sha256": "f727d785e17f6425046f52b95c1b98adc8ba3c0e92a43596dda52f08e870dad6",
+      "size": 421
+    },
+    "docs/visualizations/data/chart05_seal_material_comparison.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.745045+00:00",
+      "sha256": "517833b753a4ab639b803a47d1b77a942f7e1389d118a4b71e5f04cf38164ec3",
+      "size": 278
+    },
+    "docs/visualizations/data/chart06_supplier_performance_matrix.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.787025+00:00",
+      "sha256": "923f323fbdbbf7286c55d3f9776a6d6de4922e70629566f762fcd4e598f9a267",
+      "size": 121
+    },
+    "docs/visualizations/data/chart07_material_cost_breakdown.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.811301+00:00",
+      "sha256": "d9dfc2c32a0a79ba1ae91c6cc1f8d3d065e6177283e4ef02d2e6bafd4ef39100",
+      "size": 414
+    },
+    "docs/visualizations/data/chart08_radiation_tolerance_curves.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.824301+00:00",
+      "sha256": "09e77dab687cb4f2ae3b99a84b270799a4a720960fed36a73d147cc2381bb535",
+      "size": 4334
+    },
+    "docs/visualizations/data/chart09_welding_cost_by_size.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.836990+00:00",
+      "sha256": "9058bdc6ea36960fc8e333e40fd0b06592d3a3b51f5ca81ed11bad5725d2d3af",
+      "size": 285
+    },
+    "docs/visualizations/data/chart10_warm_service_analysis.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.849301+00:00",
+      "sha256": "d64aed30d235b149194b13ae6ccc5f6362c71e26a896b560e59ea8d08d05c23f",
+      "size": 1171
+    },
+    "docs/visualizations/data/chart11_cold_service_analysis.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.861609+00:00",
+      "sha256": "930482fa6d29ed3a11b2885bec3188c0985a3394034cc9caf009afeef5c2b1d8",
+      "size": 509
+    },
+    "docs/visualizations/data/chart12_helium_guard_systems.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.887302+00:00",
+      "sha256": "ba75bc69b987b0eadc8dc9d355796dc5b2ba8b556822f66c122bdb8d1fbbdce8",
+      "size": 133
+    },
+    "docs/visualizations/data/chart13_internal_protect_systems.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.899832+00:00",
+      "sha256": "4c067609e52fd3179d5b66588c3f9aeb09f3174ffe54d1ad4082e538e8720689",
+      "size": 153
+    },
+    "docs/visualizations/data/chart14_cost_waterfall.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:33.913179+00:00",
+      "sha256": "df8e3e761201f0e537c2820dbc72809489e9a63892d2500e3bab00df5d506db3",
+      "size": 121
+    },
+    "docs/visualizations/data/chart15_monte_carlo_results.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.006303+00:00",
+      "sha256": "ef87ca781bf069b1e62b80114a887127b41c18a23838cb5282814fafde5b9cc2",
+      "size": 441197
+    },
+    "docs/visualizations/data/chart16_sensitivity_analysis.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.023428+00:00",
+      "sha256": "60a615d06b680f243dff73a93bb52aa44842e939e5821977b3c8f80d6b5e135e",
+      "size": 174
+    },
+    "docs/visualizations/data/chart17_lifecycle_tco_secondary_axis.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.047481+00:00",
+      "sha256": "591a0de17325d28a84170d8a8de43b50a763fdd79605e7c28826d190eeccddb5",
+      "size": 4231
+    },
+    "docs/visualizations/data/chart18_valve_replacement_strategy.csv": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:34.066753+00:00",
+      "sha256": "2a430959e4058b485e1410ba14d543e07c7406965b686e3d1d4cdb39dcd76b94",
+      "size": 163
+    },
+    "docs/visualizations/enhanced_leak_rate_comparison.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.136488+00:00",
+      "sha256": "e21fa934c9e48ccbd185144a181920da625786ffe114abc0a9c30aed41f1e1ff",
+      "size": 25711
+    },
+    "docs/visualizations/helium_sankey.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.137488+00:00",
+      "sha256": "7ad88fc06aa5c4f534a5f16bcf53c12142d525032074001fab7dba5a31c4ef08",
+      "size": 8857
+    },
+    "docs/visualizations/maintenance_gantt.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.137488+00:00",
+      "sha256": "987d517252b788adbd31d69280ee41b8e06ae8c83e7e3997b11c49407b340cbd",
+      "size": 10427
+    },
+    "docs/visualizations/monte_carlo_cost_distribution.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.144488+00:00",
+      "sha256": "5632a26e3aeaa3119d37a1bbfe304993fdfd9f5c5d95ac75189b9ff84d58a0ff",
+      "size": 1026959
+    },
+    "docs/visualizations/risk_heatmap.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.144488+00:00",
+      "sha256": "152af9601ab73c179e95ea4665778d724f626e26295f0f5c354fa95fc71af13f",
+      "size": 8896
+    },
+    "docs/visualizations/scenario_comparison.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.149488+00:00",
+      "sha256": "a6dab62b415e0552845a40e0996c4e8a76fed7e1fef12a86b6d949fd936ea4af",
+      "size": 738708
+    },
+    "docs/visualizations/sensitivity_tornado.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.150488+00:00",
+      "sha256": "6d6fd996f33658ce20d4e376668ead554ca7d0c40d00d2e6d83dd3b3fa02b1c7",
+      "size": 9098
+    },
+    "docs/visualizations/supplier_comparison.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:27:09.151488+00:00",
+      "sha256": "d1d55448fa71e2c8db9180f984494a3a348620ad863d6d5d0b8b1e8589142b67",
+      "size": 9262
+    },
+    "docs/visualizations_v3/boiloff_vs_leakrate.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:43.925531+00:00",
+      "sha256": "5fe28d84e50440314517561de4e706198f4e5fb50fe1aa2affe1b5dfee0f84b4",
+      "size": 22194
+    },
+    "docs/visualizations_v3/chart_biplot.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:16.067496+00:00",
+      "sha256": "d32786c60b82aaf6e17c3146df2786abd5e7fc04064a0ba5305abd81d371f8c3",
+      "size": 125193
+    },
+    "docs/visualizations_v3/chart_choked_flow.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.214042+00:00",
+      "sha256": "9da55fac6423f33e9db88fc4afd872bbff8d4396f5dc8a71e47a9fc4df2f1d4a",
+      "size": 10353
+    },
+    "docs/visualizations_v3/chart_compressibility.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.483658+00:00",
+      "sha256": "f079b938f008fe85f3e400428c9cc112eeab60c7b55e5718aa7ab3cbce8f86f2",
+      "size": 9494
+    },
+    "docs/visualizations_v3/chart_correlation_heatmap.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:16.125871+00:00",
+      "sha256": "803cdfd6a6e5f05501e193f407ef9a078adca58208fc638baf3eeec2f1fa2342",
+      "size": 10555
+    },
+    "docs/visualizations_v3/chart_cost_breakdown_box.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.888041+00:00",
+      "sha256": "9d326813b4169976e448c766c4bdd41f70a51b51c159ec5dab4cd009393fc6aa",
+      "size": 884926
+    },
+    "docs/visualizations_v3/chart_helium_properties.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.428524+00:00",
+      "sha256": "d4e06d63b2ea497462f77272781f93704a9ba70f0ca1f433e5ff9ccf913c6dc0",
+      "size": 11353
+    },
+    "docs/visualizations_v3/chart_internal_vs_external.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.377816+00:00",
+      "sha256": "a2a580c3178f14e4f87c49d8c676925e22acfe443b4010a95437efe826bd7b17",
+      "size": 9121
+    },
+    "docs/visualizations_v3/chart_leak_vs_loss_extended.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.145731+00:00",
+      "sha256": "9a24dec4fe36b973dc9f9e602389692f926ab80a9e4c97513ce83aca4ffc5d65",
+      "size": 20477
+    },
+    "docs/visualizations_v3/chart_lifecycle_standards.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.557465+00:00",
+      "sha256": "5e841fd38102815c7207732e9e82f47f43c9d963a75e72a09605a0b6966ca3f8",
+      "size": 11108
+    },
+    "docs/visualizations_v3/chart_mc_histogram.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.693744+00:00",
+      "sha256": "a3f6684019007720daf3840d74fe8494524c681f7831a5c45f2e930b9129f4d0",
+      "size": 190868
+    },
+    "docs/visualizations_v3/chart_mc_scatter.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.793167+00:00",
+      "sha256": "8be1fedb7ed26bee92a07e33aab87b1924d008b11976c95bb803b7e0ca099903",
+      "size": 175795
+    },
+    "docs/visualizations_v3/chart_purity_dilution.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.262764+00:00",
+      "sha256": "d062bde1349a0184828795f7b67a3122dc94b928841ea86596721ffbf0c2eaf3",
+      "size": 30689
+    },
+    "docs/visualizations_v3/chart_scree.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.987411+00:00",
+      "sha256": "c7f814410f15a46ef58d7aab0e576dd8a17e4312821bed4c0f1dbdd2b2cddbc1",
+      "size": 8730
+    },
+    "docs/visualizations_v3/chart_sensitivity_bar.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.741869+00:00",
+      "sha256": "479d54f84eed4ed30950429581d9e1a5c0845e46dcca2f8627dc536f134f9368",
+      "size": 9124
+    },
+    "docs/visualizations_v3/chart_temp_effect_pressure.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.192297+00:00",
+      "sha256": "d158c48349c87c8aff08dd4bd3069b2b45bc0db3ce7179b31536f906d8c2476a",
+      "size": 18107
+    },
+    "docs/visualizations_v3/chart_valve_fleet_sensitivity.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-09T20:41:15.589641+00:00",
+      "sha256": "185a5317894173418bed332295f5013538550b04641fefd97e17bffe002b82be",
+      "size": 9941
+    },
+    "docs/visualizations_v3/compressor_availability_comparison.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:43.894382+00:00",
+      "sha256": "d89f1464143baaba08b10de52702f6b3af55d63c1265d1322e7924c80fad349d",
+      "size": 9732
+    },
+    "docs/visualizations_v3/data/compressor_comparison.csv": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:44.016553+00:00",
+      "sha256": "9666b7099c2c90687c7a19a84f6dfe91841bccbb2b576cf02a441bb50d436315",
+      "size": 929
+    },
+    "docs/visualizations_v3/data/interlocks.csv": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:44.019721+00:00",
+      "sha256": "39d29af61454c6adff114f66013ce2903f438896ffaa26683419fe95197d8445",
+      "size": 768
+    },
+    "docs/visualizations_v3/data/inventory_depletion.csv": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:44.021628+00:00",
+      "sha256": "c1a1361cb3d0ebb50e863220f11e71d408e0b66f0b0cce934409972c84fce5ef",
+      "size": 27695
+    },
+    "docs/visualizations_v3/data/leak_budget.csv": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:44.019108+00:00",
+      "sha256": "bb4d3f9eff3214e5b26368ed161bd307ba232f030dfca9d6e11977fc3084d9fb",
+      "size": 328
+    },
+    "docs/visualizations_v3/data/liquid_he_loss.csv": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:44.015231+00:00",
+      "sha256": "7e43f7a49612bc505b02b04eb12f269a470911210b860ba69c5768e98e2e525d",
+      "size": 2146
+    },
+    "docs/visualizations_v3/data/vfd_savings.csv": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:44.017310+00:00",
+      "sha256": "afe2918cefe752bd89f37bd56d8debb9f95cea334bcef037a434e1b20b6fb4ae",
+      "size": 606
+    },
+    "docs/visualizations_v3/data/wcs_scenarios.csv": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:44.018223+00:00",
+      "sha256": "082d53b15badb2543f9aa2f67bd66b358726c15cd045a25ecd57778e0b11e62a",
+      "size": 744
+    },
+    "docs/visualizations_v3/liquid_inventory_depletion.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:43.868597+00:00",
+      "sha256": "accfd28ae367884dd84095728d7f31e0ab3960128558e88a8be78408db05e420",
+      "size": 40641
+    },
+    "docs/visualizations_v3/redundancy_cost_benefit.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:43.998572+00:00",
+      "sha256": "2e77b13a1a42bca9942b3b4455ded191f5e9bbf909f6829af8ce22ef9a518279",
+      "size": 8805
+    },
+    "docs/visualizations_v3/vfd_energy_savings.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:44.011093+00:00",
+      "sha256": "392cc197e74b3ad60f5f3204543325447274f42c23e895389cee80ada3301c46",
+      "size": 9376
+    },
+    "docs/visualizations_v3/wcs_hp_architecture.html": {
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-08T14:58:43.980249+00:00",
+      "sha256": "2b935da8277f80121198efc4dccd18b5a612a13aafac9e4eb84debe788ef1ad2",
+      "size": 11778
+    },
+    "requirements.txt": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:05:53.647568+00:00",
+      "sha256": "90d8c78fc69202e6d75b4bf15933e19e0edf09bfa51fdf0a2ac43fe55bc5e0ac",
+      "size": 89
+    },
+    "src/__init__.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:38:13.020655+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "src/build_all.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T10:03:43.136749+00:00",
+      "sha256": "e0502a38203182d5bcd9edabcf16e2ac6865115634ed7690e3881fc2eb6e96d2",
+      "size": 6224
+    },
+    "src/build_dashboard.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:11:21.709595+00:00",
+      "sha256": "431c8b665e449c25e00ba287fbda3783317ff61c4997dba16171e71acd9f9edf",
+      "size": 6870
+    },
+    "src/build_handover.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T10:04:27.611806+00:00",
+      "sha256": "92999e3c26278b392e95ee11f88b04eb7c973d5736b0782143aacdd9528f304e",
+      "size": 5888
+    },
+    "src/build_v2.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T12:52:57.365528+00:00",
+      "sha256": "726e9c0de81dc3507ec7ae6238b8596ac0da880910e59fa992f5618cc01000f0",
+      "size": 62635
+    },
+    "src/build_v3_1.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:58:40.172656+00:00",
+      "sha256": "bc33a4e147a15e209a759dc0eb4092c7c1df48d02e597a90669bdd908e4492df",
+      "size": 87206
+    },
+    "src/calc_leak_rate.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:56:54.795113+00:00",
+      "sha256": "347c7215e084608e830b82fccd452cefd1a061862d4d6ec0116b0645f291daf6",
+      "size": 6253
+    },
+    "src/calculations/__init__.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:38:13.020655+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "src/calculations/engineering.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:38:58.940870+00:00",
+      "sha256": "1307105a3219b914ef4d33ea8179bebab37c834ba790bdc7a55188e6db42279b",
+      "size": 10547
+    },
+    "src/compressor_reliability.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:49:11.630980+00:00",
+      "sha256": "44ad7d705af3601837dcd264d5fa06290c02c84e31fb6d7f5519519ca91f0a93",
+      "size": 11458
+    },
+    "src/generate_dashboard.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T10:04:22.039748+00:00",
+      "sha256": "d3351f31c363c5bba0535d97bf839fb6f7dc2b8a15055d8e238bf3ccfb273f08",
+      "size": 17089
+    },
+    "src/generate_standards_stats.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:51:11.015508+00:00",
+      "sha256": "34c632135c4c96706cb4aad46f0b8921bd1d7d73407011d89d5c39de28a4aaeb",
+      "size": 75884
+    },
+    "src/generate_visuals_v3.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T13:28:27.658242+00:00",
+      "sha256": "27567fc34d6e02f3f47ed633bf09bd2ace2fa5dbd2b2ddce2f021d56b52027a4",
+      "size": 41641
+    },
+    "src/liquid_he_loss.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:47:34.473601+00:00",
+      "sha256": "9bd7931bcff9a7bea2ec0830e9eabbb0859463f2f817162247d703ae0c5d507b",
+      "size": 8474
+    },
+    "src/manifest.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:58:24.909565+00:00",
+      "sha256": "220f57865a22d3b80f61d50a0c81dbf17620745eb9be792e1fddc843fa29732d",
+      "size": 1705
+    },
+    "src/materials_db.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T12:42:28.934716+00:00",
+      "sha256": "fb4b5bca2399313a6e9d0fea88d6a0e8b45a1c275ca99a52d65ee64b56984fde",
+      "size": 10007
+    },
+    "src/monte_carlo.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T12:41:33.206214+00:00",
+      "sha256": "064a83af17504c2b52a00da08424adaf9e20855ad8b51ea34f9782121d48a458",
+      "size": 9735
+    },
+    "src/plotting/__init__.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:38:13.020655+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "src/plotting/plot_factory.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T09:36:52.111562+00:00",
+      "sha256": "e85c57cf5dcfae6676d2f83c5e5f14e49b9d69f87ee78c97e2d73d2f218e60c0",
+      "size": 4368
+    },
+    "src/risk_model.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T12:43:09.544314+00:00",
+      "sha256": "a78331eeec4a8d51debbd8ea36789a7c514df06dbc83eded6cdfc40b575cef60",
+      "size": 6999
+    },
+    "src/verify_triage.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T11:55:03.281511+00:00",
+      "sha256": "25ddc5c4afbcf88d8693af15b55bcdf7f8545018118ffd834e76623c167466c1",
+      "size": 51462
+    },
+    "src/wcs_scenarios.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T14:49:59.268445+00:00",
+      "sha256": "0023181936a472d87bfc5998c768de03899e53b89fa10481df2d331f98ea235e",
+      "size": 7412
+    },
+    "tests/test_build_outputs.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:07:41.194072+00:00",
+      "sha256": "411cb9cb262e66737bcf03e110fde1b9015c34d2be48b190b839ae333a2ad17b",
+      "size": 987
+    },
+    "tests/test_calculations.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:07:14.410731+00:00",
+      "sha256": "4d7ab8c1c1161d4a8cf27ddc08550638a4f140e307e0707b2f577cd21e709d48",
+      "size": 1718
+    },
+    "tests/test_data_integrity.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:07:22.987143+00:00",
+      "sha256": "b4d0831f6fa522d8c287bad19c3e7303ab27031f596cd273609b85d6c757548a",
+      "size": 1471
+    },
+    "tests/test_engineering.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-08T10:02:58.695184+00:00",
+      "sha256": "4c46b3078b8ce5bb2add13eb421643996df442d42ba1495115fb4d96988ff2fb",
+      "size": 1717
+    },
+    "tests/test_outputs.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-09T20:07:32.836950+00:00",
+      "sha256": "fc6e482545e1aa3bf0e453e18bc5edcf38317d8fd3402b414c5d4eb4e97ffdfd",
+      "size": 1646
+    },
+    "docs/STAKEHOLDER_PRESENTATION.html": {
+      "description": "Executive stakeholder presentation (10 slides)",
+      "type": "presentation",
+      "audience": "management",
+      "version_added": "3.1.0",
+      "sha256": "17997d3d11502b640f2eebef5c30d35acd985a5005ccdf6da4b197a15b632cdd",
+      "size_bytes": 19077,
+      "modified": "2026-05-10T04:29:03.119018Z"
+    },
+    "src/build_dense_slides.py": {
+      "description": "Build script for dense master slides and stakeholder presentation",
+      "type": "builder",
+      "audience": "developer",
+      "version_added": "3.1.0",
+      "sha256": "59584fbbd6916195110e301589f1e9ad6cd1196e7f5951a536db343c994d3e80",
+      "size_bytes": 98700,
+      "modified": "2026-05-10T04:29:03.119128Z"
+    }
+  },
+  "outputs": {
+    "charts": 22,
+    "reports": 19,
+    "slides": 41,
+    "tables": 42,
+    "total_size_mb": 6.72
+  },
+  "tests": {
+    "coverage": "6%",
+    "failed": 0,
+    "last_run": "2026-05-09T20:41:18.532479+00:00",
+    "passed": 18,
+    "total": 18
+  },
+  "version": "3.1.0"
+}

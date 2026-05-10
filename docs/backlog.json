@@ -1,0 +1,71 @@
+{
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "priority": "HIGH",
+      "status": "TODO",
+      "title": "Clarify HSD Twin Combi M=N+ specification",
+      "description": "Confirm if vendor architecture uses M=N+1 equivalence or alternate interpretation.",
+      "context": "docs/compressors/HP_Redundancy_Analysis.html section 2.3",
+      "dependencies": [],
+      "estimated_effort": "2 hours",
+      "assigned_to": null
+    },
+    {
+      "id": "TASK-002",
+      "priority": "MEDIUM",
+      "status": "TODO",
+      "title": "Validate compressor MTBF assumptions",
+      "description": "Re-check 8,760 h MTBF assumption against latest vendor reliability sheets.",
+      "context": "src/compressor_reliability.py",
+      "dependencies": [],
+      "estimated_effort": "1 hour",
+      "assigned_to": null
+    },
+    {
+      "id": "TASK-003",
+      "priority": "MEDIUM",
+      "status": "TODO",
+      "title": "Review energy cost €0.15/kWh accuracy",
+      "description": "Validate electricity tariff assumptions used in OPEX and VFD savings calculations.",
+      "context": "src/compressor_reliability.py ELECTRICITY_COST_EUR_KWH",
+      "dependencies": [],
+      "estimated_effort": "45 min",
+      "assigned_to": null
+    },
+    {
+      "id": "TASK-004",
+      "priority": "LOW",
+      "status": "TODO",
+      "title": "Add dynamic simulation of WCS scenarios",
+      "description": "Extend static scenario states to time-domain transitions and interlock dynamics.",
+      "context": "src/wcs_scenarios.py",
+      "dependencies": [],
+      "estimated_effort": "4 hours",
+      "assigned_to": null
+    },
+    {
+      "id": "TASK-005",
+      "priority": "LOW",
+      "status": "TODO",
+      "title": "Create mobile-responsive CSS for charts",
+      "description": "Improve chart dashboard responsiveness for small screens and tablets.",
+      "context": "docs/index.html + docs/visualizations_v3",
+      "dependencies": [],
+      "estimated_effort": "2 hours",
+      "assigned_to": null
+    },
+    {
+      "id": "TASK-006",
+      "priority": "LOW",
+      "status": "DONE",
+      "title": "Fix liquid He conversion",
+      "description": "Corrected mbar·L/s conversion chain and removed 1000x error in baseline logic.",
+      "context": "src/liquid_he_loss.py",
+      "dependencies": [],
+      "estimated_effort": "30 min",
+      "assigned_to": "coding_agent",
+      "completed_at": "2026-05-09T13:45:00Z"
+    }
+  ]
+}

@@ -1,7 +1,11 @@
-__pycache__/
+dist/
 *.pyc
-.venv/
-.env
-.DS_Store
+__pycache__/
+.pytest_cache/
+htmlcov/
 *.log
+venv/
+.env
+.coverage
+.setup.requirements.sha256
 outputs/versioned/
