@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="dashboard-version" content="4.0.0"/>
+  <title>QPLANT Cryo Dashboard — Navigator</title>
+  <style>
+    :root {
+      --bg: #f7f8fb; --card: #fff; --line: #dde2ea; --text: #1f2a37;
+      --accent: #225ea8; --accent-light: #e7f0ff; --green: #16a34a;
+      --green-bg: #dcfce7; --amber: #d97706; --amber-bg: #fef3c7;
+      --red: #dc2626; --red-bg: #fee2e2; --gray: #64748b;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:Inter,'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+    header {
+      background:linear-gradient(135deg,#0c2d57 0%,#1a5fb4 50%,#3584e4 100%);
+      color:#fff; padding:28px 32px 24px; position:relative;
+    }
+    header h1 { margin:0 0 4px; font-size:1.5rem; letter-spacing:-.02em; }
+    header p { margin:0; opacity:.9; font-size:.95rem; }
+    .version-badge {
+      position:absolute; top:28px; right:32px;
+      background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.35);
+      border-radius:999px; padding:4px 14px; font-size:.82rem; font-weight:700;
+    }
+    nav { background:#fff; border-bottom:1px solid var(--line); padding:0 32px; overflow-x:auto; white-space:nowrap; }
+    nav a {
+      display:inline-block; padding:10px 16px; font-size:.85rem; font-weight:600;
+      color:var(--gray); text-decoration:none; border-bottom:2px solid transparent;
+      transition:all .15s;
+    }
+    nav a:hover, nav a.active { color:var(--accent); border-bottom-color:var(--accent); }
+    main { max-width:1100px; margin:0 auto; padding:24px 24px 48px; }
+    section { margin-bottom:32px; }
+    section > h2 { font-size:1.15rem; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--accent); display:flex; align-items:center; gap:8px; }
+    section > h2 .emoji { font-size:1.25rem; }
+    .card-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px; }
+    .card {
+      background:var(--card); border:1px solid var(--line); border-radius:10px;
+      padding:16px 18px; transition:box-shadow .15s;
+    }
+    .card:hover { box-shadow:0 4px 16px rgba(0,0,0,.08); }
+    .card h3 { margin:0 0 6px; font-size:.98rem; }
+    .card h3 a { color:var(--accent); text-decoration:none; }
+    .card h3 a:hover { text-decoration:underline; }
+    .card .meta { font-size:.78rem; color:var(--gray); margin-bottom:6px; }
+    .card .desc { font-size:.85rem; color:#475569; }
+    .tag {
+      display:inline-block; border-radius:999px; padding:2px 9px;
+      font-size:.72rem; font-weight:600; margin-right:4px; margin-top:6px;
+    }
+    .tag-canonical { background:var(--green-bg); color:var(--green); }
+    .tag-auto { background:var(--accent-light); color:var(--accent); }
+    .tag-archive { background:var(--amber-bg); color:var(--amber); }
+    .tag-data { background:#f0e6ff; color:#7c3aed; }
+    .tag-viz { background:#e0f2fe; color:#0369a1; }
+    .tag-reliability { background:#fce7f3; color:#be185d; }
+    .tag-financial { background:#fef9c3; color:#854d0e; }
+    .tag-energy { background:#d1fae5; color:#065f46; }
+    .tag-system { background:#e0e7ff; color:#3730a3; }
+
+    .alert {
+      border-radius:8px; padding:12px 16px; margin-bottom:18px;
+      font-size:.88rem; display:flex; align-items:center; gap:8px;
+    }
+    .alert-info { background:#eff6ff; border:1px solid #bfdbfe; color:#1e40af; }
+
+    table.simple { width:100%; border-collapse:collapse; font-size:.85rem; }
+    table.simple th, table.simple td { padding:8px 12px; text-align:left; border-bottom:1px solid var(--line); }
+    table.simple th { font-weight:600; background:#f8fafc; }
+    table.simple tr:hover { background:#f1f5f9; }
+    table.simple a { color:var(--accent); text-decoration:none; }
+    table.simple a:hover { text-decoration:underline; }
+
+    footer { text-align:center; font-size:.8rem; color:var(--gray); padding:16px; border-top:1px solid var(--line); margin-top:24px; }
+    footer a { color:var(--accent); }
+
+    @media (max-width:700px) { .card-grid { grid-template-columns:1fr; } nav { padding:0 12px; } main { padding:16px; } }
+    @media print { nav { display:none; } header { background:#0c2d57!important; -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>QPLANT Cryo Leak-Rate Dashboard</h1>
+  <p>Quick-access navigator — all deliverables at a glance</p>
+  <span class="version-badge">v4.0.0</span>
+</header>
+
+<nav>
+  <a href="#presentations" class="active">Presentations</a>
+  <a href="#visualizations">Visualizations</a>
+  <a href="#technical">Technical Docs</a>
+  <a href="#data">Data & Config</a>
+  <a href="#build">Build Artifacts</a>
+  <a href="#archive">Archive</a>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section id="presentations">
+  <h2><span class="emoji">📊</span> Canonical Presentations</h2>
+  <div class="alert alert-info">
+    ★ Only these two presentations are approved for stakeholder distribution (v4.0.0)
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3><a href="index_v4_0.html">Technical Master Navigator</a></h3>
+      <div class="meta">42 slides · 80 KB · Updated 2026-05-10</div>
+      <div class="desc">
+        Complete technical presentation covering all topics: overview, leak-rate analysis,
+        liquid He operations, HP compressors (3× FSD575), WCS.HP protection, derogation
+        analysis, compliance, and conclusions.
+      </div>
+      <span class="tag tag-canonical">★ Canonical</span>
+      <span class="tag tag-system">Technical</span>
+    </div>
+    <div class="card">
+      <h3><a href="STAKEHOLDER_PRESENTATION.html">Executive Summary</a></h3>
+      <div class="meta">10 slides · 20 KB · Updated 2026-05-10</div>
+      <div class="desc">
+        Condensed decision-maker presentation. €600k compressor CAPEX,
+        €1.42M total investment, 1.2-year payback. 3× FSD575 SFC VFD baseline.
+      </div>
+      <span class="tag tag-canonical">★ Canonical</span>
+      <span class="tag tag-financial">Executive</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section id="visualizations">
+  <h2><span class="emoji">📈</span> Interactive Visualizations</h2>
+
+  <h4>Core Triage Plots (5)</h4>
+  <div class="card-grid">
+    <div class="card">
+      <h3><a href="plots/plot1_leak_vs_loss.html">Leak Rate vs. Helium Loss</a></h3>
+      <div class="desc">Log-log plot — leak rate vs mass loss (g/year) at different temperatures.</div>
+      <span class="tag tag-viz">Plotly</span>
+      <span class="tag tag-auto">Auto-generated</span>
+    </div>
+    <div class="card">
+      <h3><a href="plots/plot2_temp_pressure_effects.html">Temperature & Pressure Effects</a></h3>
+      <div class="desc">Temperature and pressure sensitivity on helium loss rates.</div>
+      <span class="tag tag-viz">Plotly</span>
+    </div>
+    <div class="card">
+      <h3><a href="plots/plot3_cost_vs_leaktightness.html">Cost vs. Leak-Tightness</a></h3>
+      <div class="desc">Valve CAPEX vs. helium-loss cost trade-off analysis.</div>
+      <span class="tag tag-viz">Plotly</span>
+      <span class="tag tag-financial">Financial</span>
+    </div>
+    <div class="card">
+      <h3><a href="plots/plot4_fleet_sensitivity.html">Fleet Sensitivity</a></h3>
+      <div class="desc">System-level annual helium loss and cost for different fleet configurations.</div>
+      <span class="tag tag-viz">Plotly</span>
+      <span class="tag tag-system">System</span>
+    </div>
+    <div class="card">
+      <h3><a href="plots/plot5_reliability.html">Reliability Analysis</a></h3>
+      <div class="desc">MTBF and recommended spares analysis.</div>
+      <span class="tag tag-viz">Plotly</span>
+      <span class="tag tag-reliability">Reliability</span>
+    </div>
+  </div>
+
+  <h4 style="margin-top:20px;">Advanced Analytics (21 charts in <code>visualizations_v3/</code>)</h4>
+  <table class="simple">
+    <thead>
+      <tr><th>Chart</th><th>Category</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><a href="visualizations_v3/boiloff_vs_leakrate.html">Boil-off vs Leak Rate</a></td><td>Leak Analysis</td><td>Correlation between boil-off and leak rate</td></tr>
+      <tr><td><a href="visualizations_v3/chart_mc_histogram.html">Monte Carlo Histogram</a></td><td>Statistical</td><td>Distribution of MC simulation results</td></tr>
+      <tr><td><a href="visualizations_v3/chart_mc_scatter.html">Monte Carlo Scatter</a></td><td>Statistical</td><td>MC parameter scatter plot</td></tr>
+      <tr><td><a href="visualizations_v3/chart_biplot.html">PCA Biplot</a></td><td>Statistical</td><td>Principal component biplot analysis</td></tr>
+      <tr><td><a href="visualizations_v3/chart_scree.html">PCA Scree</a></td><td>Statistical</td><td>Variance explained per component</td></tr>
+      <tr><td><a href="visualizations_v3/chart_sensitivity_bar.html">Sensitivity Indices</a></td><td>Statistical</td><td>Parameter sensitivity ranking</td></tr>
+      <tr><td><a href="visualizations_v3/chart_leak_vs_loss_extended.html">Leak vs Loss (Extended)</a></td><td>Leak Analysis</td><td>Extended temperature/pressure sweep</td></tr>
+      <tr><td><a href="visualizations_v3/chart_temp_effect_pressure.html">Temp Effect + Pressure</a></td><td>Leak Analysis</td><td>Temperature with pressure isolines</td></tr>
+      <tr><td><a href="visualizations_v3/chart_choked_flow.html">Choked Flow Regime</a></td><td>Thermodynamic</td><td>Choked flow boundary analysis</td></tr>
+      <tr><td><a href="visualizations_v3/chart_compressibility.html">Compressibility Factor</a></td><td>Thermodynamic</td><td>Helium compressibility Z-factor</td></tr>
+      <tr><td><a href="visualizations_v3/chart_helium_properties.html">Helium Properties</a></td><td>Thermodynamic</td><td>Helium property database visualization</td></tr>
+      <tr><td><a href="visualizations_v3/chart_purity_dilution.html">Purity / Dilution</a></td><td>System</td><td>Helium purity and air dilution analysis</td></tr>
+      <tr><td><a href="visualizations_v3/chart_internal_vs_external.html">Internal vs External</a></td><td>System</td><td>Internal vs external leakage comparison</td></tr>
+      <tr><td><a href="visualizations_v3/chart_valve_fleet_sensitivity.html">Valve Fleet Sensitivity</a></td><td>System</td><td>Fleet composition sensitivity</td></tr>
+      <tr><td><a href="visualizations_v3/compressor_availability_comparison.html">Compressor Availability</a></td><td>Compressor (v4.0)</td><td>3× FSD575 availability comparison</td></tr>
+      <tr><td><a href="visualizations_v3/vfd_energy_savings.html">VFD Energy Savings</a></td><td>Compressor (v4.0)</td><td>Variable frequency drive savings model</td></tr>
+      <tr><td><a href="visualizations_v3/redundancy_cost_benefit.html">Redundancy Cost-Benefit</a></td><td>Compressor (v4.0)</td><td>N+1 redundancy economics</td></tr>
+      <tr><td><a href="visualizations_v3/wcs_hp_architecture.html">WCS.HP Architecture</a></td><td>Compressor (v4.0)</td><td>Worst-case supply protection</td></tr>
+      <tr><td><a href="visualizations_v3/chart_cost_breakdown_box.html">Cost Breakdown Box</a></td><td>Financial</td><td>Cost component breakdown</td></tr>
+      <tr><td><a href="visualizations_v3/chart_correlation_heatmap.html">Correlation Heatmap</a></td><td>Financial</td><td>Parameter correlation matrix</td></tr>
+      <tr><td><a href="visualizations_v3/liquid_inventory_depletion.html">Liquid Inventory Depletion</a></td><td>Liquid He</td><td>Depletion model with loss scenarios</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section id="technical">
+  <h2><span class="emoji">📝</span> Technical Documentation</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3><a href="compressors/HP_Redundancy_Analysis.html">HP Compressor Redundancy</a></h3>
+      <div class="meta">8 KB · Updated 2026-05-10</div>
+      <div class="desc">N+1 redundancy analysis for 3× FSD575 SFC HP compressors including availability, MTBF, and spares strategy.</div>
+      <span class="tag tag-reliability">Reliability</span>
+    </div>
+    <div class="card">
+      <h3><a href="compressors/WCS_HP_Protection.html">WCS.HP Supply Protection</a></h3>
+      <div class="meta">8 KB · Updated 2026-05-10</div>
+      <div class="desc">Worst-case scenario protection logic for HP helium supply, including trip matrices and recovery procedures.</div>
+      <span class="tag tag-system">System</span>
+    </div>
+    <div class="card">
+      <h3><a href="liquid_he/Liquid_Operations_Guide.html">Liquid He Operations Guide</a></h3>
+      <div class="meta">8 KB · Updated 2026-05-10</div>
+      <div class="desc">Liquid helium handling, storage, and operations procedures including boil-off management.</div>
+      <span class="tag tag-system">Operations</span>
+    </div>
+    <div class="card">
+      <h3><a href="calculations.html">Detailed Calculations</a></h3>
+      <div class="meta">28 KB · Auto-generated</div>
+      <div class="desc">Full conversion grid, dimensional proof, and physics calculations for all leak classes.</div>
+      <span class="tag tag-auto">Auto-generated</span>
+    </div>
+    <div class="card">
+      <h3><a href="rtm_traceability.html">RTM Traceability Matrix</a></h3>
+      <div class="meta">8 KB · Auto-generated</div>
+      <div class="desc">Requirement Traceability Matrix linking specifications to evidence and verification.</div>
+      <span class="tag tag-auto">Auto-generated</span>
+    </div>
+    <div class="card">
+      <h3><a href="triage_compliance.html">Standards Compliance Grid</a></h3>
+      <div class="meta">92 KB · Auto-generated</div>
+      <div class="desc">Full compliance matrix against EN 13185, PED, ASME, and project-specific standards.</div>
+      <span class="tag tag-auto">Auto-generated</span>
+    </div>
+    <div class="card">
+      <h3><a href="dashboard.html">Triage Dashboard</a></h3>
+      <div class="meta">8 KB · Auto-generated</div>
+      <div class="desc">Engineer-facing triage dashboard with KPIs and status badges.</div>
+      <span class="tag tag-auto">Auto-generated</span>
+    </div>
+    <div class="card">
+      <h3><a href="executive_summary.html">Executive Triage View</a></h3>
+      <div class="meta">4 KB · Auto-generated</div>
+      <div class="desc">Condensed triage view for management — key decisions and risks.</div>
+      <span class="tag tag-auto">Auto-generated</span>
+    </div>
+    <div class="card">
+      <h3><a href="handover.html">Formal Handover Document</a></h3>
+      <div class="meta">12 KB · Auto-generated</div>
+      <div class="desc">Formal handover document with assumptions, decisions, and developer notes.</div>
+      <span class="tag tag-auto">Auto-generated</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section id="data">
+  <h2><span class="emoji">⚙️</span> Data & Configuration</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3><a href="../data/config.yaml">config.yaml</a> — Single Source of Truth</h3>
+      <div class="desc">
+        SSoT for all system parameters: compressor specs (3× FSD575 SFC), pressures (14 barg HP),
+        flow rates, CAPEX, and operational limits. All calculations derive from this file.
+      </div>
+      <span class="tag tag-canonical">★ SSoT</span>
+      <span class="tag tag-data">YAML</span>
+    </div>
+    <div class="card">
+      <h3><a href="../data/config.json">config.json</a></h3>
+      <div class="desc">Auto-generated JSON mirror of config.yaml for programmatic consumption.</div>
+      <span class="tag tag-auto">Auto-generated</span>
+      <span class="tag tag-data">JSON</span>
+    </div>
+    <div class="card">
+      <h3><a href="../data/compressor_specs.json">compressor_specs.json</a></h3>
+      <div class="desc">Detailed compressor specifications: FSD575, LP/HP parameters, VFD ranges, costs.</div>
+      <span class="tag tag-data">JSON</span>
+    </div>
+    <div class="card">
+      <h3><a href="../data/scenarios.json">scenarios.json</a></h3>
+      <div class="desc">System-level leak rate scenarios with valve inventories and operating conditions.</div>
+      <span class="tag tag-data">JSON</span>
+    </div>
+    <div class="card">
+      <h3><a href="../data/leak_classes.json">leak_classes.json</a></h3>
+      <div class="desc">Classified leak rate definitions (1e-9 to 1e-4 mbar·L/s) with triage metadata.</div>
+      <span class="tag tag-data">JSON</span>
+    </div>
+    <div class="card">
+      <h3><a href="../data/valve_candidates.json">valve_candidates.json</a></h3>
+      <div class="desc">Valve candidate specifications: Meca Inox, Swagelok SS-42GSE, metal-sealed, with CAPEX.</div>
+      <span class="tag tag-data">JSON</span>
+    </div>
+    <div class="card">
+      <h3><a href="../data/helium_properties.json">helium_properties.json</a></h3>
+      <div class="desc">Helium physical properties database (gas and liquid phases).</div>
+      <span class="tag tag-data">JSON</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section id="build">
+  <h2><span class="emoji">🔧</span> Build Artifacts & Reports</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3><a href="../dist/handover.zip">handover.zip</a></h3>
+      <div class="desc">Complete packaged bundle for offline distribution.</div>
+      <span class="tag tag-auto">Build output</span>
+    </div>
+    <div class="card">
+      <h3><a href="../dist/test-report.html">Test Report</a></h3>
+      <div class="desc">pytest results and coverage report.</div>
+      <span class="tag tag-auto">Build output</span>
+    </div>
+    <div class="card">
+      <h3><a href="manifest.json">manifest.json</a></h3>
+      <div class="desc">Machine-readable project manifest with version, build status, and test results.</div>
+      <span class="tag tag-data">JSON</span>
+    </div>
+    <div class="card">
+      <h3><a href="../VERSION.json">VERSION.json</a></h3>
+      <div class="desc">Version metadata with codename and changelog entries.</div>
+      <span class="tag tag-data">JSON</span>
+    </div>
+    <div class="card">
+      <h3>CSV Exports (<code>outputs/tables/</code>)</h3>
+      <div class="desc">conversion_grid.csv, scenario_table.csv, reliability_table.csv, cost_comparison.csv, rtm_traceability.csv</div>
+      <span class="tag tag-auto">Auto-generated</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section id="archive">
+  <h2><span class="emoji">📦</span> Archive (Historical Versions)</h2>
+  <div class="alert alert-info">
+    ⚠️ These files are retained for traceability only. Do NOT distribute to stakeholders.
+  </div>
+  <table class="simple">
+    <thead>
+      <tr><th>File</th><th>Version</th><th>Reason Archived</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="archive/index_v3_1_0_ARCHIVE.html">index_v3_1_0_ARCHIVE.html</a></td>
+        <td>v3.1.0 (42 slides)</td>
+        <td>Contains 4-compressor references — superseded by v4.0.0 (3 compressors)</td>
+      </tr>
+      <tr>
+        <td><a href="archive/index_v3_0_0_ARCHIVE.html">index_v3_0_0_ARCHIVE.html</a></td>
+        <td>v3.0.0 (34 slides)</td>
+        <td>Superseded by expanded v3.1 and then v4.0</td>
+      </tr>
+      <tr>
+        <td><a href="archive/presentation_v2_5_0_ARCHIVE.html">presentation_v2_5_0_ARCHIVE.html</a></td>
+        <td>v2.5.0 (5 slides)</td>
+        <td>Minimal material-specific stub — fully superseded</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:.85rem;color:var(--gray);margin-top:8px;">
+    Additional legacy outputs in <code>outputs/html/</code>, <code>outputs/versioned/</code>,
+    and <code>docs/visualizations/</code> (v3.0 era charts) — see
+    <a href="../STALE_FILES_AUDIT.md">STALE_FILES_AUDIT.md</a> for full inventory.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  QPLANT Cryo Leak-Rate Dashboard v4.0.0 · SSoT: <a href="../data/config.yaml">data/config.yaml</a> ·
+  Built with <a href="index.html">Handover Hub</a>
+</footer>
+
+</body>
+</html>
