@@ -1,5 +1,4 @@
 config_key,name,units,redundancy,type,A_single_pct,A_system_pct,A_system_nines,downtime_h_yr,MTBF_system_hours,MTBF_system_years,total_capex_eur,annual_maint_eur,annual_energy_eur,total_annual_opex_eur,has_vfd,efficiency_pct
-N3_baseline,N=3 Baseline (2-of-3),3×50%,2-of-3,oil-flooded screw,99.9088,99.99975,5.602764103352042,0.0219,3205184.0,365.9,525000,45000,960000.0,1005000.0,False,72.5
-N1_FSD575_A1,N+1 FSD575 VFD (3-of-4),4×33%,3-of-4,oil-flooded screw + VFD,99.9088,99.999501,5.301998337337245,0.0437,1603563.0,183.1,820000,60000,509196.0,569196.0,True,72.5
-N1_FSD575_A2,N+1 FSD575 VFD (2-of-4),4×50%,2-of-4,oil-flooded screw + VFD,99.9088,100.0,8.517668963079545,0.0,2634868520.0,300784.1,820000,60000,339464.0,399464.0,True,72.5
+N3_baseline,N=3 Baseline (2-of-3),3×50%,2-of-3,oil-flooded screw (fixed speed),99.9088,99.99975,5.602764103352042,0.0219,3205184.0,365.9,600000,45000,836496.0,881496.0,False,72.5
+N1_FSD575_VFD,N+1 FSD575 VFD (2-of-3),3×50%,2-of-3,oil-flooded screw + VFD,99.9088,99.99975,5.602764103352042,0.0219,3205184.0,365.9,600000,45000,295792.0,340792.0,True,72.5
 N1_HSD_twin,N+1 HSD Twin Combi (1-of-2),2×100%,1-of-2,oil-free centrifugal twin-head,99.9088,99.999917,6.079621108254511,0.0073,9609720.0,1097.0,700000,20000,690000.0,710000.0,False,82.5

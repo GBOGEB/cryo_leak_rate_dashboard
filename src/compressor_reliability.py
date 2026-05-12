@@ -1,16 +1,19 @@
 """
-HP Compressor Redundancy & Reliability Analysis — v3.1.0
+HP Compressor Redundancy & Reliability Analysis — v4.0.0
+
+CRITICAL CORRECTION (v4.0.0):
+  - HP compressor count reduced from 4 to 3 (Kaeser FSD 575 SFC)
+  - Design flow achievable with 3 units: 337.62 g/s max (3 × 112.54)
+  - Expected operational flow: 304 g/s
+  - Motor power corrected to 315 kW per vendor sheet (was 400 kW generic)
+  - Package power: 348.54 kW (water-cooled)
 
 Models N-of-M parallel compressor configurations for helium HP supply:
   - N=3 baseline (2-out-of-3)
-  - N+1 FSD575 VFD (3-out-of-4 or 2-out-of-4)
+  - N+1 FSD575 VFD (2-of-3 active, N=3 total with VFD)
   - N+1 HSD Twin Combi (1-out-of-2)
 
-Includes:
-  - Availability (Markov-based combinatorial)
-  - Reliability R(t) curves
-  - VFD energy savings analysis
-  - Cost-benefit comparison
+All parameters loaded from data/config.yaml (SSoT).
 
 Reference: MIL-HDBK-217, IEEE 493, IEC 61078.
 """
@@ -22,11 +25,25 @@ from typing import Optional
 
 import pandas as pd
 
+# ── Load from SSoT ──────────────────────────────────────────────────
+from src.config_loader import cfg
 
-# ── Constants ───────────────────────────────────────────────────────
+# ── Constants (from SSoT where applicable) ──────────────────────────
 HOURS_PER_YEAR = 8760.0
-OPERATING_HOURS_YEAR = 8000.0
-ELECTRICITY_COST_EUR_KWH = 0.15
+OPERATING_HOURS_YEAR = cfg.get('financial.operating_hours_year', 8000.0)
+ELECTRICITY_COST_EUR_KWH = cfg.get('financial.electricity_cost_eur_kwh', 0.15)
+
+# FSD575 specs from SSoT
+_FSD575 = cfg.get('compressor_specifications.fsd575', {})
+_HP = cfg.get('compressor_specifications.hp_compressors', {})
+FSD575_MOTOR_KW = _FSD575.get('motor_power_kW', 315)
+FSD575_PACKAGE_KW = _FSD575.get('package_power_kW', 348.54)
+FSD575_PER_UNIT_FLOW_GS = _FSD575.get('per_unit_flow_gs', 112.54)
+FSD575_CAPITAL_EUR = _FSD575.get('capital_cost_eur', 200000)
+FSD575_MAINT_EUR = _FSD575.get('annual_maint_eur', 15000)
+FSD575_MTBF = _FSD575.get('mtbf_hours', 8760)
+FSD575_MTTR = _FSD575.get('mttr_hours', 8)
+HP_COUNT = _HP.get('count', 3)
 
 
 @dataclass
@@ -38,16 +55,16 @@ class CompressorConfig:
     capacity_per_unit_pct: float  # % of total system capacity per unit
     mtbf_hours: float = 8760.0    # per-unit MTBF
     mttr_hours: float = 8.0       # per-unit MTTR
-    power_kw: float = 400.0       # per-unit electrical power at full load
+    power_kw: float = 348.54      # per-unit package power (corrected)
     has_vfd: bool = False
     vfd_turndown_min: float = 0.30  # minimum speed fraction
-    capital_cost_eur: float = 175000.0  # per unit
+    capital_cost_eur: float = 200000.0  # per unit (corrected)
     annual_maint_eur: float = 15000.0   # per unit
     compressor_type: str = "oil-flooded screw"
     efficiency_pct: float = 72.5
 
 
-# ── Pre-defined configurations ──────────────────────────────────────
+# ── Pre-defined configurations (CORRECTED for v4.0.0) ───────────────
 
 CONFIGS = {
     "N3_baseline": CompressorConfig(
@@ -55,42 +72,27 @@ CONFIGS = {
         total_units=3,
         required_units=2,
         capacity_per_unit_pct=50.0,
-        mtbf_hours=8760,
-        mttr_hours=8,
-        power_kw=400,
+        mtbf_hours=FSD575_MTBF,
+        mttr_hours=FSD575_MTTR,
+        power_kw=FSD575_PACKAGE_KW,
         has_vfd=False,
-        capital_cost_eur=175000,
-        annual_maint_eur=15000,
-        compressor_type="oil-flooded screw",
+        capital_cost_eur=FSD575_CAPITAL_EUR,
+        annual_maint_eur=FSD575_MAINT_EUR,
+        compressor_type="oil-flooded screw (fixed speed)",
         efficiency_pct=72.5,
     ),
-    "N1_FSD575_A1": CompressorConfig(
-        name="N+1 FSD575 VFD (3-of-4)",
-        total_units=4,
-        required_units=3,
-        capacity_per_unit_pct=33.3,
-        mtbf_hours=8760,
-        mttr_hours=8,
-        power_kw=400,
-        has_vfd=True,
-        vfd_turndown_min=0.30,
-        capital_cost_eur=205000,
-        annual_maint_eur=15000,
-        compressor_type="oil-flooded screw + VFD",
-        efficiency_pct=72.5,
-    ),
-    "N1_FSD575_A2": CompressorConfig(
-        name="N+1 FSD575 VFD (2-of-4)",
-        total_units=4,
+    "N1_FSD575_VFD": CompressorConfig(
+        name="N+1 FSD575 VFD (2-of-3)",
+        total_units=HP_COUNT,       # 3 units (CORRECTED from 4)
         required_units=2,
         capacity_per_unit_pct=50.0,
-        mtbf_hours=8760,
-        mttr_hours=8,
-        power_kw=400,
+        mtbf_hours=FSD575_MTBF,
+        mttr_hours=FSD575_MTTR,
+        power_kw=FSD575_PACKAGE_KW,
         has_vfd=True,
         vfd_turndown_min=0.30,
-        capital_cost_eur=205000,
-        annual_maint_eur=15000,
+        capital_cost_eur=FSD575_CAPITAL_EUR,
+        annual_maint_eur=FSD575_MAINT_EUR,
         compressor_type="oil-flooded screw + VFD",
         efficiency_pct=72.5,
     ),
@@ -140,7 +142,7 @@ def system_availability_k_of_m(A: float, M: int, k: int) -> float:
     """
     Availability of a k-out-of-M parallel system.
     System works if ≥ k of M units are operational.
-    
+
     A_sys = Σ_{i=k}^{M} C(M,i) × A^i × (1-A)^(M-i)
     """
     q = 1.0 - A  # unavailability
@@ -203,7 +205,7 @@ def fixed_speed_power_at_load(full_load_kw: float,
 
 
 def annual_energy_savings_vfd(
-    full_load_kw: float,
+    full_load_kw: float = FSD575_PACKAGE_KW,
     avg_load_fraction: float = 0.70,
     operating_hours: float = OPERATING_HOURS_YEAR,
     electricity_cost: float = ELECTRICITY_COST_EUR_KWH,
@@ -235,31 +237,31 @@ def annual_energy_savings_vfd(
 def build_comparison_table() -> pd.DataFrame:
     """Build full comparison table for all predefined configurations."""
     rows = []
-    for key, cfg in CONFIGS.items():
-        A_single = single_availability(cfg.mtbf_hours, cfg.mttr_hours)
-        A_sys = system_availability_k_of_m(A_single, cfg.total_units,
-                                            cfg.required_units)
+    for key, c in CONFIGS.items():
+        A_single = single_availability(c.mtbf_hours, c.mttr_hours)
+        A_sys = system_availability_k_of_m(A_single, c.total_units,
+                                            c.required_units)
         dt = downtime_hours_year(A_sys)
-        mtbf_sys = system_mtbf_approx(A_sys, cfg.mttr_hours)
+        mtbf_sys = system_mtbf_approx(A_sys, c.mttr_hours)
 
-        total_capex = cfg.capital_cost_eur * cfg.total_units
-        total_maint = cfg.annual_maint_eur * cfg.total_units
+        total_capex = c.capital_cost_eur * c.total_units
+        total_maint = c.annual_maint_eur * c.total_units
 
         # Energy cost (running units × power × operating hours)
-        running = cfg.required_units
-        if cfg.has_vfd:
+        running = c.required_units
+        if c.has_vfd:
             avg_load = 0.70
-            P_per = vfd_power_at_load(cfg.power_kw, avg_load)
+            P_per = vfd_power_at_load(c.power_kw, avg_load)
         else:
-            P_per = cfg.power_kw
+            P_per = c.power_kw
         annual_energy_cost = running * P_per * OPERATING_HOURS_YEAR * ELECTRICITY_COST_EUR_KWH
 
         rows.append({
             "config_key": key,
-            "name": cfg.name,
-            "units": f"{cfg.total_units}×{cfg.capacity_per_unit_pct:.0f}%",
-            "redundancy": f"{cfg.required_units}-of-{cfg.total_units}",
-            "type": cfg.compressor_type,
+            "name": c.name,
+            "units": f"{c.total_units}×{c.capacity_per_unit_pct:.0f}%",
+            "redundancy": f"{c.required_units}-of-{c.total_units}",
+            "type": c.compressor_type,
             "A_single_pct": round(A_single * 100, 4),
             "A_system_pct": round(A_sys * 100, 6),
             "A_system_nines": -math.log10(1 - A_sys) if A_sys < 1 else float("inf"),
@@ -270,8 +272,8 @@ def build_comparison_table() -> pd.DataFrame:
             "annual_maint_eur": total_maint,
             "annual_energy_eur": round(annual_energy_cost, 0),
             "total_annual_opex_eur": round(total_maint + annual_energy_cost, 0),
-            "has_vfd": cfg.has_vfd,
-            "efficiency_pct": cfg.efficiency_pct,
+            "has_vfd": c.has_vfd,
+            "efficiency_pct": c.efficiency_pct,
         })
 
     return pd.DataFrame(rows)
@@ -286,19 +288,19 @@ def build_reliability_curves(
     times = np.linspace(0, t_max_hours, n_points)
     data = {"hours": times}
 
-    for key, cfg in CONFIGS.items():
+    for key, c in CONFIGS.items():
         R_vals = [
-            system_reliability_k_of_m(t, cfg.mtbf_hours,
-                                       cfg.total_units, cfg.required_units)
+            system_reliability_k_of_m(t, c.mtbf_hours,
+                                       c.total_units, c.required_units)
             for t in times
         ]
-        data[cfg.name] = R_vals
+        data[c.name] = R_vals
 
     return pd.DataFrame(data)
 
 
 def build_vfd_savings_table(
-    full_load_kw: float = 400.0,
+    full_load_kw: float = FSD575_PACKAGE_KW,
     loads: list[float] | None = None,
 ) -> pd.DataFrame:
     """Build table comparing fixed-speed vs VFD at various load points."""
@@ -317,13 +319,15 @@ def build_vfd_savings_table(
 # ── Quick report ───────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("=== HP Compressor Redundancy Comparison ===\n")
+    print(f"=== HP Compressor Redundancy Comparison (v{cfg.version}) ===\n")
+    print(f"HP Compressor Count: {HP_COUNT} (from SSoT)")
+    print(f"FSD575 Package Power: {FSD575_PACKAGE_KW} kW\n")
     df = build_comparison_table()
     display_cols = ["name", "redundancy", "A_system_pct", "downtime_h_yr",
                     "MTBF_system_years", "total_capex_eur", "total_annual_opex_eur"]
     print(df[display_cols].to_string(index=False))
 
-    print("\n=== VFD Energy Savings (400 kW unit) ===\n")
+    print(f"\n=== VFD Energy Savings ({FSD575_PACKAGE_KW} kW unit) ===\n")
     vfd_df = build_vfd_savings_table()
     print(vfd_df[["load_pct", "power_fixed_kw", "power_vfd_kw",
                    "cost_savings_eur_yr", "savings_pct"]].to_string(index=False))

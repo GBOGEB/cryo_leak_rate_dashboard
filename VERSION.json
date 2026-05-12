@@ -1,15 +1,23 @@
 {
-  "version": "3.1.0",
-  "codename": "Liquid Helium Operations & HP Compressor Redundancy",
-  "date": "2026-05-08",
+  "version": "4.0.0",
+  "codename": "Critical Correction — 3× FSD575, SSoT Configuration",
+  "date": "2026-05-10",
   "changes": [
-    "Extended helium_properties.json with liquid phase data (saturation curve, subcooled)",
-    "New module: src/liquid_he_loss.py — leak rate to liquid inventory loss conversion",
-    "New module: src/compressor_reliability.py — k-of-M availability, VFD energy savings",
-    "New module: src/wcs_scenarios.py — WCS.HP protection, interlocks, leak budget",
-    "New data: data/compressor_specs.json — FSD575 and HSD Twin Combi specifications",
-    "6 new Plotly visualizations in docs/visualizations_v3/",
-    "3 new documentation pages: Liquid He Guide, HP Redundancy, WCS.HP Protection",
-    "40-slide master navigator: docs/index_v3_1.html"
+    "CRITICAL: HP compressor count corrected from 4 to 3 (FSD575 SFC)",
+    "Motor power corrected to 315 kW (was 400 kW generic), package power 348.54 kW",
+    "Per-unit flow: 112.54 g/s @ 72 Hz, 3-skid max: 337.62 g/s",
+    "HP outlet pressure: 14 barg nominal (was 12 barg in some refs)",
+    "HCC inlet: 1050 mbar (>atm to prevent air ingress)",
+    "VLP suction: 400 mbar nominal (VFD range 250-550 mbar)",
+    "CAPEX reduced: €600k for 3 compressors (was €800k for 4)",
+    "Total CAPEX: €1.42M (was €1.62M), saves €200k",
+    "Created Single Source of Truth: data/config.yaml + config_loader.py",
+    "Auto-generated data/config.json and data/config.md",
+    "All calculation modules refactored to use SSoT",
+    "Monte Carlo distributions updated: VLP 250|400|500, LP 900|1050|1200",
+    "PVPS internal redundancy documented: N+1 with 9+1=10 units, 5 g/s each",
+    "All 6 Plotly charts regenerated with corrected data",
+    "Stakeholder presentation updated with corrected financial model",
+    "Full test suite updated and passing"
   ]
 }

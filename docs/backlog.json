@@ -14,19 +14,20 @@
     {
       "id": "TASK-002",
       "priority": "MEDIUM",
-      "status": "TODO",
+      "status": "DONE",
       "title": "Validate compressor MTBF assumptions",
-      "description": "Re-check 8,760 h MTBF assumption against latest vendor reliability sheets.",
+      "description": "MTBF assumption validated against ALaT vendor reliability sheets. 8,760 h retained.",
       "context": "src/compressor_reliability.py",
       "dependencies": [],
       "estimated_effort": "1 hour",
-      "assigned_to": null
+      "assigned_to": "coding_agent",
+      "completed_at": "2026-05-10T10:00:00Z"
     },
     {
       "id": "TASK-003",
       "priority": "MEDIUM",
       "status": "TODO",
-      "title": "Review energy cost €0.15/kWh accuracy",
+      "title": "Review energy cost \u20ac0.15/kWh accuracy",
       "description": "Validate electricity tariff assumptions used in OPEX and VFD savings calculations.",
       "context": "src/compressor_reliability.py ELECTRICITY_COST_EUR_KWH",
       "dependencies": [],
@@ -60,12 +61,24 @@
       "priority": "LOW",
       "status": "DONE",
       "title": "Fix liquid He conversion",
-      "description": "Corrected mbar·L/s conversion chain and removed 1000x error in baseline logic.",
+      "description": "Corrected mbar\u00b7L/s conversion chain and removed 1000x error in baseline logic.",
       "context": "src/liquid_he_loss.py",
       "dependencies": [],
       "estimated_effort": "30 min",
       "assigned_to": "coding_agent",
       "completed_at": "2026-05-09T13:45:00Z"
+    },
+    {
+      "id": "TASK-007",
+      "priority": "HIGH",
+      "status": "DONE",
+      "title": "Implement SSoT configuration system (v4.0.0)",
+      "description": "Created data/config.yaml as single source of truth for all engineering parameters. HP compressor count corrected 4\u21923, pressures corrected (14 barg HP, 1050 mbar HCC, 400 mbar VLP). All modules, charts, and docs updated.",
+      "context": "data/config.yaml, src/config_loader.py",
+      "dependencies": [],
+      "estimated_effort": "8 hours",
+      "assigned_to": "coding_agent",
+      "completed_at": "2026-05-10T12:00:00Z"
     }
   ]
 }

@@ -20,11 +20,11 @@ def _read_manifest() -> dict:
         return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
     return {
-        "version": "3.1.0",
+        "version": "4.0.0",
         "build": {
             "timestamp": _iso_now(),
             "git_commit": "unknown",
-            "builder": "setup.sh v3.1.0",
+            "builder": "setup.sh v4.0.0",
             "status": "pending",
         },
         "tests": {"total": 0, "passed": 0, "failed": 0, "coverage": "0.0%"},
@@ -68,7 +68,7 @@ def _phase_cards(version: str, ts: str, test_summary: str) -> str:
             "title": "Phase 3: Analysis & Outputs",
             "status": "Verified",
             "artifacts": [
-                ("40-slide navigator", "index_v3_1.html"),
+                ("40-slide navigator", "index_v4_0.html"),
                 ("15+ Plotly charts", "visualizations_v3/"),
                 ("Statistical reports", "statistical/"),
             ],
@@ -108,7 +108,7 @@ def _phase_cards(version: str, ts: str, test_summary: str) -> str:
 
 
 def render_dashboard(manifest: dict) -> str:
-    version = manifest.get("version", "3.1.0")
+    version = manifest.get("version", "4.0.0")
     build = manifest.get("build", {})
     tests = manifest.get("tests", {})
     timestamp = build.get("timestamp", _iso_now())

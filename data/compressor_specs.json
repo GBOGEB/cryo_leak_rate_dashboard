@@ -1,34 +1,49 @@
 {
-  "description": "HP Compressor specifications for helium supply system. v3.1.0",
-  "version": "3.1.0",
+  "description": "HP Compressor specifications for helium supply system — v4.0.0 (CORRECTED)",
+  "version": "4.0.0",
+  "ssot_reference": "data/config.yaml",
+  "corrections": [
+    "HP compressor count: 4 → 3 (FSD575 SFC)",
+    "Motor power corrected to 315 kW from ALaT vendor sheet",
+    "Package power: 348.54 kW (water-cooled)",
+    "Per-unit flow: 112.54 g/s @ 72 Hz",
+    "3-skid max total: 337.62 g/s"
+  ],
   "compressors": {
-    "FSD575_VFD": {
-      "model": "FSD575 with VFD",
-      "type": "Oil-flooded screw compressor",
+    "FSD575_SFC": {
+      "model": "Kaeser FSD 575 SFC",
+      "type": "Oil-flooded screw compressor with VFD",
       "capacity_nm3_h": 575,
-      "discharge_pressure_barg": "14-16",
-      "motor_power_kw": 400,
+      "per_unit_flow_gs": 112.54,
+      "frequency_hz": 72,
+      "discharge_pressure_barg": "14-15",
+      "motor_power_kw": 315,
+      "package_power_kw": 348.54,
       "vfd_range_pct": "30-100",
       "efficiency_iso1217_pct": "70-75",
       "turndown_ratio": "3:1",
       "oil_separator": "Integrated coalescing",
       "cooling": "Water-cooled",
-      "noise_dba": "85-90",
-      "footprint_m": "2.0 × 3.0",
-      "weight_kg": 3000,
+      "cooling_water_m3h": 18.2,
+      "heat_rejection_kw": 323.9,
+      "cooling_air_enclosure_m3h": 5000,
+      "cooling_air_vfd_m3h": 4200,
+      "heat_air_kw": 17.4,
+      "waste_heat_ambient_kw": 14.2,
+      "noise_dba": 75,
+      "dimensions_mm": "3240 × 2145 × 2360",
+      "weight_kg": 6770,
+      "oil_charge_L": 173,
       "maintenance": {
         "oil_change_hours": 4000,
         "separator_service_hours": 8000,
         "major_overhaul_hours": 25000,
         "annual_cost_eur": 15000
       },
-      "capital_cost_eur": "175,000 - 205,000",
-      "capital_cost_mid_eur": 190000,
-      "lifecycle_cost_eur_yr": 50000,
+      "capital_cost_eur": 200000,
       "mtbf_hours": 8760,
       "mttr_hours": 8,
-      "notes": "VFD adds ~€30k per unit. Provides 30-100% speed range for energy optimization.",
-      "source": "Industry estimate, KAESER/Atlas Copco equivalent class"
+      "source": "ALaT pre-study annex pp. 67-69/73"
     },
     "HSD_Twin_Combi": {
       "model": "HSD Twin Combi",
@@ -51,39 +66,20 @@
         "annual_inspection_hours": 8760,
         "annual_cost_eur": 10000
       },
-      "capital_cost_eur": "300,000 - 400,000",
-      "capital_cost_mid_eur": 350000,
-      "lifecycle_cost_eur_yr": 30000,
+      "capital_cost_eur": 350000,
       "mtbf_hours": 8760,
       "mttr_hours": 8,
-      "notes": "Oil-free operation eliminates oil contamination risk. Magnetic bearings reduce maintenance. Twin-head provides 2-stage compression in single package.",
       "source": "Industry estimate, Atlas Copco/MAN Energy class"
     }
   },
   "configurations": {
-    "N3_baseline": {
-      "description": "3 compressors, each 50% capacity, 2 running + 1 standby",
+    "N1_FSD575_VFD": {
+      "description": "3× FSD575 SFC VFD, each 50% capacity, 2 running + 1 standby (CORRECTED from 4 units)",
       "units": 3,
       "capacity_per_unit_pct": 50,
       "redundancy": "2-of-3",
-      "total_capex_eur": 525000,
-      "compressor_model": "Generic screw (fixed speed)"
-    },
-    "N1_FSD575_A1": {
-      "description": "4× FSD575 VFD, each 33% capacity, 3 running + 1 standby",
-      "units": 4,
-      "capacity_per_unit_pct": 33.3,
-      "redundancy": "3-of-4",
-      "total_capex_eur": 820000,
-      "compressor_model": "FSD575_VFD"
-    },
-    "N1_FSD575_A2": {
-      "description": "4× FSD575 VFD, each 50% capacity, 2 running + 2 standby",
-      "units": 4,
-      "capacity_per_unit_pct": 50,
-      "redundancy": "2-of-4",
-      "total_capex_eur": 820000,
-      "compressor_model": "FSD575_VFD"
+      "total_capex_eur": 600000,
+      "compressor_model": "FSD575_SFC"
     },
     "N1_HSD_twin": {
       "description": "2× HSD Twin Combi, each 100% capacity, 1 running + 1 standby (true N+1)",
@@ -94,19 +90,29 @@
       "compressor_model": "HSD_Twin_Combi"
     }
   },
+  "three_skid_totals": {
+    "model": "3× FSD575 SFC",
+    "max_total_flow_gs": 337.62,
+    "package_power_kw": 1045.62,
+    "cooling_water_m3h": 54.6,
+    "heat_rejection_kw": 971.7,
+    "cooling_air_enclosure_m3h": 15000,
+    "cooling_air_vfd_m3h": 12600
+  },
   "comparison_summary": {
-    "columns": ["Parameter", "4× FSD575 VFD", "2× HSD Twin Combi"],
+    "columns": ["Parameter", "3× FSD575 VFD (CORRECTED)", "2× HSD Twin Combi"],
     "rows": [
-      ["Redundancy", "N+1 (3+1 or 2+2)", "True N+1 (1+1)"],
+      ["Redundancy", "N+1 (2+1)", "True N+1 (1+1)"],
       ["Technology", "Oil-flooded screw", "Oil-free centrifugal"],
       ["Efficiency", "70-75% (part load with VFD)", "80-85% (full load)"],
       ["Maintenance", "Oil changes, separator service", "Bearing replacement, less frequent"],
       ["Turndown", "Excellent (VFD 30-100%)", "Limited (surge control 70-100%)"],
-      ["Footprint", "Larger (4 units × 6 m²)", "Smaller (2 units × 8 m²)"],
-      ["Noise", "Higher (85-90 dBA)", "Lower (75-80 dBA)"],
-      ["Capital Cost", "€760k-820k (4 units)", "€600k-800k (2 units)"],
+      ["Footprint", "3 units × 7 m²", "2 units × 8 m²"],
+      ["Noise", "75 dBA", "75-80 dBA"],
+      ["Capital Cost", "€600k (3 units)", "€600k-800k (2 units)"],
       ["Lifecycle Cost", "Higher (oil, filters)", "Lower (oil-free)"],
-      ["Oil contamination risk", "Yes (requires oil removal)", "No (oil-free)"]
+      ["Oil contamination risk", "Yes (requires oil removal)", "No (oil-free)"],
+      ["Max total flow", "337.62 g/s", "N/A (single unit 100%)"]
     ]
   }
 }

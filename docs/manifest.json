@@ -1,23 +1,23 @@
 {
   "build": {
-    "builder": "setup.sh v3.1.0",
-    "git_commit": "b8094c8",
+    "builder": "setup.sh v4.0.0",
+    "git_commit": "fac7ef0",
     "status": "verified",
-    "timestamp": "2026-05-09T20:41:16.541124+00:00"
+    "timestamp": "2026-05-12T09:23:12.195111+00:00"
   },
   "dependencies": {
-    "numpy": "1.24.3",
-    "pandas": "2.0.2",
-    "plotly": "5.14.1",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "plotly": "5.24.1",
     "python": "3.11.6",
-    "scipy": "1.10.1"
+    "scipy": "1.14.1"
   },
   "files": {
     "CHANGELOG.md": {
       "generated_from": [],
-      "last_modified": "2026-05-09T20:07:01.834112+00:00",
-      "sha256": "136220485aa7e9efb9047dd7f1133a288150bb3cf864da5a1873e626579a7091",
-      "size": 909
+      "last_modified": "2026-05-10T13:45:11.425865+00:00",
+      "sha256": "8c7036149d8d5299612b9cecd5549cd673c3dfbb75314f290c2b3301fa04332c",
+      "size": 4833
     },
     "README.md": {
       "generated_from": [],
@@ -27,15 +27,33 @@
     },
     "VERSION": {
       "generated_from": [],
-      "last_modified": "2026-05-09T20:05:57.324568+00:00",
-      "sha256": "b2f44d3b6e29f8b1b73ea4735f006affc4d198e1fd9c7d50e736159b1ef636c6",
+      "last_modified": "2026-05-10T13:43:04.444172+00:00",
+      "sha256": "e1d49c569ae09b2ede16e2d83820a3809b35eb6c44c13ba9b5330598d6b8f43c",
       "size": 6
     },
     "data/compressor_specs.json": {
       "generated_from": [],
-      "last_modified": "2026-05-08T14:50:41.649066+00:00",
-      "sha256": "370f9b3ddb51fe1f94c706aa2d02995dfef208508e0e6974d60321b5c6b0f928",
-      "size": 4268
+      "last_modified": "2026-05-10T13:39:55.667706+00:00",
+      "sha256": "bdcadf8f1334805b9a6513c538cd610a60ab3394e959b656684bc38143cbb02b",
+      "size": 4235
+    },
+    "data/config.json": {
+      "generated_from": [],
+      "last_modified": "2026-05-10T13:37:21.455203+00:00",
+      "sha256": "431dbf13e0fc0435e24572e39e3b14e73bdf4730800543b96f418632a5a2ca63",
+      "size": 3358
+    },
+    "data/config.md": {
+      "generated_from": [],
+      "last_modified": "2026-05-10T13:37:21.455369+00:00",
+      "sha256": "02159d429402e550963fc7820111ba5d2e83a05e2dd6135a4c52106611ed273d",
+      "size": 3347
+    },
+    "data/config.yaml": {
+      "generated_from": [],
+      "last_modified": "2026-05-10T13:36:52.717020+00:00",
+      "sha256": "f49b9565cee05eaf6bc46aa977b7f3aa8a66fc591deeb2f08f58f230b28493da",
+      "size": 5754
     },
     "data/helium_properties.json": {
       "generated_from": [],
@@ -115,6 +133,12 @@
       "sha256": "90315189e49832764bc10f1f7890587a0de19572a37c8a60b77acf4ec7f0a09c",
       "size": 20702
     },
+    "docs/STAKEHOLDER_PRESENTATION.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-10T13:42:59.228391+00:00",
+      "sha256": "f20302116581e82b6d917db88347990d7a0f6b45aa18fd6f9cc2e5f305bf728e",
+      "size": 19589
+    },
     "docs/assets/heroes.js": {
       "generated_from": [],
       "last_modified": "2026-05-08T13:27:09.118487+00:00",
@@ -141,9 +165,9 @@
     },
     "docs/backlog.json": {
       "generated_from": [],
-      "last_modified": "2026-05-09T20:06:30.726430+00:00",
-      "sha256": "ed63d0ee1ed5378235a3cf29317d8edf4330493c53424369ab88bc33ef353442",
-      "size": 2424
+      "last_modified": "2026-05-10T13:47:06.407290+00:00",
+      "sha256": "2cc98c2d9686b4eeddd2cbd70744a1165349707b422ab6c019eb6112276e0b9d",
+      "size": 3098
     },
     "docs/calculations.html": {
       "generated_from": [],
@@ -153,21 +177,21 @@
     },
     "docs/changelog.md": {
       "generated_from": [],
-      "last_modified": "2026-05-09T20:06:38.294957+00:00",
-      "sha256": "980d43d7dfd60a08e21fd6c057e3dc56492481a81c20026755c0ab29fd186727",
-      "size": 1514
+      "last_modified": "2026-05-10T13:46:56.463890+00:00",
+      "sha256": "1a4bddfcc73b617f1c60a77f2211a2fd406956dc43498c885c6a319885cb4cad",
+      "size": 3261
     },
     "docs/compressors/HP_Redundancy_Analysis.html": {
       "generated_from": [],
-      "last_modified": "2026-05-08T14:58:44.024203+00:00",
-      "sha256": "8be25287b7ad682138b16a1073fff3a629dbd6e3af5b7cf7ac7f478e0b7fc54b",
-      "size": 7796
+      "last_modified": "2026-05-10T13:41:32.670324+00:00",
+      "sha256": "e226b800a28d59c1a7c710c4360c6a8fc4d9e6bc17987fdfa18356456017bcc5",
+      "size": 7923
     },
     "docs/compressors/WCS_HP_Protection.html": {
       "generated_from": [],
-      "last_modified": "2026-05-08T14:58:44.025318+00:00",
-      "sha256": "16cb67857b10cbafc7c1e2327858bb2b08c0573511f54190c30fc695886c1c61",
-      "size": 8053
+      "last_modified": "2026-05-10T13:41:32.671513+00:00",
+      "sha256": "7a53803d9faafa59f1e720f51a7ea3d00e2d2fb2bd0cdb569fc42c4665e68b8f",
+      "size": 8048
     },
     "docs/dashboard.html": {
       "generated_from": [],
@@ -270,8 +294,8 @@
         "src/build_dashboard.py",
         "docs/manifest.json"
       ],
-      "last_modified": "2026-05-09T20:41:16.335638+00:00",
-      "sha256": "33592fdcb6c128c3ec9855d7778d58114247f45ecca28dbab09f325a24fa279c",
+      "last_modified": "2026-05-10T13:47:16.836311+00:00",
+      "sha256": "59bc3b10d079712ec31b889005d426636eb160c16b0e780f95f2e6e0be9fc234",
       "size": 4995
     },
     "docs/index_v3.html": {
@@ -281,27 +305,24 @@
       "size": 60222
     },
     "docs/index_v3_1.html": {
-      "description": "40-slide dense master navigator with worked examples, full tables, multi-column layouts",
-      "type": "presentation",
-      "audience": "engineer",
-      "version_added": "3.1.0",
+      "generated_from": [
+        "src/generate_standards_stats.py"
+      ],
+      "last_modified": "2026-05-10T04:28:36.250743+00:00",
       "sha256": "6f1a83aa27423f1b9cf86965796dac90d5bd1f7d5afab84e89d82476d3ff213d",
-      "size_bytes": 80387,
-      "modified": "2026-05-10T04:29:03.119200Z",
-      "slides": 40,
-      "features": [
-        "multi-column layouts",
-        "worked examples",
-        "LaTeX formulas",
-        "full data tables",
-        "color-coded status"
-      ]
+      "size": 80387
+    },
+    "docs/index_v4_0.html": {
+      "generated_from": [],
+      "last_modified": "2026-05-10T13:44:28.420677+00:00",
+      "sha256": "826e1031319c14718f734cd52b56925c6513ab91ed51537bdc71acdd181ad9d5",
+      "size": 80387
     },
     "docs/liquid_he/Liquid_Operations_Guide.html": {
       "generated_from": [],
-      "last_modified": "2026-05-08T14:58:44.023220+00:00",
-      "sha256": "e0a2ebf87328cb2542095a1cd10b7d8aa522b6abe8153d94297fbaa4c669d5ef",
-      "size": 7437
+      "last_modified": "2026-05-10T13:41:32.668849+00:00",
+      "sha256": "154fa2a2f4b5f52d19325e0c373ab2b1c460d5821511645df127a2b3fd2efe3e",
+      "size": 7432
     },
     "docs/notes/slide_001_title.md": {
       "generated_from": [],
@@ -861,8 +882,8 @@
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:43.925531+00:00",
-      "sha256": "5fe28d84e50440314517561de4e706198f4e5fb50fe1aa2affe1b5dfee0f84b4",
+      "last_modified": "2026-05-10T13:41:32.575239+00:00",
+      "sha256": "c6134cfb205622836ba7b2daa1e6a83c825111872215312d4fc3e141e96eda41",
       "size": 22194
     },
     "docs/visualizations_v3/chart_biplot.html": {
@@ -997,23 +1018,23 @@
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:43.894382+00:00",
-      "sha256": "d89f1464143baaba08b10de52702f6b3af55d63c1265d1322e7924c80fad349d",
-      "size": 9732
+      "last_modified": "2026-05-10T13:41:32.506192+00:00",
+      "sha256": "2945b40766bf431a5eb10d193cf8ac547acd30f584c90b8a471fd3337cfc1d65",
+      "size": 9675
     },
     "docs/visualizations_v3/data/compressor_comparison.csv": {
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:44.016553+00:00",
-      "sha256": "9666b7099c2c90687c7a19a84f6dfe91841bccbb2b576cf02a441bb50d436315",
-      "size": 929
+      "last_modified": "2026-05-10T13:41:32.662240+00:00",
+      "sha256": "8f0ae506180214670591610e8cef18f405feaea10c879ad7694641cc3b8e6336",
+      "size": 768
     },
     "docs/visualizations_v3/data/interlocks.csv": {
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:44.019721+00:00",
+      "last_modified": "2026-05-10T13:41:32.665809+00:00",
       "sha256": "39d29af61454c6adff114f66013ce2903f438896ffaa26683419fe95197d8445",
       "size": 768
     },
@@ -1021,7 +1042,7 @@
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:44.021628+00:00",
+      "last_modified": "2026-05-10T13:41:32.668222+00:00",
       "sha256": "c1a1361cb3d0ebb50e863220f11e71d408e0b66f0b0cce934409972c84fce5ef",
       "size": 27695
     },
@@ -1029,7 +1050,7 @@
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:44.019108+00:00",
+      "last_modified": "2026-05-10T13:41:32.665106+00:00",
       "sha256": "bb4d3f9eff3214e5b26368ed161bd307ba232f030dfca9d6e11977fc3084d9fb",
       "size": 328
     },
@@ -1037,7 +1058,7 @@
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:44.015231+00:00",
+      "last_modified": "2026-05-10T13:41:32.660900+00:00",
       "sha256": "7e43f7a49612bc505b02b04eb12f269a470911210b860ba69c5768e98e2e525d",
       "size": 2146
     },
@@ -1045,55 +1066,55 @@
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:44.017310+00:00",
-      "sha256": "afe2918cefe752bd89f37bd56d8debb9f95cea334bcef037a434e1b20b6fb4ae",
-      "size": 606
+      "last_modified": "2026-05-10T13:41:32.663181+00:00",
+      "sha256": "403d10f515e1fe1e8a9226b8fedf81e58a5b897febc0f75c101ad0fb84d53fc1",
+      "size": 603
     },
     "docs/visualizations_v3/data/wcs_scenarios.csv": {
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:44.018223+00:00",
-      "sha256": "082d53b15badb2543f9aa2f67bd66b358726c15cd045a25ecd57778e0b11e62a",
-      "size": 744
+      "last_modified": "2026-05-10T13:41:32.664200+00:00",
+      "sha256": "718016579baea0459e33aeeb4b3f91efad4ea490762af5760bd8d8b6a8459769",
+      "size": 756
     },
     "docs/visualizations_v3/liquid_inventory_depletion.html": {
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:43.868597+00:00",
-      "sha256": "accfd28ae367884dd84095728d7f31e0ab3960128558e88a8be78408db05e420",
+      "last_modified": "2026-05-10T13:41:32.475078+00:00",
+      "sha256": "4c9b260f49ff52c92550e242c9a008fcd5652f3ad9da11af7791ea09ab60a44b",
       "size": 40641
     },
     "docs/visualizations_v3/redundancy_cost_benefit.html": {
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:43.998572+00:00",
-      "sha256": "2e77b13a1a42bca9942b3b4455ded191f5e9bbf909f6829af8ce22ef9a518279",
-      "size": 8805
+      "last_modified": "2026-05-10T13:41:32.645049+00:00",
+      "sha256": "6907c3e39953e286fa93127f79f858938a8b09fa6b2203dc193d2e0f4723722f",
+      "size": 8749
     },
     "docs/visualizations_v3/vfd_energy_savings.html": {
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:44.011093+00:00",
-      "sha256": "392cc197e74b3ad60f5f3204543325447274f42c23e895389cee80ada3301c46",
-      "size": 9376
+      "last_modified": "2026-05-10T13:41:32.656965+00:00",
+      "sha256": "c98727765d8d2b0c69474e07b0a67eb21c59297fc6c015cd0d322700d05549ad",
+      "size": 9383
     },
     "docs/visualizations_v3/wcs_hp_architecture.html": {
       "generated_from": [
         "src/generate_standards_stats.py"
       ],
-      "last_modified": "2026-05-08T14:58:43.980249+00:00",
-      "sha256": "2b935da8277f80121198efc4dccd18b5a612a13aafac9e4eb84debe788ef1ad2",
+      "last_modified": "2026-05-10T13:41:32.629602+00:00",
+      "sha256": "1f178e8a4d20bac79e91ea1f54cdf4408b17d3ae0925eb310219f7b2c0efdb05",
       "size": 11778
     },
     "requirements.txt": {
       "generated_from": [],
-      "last_modified": "2026-05-09T20:05:53.647568+00:00",
-      "sha256": "90d8c78fc69202e6d75b4bf15933e19e0edf09bfa51fdf0a2ac43fe55bc5e0ac",
-      "size": 89
+      "last_modified": "2026-05-12T09:22:13.630056+00:00",
+      "sha256": "77f52d438527042f5176653bb9d58589f6bb3fb5988b2e333fe38216e9193427",
+      "size": 103
     },
     "src/__init__.py": {
       "generated_from": [],
@@ -1109,9 +1130,15 @@
     },
     "src/build_dashboard.py": {
       "generated_from": [],
-      "last_modified": "2026-05-09T20:11:21.709595+00:00",
-      "sha256": "431c8b665e449c25e00ba287fbda3783317ff61c4997dba16171e71acd9f9edf",
+      "last_modified": "2026-05-10T13:43:39.520675+00:00",
+      "sha256": "a3ced8007195e6cac10894a8a7ab514b4446faccee0632a691d5bf78cd002b6d",
       "size": 6870
+    },
+    "src/build_dense_slides.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-10T04:28:31.041414+00:00",
+      "sha256": "59584fbbd6916195110e301589f1e9ad6cd1196e7f5951a536db343c994d3e80",
+      "size": 98700
     },
     "src/build_handover.py": {
       "generated_from": [],
@@ -1127,9 +1154,9 @@
     },
     "src/build_v3_1.py": {
       "generated_from": [],
-      "last_modified": "2026-05-08T14:58:40.172656+00:00",
-      "sha256": "bc33a4e147a15e209a759dc0eb4092c7c1df48d02e597a90669bdd908e4492df",
-      "size": 87206
+      "last_modified": "2026-05-10T13:41:18.881057+00:00",
+      "sha256": "fd928c2cab5179548e8a886be2b389efc73c5e43d564aa31ee99b6892adda2e7",
+      "size": 87701
     },
     "src/calc_leak_rate.py": {
       "generated_from": [],
@@ -1151,9 +1178,15 @@
     },
     "src/compressor_reliability.py": {
       "generated_from": [],
-      "last_modified": "2026-05-08T14:49:11.630980+00:00",
-      "sha256": "44ad7d705af3601837dcd264d5fa06290c02c84e31fb6d7f5519519ca91f0a93",
-      "size": 11458
+      "last_modified": "2026-05-10T13:38:36.526232+00:00",
+      "sha256": "d7ea98740233753162a59a6877d74f90eca15cca979bfb3ad40708ad35e0facc",
+      "size": 12321
+    },
+    "src/config_loader.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-10T13:37:13.991244+00:00",
+      "sha256": "8195c2678f44743e3aa278aa67286a19aa220e32df18d248569c837ac407121e",
+      "size": 4664
     },
     "src/generate_dashboard.py": {
       "generated_from": [],
@@ -1223,9 +1256,15 @@
     },
     "src/wcs_scenarios.py": {
       "generated_from": [],
-      "last_modified": "2026-05-08T14:49:59.268445+00:00",
-      "sha256": "0023181936a472d87bfc5998c768de03899e53b89fa10481df2d331f98ea235e",
-      "size": 7412
+      "last_modified": "2026-05-10T13:39:22.379615+00:00",
+      "sha256": "93ca1063c6919b1ed64ea1aef40a5480dafcff5d69d8d4fe2744e1c5b3a245b0",
+      "size": 8346
+    },
+    "tests/conftest.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-12T09:20:51.395169+00:00",
+      "sha256": "d0a5179e44e0206108b1fd09e2ecc8c792aae09903c85a3cd4cbf4aaf2335bd9",
+      "size": 180
     },
     "tests/test_build_outputs.py": {
       "generated_from": [],
@@ -1235,14 +1274,20 @@
     },
     "tests/test_calculations.py": {
       "generated_from": [],
-      "last_modified": "2026-05-09T20:07:14.410731+00:00",
-      "sha256": "4d7ab8c1c1161d4a8cf27ddc08550638a4f140e307e0707b2f577cd21e709d48",
-      "size": 1718
+      "last_modified": "2026-05-12T09:21:08.783129+00:00",
+      "sha256": "29ec3451cbef9f2b91ea26846265bbcd87775fd589af36801b4e88b6bf127959",
+      "size": 2079
+    },
+    "tests/test_config_loader.py": {
+      "generated_from": [],
+      "last_modified": "2026-05-12T09:21:14.828238+00:00",
+      "sha256": "6e1782039165f1fb0bc806cf8a4ec140ee661fbd3ba96674c78499e7e5f2536d",
+      "size": 644
     },
     "tests/test_data_integrity.py": {
       "generated_from": [],
-      "last_modified": "2026-05-09T20:07:22.987143+00:00",
-      "sha256": "b4d0831f6fa522d8c287bad19c3e7303ab27031f596cd273609b85d6c757548a",
+      "last_modified": "2026-05-12T09:21:28.906730+00:00",
+      "sha256": "0edbfd8cbb7c8c349b88d140c05b6c18830672fbf0e18d6bb4e4eafa96363ede",
       "size": 1471
     },
     "tests/test_engineering.py": {
@@ -1256,32 +1301,14 @@
       "last_modified": "2026-05-09T20:07:32.836950+00:00",
       "sha256": "fc6e482545e1aa3bf0e453e18bc5edcf38317d8fd3402b414c5d4eb4e97ffdfd",
       "size": 1646
-    },
-    "docs/STAKEHOLDER_PRESENTATION.html": {
-      "description": "Executive stakeholder presentation (10 slides)",
-      "type": "presentation",
-      "audience": "management",
-      "version_added": "3.1.0",
-      "sha256": "17997d3d11502b640f2eebef5c30d35acd985a5005ccdf6da4b197a15b632cdd",
-      "size_bytes": 19077,
-      "modified": "2026-05-10T04:29:03.119018Z"
-    },
-    "src/build_dense_slides.py": {
-      "description": "Build script for dense master slides and stakeholder presentation",
-      "type": "builder",
-      "audience": "developer",
-      "version_added": "3.1.0",
-      "sha256": "59584fbbd6916195110e301589f1e9ad6cd1196e7f5951a536db343c994d3e80",
-      "size_bytes": 98700,
-      "modified": "2026-05-10T04:29:03.119128Z"
     }
   },
   "outputs": {
     "charts": 22,
     "reports": 19,
-    "slides": 41,
+    "slides": 42,
     "tables": 42,
-    "total_size_mb": 6.72
+    "total_size_mb": 6.96
   },
   "tests": {
     "coverage": "6%",
@@ -1290,5 +1317,5 @@
     "passed": 18,
     "total": 18
   },
-  "version": "3.1.0"
+  "version": "4.0.0"
 }

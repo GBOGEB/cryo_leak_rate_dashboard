@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BUILD v3.1.0 — Liquid Helium Operations & HP Compressor Redundancy
+BUILD v4.0.0 — Critical Correction: HP Compressor Count 4→3, Pressure Parameters Updated
 
 Generates:
   1. Six new Plotly visualizations in docs/visualizations_v3/
@@ -370,7 +370,9 @@ def chart_redundancy_cost_benefit():
 
 def chart_vfd_energy_savings():
     """Bar chart: fixed-speed vs VFD power at various loads."""
-    vfd_df = build_vfd_savings_table(full_load_kw=400)
+    from src.config_loader import cfg as _cfg
+    _pkg_kw = _cfg.get('compressor_specifications.fsd575.package_power_kW', 348.54)
+    vfd_df = build_vfd_savings_table(full_load_kw=_pkg_kw)
 
     fig = go.Figure()
 
@@ -401,7 +403,7 @@ def chart_vfd_energy_savings():
             )
 
     fig.update_layout(
-        title="VFD Energy Savings — FSD575 (400 kW) per Compressor",
+        title=f"VFD Energy Savings — FSD575 ({_pkg_kw:.0f} kW package) per Compressor",
         xaxis_title="Load (%)",
         yaxis_title="Power Consumption (kW)",
         barmode="group",
@@ -469,7 +471,7 @@ def _page_template(title: str, body: str) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} — QPLANT v3.1.0</title>
+<title>{title} — QPLANT v4.0.0</title>
 <style>
 :root {{ --primary: #1a365d; --accent: #2b6cb0; --bg: #f7fafc; --card: #fff; --border: #e2e8f0; --text: #2d3748; }}
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -506,7 +508,7 @@ a {{ color: var(--accent); }}
 <body>
 <div class="header">
   <h1>{title}</h1>
-  <p>QPLANT Cryogenic Leak Rate Dashboard — v3.1.0 · Liquid Helium Operations & HP Compressor Redundancy</p>
+  <p>QPLANT Cryogenic Leak Rate Dashboard — v4.0.0 · Critical Correction: 3× FSD575, 14 barg, SSoT</p>
 </div>
 <div class="nav">
   <a href="index_v3_1.html">◀ Navigator</a>
@@ -651,15 +653,17 @@ def build_hp_redundancy_analysis():
   <h2>HP Compressor System Architecture</h2>
   <div class="kpi-row">
     <div class="kpi"><div class="value">14 barg</div><div class="label">HP Header Pressure</div></div>
-    <div class="kpi"><div class="value">3 → 4</div><div class="label">Compressor Options</div></div>
+    <div class="kpi"><div class="value">3× FSD575</div><div class="label">HP Compressors (corrected)</div></div>
     <div class="kpi"><div class="value">99.999%+</div><div class="label">Target Availability</div></div>
     <div class="kpi"><div class="value">8 h</div><div class="label">MTTR (conservative)</div></div>
   </div>
 
   <h3>Configuration Options</h3>
-  <p><strong>Baseline (N=3):</strong> 3 compressors, each 50% capacity. 2 running + 1 standby.</p>
-  <p><strong>Option A (FSD575 VFD):</strong> 4× oil-flooded screw with Variable Frequency Drive.</p>
-  <p><strong>Option B (HSD Twin Combi):</strong> 2× oil-free centrifugal twin-head, each 100% capacity (true N+1).</p>
+  <p><strong>Selected: 3× FSD575 SFC VFD</strong> (CORRECTED from 4 units in v3.1.0).<br>
+     Each unit: 112.54 g/s @ 72 Hz, 315 kW motor, 348.54 kW package. 2 running + 1 standby.</p>
+  <p><strong>Alternative: HSD Twin Combi</strong> — 2× oil-free centrifugal twin-head, each 100% capacity (true N+1).</p>
+  <p><strong>⚠ v4.0.0 Correction:</strong> Design flow of 350 g/s is achievable with 3× FSD575 (max 337.62 g/s).
+     Expected operational flow is 304 g/s. CAPEX saved: €200k (3 vs 4 units).</p>
 </div>
 
 <div class="card">
@@ -705,13 +709,14 @@ At 70% load:  P_fixed = 328 kW,  P_VFD = 141 kW  →  savings: 57%</div>
 
   <h3>FSD575 vs HSD Twin Combi — Key Trade-offs</h3>
   <table>
-    <tr><th>Parameter</th><th>4× FSD575 VFD</th><th>2× HSD Twin Combi</th></tr>
-    <tr><td>Redundancy</td><td>N+1 (3+1 or 2+2)</td><td>True N+1 (1+1)</td></tr>
-    <tr><td>Technology</td><td>Oil-flooded screw</td><td>Oil-free centrifugal</td></tr>
+    <tr><th>Parameter</th><th>3× FSD575 VFD (CORRECTED)</th><th>2× HSD Twin Combi</th></tr>
+    <tr><td>Redundancy</td><td>N+1 (2+1)</td><td>True N+1 (1+1)</td></tr>
+    <tr><td>Technology</td><td>Oil-flooded screw + VFD</td><td>Oil-free centrifugal</td></tr>
+    <tr><td>Max Flow</td><td>337.62 g/s (3 × 112.54)</td><td>N/A (single unit 100%)</td></tr>
     <tr><td>Efficiency</td><td>70-75%</td><td>80-85%</td></tr>
     <tr><td>Turndown</td><td>Excellent (VFD 30-100%)</td><td>Limited (70-100%)</td></tr>
     <tr><td>Maintenance</td><td>Oil changes, separator</td><td>Bearings, less frequent</td></tr>
-    <tr><td>Capital Cost</td><td>€760k-820k</td><td>€600k-800k</td></tr>
+    <tr><td>Capital Cost</td><td>€600k (3 units)</td><td>€600k-800k (2 units)</td></tr>
     <tr><td>Oil contamination</td><td>Yes (requires removal)</td><td>No (oil-free)</td></tr>
   </table>
 </div>

@@ -1,5 +1,5 @@
 scenario,compressors_available,compressors_running,capacity_pct,hp_header_barg,sidestreams,beam_pct,leak_budget_mbar_l_s,status,description
-Normal Operation,3,2,100.0,14.0,Open,100.0,9e-06,NOMINAL,"All 3 compressors available (2 running, 1 standby). Sidestreams open, full beam operation."
+Normal Operation,3,2,100.0,14.0,Open,100.0,9e-06,NOMINAL,"All 3 compressors available (2 running, 1 standby). HP header at 14 barg. Sidestreams open, full beam."
 WCS — 1 Compressor Failed,2,2,100.0,13.8,Closed,100.0,7e-06,WARNING,"2 compressors running at 100% capacity, no standby. Sidestreams closed by interlock to protect main supply."
 Emergency — 2 Compressors Failed,1,1,50.0,13.2,Closed,50.0,3.5e-06,ALARM,1 compressor running at 50% capacity. Beam reduced to 50%. Sidestreams closed.
 Total Failure,0,0,0.0,0.0,Closed,0.0,0.0,TRIP,All compressors failed. Emergency beam shutdown. Vent to recovery system.

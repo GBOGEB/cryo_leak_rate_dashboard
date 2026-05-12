@@ -39,7 +39,7 @@ def test_compressor_specs():
         assert key in payload
 
     compressors = payload["compressors"]
-    assert "FSD575_VFD" in compressors
+    assert "FSD575_SFC" in compressors
     assert "HSD_Twin_Combi" in compressors
 
     for comp in compressors.values():

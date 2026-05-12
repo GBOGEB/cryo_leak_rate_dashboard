@@ -1,21 +1,31 @@
 """
-WCS.HP Supply Protection Scenario Analysis — v3.1.0
+WCS.HP Supply Protection Scenario Analysis — v4.0.0
+
+CRITICAL CORRECTION (v4.0.0):
+  - HP outlet pressure: 14 barg (was 12 barg in some references)
+  - HCC inlet: 1050 mbar (>atm to prevent air ingress)
+  - VLP suction: 400 mbar nominal (250-550 mbar VFD range)
+  - All parameters loaded from data/config.yaml (SSoT)
 
 Models Worst Case Supply scenarios for the HP helium compressor system:
-  - Normal operation (all compressors available)
+  - Normal operation (all 3 compressors available, 2 running)
   - WCS (1 compressor failed, sidestreams isolated)
   - Emergency (2 compressors failed, beam reduced)
-
-Includes:
-  - Leak budget allocation (main supply, sidestreams, contingency)
-  - Interlock logic table
-  - Decision matrix for each scenario
 """
 
 from __future__ import annotations
 from dataclasses import dataclass
 import pandas as pd
 
+# ── Load from SSoT ──────────────────────────────────────────────────
+from src.config_loader import cfg
+
+_PRESS = cfg.get('pressure_parameters', {})
+HP_OUTLET_BARG = cfg.get('pressure_parameters.wcs_hp_outlet.nominal_barg', 14)
+HP_MAX_BARG = cfg.get('pressure_parameters.wcs_hp_outlet.max_barg', 15)
+HP_MIN_BARG = cfg.get('pressure_parameters.wcs_hp_outlet.min_barg', 10)
+HCC_INLET_MBAR = cfg.get('pressure_parameters.hcc_inlet.nominal_mbar', 1050)
+VLP_NOMINAL_MBAR = cfg.get('pressure_parameters.wcs_lcc_suction.nominal_mbar', 400)
 
 # ── Leak Budget Constants ──────────────────────────────────────────
 TOTAL_LEAK_BUDGET = 1e-5  # mbar·L/s (RTM-048 system max)
@@ -39,19 +49,19 @@ LEAK_ALLOCATIONS = {
 }
 
 
-# ── Interlock Logic ────────────────────────────────────────────────
+# ── Interlock Logic (corrected pressure setpoints) ──────────────────
 
 INTERLOCKS = [
     {
         "condition": "HP header pressure LOW",
-        "setpoint": "< 13.5 barg",
+        "setpoint": f"< {HP_OUTLET_BARG - 0.5} barg",
         "action": "Close sidestream isolation valves",
         "purpose": "Protect main HP supply from sidestream leaks",
         "priority": "WARNING",
     },
     {
         "condition": "HP header pressure LOW-LOW",
-        "setpoint": "< 13.0 barg",
+        "setpoint": f"< {HP_OUTLET_BARG - 1.0} barg",
         "action": "Alarm + start backup compressor",
         "purpose": "Prevent beam dump, restore redundancy",
         "priority": "ALARM",
@@ -87,7 +97,7 @@ INTERLOCKS = [
 ]
 
 
-# ── Scenario Definitions ──────────────────────────────────────────
+# ── Scenario Definitions (corrected for 3 compressors, 14 barg) ───
 
 @dataclass
 class WCSScenario:
@@ -109,20 +119,20 @@ SCENARIOS = [
         compressors_available=3,
         compressors_running=2,
         capacity_pct=100.0,
-        hp_header_barg=14.0,
+        hp_header_barg=HP_OUTLET_BARG,
         sidestreams_open=True,
         beam_operation_pct=100.0,
         total_leak_mbar_l_s=9e-6,
         status="NOMINAL",
-        description="All 3 compressors available (2 running, 1 standby). "
-                    "Sidestreams open, full beam operation.",
+        description=f"All 3 compressors available (2 running, 1 standby). "
+                    f"HP header at {HP_OUTLET_BARG} barg. Sidestreams open, full beam.",
     ),
     WCSScenario(
         name="WCS — 1 Compressor Failed",
         compressors_available=2,
         compressors_running=2,
         capacity_pct=100.0,
-        hp_header_barg=13.8,
+        hp_header_barg=HP_OUTLET_BARG - 0.2,
         sidestreams_open=False,
         beam_operation_pct=100.0,
         total_leak_mbar_l_s=7e-6,
@@ -135,7 +145,7 @@ SCENARIOS = [
         compressors_available=1,
         compressors_running=1,
         capacity_pct=50.0,
-        hp_header_barg=13.2,
+        hp_header_barg=HP_OUTLET_BARG - 0.8,
         sidestreams_open=False,
         beam_operation_pct=50.0,
         total_leak_mbar_l_s=3.5e-6,
@@ -207,6 +217,10 @@ def build_scenario_table() -> pd.DataFrame:
 # ── Quick report ───────────────────────────────────────────────────
 
 if __name__ == "__main__":
+    print(f"=== WCS Scenarios (v{cfg.version}) ===")
+    print(f"HP Outlet: {HP_OUTLET_BARG} barg | HCC Inlet: {HCC_INLET_MBAR} mbar")
+    print(f"VLP Nominal: {VLP_NOMINAL_MBAR} mbar\n")
+
     print("=== Leak Budget Allocation ===\n")
     print(build_leak_budget_table().to_string(index=False))
 

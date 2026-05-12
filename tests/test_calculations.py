@@ -4,11 +4,15 @@ import math
 
 from src.calc_leak_rate import leak_rate_to_mass_flow_g_year
 from src.compressor_reliability import (
+    CONFIGS,
+    FSD575_PACKAGE_KW,
+    HP_COUNT,
     annual_energy_savings_vfd,
     fixed_speed_power_at_load,
     system_availability_k_of_m,
     vfd_power_at_load,
 )
+from src.config_loader import cfg
 from src.liquid_he_loss import LiquidHeState, compute_liquid_loss
 
 
@@ -44,9 +48,9 @@ def test_compressor_availability():
 
 
 def test_vfd_savings():
-    p_fixed_70 = fixed_speed_power_at_load(400, 0.7)
-    p_vfd_70 = vfd_power_at_load(400, 0.7)
-    summary = annual_energy_savings_vfd(full_load_kw=400, avg_load_fraction=0.7)
+    p_fixed_70 = fixed_speed_power_at_load(FSD575_PACKAGE_KW, 0.7)
+    p_vfd_70 = vfd_power_at_load(FSD575_PACKAGE_KW, 0.7)
+    summary = annual_energy_savings_vfd(full_load_kw=FSD575_PACKAGE_KW, avg_load_fraction=0.7)
 
     assert p_vfd_70 < p_fixed_70
     assert summary["cost_savings_eur_yr"] > 0
@@ -54,7 +58,13 @@ def test_vfd_savings():
 
 
 def test_vfd_full_load_near_fixed_speed():
-    p_fixed = fixed_speed_power_at_load(400, 1.0)
-    p_vfd = vfd_power_at_load(400, 1.0)
-    assert math.isclose(p_fixed, 400.0, rel_tol=1e-9)
+    p_fixed = fixed_speed_power_at_load(FSD575_PACKAGE_KW, 1.0)
+    p_vfd = vfd_power_at_load(FSD575_PACKAGE_KW, 1.0)
+    assert math.isclose(p_fixed, FSD575_PACKAGE_KW, rel_tol=1e-9)
     assert p_vfd > p_fixed
+
+
+def test_ssot_hp_count_and_config_map():
+    assert cfg.get("compressor_specifications.hp_compressors.count") == 3
+    assert HP_COUNT == 3
+    assert CONFIGS["N1_FSD575_VFD"].total_units == 3
