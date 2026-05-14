@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Summary — QPLANT Cryogenic Dashboard</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  .hero-banner {
+    background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%);
+    color: white; padding: 3rem 2rem; border-radius: 12px;
+    margin-bottom: 2rem; text-align: center;
+  }
+  .hero-banner h1 { color: white; font-size: 2.2rem; margin-bottom: 0.5rem; }
+  .hero-banner .subtitle { opacity: 0.85; font-size: 1.1rem; }
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; margin: 2rem 0; }
+  .kpi-card { background: #f0f4f8; border-left: 4px solid #2d5a87;
+    padding: 1.5rem; border-radius: 8px; }
+  .kpi-card .value { font-size: 2rem; font-weight: 700; color: #1a365d; }
+  .kpi-card .label { color: #555; font-size: 0.9rem; margin-top: 0.3rem; }
+  .section { margin: 2rem 0; }
+  .section h2 { border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+  .nav-back { margin: 1rem 0; }
+  .nav-back a { color: #2d5a87; text-decoration: none; font-weight: 600; }
+  .nav-back a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<main style="max-width:960px; margin:0 auto; padding:2rem;">
+<div class="nav-back"><a href="../NAVIGATOR.html">← Back to Navigator</a></div>
+
+<div class="hero-banner">
+  <h1>📊 Executive Summary</h1>
+  <p class="subtitle">QPLANT Cryogenic Helium System — Cost & Risk Overview</p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card"><div class="value">4.0.0</div><div class="label">System Version</div></div>
+  <div class="kpi-card"><div class="value">350 g/s</div><div class="label">Design Flow (WCS.HP)</div></div>
+  <div class="kpi-card"><div class="value">410</div><div class="label">Total Valve Inventory</div></div>
+  <div class="kpi-card"><div class="value">€4,200</div>
+    <div class="label">Min Valve CAPEX (Meca)</div></div>
+</div>
+
+<div class="section">
+  <h2>Key Decisions</h2>
+  <ul>
+    <li><strong>Warm valve derogation:</strong> Meca Inox / Swagelok HDPE-sealed ball valves accepted —
+        cheaper than VAT bellow-sealed, meet radiation spec. He leak rate to ambient ≤ 1×10⁻⁹ mbar·L/s
+        considered unnecessarily stringent; higher rate acceptable for warm on/off service.</li>
+    <li><strong>HP compressor redundancy:</strong> N+1 (3 active + 1 standby) via VFD speed control.</li>
+    <li><strong>Helium recovery:</strong> Full MAC scope per CR1299.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>ROI Impact</h2>
+  <p>Selecting economic warm valves over bellow-sealed alternatives saves an estimated
+     <strong>30-50%</strong> on valve CAPEX while maintaining radiation compliance. The relaxed leak
+     specification aligns with industry practice for warm-service helium circuits.</p>
+</div>
+
+<div class="section">
+  <h2>Links</h2>
+  <ul>
+    <li><a href="../executive_summary.html">Full Executive Summary Dashboard</a></li>
+    <li><a href="../STAKEHOLDER_PRESENTATION.html">Stakeholder Presentation</a></li>
+    <li><a href="../index_v4_0.html">Technical Master Navigator (40 slides)</a></li>
+  </ul>
+</div>
+
+<footer style="margin-top:3rem; padding-top:1rem; border-top:1px solid #e2e8f0;
+  color:#888; font-size:0.85rem; text-align:center;">
+  Generated 2026-05-14T15:09:57Z · QPLANT Cryogenic Dashboard v4.0.0
+</footer>
+</main>
+</body>
+</html>

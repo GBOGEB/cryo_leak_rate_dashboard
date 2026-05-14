@@ -15,10 +15,11 @@ class StrictHTMLParser(HTMLParser):
 def test_all_expected_files_exist():
     expected = [
         DOCS / "index.html",
-        DOCS / "index_v3_1.html",
+        DOCS / "index_v4_0.html",
         DOCS / "manifest.json",
         DOCS / "backlog.json",
         DOCS / "changelog.md",
+        DOCS / "NAVIGATOR.html",
         ROOT / "setup.sh",
         ROOT / "build.sh",
         ROOT / "validate.sh",
@@ -30,13 +31,13 @@ def test_all_expected_files_exist():
     charts = list((DOCS / "visualizations_v3").glob("*.html"))
     assert len(charts) >= 15
 
-    slides_text = (DOCS / "index_v3_1.html").read_text(encoding="utf-8", errors="ignore")
+    slides_text = (DOCS / "index_v4_0.html").read_text(encoding="utf-8", errors="ignore")
     slide_count = slides_text.count('class="slide')
     assert slide_count >= 40
 
 
 def test_html_renders():
-    html_files = [DOCS / "index.html", DOCS / "index_v3_1.html", DOCS / "dashboard.html"]
+    html_files = [DOCS / "index.html", DOCS / "index_v4_0.html", DOCS / "dashboard.html"]
     parser = StrictHTMLParser()
     for html_file in html_files:
         content = html_file.read_text(encoding="utf-8", errors="ignore")
