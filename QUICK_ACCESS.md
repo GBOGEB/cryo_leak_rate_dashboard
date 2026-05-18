@@ -1,69 +1,36 @@
-# Quick Access URLs
+# Quick Access — Confirmed URLs
 
-> **GitHub User:** GBOGEB  
-> **Repo:** cryo_leak_rate_dashboard  
-> **Version:** v4.0.0  
-> **Updated:** 2026-05-18
+## ✅ CONFIRMED: Repository URLs
 
-## Production (GitHub Pages)
+### Main Repository
+| Resource | URL | Status |
+|----------|-----|--------|
+| **GitHub** | https://github.com/GBOGEB/cryo_leak_rate_dashboard | ✅ LIVE |
+| Source code | https://github.com/GBOGEB/cryo_leak_rate_dashboard/tree/main/src | ✅ |
+| Documentation | https://github.com/GBOGEB/cryo_leak_rate_dashboard/tree/main/docs | ✅ |
+| Tests | https://github.com/GBOGEB/cryo_leak_rate_dashboard/tree/main/tests | ✅ |
+| Data | https://github.com/GBOGEB/cryo_leak_rate_dashboard/tree/main/data | ✅ |
+| Actions | https://github.com/GBOGEB/cryo_leak_rate_dashboard/actions | ⏳ Workflows pending |
+| Tags | https://github.com/GBOGEB/cryo_leak_rate_dashboard/tags | ⏳ No tags yet |
+| Releases | https://github.com/GBOGEB/cryo_leak_rate_dashboard/releases | ⏳ No releases yet |
+
+## ⏳ PENDING: GitHub Pages URLs (Configure Next)
+
+After configuring GitHub Pages (Settings → Pages → main branch → /docs):
 
 | Page | URL |
 |------|-----|
-| **Navigator** | https://gbogeb.github.io/cryo_leak_rate_dashboard/NAVIGATOR.html |
-| **Landing Page** | https://gbogeb.github.io/cryo_leak_rate_dashboard/index.html |
-| **40-Slide Master** | https://gbogeb.github.io/cryo_leak_rate_dashboard/index_v4_0.html |
-| **Executive Summary** | https://gbogeb.github.io/cryo_leak_rate_dashboard/executive_summary.html |
-| **Interactive Dashboard** | https://gbogeb.github.io/cryo_leak_rate_dashboard/dashboard.html |
-| **Stakeholder Pres.** | https://gbogeb.github.io/cryo_leak_rate_dashboard/STAKEHOLDER_PRESENTATION.html |
-| **RTM Traceability** | https://gbogeb.github.io/cryo_leak_rate_dashboard/rtm_traceability.html |
+| **Landing** | https://gbogeb.github.io/cryo_leak_rate_dashboard/ |
+| Navigator | https://gbogeb.github.io/cryo_leak_rate_dashboard/NAVIGATOR.html |
+| Technical (42 slides) | https://gbogeb.github.io/cryo_leak_rate_dashboard/index_v4_0.html |
+| Executive (10 slides) | https://gbogeb.github.io/cryo_leak_rate_dashboard/STAKEHOLDER_PRESENTATION.html |
+| Hero Pages | https://gbogeb.github.io/cryo_leak_rate_dashboard/heroes/ |
+| Visualizations | https://gbogeb.github.io/cryo_leak_rate_dashboard/visualizations_v3/ |
 
-### Hero Pages
-| Audience | URL |
-|----------|-----|
-| Executive (ROI) | https://gbogeb.github.io/cryo_leak_rate_dashboard/heroes/executive.html |
-| Technical (Specs) | https://gbogeb.github.io/cryo_leak_rate_dashboard/heroes/technical.html |
-| Compliance (Standards) | https://gbogeb.github.io/cryo_leak_rate_dashboard/heroes/compliance.html |
+## Related Repositories
 
-## Development (Local)
-
-```bash
-# Start server
-cd cryo_leak_rate_dashboard
-python -m http.server 8000 -d docs
-
-# Access
-open http://localhost:8000/NAVIGATOR.html
-```
-
-## CI/CD Status
-
-| Resource | URL |
-|----------|-----|
-| Actions | https://github.com/GBOGEB/cryo_leak_rate_dashboard/actions |
-| Latest Release | https://github.com/GBOGEB/cryo_leak_rate_dashboard/releases/latest |
-| Pages Deployment | Check Actions → "Deploy to GitHub Pages" |
-
-## Quick Commands
-
-```bash
-# Full build
-./build.sh
-
-# Quick validation
-./validate.sh --quick
-
-# Run tests
-pytest tests/ -v
-
-# Check links
-python scripts/validate_links.py --report
-
-# Compute hashes
-python scripts/compute_hashes.py docs/ > dist/hashes.json
-
-# Create release
-./scripts/release.sh v4.1.0
-
-# One-command deploy
-./scripts/deploy.sh
-```
+| Repository | URL | Status |
+|------------|-----|--------|
+| v3 Material Properties | https://github.com/GBOGEB/document-organization-system | ✅ Active |
+| Documentation Hub | https://github.com/GBOGEB/DOCX_RTM_Automation | ✅ PR #14 merged |
+| Analysis Notebooks | https://github.com/GBOGEB/ABACUS | ✅ PR #400 merged |
