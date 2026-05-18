@@ -179,13 +179,17 @@
 
 | Phase | Repo | Status | PRs |
 |-------|------|--------|-----|
-| 1 | cryo_leak_rate_dashboard | 🔴 Not started | 0/2 |
-| 2 | DOCX_RTM_Automation | 🔴 Not started | 0/1 |
-| 3 | ABACUS | 🔴 Not started | 0/1 |
+| 1 | cryo_leak_rate_dashboard | 🟡 Committed locally, **no remote** (user must create repo) | 0/2 |
+| 2 | DOCX_RTM_Automation | ✅ PR created | [PR #14](https://github.com/GBOGEB/DOCX_RTM_Automation/pull/14) |
+| 3 | ABACUS | ✅ PR created | [PR #400](https://github.com/GBOGEB/ABACUS/pull/400) |
 | 4 | CODEX | 🔴 Not started | 0/1 |
 | 5 | document-organization-system | 🔴 Not started | 0/1 |
 | 6 | Cross-repo integration | 🔴 Not started | 0/1 |
 
 **Total PRs planned:** 7
-**Total PRs created:** 0
-**Total PRs merged:** 0
+**Total PRs created:** 2
+**Total PRs merged:** 0 (awaiting user review)
+
+### Created PRs
+1. **DOCX_RTM_Automation** [PR #14](https://github.com/GBOGEB/DOCX_RTM_Automation/pull/14) — Contract specs, addenda, SoR matrix
+2. **ABACUS** [PR #400](https://github.com/GBOGEB/ABACUS/pull/400) — Warm compressor comparison (ALaT vs LKT)
