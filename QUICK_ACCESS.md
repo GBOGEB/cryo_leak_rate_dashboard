@@ -1,25 +1,28 @@
 # Quick Access URLs
 
-## Production (GitHub Pages)
+> **GitHub User:** GBOGEB  
+> **Repo:** cryo_leak_rate_dashboard  
+> **Version:** v4.0.0  
+> **Updated:** 2026-05-18
 
-> Replace `<owner>` with your GitHub username/org.
+## Production (GitHub Pages)
 
 | Page | URL |
 |------|-----|
-| **Navigator** | `https://<owner>.github.io/cryo_leak_rate_dashboard/NAVIGATOR.html` |
-| **Landing Page** | `https://<owner>.github.io/cryo_leak_rate_dashboard/index.html` |
-| **40-Slide Master** | `https://<owner>.github.io/cryo_leak_rate_dashboard/index_v4_0.html` |
-| **Executive Summary** | `https://<owner>.github.io/cryo_leak_rate_dashboard/executive_summary.html` |
-| **Interactive Dashboard** | `https://<owner>.github.io/cryo_leak_rate_dashboard/dashboard.html` |
-| **Stakeholder Pres.** | `https://<owner>.github.io/cryo_leak_rate_dashboard/STAKEHOLDER_PRESENTATION.html` |
-| **RTM Traceability** | `https://<owner>.github.io/cryo_leak_rate_dashboard/rtm_traceability.html` |
+| **Navigator** | https://gbogeb.github.io/cryo_leak_rate_dashboard/NAVIGATOR.html |
+| **Landing Page** | https://gbogeb.github.io/cryo_leak_rate_dashboard/index.html |
+| **40-Slide Master** | https://gbogeb.github.io/cryo_leak_rate_dashboard/index_v4_0.html |
+| **Executive Summary** | https://gbogeb.github.io/cryo_leak_rate_dashboard/executive_summary.html |
+| **Interactive Dashboard** | https://gbogeb.github.io/cryo_leak_rate_dashboard/dashboard.html |
+| **Stakeholder Pres.** | https://gbogeb.github.io/cryo_leak_rate_dashboard/STAKEHOLDER_PRESENTATION.html |
+| **RTM Traceability** | https://gbogeb.github.io/cryo_leak_rate_dashboard/rtm_traceability.html |
 
 ### Hero Pages
 | Audience | URL |
 |----------|-----|
-| Executive (ROI) | `.../heroes/executive.html` |
-| Technical (Specs) | `.../heroes/technical.html` |
-| Compliance (Standards) | `.../heroes/compliance.html` |
+| Executive (ROI) | https://gbogeb.github.io/cryo_leak_rate_dashboard/heroes/executive.html |
+| Technical (Specs) | https://gbogeb.github.io/cryo_leak_rate_dashboard/heroes/technical.html |
+| Compliance (Standards) | https://gbogeb.github.io/cryo_leak_rate_dashboard/heroes/compliance.html |
 
 ## Development (Local)
 
@@ -36,8 +39,8 @@ open http://localhost:8000/NAVIGATOR.html
 
 | Resource | URL |
 |----------|-----|
-| Actions | `https://github.com/<owner>/cryo_leak_rate_dashboard/actions` |
-| Latest Release | `https://github.com/<owner>/cryo_leak_rate_dashboard/releases/latest` |
+| Actions | https://github.com/GBOGEB/cryo_leak_rate_dashboard/actions |
+| Latest Release | https://github.com/GBOGEB/cryo_leak_rate_dashboard/releases/latest |
 | Pages Deployment | Check Actions → "Deploy to GitHub Pages" |
 
 ## Quick Commands
