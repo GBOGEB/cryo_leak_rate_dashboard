@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYRRHA QPLANT — Cryogenic Engineering Dashboard</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #3182ce;
+            --accent-hover: #2b6cb0;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --text: #2d3748;
+            --text-muted: #718096;
+            --success: #38a169;
+            --warning: #d69e2e;
+            --badge-current: #c6f6d5;
+            --badge-active: #bee3f8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+        }
+        header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        header .subtitle { font-size: 1.1rem; opacity: 0.85; font-weight: 400; }
+        header .org { font-size: 0.85rem; opacity: 0.6; margin-top: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        .container { max-width: 960px; margin: -2rem auto 3rem; padding: 0 1.5rem; }
+        .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 700px) { .cards { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: transform 0.15s, box-shadow 0.15s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+        .card .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+        .card.current .badge { background: var(--badge-current); color: #276749; }
+        .card.active .badge { background: var(--badge-active); color: #2b6cb0; }
+        .card h2 { font-size: 1.3rem; margin-bottom: 0.3rem; color: var(--primary); }
+        .card .version { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .card .desc { font-size: 0.92rem; line-height: 1.6; color: var(--text); margin-bottom: 1.25rem; }
+        .card ul { list-style: none; padding: 0; margin-bottom: 1.5rem; flex-grow: 1; }
+        .card ul li { padding: 0.35rem 0; font-size: 0.88rem; color: var(--text); }
+        .card ul li::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 0.6rem; vertical-align: middle; }
+        .card.current ul li::before { background: var(--success); }
+        .card.active ul li::before { background: var(--accent); }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: background 0.15s, transform 0.1s;
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn.primary { background: var(--accent); color: white; }
+        .btn.primary:hover { background: var(--accent-hover); }
+        .btn.secondary { background: var(--bg); color: var(--primary); border: 1px solid var(--card-border); }
+        .btn.secondary:hover { background: #edf2f7; }
+        .links {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--card-border);
+        }
+        .links a {
+            display: inline-block;
+            margin: 0.3rem 0.8rem;
+            font-size: 0.88rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .links a:hover { text-decoration: underline; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MYRRHA QPLANT — Cryogenic Engineering</h1>
+        <div class="subtitle">Helium Leak Rate Analysis &amp; Material Properties Dashboard</div>
+        <div class="org">SCK CEN · Nuclear Research Centre</div>
+    </header>
+
+    <div class="container">
+        <div class="cards">
+            <!-- v4 Card -->
+            <div class="card current">
+                <span class="badge">Current — v4.0.0</span>
+                <h2>Leak Rate Analysis</h2>
+                <div class="version">v4.0.0 · May 2026 · cryo_leak_rate_dashboard</div>
+                <p class="desc">
+                    Single Source of Truth (SSoT) for QPLANT helium leak rate analysis.
+                    Valve classification, system-level projections, and cost optimization.
+                </p>
+                <ul>
+                    <li>42-slide technical navigator</li>
+                    <li>10-slide stakeholder presentation</li>
+                    <li>3 HP Compressors (Kaeser FSD 575 SFC)</li>
+                    <li>14 barg HP discharge pressure</li>
+                    <li>27+ interactive Plotly visualizations</li>
+                    <li>RTM traceability &amp; compliance</li>
+                    <li>10 audience-specific hero pages</li>
+                    <li>Monte Carlo &amp; sensitivity analysis</li>
+                </ul>
+                <a href="NAVIGATOR.html" class="btn primary">Enter v4.0.0 Dashboard →</a>
+            </div>
+
+            <!-- v3 Card -->
+            <div class="card active">
+                <span class="badge">Active — v0.4.9</span>
+                <h2>Material Properties</h2>
+                <div class="version">v0.4.9 · May 2026 · document-organization-system</div>
+                <p class="desc">
+                    Interactive cryogenic material property evaluator.
+                    NIST-validated thermal conductivity, specific heat, and thermal contraction for 10 materials (1–300 K).
+                </p>
+                <ul>
+                    <li>10 cryogenic materials (steels, Cu, Al, Ti, composites)</li>
+                    <li>k(T), cp(T), Y(T) property evaluation</li>
+                    <li>4 integration methods (Trapezoid → Gauss-Legendre)</li>
+                    <li>Conduction heat load &amp; cooldown energy</li>
+                    <li>Layered wall thermal screening</li>
+                    <li>823-assertion NIST parity test suite</li>
+                    <li>CSV/JSON/PNG export with traceability</li>
+                    <li>Dark/light theme with comparison modes</li>
+                </ul>
+                <a href="https://gbogeb.github.io/document-organization-system/cryo_dashboard_v0_3_0/cryo_dashboard_v0_3_0/dashboard_modular.html" class="btn secondary">Open Material Properties →</a>
+            </div>
+        </div>
+
+        <div class="links">
+            <a href="index_v4_0.html">📊 42-Slide Navigator</a>
+            <a href="STAKEHOLDER_PRESENTATION.html">📋 Stakeholder Deck</a>
+            <a href="https://gbogeb.github.io/document-organization-system/cryo_dashboard_v0_3_0/cryo_dashboard_v0_3_0/index_slides.html">🔬 Material Properties Slides</a>
+            <a href="https://github.com/GBOGEB/cryo_leak_rate_dashboard">⚙️ v4 Source (GitHub)</a>
+            <a href="https://github.com/GBOGEB/document-organization-system">📁 v3 Source (GitHub)</a>
+        </div>
+    </div>
+
+    <footer>
+        MYRRHA QPLANT Cryogenic Engineering · SCK CEN · 2026<br>
+        v4 Leak Rate Analysis + v3 Material Properties — Separate repos, unified engineering workflow
+    </footer>
+</body>
+</html>
