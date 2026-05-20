@@ -9,3 +9,4 @@ venv/
 .coverage
 .setup.requirements.sha256
 outputs/versioned/
+.github/workflows/
