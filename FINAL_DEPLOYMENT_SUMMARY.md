@@ -6,10 +6,12 @@
 |-------|-------|
 | **Name** | MYRRHA QPLANT Cryogenic Helium Leak Rate Analysis Dashboard |
 | **Version** | v4.0.0 |
-| **Status** | 80% Complete (Pages configuration pending) |
+| **Status** | ✅ 100% Complete — Deployed & Live |
 | **Repository** | https://github.com/GBOGEB/cryo_leak_rate_dashboard |
-| **Commit** | 5634c0a |
-| **Date** | 2026-05-18 |
+| **Live Site** | https://gbogeb.github.io/cryo_leak_rate_dashboard/ |
+| **Release** | https://github.com/GBOGEB/cryo_leak_rate_dashboard/releases/tag/v4.0.0 |
+| **Commit** | b5f252d |
+| **Date** | 2026-05-31 |
 
 ---
 

@@ -111,7 +111,7 @@ echo "────────────────────────�
 echo "Testing hero pages (optional)..."
 echo ""
 
-for hero in executive engineer specialist; do
+for hero in executive technical compliance control cost design interface materials operations risk; do
     url="$SITE_URL/heroes/${hero}.html"
     ((TOTAL++))
     response=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url" 2>/dev/null)

@@ -1,24 +1,30 @@
 # MYRRHA QPLANT Cryogenic Helium Leak Rate Analysis Dashboard
 
 ![Version](https://img.shields.io/badge/version-4.0.0-blue)
-![Tests](https://img.shields.io/badge/tests-9%2F9%20passing-success)
-![Deployment](https://img.shields.io/badge/deployment-ready-orange)
+![Tests](https://img.shields.io/badge/tests-22%2F22%20passing-success)
+![Deployment](https://img.shields.io/badge/deployment-live-brightgreen)
+![Pages](https://img.shields.io/badge/GitHub%20Pages-live-brightgreen)
 
 > Single Source of Truth (SSoT) Implementation for MYRRHA QPLANT Cryogenic Engineering
 
 **Version**: v4.0.0  
-**Last Updated**: 2026-05-18  
-**Status**: ✅ Code Pushed · ⏳ Pages Pending
+**Last Updated**: 2026-05-31  
+**Status**: ✅ Deployed & Live on GitHub Pages
+
+## 🌐 Live Site
+
+**→ https://gbogeb.github.io/cryo_leak_rate_dashboard/**
 
 ## 🔗 Quick Links
 
 | Link | Description |
 |------|-------------|
-| 🌐 [Live Dashboard](https://gbogeb.github.io/cryo_leak_rate_dashboard/) | GitHub Pages site (after setup) |
-| 📊 [Navigator](docs/NAVIGATOR.html) | Central navigation hub |
-| 📈 [Technical (42 slides)](docs/index_v4_0.html) | Full technical deep-dive |
-| 📋 [Executive (10 slides)](docs/STAKEHOLDER_PRESENTATION.html) | Stakeholder summary |
-| 🚀 [Pages Setup Guide](GITHUB_PAGES_VISUAL_GUIDE.md) | Configure GitHub Pages |
+| 🌐 [Live Dashboard](https://gbogeb.github.io/cryo_leak_rate_dashboard/) | GitHub Pages site — **LIVE** |
+| 🧭 [Navigator](https://gbogeb.github.io/cryo_leak_rate_dashboard/NAVIGATOR.html) | Central navigation hub |
+| 📐 [Technical (42 slides)](https://gbogeb.github.io/cryo_leak_rate_dashboard/index_v4_0.html) | Full technical deep-dive |
+| 🎤 [Executive (10 slides)](https://gbogeb.github.io/cryo_leak_rate_dashboard/STAKEHOLDER_PRESENTATION.html) | Stakeholder summary |
+| 📊 [Dashboard](https://gbogeb.github.io/cryo_leak_rate_dashboard/dashboard.html) | Interactive dashboard |
+| 🏷️ [Release v4.0.0](https://github.com/GBOGEB/cryo_leak_rate_dashboard/releases/tag/v4.0.0) | Official release |
 
 ## Project Overview
 
