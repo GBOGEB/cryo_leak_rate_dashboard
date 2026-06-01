@@ -1,0 +1,54 @@
+# manifest/artifact-topology.yaml
+# Machine-readable federation topology + patch index for the
+# repository output contract. Generated/maintained alongside patches/*.patch.md.
+version: 1
+generated: "2026-06-01"
+
+federation:
+  custodian:
+    repo: GBOGEB/anthropic
+    repo_id: 1255640890
+    role: governance / custodian layer (policy, taxonomy, federation contracts)
+  members:
+    - repo: GBOGEB/cryo_leak_rate_dashboard
+      role: runtime / dashboard producer
+    - repo: GBOGEB/ABACUS
+      role: analysis notebooks & computational studies
+    - repo: GBOGEB/CODEX
+      role: reusable engineering libraries (MCB via MCP)
+    - repo: GBOGEB/DOCX_RTM_Automation
+      role: requirements source
+
+# Artifact classification taxonomy used by patch packages.
+artifact_classes:
+  - schema
+  - parser
+  - runtime
+  - policy
+  - taxonomy
+  - federation-contract
+  - governance
+
+# Movement policy enforced across the federation.
+move_rules:
+  automatic:
+    - depth-move          # relocate an artifact deeper in the same repo's tree
+  forbidden:
+    - cross-repo-semantic-move
+    - conceptual-reassignment
+    - history-splice       # never auto-splice README / ADR / CHANGELOG
+  frozen:
+    - README
+    - ADR
+    - CHANGELOG
+
+# Index of patch packages in this repository.
+patches:
+  - id: 2026-06-01_artifact-federation-refactor
+    path: patches/2026-06-01_artifact-federation-refactor.patch.md
+    version: v0.1.0
+    date: "2026-06-01"
+    type: [architecture, artifact-governance, handover]
+    status: proposed
+    baseline_ref: main
+    custodian_review: required
