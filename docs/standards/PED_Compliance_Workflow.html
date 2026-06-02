@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>PED Compliance Workflow — QPLANT Dashboard</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { font-family: Inter,Segoe UI,Arial,sans-serif; margin:0; background:#f5f7fb; color:#1f2a37; }
+    .container { max-width:960px; margin:0 auto; padding:24px; }
+    h1 { color:#12355b; border-bottom:2px solid #2a6fba; padding-bottom:8px; }
+    h2 { color:#225ea8; margin-top:28px; }
+    h3 { color:#334155; }
+    table { border-collapse:collapse; width:100%; margin:16px 0; }
+    th { background:#12355b; color:#fff; padding:10px 12px; text-align:left; font-size:.88rem; }
+    td { padding:8px 12px; border-bottom:1px solid #d9e0ea; font-size:.88rem; }
+    tr:hover td { background:#f0f4ff; }
+    pre { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:8px; overflow-x:auto; font-size:.85rem; }
+    code { background:#eef2ff; padding:1px 5px; border-radius:4px; font-size:.88rem; }
+    pre code { background:transparent; padding:0; }
+    .back { display:inline-block; margin:16px 0; padding:6px 16px; background:#225ea8; color:#fff; border-radius:6px; text-decoration:none; }
+    .back:hover { background:#12355b; }
+    blockquote { border-left:4px solid #2a6fba; margin:16px 0; padding:8px 16px; background:#f0f4ff; }
+    ul, ol { padding-left:24px; }
+    li { margin:4px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Dashboard</a>
+    <h1>PED 2014/68/EU — Compliance Workflow</h1>
+
+<h2>Step 1: Classification (Article 4)</h2>
+
+<p>Calculate PS × V for each vessel and PS × DN for each piping run.</p>
+
+<h3>Vessel Classification (Table 1 — Gases Group 2)</h3>
+
+<table>
+<tr><th>Category</th><th>Condition</th><th>Assessment</th></tr>
+<tr><td>SEP</td><td>PS×V ≤ 50 bar·L</td><td>Sound Engineering Practice</td></tr>
+<tr><td>I</td><td>50 < PS×V ≤ 200</td><td>Module A</td></tr>
+<tr><td>II</td><td>200 < PS×V ≤ 1000</td><td>Module A2/D1/E1</td></tr>
+<tr><td>III</td><td>1000 < PS×V ≤ 3000</td><td>Module B+E, B+C2, H</td></tr>
+<tr><td>IV</td><td>PS×V > 3000</td><td>Module B+D, B+F, G, H1</td></tr>
+</table>
+
+<h3>QPLANT Examples</h3>
+
+<table>
+<tr><th>Component</th><th>PS (bar)</th><th>V (L)</th><th>PS×V</th><th>Category</th></tr>
+<tr><td>WSH Cold Storage</td><td>20</td><td>5,000</td><td>100,000</td><td>IV</td></tr>
+<tr><td>Buffer Tank</td><td>12</td><td>500</td><td>6,000</td><td>IV</td></tr>
+<tr><td>Small Accumulator</td><td>5</td><td>50</td><td>250</td><td>II</td></tr>
+<tr><td>Instrument Line</td><td>12</td><td>2</td><td>24</td><td>SEP</td></tr>
+</table>
+
+<h2>Step 2: Module Selection (Annex III)</h2>
+
+<ul>
+<li>Category IV → B+D or H1 (Notified Body mandatory)</li>
+<li>Category III → B+E, B+C2, or H</li>
+<li>Category II → A2, D1, or E1</li>
+<li>Category I → Module A (self-certification)</li>
+</ul>
+
+<h2>Step 3: Notified Body Engagement</h2>
+
+<ol>
+<li>Select NB (e.g., TÜV NB-0051, Lloyd's NB-0062)</li>
+<li>Submit Technical File</li>
+<li>Design examination (Module B/B1)</li>
+<li>QA system audit (Module D/H1)</li>
+<li>Witness final inspection and testing</li>
+</ul>
+
+<h2>Step 4: Essential Safety Requirements (Annex I)</h2>
+
+<table>
+<tr><th>ESR</th><th>Title</th><th>QPLANT Relevance</th></tr>
+<tr><td>2.2.3</td><td>Means of examination</td><td>Manholes per RTM-060</td></tr>
+<tr><td>2.3</td><td>Allowable stress</td><td>SF ≥ 2.4 for austenitic SS</td></tr>
+<tr><td>2.8</td><td>Corrosion protection</td><td>EP per ASTM A967</td></tr>
+<tr><td>3.2</td><td>Permanent joining</td><td>Qualified WPS, NDE</td></tr>
+<tr><td>7.3</td><td>Marking</td><td>CE + NB number</td></tr>
+</table>
+
+<h2>Step 5: CE Marking</h2>
+
+<ol>
+<li>Affix CE mark + NB identification number</li>
+<li>Issue EU Declaration of Conformity</li>
+<li>Prepare and maintain Technical File for <strong>10 years</strong></li>
+<li>Affix identification plate with operating limits</li>
+</ul>
+
+<h2>Technical File Contents</h2>
+
+<ul>
+<li>Design calculations (pressure, stress, fatigue)</li>
+<li>Material certificates (EN 10204 3.1)</li>
+<li>Welding procedure specifications (WPS)</li>
+<li>NDE reports (RT, UT, PT, VT)</li>
+<li>Pressure test reports</li>
+<li>Risk assessment</li>
+<li>Operating instructions</li>
+</ul>
+
+  </div>
+</body>
+</html>

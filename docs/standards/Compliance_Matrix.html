@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Compliance Matrix — QPLANT Dashboard</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { font-family: Inter,Segoe UI,Arial,sans-serif; margin:0; background:#f5f7fb; color:#1f2a37; }
+    .container { max-width:960px; margin:0 auto; padding:24px; }
+    h1 { color:#12355b; border-bottom:2px solid #2a6fba; padding-bottom:8px; }
+    h2 { color:#225ea8; margin-top:28px; }
+    h3 { color:#334155; }
+    table { border-collapse:collapse; width:100%; margin:16px 0; }
+    th { background:#12355b; color:#fff; padding:10px 12px; text-align:left; font-size:.88rem; }
+    td { padding:8px 12px; border-bottom:1px solid #d9e0ea; font-size:.88rem; }
+    tr:hover td { background:#f0f4ff; }
+    pre { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:8px; overflow-x:auto; font-size:.85rem; }
+    code { background:#eef2ff; padding:1px 5px; border-radius:4px; font-size:.88rem; }
+    pre code { background:transparent; padding:0; }
+    .back { display:inline-block; margin:16px 0; padding:6px 16px; background:#225ea8; color:#fff; border-radius:6px; text-decoration:none; }
+    .back:hover { background:#12355b; }
+    blockquote { border-left:4px solid #2a6fba; margin:16px 0; padding:8px 16px; background:#f0f4ff; }
+    ul, ol { padding-left:24px; }
+    li { margin:4px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../index.html">← Back to Dashboard</a>
+    <h1>Compliance Matrix</h1>
+<p>Standards compliance traceability for QPLANT cryogenic systems.</p>
+<table><tr><th>rtm_id</th><th>requirement</th><th>standard</th><th>section</th><th>test_method</th><th>acceptance</th><th>deliverable</th><th>phase</th></tr>
+<tr><td>RTM-047</td><td>Max leak rate to ambient/INVAC: 1×10⁻⁹ mbar·l/s</td><td>EN 13185:2001</td><td>6.2</td><td>Helium mass spectrometer (vacuum method)</td><td><1×10⁻⁹ mbar·l/s per valve</td><td>Individual valve leak test certificate</td><td>FAT</td></tr>
+<tr><td>RTM-048</td><td>Max 1 Nm³/day system helium loss; system leak rate <1×10⁻⁵ mbar·l/s</td><td>EN 13185:2001</td><td>6.2 + 6.3</td><td>He mass spectrometer + pressure hold test</td><td><1×10⁻⁵ mbar·l/s total system</td><td>System leak test report</td><td>FAT/SAT</td></tr>
+<tr><td>RTM-050</td><td>Valve leak rates per Table 6 (seat: 1×10⁻⁴, ambient: 1×10⁻⁹)</td><td>ISO 5208 + EN 13185</td><td>ISO 5208 §6.3.2 + EN 13185 §6.2</td><td>Gas seat test (ISO 5208) + He MSLD (EN 13185)</td><td>Seat: <1×10⁻⁴ mbar·l/s; Ambient: <1×10⁻⁹ mbar·l/s</td><td>Individual valve certificates (seat + shell)</td><td>FAT</td></tr>
+<tr><td>RTM-053</td><td>Functional test under simulated LOOP conditions</td><td>EN 13185:2001</td><td>6.2 (sniffing method)</td><td>Pressure hold + He sniffing under thermal cycling</td><td>System functional per specification</td><td>SAT report with thermal cycle data</td><td>SAT</td></tr>
+<tr><td>RTM-060</td><td>Manholes/inspection ports for internal examination</td><td>PED 2014/68/EU</td><td>Annex I, ESR 2.2.3</td><td>Design review + dimensional inspection</td><td>Adequate access for internal examination per ESR</td><td>GA drawings showing manhole locations, dimensional report</td><td>Design</td></tr>
+<tr><td>RTM-061</td><td>Surface treatment — passivation per ASTM A967</td><td>ASTM A967</td><td>6.2 (citric acid) + 7.4 (ferroxyl test)</td><td>Ferroxyl test (free iron detection)</td><td>No blue staining within 15 seconds</td><td>Passivation certificate, ferroxyl test photos, material cert</td><td>Manufacture</td></tr>
+<tr><td>RTM-062</td><td>Piping design for cryogenic helium service</td><td>ASME B31.3 + EN 13480</td><td>B31.3 §302.2.2 + EN 13480 Part 3 §6.1</td><td>Design calculation review</td><td>Wall thickness ≥ calculated minimum + allowances</td><td>Pipe design calculation package</td><td>Design</td></tr>
+<tr><td>RTM-063</td><td>Storage vessels interconnected — pressure design</td><td>ASME B31.3 + PED 2014/68/EU</td><td>B31.3 §300 + PED Article 4</td><td>Hydrostatic test at 1.5× design pressure</td><td>No leakage, no permanent deformation at test pressure</td><td>Hydrostatic test report, PED classification</td><td>FAT</td></tr>
+<tr><td>RTM-065</td><td>Measuring points per Table 10 — sensor specifications</td><td>IEC 61326 (EMC) + ISO 15649</td><td>Sensor accuracy and EMC compliance</td><td>Sensor calibration and EMC type test</td><td>±0.5% accuracy, EMC compliant</td><td>Calibration certificates, EMC type test reports</td><td>SAT</td></tr>
+</table>
+  </div>
+</body>
+</html>

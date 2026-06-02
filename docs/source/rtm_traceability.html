@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>RTM Traceability Details — QPLANT Dashboard</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { font-family: Inter,Segoe UI,Arial,sans-serif; margin:0; background:#f5f7fb; color:#1f2a37; }
+    .container { max-width:960px; margin:0 auto; padding:24px; }
+    h1 { color:#12355b; border-bottom:2px solid #2a6fba; padding-bottom:8px; }
+    h2 { color:#225ea8; margin-top:28px; }
+    h3 { color:#334155; }
+    table { border-collapse:collapse; width:100%; margin:16px 0; }
+    th { background:#12355b; color:#fff; padding:10px 12px; text-align:left; font-size:.88rem; }
+    td { padding:8px 12px; border-bottom:1px solid #d9e0ea; font-size:.88rem; }
+    tr:hover td { background:#f0f4ff; }
+    pre { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:8px; overflow-x:auto; font-size:.85rem; }
+    code { background:#eef2ff; padding:1px 5px; border-radius:4px; font-size:.88rem; }
+    pre code { background:transparent; padding:0; }
+    .back { display:inline-block; margin:16px 0; padding:6px 16px; background:#225ea8; color:#fff; border-radius:6px; text-decoration:none; }
+    .back:hover { background:#12355b; }
+    blockquote { border-left:4px solid #2a6fba; margin:16px 0; padding:8px 16px; background:#f0f4ff; }
+    ul, ol { padding-left:24px; }
+    li { margin:4px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="../handover.html">← Back to Dashboard</a>
+    <h1>RTM Traceability</h1>
+
+<table>
+<tr><th>implemented_in</th><th>requirement_id</th><th>status</th><th>summary</th><th>verification</th></tr>
+<tr><td>src/calc_leak_rate.py</td><td>RTM-047</td><td>ACCEPT</td><td>Math conversion</td><td>tests/test_calc_leak_rate.py::test_dimensional_chain</td></tr>
+<tr><td>docs/calculations.html</td><td>RTM-048</td><td>ACCEPT</td><td>Temperature pressure sensitivity</td><td>tests/test_calc_leak_rate.py::test_temperature_pressure_scaling</td></tr>
+<tr><td>data/scenarios.json</td><td>RTM-049</td><td>ACCEPT</td><td>Fleet scenarios</td><td>tests/test_calc_leak_rate.py::test_baseline_scenario_total_range</td></tr>
+<tr><td>docs/dashboard.html</td><td>RTM-050</td><td>ACCEPT</td><td>Dashboard visuals</td><td>tests/test_build_outputs.py::test_required_outputs_exist</td></tr>
+<tr><td>docs/dashboard.html</td><td>RTM-051</td><td>ACCEPT</td><td>Reliability strategy</td><td>manual review</td></tr>
+<tr><td>docs/executive_summary.html</td><td>RTM-052</td><td>ACCEPT</td><td>Cost/benefit</td><td>manual review</td></tr>
+<tr><td>docs/handover.html</td><td>RTM-053</td><td>ACCEPT</td><td>Handover package</td><td>tests/test_build_outputs.py::test_manifest_has_hashes</td></tr>
+<tr><td>src/calc_leak_rate.py</td><td>RTM-054</td><td>ACCEPT</td><td>Math conversion</td><td>tests/test_calc_leak_rate.py::test_dimensional_chain</td></tr>
+<tr><td>docs/calculations.html</td><td>RTM-055</td><td>REVIEW</td><td>Temperature pressure sensitivity</td><td>tests/test_calc_leak_rate.py::test_temperature_pressure_scaling</td></tr>
+<tr><td>data/scenarios.json</td><td>RTM-056</td><td>ACCEPT</td><td>Fleet scenarios</td><td>tests/test_calc_leak_rate.py::test_baseline_scenario_total_range</td></tr>
+<tr><td>docs/dashboard.html</td><td>RTM-057</td><td>ACCEPT</td><td>Dashboard visuals</td><td>tests/test_build_outputs.py::test_required_outputs_exist</td></tr>
+<tr><td>docs/dashboard.html</td><td>RTM-058</td><td>ACCEPT</td><td>Reliability strategy</td><td>manual review</td></tr>
+<tr><td>docs/executive_summary.html</td><td>RTM-059</td><td>ACCEPT</td><td>Cost/benefit</td><td>manual review</td></tr>
+<tr><td>docs/handover.html</td><td>RTM-060</td><td>REVIEW</td><td>Handover package</td><td>tests/test_build_outputs.py::test_manifest_has_hashes</td></tr>
+<tr><td>src/calc_leak_rate.py</td><td>RTM-061</td><td>ACCEPT</td><td>Math conversion</td><td>tests/test_calc_leak_rate.py::test_dimensional_chain</td></tr>
+<tr><td>docs/calculations.html</td><td>RTM-062</td><td>ACCEPT</td><td>Temperature pressure sensitivity</td><td>tests/test_calc_leak_rate.py::test_temperature_pressure_scaling</td></tr>
+<tr><td>data/scenarios.json</td><td>RTM-063</td><td>ACCEPT</td><td>Fleet scenarios</td><td>tests/test_calc_leak_rate.py::test_baseline_scenario_total_range</td></tr>
+<tr><td>docs/dashboard.html</td><td>RTM-064</td><td>ACCEPT</td><td>Dashboard visuals</td><td>tests/test_build_outputs.py::test_required_outputs_exist</td></tr>
+<tr><td>docs/dashboard.html</td><td>RTM-065</td><td>ACCEPT</td><td>Reliability strategy</td><td>manual review</td></tr>
+<tr><td>docs/executive_summary.html</td><td>RTM-066</td><td>REVIEW</td><td>Cost/benefit</td><td>manual review</td></tr>
+<tr><td>docs/handover.html</td><td>RTM-067</td><td>ACCEPT</td><td>Handover package</td><td>tests/test_build_outputs.py::test_manifest_has_hashes</td></tr>
+</table>
+
+<h2>DMAIC View Note</h2>
+<ul>
+<li>DEFINE: requirement-to-implementation map.</li>
+<li>MEASURE: all RTM rows captured with verification hooks.</li>
+<li>ANALYZE: detects review/risk rows quickly.</li>
+<li>IMPROVE: supports audit readiness.</li>
+<li>CONTROL: generated deterministically from build script.</li>
+</ul>
+
+  </div>
+</body>
+</html>

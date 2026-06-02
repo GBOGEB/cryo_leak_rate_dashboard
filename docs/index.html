@@ -3,96 +3,198 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cryo Dashboard Handover Hub</title>
+  <title>Cryo Dashboard Handover Hub — QPLANT v4.0.0</title>
   <style>
-    :root { --bg:#f5f7fb; --card:#fff; --line:#d9e0ea; --text:#1f2a37; --accent:#225ea8; }
+    :root { --bg:#f5f7fb; --card:#fff; --line:#d9e0ea; --text:#1f2a37; --accent:#225ea8; --ok:#166534; --okbg:#d9f7e5; }
+    * { box-sizing: border-box; }
     body { margin:0; font-family:Inter,Segoe UI,Arial,sans-serif; background:var(--bg); color:var(--text); }
     header { padding:20px 24px; background:linear-gradient(120deg,#12355b,#2a6fba); color:#fff; }
     header h1 { margin:0; font-size:1.35rem; }
-    header p { margin:.35rem 0 0; opacity:.95; }
-    main { padding:24px; }
+    header p { margin:.35rem 0 0; opacity:.95; font-size:.92rem; }
+    nav.top { background:#0f2a4a; padding:8px 24px; display:flex; gap:16px; flex-wrap:wrap; }
+    nav.top a { color:#93c5fd; text-decoration:none; font-size:.85rem; font-weight:600; }
+    nav.top a:hover { color:#fff; text-decoration:underline; }
+    main { padding:24px; max-width:1100px; margin:0 auto; }
     .grid { display:grid; grid-template-columns:repeat(2,minmax(280px,1fr)); gap:16px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; box-shadow:0 2px 6px rgba(0,0,0,.04); }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; box-shadow:0 2px 6px rgba(0,0,0,.04); transition:box-shadow .2s; }
+    .card:hover { box-shadow:0 4px 16px rgba(0,0,0,.08); }
     .card-head { display:flex; justify-content:space-between; gap:8px; align-items:start; }
     .card h2 { margin:0 0 8px; font-size:1.02rem; }
     .badge { background:#e7f0ff; color:#0f4085; border-radius:999px; padding:2px 9px; font-size:.74rem; font-weight:700; }
     .pill { display:inline-block; border-radius:999px; padding:3px 10px; font-size:.76rem; font-weight:700; margin:6px 0 10px; }
-    .ok { background:#d9f7e5; color:#166534; }
-    .progress { background:#fff4d6; color:#92400e; }
-    .pending { background:#eceff4; color:#475569; }
+    .ok { background:var(--okbg); color:var(--ok); }
     ul { margin:0; padding-left:18px; }
     li { margin:6px 0; }
     a { color:var(--accent); text-decoration:none; }
     a:hover { text-decoration:underline; }
     .updated { margin-top:10px; font-size:.8rem; color:#556; }
-    .download { margin-top:16px; background:#fff; border:1px dashed #aac; padding:12px; border-radius:10px; }
-    footer { margin-top:16px; font-size:.83rem; color:#334; }
-    code { background:#eef2ff; padding:1px 5px; border-radius:4px; }
+    .download { margin-top:16px; background:#fff; border:1px dashed #aac; padding:12px 16px; border-radius:10px; }
+    .section-title { margin:24px 0 12px; font-size:1.1rem; color:#12355b; border-bottom:2px solid #d9e0ea; padding-bottom:6px; }
+    footer { margin-top:20px; font-size:.83rem; color:#334; padding:12px 0; border-top:1px solid #d9e0ea; }
+    code { background:#eef2ff; padding:1px 5px; border-radius:4px; font-size:.88rem; }
+    .hero-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; margin-top:8px; }
+    .hero-link { display:block; padding:8px 12px; background:#f0f4ff; border:1px solid #d9e0ea; border-radius:8px; text-align:center; font-size:.82rem; font-weight:600; }
+    .hero-link:hover { background:#dbeafe; text-decoration:none; }
     @media (max-width: 900px) { .grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <header>
-    <h1>Cryo Dashboard Handover Hub</h1>
-    <p>Self-documenting delivery index for recursive/idempotent operations (v4.0.0)</p>
+    <h1>🔬 QPLANT Cryogenic Dashboard — Handover Hub</h1>
+    <p>Single Source of Truth (SSoT) for helium leak rate analysis · v4.0.0 · 3 HP compressors · 14 barg</p>
   </header>
+
+  <nav class="top">
+    <a href="NAVIGATOR.html">🧭 Navigator</a>
+    <a href="index_v4_0.html">📐 Technical (42 slides)</a>
+    <a href="STAKEHOLDER_PRESENTATION.html">🎤 Executive (10 slides)</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="calculations.html">🔢 Calculations</a>
+    <a href="rtm_traceability.html">📋 RTM</a>
+    <a href="handover.html">📦 Handover</a>
+    <a href="VERSION_SELECTOR.html">🔀 Versions</a>
+  </nav>
+
   <main>
+    <!-- Phase Cards -->
+    <h3 class="section-title">📋 Project Phases</h3>
     <div class="grid">
-            <section class="card">
-              <div class="card-head">
-                <h2>Phase 1: Requirements & Compliance</h2>
-                <span class="badge">v4.0.0</span>
-              </div>
-              <span class="pill ok">Verified</span>
-              <ul><li><a href="../data/standards_compliance.json">Standards compliance database</a></li><li><a href="standards/Compliance_Matrix.html">RTM traceability matrix</a></li><li><a href="standards/FAT_SAT_Procedures.md">FAT/SAT procedures</a></li></ul>
-              <div class="updated">Last updated: 2026-05-12T09:23:12.195111+00:00</div>
-            </section>
-            
 
-            <section class="card">
-              <div class="card-head">
-                <h2>Phase 2: Development</h2>
-                <span class="badge">v4.0.0</span>
-              </div>
-              <span class="pill ok">Verified</span>
-              <ul><li><a href="../src/">Source modules</a></li><li><a href="../src/liquid_he_loss.py">Liquid He calculator</a></li><li><a href="../src/compressor_reliability.py">Compressor reliability</a></li></ul>
-              <div class="updated">Last updated: 2026-05-12T09:23:12.195111+00:00</div>
-            </section>
-            
+      <section class="card">
+        <div class="card-head">
+          <h2>Phase 1: Requirements &amp; Compliance</h2>
+          <span class="badge">v4.0.0</span>
+        </div>
+        <span class="pill ok">Verified</span>
+        <ul>
+          <li><a href="standards/Compliance_Matrix.html">RTM traceability matrix</a></li>
+          <li><a href="standards/FAT_SAT_Procedures.html">FAT/SAT procedures</a></li>
+          <li><a href="standards/PED_Compliance_Workflow.html">PED compliance workflow</a></li>
+          <li><a href="rtm_traceability.html">Full RTM traceability</a></li>
+          <li><a href="triage_compliance.html">Triage compliance report</a></li>
+        </ul>
+        <div class="updated">Last updated: 2026-06-02</div>
+      </section>
 
-            <section class="card">
-              <div class="card-head">
-                <h2>Phase 3: Analysis & Outputs</h2>
-                <span class="badge">v4.0.0</span>
-              </div>
-              <span class="pill ok">Verified</span>
-              <ul><li><a href="index_v4_0.html">40-slide navigator</a></li><li><a href="visualizations_v3/">15+ Plotly charts</a></li><li><a href="statistical/">Statistical reports</a></li></ul>
-              <div class="updated">Last updated: 2026-05-12T09:23:12.195111+00:00</div>
-            </section>
-            
+      <section class="card">
+        <div class="card-head">
+          <h2>Phase 2: Development</h2>
+          <span class="badge">v4.0.0</span>
+        </div>
+        <span class="pill ok">Verified</span>
+        <ul>
+          <li><a href="calculations.html">Core calculations engine</a></li>
+          <li><a href="liquid_he/Liquid_Operations_Guide.html">Liquid He calculator</a></li>
+          <li><a href="compressors/HP_Redundancy_Analysis.html">Compressor redundancy analysis</a></li>
+          <li><a href="compressors/WCS_HP_Protection.html">WCS HP protection</a></li>
+          <li><a href="source/developer_notes.html">Developer notes</a></li>
+        </ul>
+        <div class="updated">Last updated: 2026-06-02</div>
+      </section>
 
-            <section class="card">
-              <div class="card-head">
-                <h2>Phase 4: QA & Deployment</h2>
-                <span class="badge">v4.0.0</span>
-              </div>
-              <span class="pill ok">Verified (18/18 tests pass)</span>
-              <ul><li><a href="../tests/">Test suite</a></li><li><a href="../dist/test-report.html">Test report</a></li><li><a href="../dist/handover.zip">Package bundle</a></li></ul>
-              <div class="updated">Last updated: 2026-05-12T09:23:12.195111+00:00</div>
-            </section>
-            </div>
+      <section class="card">
+        <div class="card-head">
+          <h2>Phase 3: Analysis &amp; Outputs</h2>
+          <span class="badge">v4.0.0</span>
+        </div>
+        <span class="pill ok">Verified</span>
+        <ul>
+          <li><a href="index_v4_0.html">42-slide technical navigator</a></li>
+          <li><a href="STAKEHOLDER_PRESENTATION.html">10-slide executive presentation</a></li>
+          <li><a href="plots/plot1_leak_vs_loss.html">Core plots (5 interactive)</a></li>
+          <li><a href="visualizations_v3/">27 Plotly charts (v3 suite)</a></li>
+          <li><a href="visualizations/">18 enhanced visualizations</a></li>
+          <li><a href="statistical/index.html">Statistical reports</a></li>
+          <li><a href="data_exports/full_conversion_grid.csv">Data exports</a></li>
+        </ul>
+        <div class="updated">Last updated: 2026-06-02</div>
+      </section>
 
+      <section class="card">
+        <div class="card-head">
+          <h2>Phase 4: QA &amp; Deployment</h2>
+          <span class="badge">v4.0.0</span>
+        </div>
+        <span class="pill ok">Verified (22/22 tests pass)</span>
+        <ul>
+          <li><a href="test-report.html">Test report</a></li>
+          <li><a href="handover.html">Handover documentation</a></li>
+          <li><a href="handover.zip">Package bundle (handover.zip)</a></li>
+          <li><a href="source/assumptions.html">Engineering assumptions</a></li>
+          <li><a href="source/rtm_traceability.html">RTM traceability details</a></li>
+        </ul>
+        <div class="updated">Last updated: 2026-06-02</div>
+      </section>
+
+    </div>
+
+    <!-- Interactive Plots -->
+    <h3 class="section-title">📊 Interactive Plots (5 core)</h3>
+    <div class="grid">
+      <section class="card">
+        <h2>Core Engineering Plots</h2>
+        <ul>
+          <li><a href="plots/plot1_leak_vs_loss.html">Plot 1: Leak Rate vs Helium Loss</a></li>
+          <li><a href="plots/plot2_temp_pressure_effects.html">Plot 2: Temperature &amp; Pressure Effects</a></li>
+          <li><a href="plots/plot3_cost_vs_leaktightness.html">Plot 3: Cost vs Leak-Tightness</a></li>
+          <li><a href="plots/plot4_fleet_sensitivity.html">Plot 4: Fleet Sensitivity Analysis</a></li>
+          <li><a href="plots/plot5_reliability.html">Plot 5: Reliability &amp; Spares</a></li>
+        </ul>
+      </section>
+      <section class="card">
+        <h2>Advanced Visualizations</h2>
+        <ul>
+          <li><a href="visualizations_v3/boiloff_vs_leakrate.html">Boil-off vs Leak Rate</a></li>
+          <li><a href="visualizations_v3/chart_choked_flow.html">Choked Flow Analysis</a></li>
+          <li><a href="visualizations_v3/vfd_energy_savings.html">VFD Energy Savings</a></li>
+          <li><a href="visualizations_v3/compressor_availability_comparison.html">Compressor Availability</a></li>
+          <li><a href="visualizations_v3/">→ All 22 v3 charts</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Hero Pages -->
+    <h3 class="section-title">🎯 Audience-Specific Landing Pages</h3>
+    <div class="hero-grid">
+      <a class="hero-link" href="heroes/executive.html">👔 Executive</a>
+      <a class="hero-link" href="heroes/technical.html">🔧 Technical</a>
+      <a class="hero-link" href="heroes/compliance.html">✅ Compliance</a>
+      <a class="hero-link" href="heroes/cost.html">💰 Cost</a>
+      <a class="hero-link" href="heroes/risk.html">⚠️ Risk</a>
+      <a class="hero-link" href="heroes/design.html">📐 Design</a>
+      <a class="hero-link" href="heroes/materials.html">🧪 Materials</a>
+      <a class="hero-link" href="heroes/operations.html">⚙️ Operations</a>
+      <a class="hero-link" href="heroes/control.html">🎛️ Control</a>
+      <a class="hero-link" href="heroes/interface.html">🔗 Interface</a>
+    </div>
+
+    <!-- Downloads -->
+    <h3 class="section-title">📥 Downloads</h3>
     <section class="download">
-      <h3>Downloads</h3>
       <ul>
-        <li><a href="../dist/handover.zip">handover.zip</a></li>
-        <li><a href="../dist/test-report.html">test-report.html</a></li>
+        <li><a href="handover.zip">📦 handover.zip</a> — Complete project bundle</li>
+        <li><a href="test-report.html">🧪 test-report.html</a> — Test execution report</li>
+        <li><a href="handover.pdf">📄 handover.pdf</a> — Handover document (PDF)</li>
+        <li><a href="presentation.pdf">📄 presentation.pdf</a> — Presentation (PDF)</li>
       </ul>
-      <p><strong>To Rebuild:</strong> run <code>./setup.sh</code></p>
+      <p><strong>To Rebuild Locally:</strong> <code>git clone https://github.com/GBOGEB/cryo_leak_rate_dashboard.git && cd cryo_leak_rate_dashboard && ./setup.sh</code></p>
+    </section>
+
+    <!-- Archive -->
+    <h3 class="section-title">🗄️ Version Archive</h3>
+    <section class="card">
+      <ul>
+        <li><a href="archive/index_v3_1_0_ARCHIVE.html">v3.1.0 Archive</a></li>
+        <li><a href="archive/index_v3_0_0_ARCHIVE.html">v3.0.0 Archive</a></li>
+        <li><a href="archive/presentation_v2_5_0_ARCHIVE.html">v2.5.0 Presentation Archive</a></li>
+        <li><a href="VERSION_SELECTOR.html">Version Selector</a></li>
+      </ul>
     </section>
 
     <footer>
-      Build timestamp: 2026-05-12T09:23:12.195111+00:00 · Git commit: fac7ef0 · Build status: verified · Test coverage: 6%
+      <strong>MYRRHA QPLANT</strong> · v4.0.0 · Single Source of Truth · 3 HP Compressors · 14 barg · 1050 mbar<br/>
+      Build: 2026-06-02 · Tests: 22/22 passing · <a href="https://github.com/GBOGEB/cryo_leak_rate_dashboard">GitHub Repository</a> ·
+      <a href="https://github.com/GBOGEB/cryo_leak_rate_dashboard/releases/tag/v4.0.0">Release v4.0.0</a>
     </footer>
   </main>
 </body>
