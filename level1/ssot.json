@@ -1,0 +1,15 @@
+{
+  "schema": "gbogeb-level1-ssot/v1",
+  "repo": "GBOGEB/cryo_leak_rate_dashboard",
+  "role": "INDEPENDENT_LEAK_PHYSICS_EVIDENCE_WORKER",
+  "default_branch": "main",
+  "existing_runtime_refs": ["data/config.yaml", "src/build_dashboard.py", "setup.sh", "build.sh", "validate.sh", "docs/manifest.json"],
+  "inputs": ["leak-rate engineering parameters", "helium state assumptions", "validation requests"],
+  "outputs": ["independent leak-rate results", "dashboard artifacts", "build/validation receipts"],
+  "authority": {
+    "may": ["execute independent leak calculations", "validate deterministic artifacts", "emit exact-SHA/source/output receipts"],
+    "must_not": ["reclassify derived physics as bidder evidence", "promote contractual compliance", "override child authority"]
+  },
+  "federation_targets": ["GBOGEB/pipeline-automation-hub", "GBOGEB/CODEX", "GBOGEB/ABACUS", "GBOGEB/cryoplant-project"],
+  "status": "PC1_CONTROL_PLANE"
+}
