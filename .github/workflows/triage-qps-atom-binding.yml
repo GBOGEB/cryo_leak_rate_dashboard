@@ -1,0 +1,42 @@
+name: TRIAGE QPS leak atom binding
+on:
+  pull_request:
+    paths:
+      - 'scripts/triage_leak_receipt.py'
+      - 'scripts/bind_leak_receipt_to_qps_atom.py'
+      - '.github/workflows/triage-qps-atom-binding.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  binding:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install focused runtime dependency
+        run: python -m pip install pandas
+      - name: Create TEST-only governed-shape atom
+        run: |
+          cat > atom.json <<'JSON'
+          {"atom_id":"TEST-QPS-LEAK-001","source_ref":"TEST_ONLY","source_sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","authority_class":"SSOT_BOUND_ENGINEERING_ATOM","leak_mbar_l_s":1e-7,"temperature_k":293.15,"pressure_bar_abs":1.0,"reference_pressure_bar":1.0}
+          JSON
+      - name: Produce satellite receipt
+        run: python scripts/triage_leak_receipt.py --leak 1e-7 --temperature-k 293.15 --pressure-bar-abs 1.0 --reference-pressure-bar 1.0 > receipt.json
+      - name: Bind exact conditions
+        run: python scripts/bind_leak_receipt_to_qps_atom.py --atom atom.json --receipt receipt.json --output binding.json
+      - name: Validate no authority/compliance leakage
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('binding.json'))
+          assert d['conditions_match'] is True
+          assert d['authority_effect']=='NONE'
+          assert d['compliance_credit'] is False
+          assert d['release_credit'] is False
+          print('PASS',d['qps_atom_id'])
+          PY
