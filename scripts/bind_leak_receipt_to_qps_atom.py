@@ -5,8 +5,10 @@ This is evidence binding, not compliance closure. The QPS atom owns the conditio
 source identity; the satellite receipt must match those conditions exactly.
 """
 from __future__ import annotations
-import argparse, hashlib, json
+import argparse, hashlib, json, re
 from pathlib import Path
+
+SHA256 = re.compile(r"^[a-f0-9]{64}$")
 
 
 def sha(path: Path) -> str:
@@ -28,12 +30,17 @@ def main() -> int:
         raise SystemExit(f'FAIL missing QPS atom fields: {missing}')
     if atom.get('authority_class') not in {'CANONICAL_SOURCE_AUTHORITY','SSOT_BOUND_ENGINEERING_ATOM'}:
         raise SystemExit('FAIL QPS atom is not current governed authority-bound input')
-    if len(str(atom['source_sha256'])) != 64:
-        raise SystemExit('FAIL QPS atom source_sha256 required')
+    if not SHA256.fullmatch(str(atom['source_sha256'])):
+        raise SystemExit('FAIL QPS atom source_sha256 must be lowercase 64-hex')
+
+    required_receipt=['leak_mbar_l_s','temperature_k','pressure_bar_abs','reference_pressure_bar','interpretation']
+    missing_receipt=[k for k in required_receipt if k not in receipt]
+    if missing_receipt:
+        raise SystemExit(f'FAIL missing satellite receipt fields: {missing_receipt}')
 
     pairs=[
-        ('leak_mbar_l_s','Q_input_mbar_L_s'),
-        ('temperature_k','T_K'),
+        ('leak_mbar_l_s','leak_mbar_l_s'),
+        ('temperature_k','temperature_k'),
         ('pressure_bar_abs','pressure_bar_abs'),
         ('reference_pressure_bar','reference_pressure_bar'),
     ]
@@ -49,7 +56,7 @@ def main() -> int:
         raise SystemExit(f"FAIL interpretation mismatch: expected {expected}, got {receipt.get('interpretation')}")
 
     out={
-        'schema':'qps-leak-evidence-binding/v0.1',
+        'schema':'qps-leak-evidence-binding/v0.2',
         'classification':'BOUND_ENGINEERING_EVIDENCE_NOT_COMPLIANCE',
         'qps_atom_id':atom['atom_id'],
         'qps_source_ref':atom['source_ref'],

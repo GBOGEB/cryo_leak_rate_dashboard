@@ -12,6 +12,8 @@ permissions:
 jobs:
   receipt:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,6 +31,8 @@ jobs:
           r=json.load(open('reference.json')); s=json.load(open('sensitivity.json'))
           assert r['interpretation']=='REFERENCE_THROUGHPUT_CONVERSION'
           assert s['interpretation']=='COMPARATIVE_PRESSURE_SENSITIVITY'
+          assert r['pressure_bar_abs']==1.0 and s['pressure_bar_abs']==15.0
+          assert r['reference_pressure_bar']==1.0 and s['reference_pressure_bar']==1.0
           assert r['release_credit'] is False and s['release_credit'] is False
           print('PASS leak evidence boundary')
           PY
