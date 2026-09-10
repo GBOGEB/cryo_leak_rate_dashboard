@@ -1,0 +1,49 @@
+schema: gbogeb-federation-activity/1.0.0
+as_of: '2026-09-10T06:47:00+02:00'
+repo: GBOGEB/cryo_leak_rate_dashboard
+classification: SATELLITE_ACTIVE
+federation_role: INDEPENDENT_LEAK_PHYSICS_AND_EVIDENCE_SURFACE
+last_pr: 5
+last_wave: MIP_ROLLOUT
+open_pr_count_observed: 1
+recent_activity:
+  - {pr: 2, state: MERGED_OR_RECENT, role: qps_leak_evidence_binding}
+  - {pr: 3, state: MERGED_OR_RECENT, role: qps_leak_evidence_binding}
+  - {pr: 4, state: MERGED_OR_RECENT, role: qps_leak_evidence_binding}
+  - {pr: 5, state: OPEN, role: mip_rollout_and_federation_index}
+mip_state:
+  modernize: ACTIVE
+  innovate: METRIC_HISTORY_CANDIDATE
+  perpetuate: WITHHELD
+three_p_capability:
+  P1_source_atom: true
+  P2_integration_graph: partial
+  P3_evidence_control: true
+runtime_proof:
+  state: WITHHELD
+  required: build/deploy validation with exact commit and output hashes
+source_authority:
+  state: INDEPENDENT_EVIDENCE_ONLY
+  may_override_qps_child: false
+produces_receipts:
+  - leak_physics_receipt
+  - build_artifact_hash_receipt
+consumes_receipts:
+  - qps_boundary_definition
+  - accepted_source_locator
+current_blocker: executable build/deploy proof and exact-SHA output manifest
+next_victory: >-
+  Run validation/build from the exact PR head, hash the outward dashboard artifacts,
+  bind the source boundary and emit a deterministic evidence receipt suitable for
+  child re-entry without promoting compliance.
+federation_dependencies:
+  upstream:
+    - GBOGEB/cryoplant-project
+  downstream:
+    - GBOGEB/ABACUS
+    - GBOGEB/pipeline-automation-hub
+controls:
+  authority_effect: NONE
+  engineering_credit: false
+  compliance_credit: false
+  release_credit: false
