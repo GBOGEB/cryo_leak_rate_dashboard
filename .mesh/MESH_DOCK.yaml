@@ -1,0 +1,14 @@
+schema: gbogeb-mesh-dock/1.0
+repo: GBOGEB/cryo_leak_rate_dashboard
+node_id: repo.leak_dashboard
+ring: R1_ACTIVE_EXECUTION
+role: INDEPENDENT_LEAK_PHYSICS_EVIDENCE_WORKER
+local_ssot: {primary: level1/ssot.json, domain: data/config.yaml}
+global_directory: {repo: GBOGEB/CODEX, census: federation/mesh/GLOBAL_HIVE_CENSUS_v1.yaml, action_taxonomy: federation/mesh/GLOBAL_ACTION_TAXONOMY_v1.yaml}
+authority:
+  may: [execute_independent_leak_calculations, validate_deterministic_artifacts, emit_exact_SHA_receipts]
+  must_not: [reclassify_derived_physics_as_bidder_evidence, promote_contractual_compliance, override_child_authority]
+inputs: [leak_rate_parameters, helium_state_assumptions, validation_requests]
+outputs: [independent_leak_results, dashboard_artifacts, build_validation_receipts]
+action_classes: [PB, QH, FE, RR, BG]
+first_use_case: independently reproduce helium leak-rate evidence before child-side acceptance
