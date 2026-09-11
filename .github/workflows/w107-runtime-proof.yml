@@ -1,0 +1,70 @@
+name: W107 Leak Evidence Runtime Proof
+
+on:
+  pull_request:
+    paths:
+      - "federation/w107/**"
+      - ".github/workflows/w107-runtime-proof.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head-evidence-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact source head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install minimal engine dependency
+        run: python -m pip install --disable-pip-version-check pandas
+      - name: Build deterministic leak evidence twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_SHA="${{ github.event.pull_request.head.sha || github.sha }}"
+          ACTUAL_SHA="$(git rev-parse HEAD)"
+          test "$SOURCE_SHA" = "$ACTUAL_SHA"
+          mkdir -p /tmp/w107
+          PYTHONPATH=. python - <<'PY'
+          from src.calc_leak_rate import build_conversion_grid
+          for name in ('a','b'):
+              df=build_conversion_grid([1e-8,1e-5],[4.5,300.0],[1.0,5.0])
+              assert len(df)==8
+              assert (df['mass_flow_g_s']>0).all()
+              df.to_csv(f'/tmp/w107/leak-evidence-{name}.csv',index=False,float_format='%.16g',lineterminator='\n')
+          PY
+          cmp /tmp/w107/leak-evidence-a.csv /tmp/w107/leak-evidence-b.csv
+          OUT_SHA="$(sha256sum /tmp/w107/leak-evidence-a.csv | awk '{print $1}')"
+          ROWS="$(($(wc -l < /tmp/w107/leak-evidence-a.csv)-1))"
+          ENGINE_SHA="$(sha256sum src/calc_leak_rate.py | awk '{print $1}')"
+          python - <<PY
+          import json
+          payload={
+            'schema_version':'w107-satellite-runtime-proof/0.1',
+            'satellite':'GBOGEB/cryo_leak_rate_dashboard',
+            'source_sha':'$SOURCE_SHA','actual_sha':'$ACTUAL_SHA',
+            'capability':'independent_leak_physics_evidence_worker',
+            'engine_sha256':'$ENGINE_SHA','evidence_rows':int('$ROWS'),
+            'output_sha256':'$OUT_SHA','deterministic_repeat':True,
+            'disposition':'ACCEPT_RUNTIME_EXECUTION',
+            'guards':['independent_physics_evidence_only','no_QPS_authority_or_compliance_promotion']
+          }
+          with open('/tmp/w107/W107_RUNTIME_PROOF.json','w',encoding='utf-8') as f:
+            json.dump(payload,f,indent=2,sort_keys=True); f.write('\n')
+          PY
+          cat /tmp/w107/W107_RUNTIME_PROOF.json
+      - name: Upload evidence and proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: w107-leak-evidence-runtime-proof
+          path: |
+            /tmp/w107/W107_RUNTIME_PROOF.json
+            /tmp/w107/leak-evidence-a.csv
+          if-no-files-found: error
