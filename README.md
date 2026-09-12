@@ -86,6 +86,7 @@ Do not promote a repository-local value into current QPLANT authority merely bec
 ## Key Files
 
 - `qps/M07_AUTHORITY_RECONCILIATION_v0.1.yaml`: current QPS authority/reconciliation guard
+- `src/calc_leak_rate.py`: independent leak-rate evidence engine used by the W107 proof
 - `setup.sh`: idempotent entry point
 - `build.sh`: deterministic rebuild pipeline
 - `validate.sh`: full validation + checksum integrity
@@ -94,13 +95,15 @@ Do not promote a repository-local value into current QPLANT authority merely bec
 - `docs/manifest.json`: machine-readable current state
 - `docs/backlog.json`: handover task queue
 
-## CI/CD
+## CI/CD — observed current workflows
 
-GitHub Actions workflow: `.github/workflows/build.yml`
-- triggers on push/PR to `main`
-- runs setup, validation, packaging
-- uploads `dist/handover.zip`
-- deploys `docs/` to GitHub Pages on `main`
+The historical README referenced `.github/workflows/build.yml`, but that file is not present in the current repository. The current workflow surfaces are:
+- `.github/workflows/level1-mip.yml`
+- `.github/workflows/triage-leak-receipt.yml`
+- `.github/workflows/triage-qps-atom-binding.yml`
+- `.github/workflows/w107-runtime-proof.yml`
+
+`w107-runtime-proof.yml` is the bounded independent-physics proof: it exact-head checks out the repository, executes `src/calc_leak_rate.py`, repeats an 8-row conversion-grid build deterministically, binds engine/output hashes and returns retained evidence. M07 hardens this proof with exact dependency versions and ensures engine changes themselves trigger it.
 
 ## Versioning Scheme
 
