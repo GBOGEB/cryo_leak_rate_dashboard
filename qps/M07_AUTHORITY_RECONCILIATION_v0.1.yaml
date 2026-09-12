@@ -1,0 +1,109 @@
+schema: qps.m07.authority_reconciliation.v0.1
+mission: M07_CRYO_LEAK_DASHBOARD
+state: QUARANTINE_RECON
+purpose: >-
+  Preserve the useful leak-rate/dashboard capability while preventing a May-2026
+  repository-local "SSoT" label from overriding the current QPS evidence hierarchy.
+  This is an authority reconciliation, not a blanket rejection of the repository.
+
+observed_repo:
+  repo: GBOGEB/cryo_leak_rate_dashboard
+  exact_head_at_recon: 153aeb31fd09e61a9cdad5a3bd3aeec80384d5af
+  readme_version: v4.0.0
+  config_last_updated: 2026-05-10T00:00:00Z
+  local_authority_claim: SOLE_AUTHORITATIVE_SOURCE_FOR_ALL_DESIGN_PARAMETERS
+
+current_qps_reference:
+  repo: GBOGEB/cryoplant-project
+  exact_head_observed: a9cb3241fef2a7b5a071fcc9a833ae10769c51a9
+  authority_path: ocd-adr/40_implementation/QPS_NEGOTIATION_GAP_RFI_SSOT_v0.1.yaml
+  snapshot_date_in_source: 2026-08-31
+  authority_rule: >-
+    Current QPS evidence classes distinguish SSOT, INFERRED, RFI, NEGOTIATION and HOLD;
+    no stale dashboard label may bypass those classes.
+
+first_discrepancies:
+  - id: M07-D01-HP-INSTALLED-COUNT
+    dashboard_value: hp_compressors.count=3
+    dashboard_context: configuration=3_active_compressors; redundancy=N_plus_1_where_N_3
+    current_qps_evidence: LKT_has_4_KAESER_FSD575_SFC
+    class: CONFLICT_PLUS_INTERNAL_INCONSISTENCY
+    disposition: HOLD_DO_NOT_PROMOTE
+    note: >-
+      A count of 3 cannot simultaneously represent total installed population and an N+1
+      architecture with N=3. Separate installed_count, duty_count and available_spare_count.
+
+  - id: M07-D02-HP-THREE-SKID-TOTALS
+    dashboard_value: max_total_flow_gs=337.62_for_three_units
+    current_qps_evidence: diagnostic_reference_337p62_gps_for_three_units
+    class: NUMERIC_ALIGNMENT_BUT_AUTHORITY_MISMATCH
+    disposition: RETAIN_AS_DIAGNOSTIC_ONLY
+    note: >-
+      Numerical agreement does not make the three-unit envelope selected-design N-1 proof.
+
+  - id: M07-D03-HP-MTBF
+    dashboard_value: fsd575.mtbf_hours=8760
+    dashboard_source_locator: NOT_EXPOSED_IN_CONFIG
+    current_qps_evidence: >-
+      Current QPS reliability evidence is bidder/source classified; component MTBF values do not
+      directly earn service-event or selected-design credit.
+    class: UNBOUND_STALE_PARAMETER
+    disposition: HOLD_REQUIRES_SOURCE_BINDING
+
+  - id: M07-D04-GLOBAL-SSOT-CLAIM
+    dashboard_value: data/config.yaml_is_sole_authoritative_source
+    current_qps_evidence: current_QPS_child_governance_and_evidence_classes
+    class: AUTHORITY_COLLISION
+    disposition: QUARANTINE_AUTHORITY_CLAIM
+
+harvest_boundary:
+  KEEP_CANDIDATES:
+    - helium_leak_rate_conversion_algorithms
+    - deterministic_build_and_validation_pattern
+    - interactive_dashboard_rendering
+    - machine_readable_manifest_and_handover_pattern
+  REQUIRE_REVALIDATION:
+    - plant_architecture_counts
+    - compressor_power_flow_reliability_and_cost_parameters
+    - pressure_and_heat_load_design_basis
+    - standards_and_compliance_claims
+    - any output labelled current_QPLANT_SSOT
+
+ambassador_actions:
+  - add_visible_authority_status_notice
+  - preserve historical v4.0.0 outputs as lineage
+  - do_not_silently_rewrite_historical_results
+  - separate leak_physics_constants_from_QPLANT_selected_design_inputs
+  - require provenance_locator_and_evidence_class_for_promotable_engineering_parameters
+
+management:
+  PM_DOW: STAY_ONE_BOUNDED_RECON_PULSE
+  TM_KEB: HOLD_ENGINEERING_AUTHORITY
+  Analyst_DMAIC:
+    Define: prevent_stale_SSOT_collision_while_preserving_reusable_leak_capability
+    Measure: first_four_authority_discrepancy_classes_bound
+    Analyze: dominant_risk_is_authority_semantics_not_dashboard_runtime
+    Improve: quarantine_global_SSOT_claim_and_split_generic_physics_from_project_inputs
+    Control: promotion_requires_exact_QPS_source_binding_and_regression_receipt
+  PCA: DEFER_NOT_A_LATENT_PROBLEM
+  BT:
+    rank_1: authority_collision
+    rank_2: HP_installed_vs_duty_count_semantics
+    rank_3: unbound_reliability_and_cost_parameters
+    rank_4: reusable_leak_physics_harvest
+
+DoD:
+  repository_identity: PASS
+  current_QPS_authority_reference: PASS
+  first_discrepancy_set: PASS
+  authority_guard: PASS
+  runtime_revalidation: PENDING
+  reusable_leak_kernel_identified: PENDING
+
+DoV:
+  DoV_1: PENDING_REVALIDATED_GENERIC_LEAK_KERNEL
+  DoV_2: PENDING_CURRENT_QPS_CONSUMER
+  DoV_3: PENDING_RECURRENCE
+
+BG: BG_M07_STALE_GLOBAL_SSOT_CLAIM_AND_MIXED_GENERIC_PROJECT_INPUTS
+CG: CG_M07_AUTHORITY_GUARD_PLUS_REVALIDATED_LEAK_KERNEL
