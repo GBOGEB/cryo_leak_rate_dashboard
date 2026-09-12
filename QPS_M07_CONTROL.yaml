@@ -1,0 +1,69 @@
+schema: qps.m07.control.v1
+mission: M07_CRYO_LEAK_DASHBOARD
+state: DOV1_SPLIT_DISPOSITION_CONTROL
+merged_authority_guard: 1b3151c104a585fab2626b17f952b2ed71b636c1
+runtime:
+  run_id: 34685908185
+  job_id: 103532742688
+  runner_id: 1000253084
+  source_head: bb3b5714806f87bcfa77e825facdf02bf4970f87
+  conclusion: SUCCESS
+  elapsed_seconds: 16
+  exact_head_checkout: PASS
+  deterministic_repeat: PASS
+  evidence_rows: 8
+  capability: independent_leak_physics_evidence_worker
+  engine_sha256: 347c7215e084608e830b82fccd452cefd1a061862d4d6ec0116b0645f291daf6
+  output_sha256: de660c3242f1d0be50c1dc36522185e464b477b9767148bae5a64dfc6ae02279
+  runtime_versions:
+    python: 3.12.14
+    pandas: 3.0.5
+    numpy: 2.5.3
+artifact:
+  id: 10294764262
+  size_bytes: 1297
+  digest: sha256:67e4910a320020cb96f2cc39a88e8317980af9d4bc7e5bea2f8f57e231a13d1f
+
+split_disposition:
+  PROMOTE_REFERENCE:
+    - independent_leak_physics_evidence_worker
+    - deterministic_repeat_and_hash_pattern
+    - dashboard_visualization_pattern
+    - machine_readable_handover_pattern
+  QUARANTINE_HISTORICAL:
+    - data/config.yaml_global_QPLANT_SSOT_claim
+    - hp_installed_count_and_redundancy_semantics
+    - unbound_MTBF_cost_power_and_selected_design_parameters
+    - project_specific_compliance_claims_without_current_QPS_binding
+  rule: >-
+    Runtime proof validates the independent leak conversion capability only. It does
+    not promote the historical v4.0.0 plant configuration into current QPS authority.
+
+management:
+  PM_DOW: CONTRACT_TO_CONTROL
+  TM_KEB: ACCEPT_GENERIC_LEAK_CAPABILITY_KEEP_PROJECT_INPUT_HOLD
+  Analyst:
+    DMAIC: CONTROL_SPLIT_DISPOSITION
+    BT_next: current_QPS_parameter_reconciliation_only_when_source_return_changes
+    PCA: retain_as_measured_fast_runtime_row
+  QA: ACCEPT_EXACT_HEAD_DOV1_RECEIPT
+  Governor: PROMOTE_CAPABILITY_REFERENCE_QUARANTINE_STALE_AUTHORITY
+  Ambassador: README_AND_CI_AUTHORITY_REPAIR_COMPLETE
+
+crew_transition:
+  returning: [Ambassador, Scientist, Analyst, QA]
+  control_cell: [Governor, PM_DOW]
+
+DoD: PASS
+DoV:
+  DoV_1: PASS_INDEPENDENT_LEAK_PHYSICS_ONLY
+  DoV_2: WITHHELD_NOT_REQUIRED_UNTIL_A_CURRENT_QPS_CONSUMER_NEEDS_THIS_KERNEL
+  DoV_3: WITHHELD
+
+BG_retired:
+  - BG_M07_GENERIC_LEAK_KERNEL_RUNTIME_UNPROVEN
+  - BG_M07_REPRODUCIBILITY_DEPENDENCY_DRIFT
+  - BG_M07_README_GLOBAL_SSOT_AMBIGUITY
+BG_remaining:
+  - BG_M07_HISTORICAL_PROJECT_INPUT_RECONCILIATION
+next_CG: RETURN_CREW_KEEP_FAIL_CLOSED_AUTHORITY_BOUNDARY
