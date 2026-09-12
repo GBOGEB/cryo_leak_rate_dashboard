@@ -4,26 +4,39 @@ on:
   pull_request:
     paths:
       - "federation/w107/**"
+      - "src/calc_leak_rate.py"
+      - "qps/M07_AUTHORITY_RECONCILIATION_v0.1.yaml"
       - ".github/workflows/w107-runtime-proof.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
+env:
+  W107_PYTHON_VERSION: "3.12.14"
+  W107_PANDAS_VERSION: "3.0.5"
+  W107_NUMPY_VERSION: "2.5.3"
+
 jobs:
   exact-head-evidence-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact source head
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
-          python-version: "3.12"
-      - name: Install minimal engine dependency
-        run: python -m pip install --disable-pip-version-check pandas
+          python-version: "3.12.14"
+
+      - name: Install exact evidence dependencies
+        run: |
+          python -m pip install --disable-pip-version-check \
+            "numpy==${W107_NUMPY_VERSION}" \
+            "pandas==${W107_PANDAS_VERSION}"
+
       - name: Build deterministic leak evidence twice
         shell: bash
         run: |
@@ -45,25 +58,36 @@ jobs:
           ROWS="$(($(wc -l < /tmp/w107/leak-evidence-a.csv)-1))"
           ENGINE_SHA="$(sha256sum src/calc_leak_rate.py | awk '{print $1}')"
           python - <<PY
-          import json
+          import json, os, platform
+          import numpy, pandas
           payload={
-            'schema_version':'w107-satellite-runtime-proof/0.1',
+            'schema_version':'w107-satellite-runtime-proof/0.2',
             'satellite':'GBOGEB/cryo_leak_rate_dashboard',
             'source_sha':'$SOURCE_SHA','actual_sha':'$ACTUAL_SHA',
             'capability':'independent_leak_physics_evidence_worker',
             'engine_sha256':'$ENGINE_SHA','evidence_rows':int('$ROWS'),
             'output_sha256':'$OUT_SHA','deterministic_repeat':True,
+            'runtime': {
+              'python': platform.python_version(),
+              'pandas': pandas.__version__,
+              'numpy': numpy.__version__,
+            },
             'disposition':'ACCEPT_RUNTIME_EXECUTION',
+            'authority':'INDEPENDENT_PHYSICS_EVIDENCE_ONLY',
             'guards':['independent_physics_evidence_only','no_QPS_authority_or_compliance_promotion']
           }
+          assert payload['runtime']['python'] == os.environ['W107_PYTHON_VERSION']
+          assert payload['runtime']['pandas'] == os.environ['W107_PANDAS_VERSION']
+          assert payload['runtime']['numpy'] == os.environ['W107_NUMPY_VERSION']
           with open('/tmp/w107/W107_RUNTIME_PROOF.json','w',encoding='utf-8') as f:
             json.dump(payload,f,indent=2,sort_keys=True); f.write('\n')
           PY
           cat /tmp/w107/W107_RUNTIME_PROOF.json
+
       - name: Upload evidence and proof
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: w107-leak-evidence-runtime-proof
+          name: w107-leak-evidence-runtime-proof-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             /tmp/w107/W107_RUNTIME_PROOF.json
             /tmp/w107/leak-evidence-a.csv
