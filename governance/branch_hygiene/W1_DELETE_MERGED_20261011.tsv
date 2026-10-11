@@ -1,0 +1,10 @@
+# W1_DELETE_MERGED (8 branches, mode delete). Census 2026-10-11 against main.
+# Every commit is on main, or a merged PR has this exact head (kept under refs/pull/N/head).
+control/m07-dov1-split-disposition	73607eb6438f89e145ab5731aed7ea74ca6f5dcd	delete
+m07/authority-reconciliation	bb3b5714806f87bcfa77e825facdf02bf4970f87	delete
+mip/2026-09-10-rollout	51b3afbc9230b53a3bb7c866074f2ac56db14188	delete
+mip/l1-pc1-control	3e65eb6cfc99139b7d66068d904c4df54c864a58	delete
+mip/l1-pc2-runtime	40e75a03798e84737598091a4150c7b599c17c3a	delete
+triage/pca-r4-qps-atom-binding-w02	d157f2d623f36518a227bd29c1855fa57ef8dd76	delete
+triage/renegade-self-analysis-w01	0e473475dbe0662541a67af52f86a79b93b6e7d6	delete
+w107/p5-leak-evidence-runtime-proof	343e8c9d7c0c322aa2f3ed173588f3a2c8e0b7a2	delete
